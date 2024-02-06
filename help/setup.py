@@ -5,7 +5,7 @@ setup(
    version='0.1.0',
    author='Maurizio Giordano and Ilaria Granata and Lucia Maddalena',
    author_email='maurizio.giordano@icar.cnr.it',
-   packages=['help', 'help.models', 'help.utility', help.visualization],
+   packages=['help', 'help.models', 'help.utility', 'help.visualization'],
    license='LICENSE.txt',
    description='The HELP Essential Genes framework',
    long_description=open('README.md').read(),
