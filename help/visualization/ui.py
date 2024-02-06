@@ -11,7 +11,7 @@ class Help_Dashboard():
     def __init__(self, verbose: bool = False):
         self.verbose = verbose
 
-    def feature_assemble(self, label_path: str = ".", feature_path: str = ".", rows: int = 5):
+    def process_features(self, label_path: str = ".", feature_path: str = ".", rows: int = 5):
         selfeature = wid.SelectMultiple(
             options=os.listdir(feature_path),
             value=[],
@@ -126,7 +126,7 @@ class Help_Dashboard():
             with out2:
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, nested = False)
-                val.value = HELP(df, columns=cell_lines, three_class=mode_buttons.value)
+                val.value = Help(verbose=self.verbose).labelling(df, columns=cell_lines, three_class=mode_buttons.value)
                 if save_textbox.layout == layout_visible:
                     val.value.to_csv(save_textbox.value, index=True)
                 display(val.value.value_counts())
