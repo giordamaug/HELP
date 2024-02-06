@@ -9,7 +9,7 @@ from typing import List, Tuple, Callable, Dict
 import statistics
 
 class Help:
-    def __init__(self, verbose=False):
+    def __init__(self, verbose: bool=False):
         self.verbose = verbose
         pass
 
