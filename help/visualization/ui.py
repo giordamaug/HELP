@@ -92,7 +92,7 @@ class Help_Dashboard():
         layout_visible = wid.Layout(visibility = 'visible')
         seltissue = wid.SelectMultiple(
             options=tissue_list,
-            value=['Kidney'],
+            value=None,
             rows=rows,
             description='Tissues',
             disabled=False
