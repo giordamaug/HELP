@@ -6,7 +6,7 @@ from ..models.labelling import Help
 from ..visualization.plot import svenn_intesect
 
 # select cell lines from depmap CRISPR file
-def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], nested=False, verbose=0):
+def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], line_group: str='lineage1', line_col: str='ModelID', nested=False, verbose=0):
     """
     Select cell lines based on tissue and mapping information.
 
@@ -26,7 +26,7 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     # Iterate over each tissue in the provided list
     for tissue in tissue_list:
         # Get the cell lines from the mapping DataFrame for the given tissue
-        map_cell_lines = df_map[df_map['lineage1'] == tissue]['depmapId'].values
+        map_cell_lines = df_map[df_map[line_group] == tissue][line_col].values
 
         # Intersect with cell lines in the main DataFrame
         dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)
