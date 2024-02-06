@@ -10,15 +10,23 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     """
     Select cell lines based on tissue and mapping information.
 
-    Parameters:
-    - df (pd.DataFrame): DataFrame containing cell line information.
-    - df_map (pd.DataFrame): DataFrame containing mapping information.
-    - tissue_list (List[str]): List of tissues for which cell lines need to be selected.
-    - nested (bool): Whether to return cell lines as nested lists (lists for each tissue).
-    - verbose (int): Verbosity level for printing information.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame containing cell line information.
+    df_map : pd.DataFrame
+        DataFrame containing mapping information.
+    tissue_list : List[str]
+        List of tissues for which cell lines need to be selected.
+    nested : bool, optional
+        Whether to return cell lines as nested lists (lists for each tissue).
+    verbose : int, optional
+        Verbosity level for printing information.
 
-    Returns:
-    - List: List of selected cell lines, either flattened or nested based on the 'nested' parameter.
+    Returns
+    -------
+    List
+        List of selected cell lines, either flattened or nested based on the 'nested' parameter.
     """
 
     lines = []
@@ -58,18 +66,29 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     """
     Assemble features and labels for machine learning tasks.
 
-    Parameters:
-    - label_file (str): Path to the label file.
-    - features (List[Dict[str, Union[str, bool]]]): List of dictionaries specifying feature files and their processing options.
-    - colname (str): Name of the column in the label file to be used as the target variable.
-    - subsample (bool): Whether to subsample the data.
-    - seed (int): Random seed for reproducibility.
-    - fold (int): Number of folds for subsampling.
-    - saveflag (bool): Whether to save the assembled data to files.
-    - verbose (bool): Whether to print verbose messages during processing.
+    Parameters
+    ----------
+    label_file : str
+        Path to the label file.
+    features : List[Dict[str, Union[str, bool]]]
+        List of dictionaries specifying feature files and their processing options.
+    colname : str
+        Name of the column in the label file to be used as the target variable.
+    subsample : bool, optional
+        Whether to subsample the data.
+    seed : int or None, optional
+        Random seed for reproducibility.
+    fold : int or None, optional
+        Number of folds for subsampling.
+    saveflag : bool, optional
+        Whether to save the assembled data to files.
+    verbose : bool, optional
+        Whether to print verbose messages during processing.
 
-    Returns:
-    - Tuple[pd.DataFrame, pd.DataFrame]: Tuple containing the assembled features (X) and labels (Y) DataFrames.
+    Returns
+    -------
+    Tuple[pd.DataFrame, pd.DataFrame]
+        Tuple containing the assembled features (X) and labels (Y) DataFrames.
     """
 
     # Load labels from the specified file
@@ -136,24 +155,37 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
 def EG_by_tissues_intersect(df: pd.DataFrame, df_map: pd.DataFrame, tissues: List[str] = [], subtract_common: bool = False, three_class: bool = False,
                               display: bool = False, verbose: bool = False, barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> pd.DataFrame:
     """
-    Identify overlapping and unique EGs (Essential Genes) by tissues.
+    Identify overlapping and unique Essential Genes (EGs) by tissues.
 
-    Parameters:
-    - df (pd.DataFrame): DataFrame containing cell line information.
-    - df_map (pd.DataFrame): DataFrame containing mapping information.
-    - tissues (List[str]): List of tissues for which EGs need to be identified.
-    - subtract_common (bool): Whether to subtract common EGs from pantissue labeling.
-    - three_class (bool): Whether to use a three-class labeling (E, NE, NC).
-    - display (bool): Whether to display a Venn diagram.
-    - verbose (bool): Verbosity level for printing information.
-    - barheight (int): Height of the Venn diagram.
-    - barwidth (int): Width of the Venn diagram.
-    - fontsize (int): Font size for the Venn diagram.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame containing cell line information.
+    df_map : pd.DataFrame
+        DataFrame containing mapping information.
+    tissues : List[str]
+        List of tissues for which EGs need to be identified.
+    subtract_common : bool, optional
+        Whether to subtract common EGs from pantissue labeling.
+    three_class : bool, optional
+        Whether to use a three-class labeling (E, NE, NC).
+    display : bool, optional
+        Whether to display a Venn diagram.
+    verbose : bool, optional
+        Verbosity level for printing information.
+    barheight : int, optional
+        Height of the Venn diagram.
+    barwidth : int, optional
+        Width of the Venn diagram.
+    fontsize : int, optional
+        Font size for the Venn diagram.
 
-    Returns:
-    - Tuple[pd.DataFrame]: Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
+    Returns
+    -------
+    Tuple[pd.DataFrame]
+        Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
     """
-
+ 
     sets = []
 
     # If subtract_common is True, calculate the set of pan-tissue labels
