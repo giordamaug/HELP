@@ -58,7 +58,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, inlines=15, column='lineage1'):
+    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, column='lineage1'):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -86,7 +86,7 @@ class Help_Dashboard():
 
         """
         tl = df_map[column].dropna().values.astype(str))
-        tissue_list = [x[0] for x in list(filter(lambda x: x[1] > 15, zip(tl.index.values, tl.values)))]
+        tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values, tl.values)))]
         # tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
