@@ -9,7 +9,8 @@ from typing import List, Tuple, Callable, Dict
 import statistics
 
 class Help:
-    def __init__(self):
+    def __init__(self, verbose=False):
+        self.verbose = verbose
         pass
 
     @staticmethod
