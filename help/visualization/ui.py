@@ -9,9 +9,34 @@ import os
 
 class Help_Dashboard():
     def __init__(self, verbose: bool = False):
+        """
+        Initialize the Help Dashboard.
+
+        Parameters
+        ----------
+        verbose : bool, optional
+            Whether to print verbose messages during processing (default is False).
+        """
         self.verbose = verbose
 
     def process_features(self, label_path: str = ".", feature_path: str = ".", rows: int = 5):
+        """
+        Create an interactive widget for processing features.
+
+        Parameters
+        ----------
+        label_path : str, optional
+            Path to the label file (default is ".").
+        feature_path : str, optional
+            Path to the feature files (default is ".").
+        rows : int, optional
+            Number of rows to display in the widget (default is 5).
+
+        Returns
+        -------
+        ipywidgets.ValueWidget
+            Widget containing the assembled features and labels DataFrames.
+        """
         selfeature = wid.SelectMultiple(
             options=os.listdir(feature_path),
             value=[],
@@ -59,33 +84,30 @@ class Help_Dashboard():
         return val
         
     def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
-        """
+       """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
-        Parameters:
-        - df (pd.DataFrame): The main DataFrame containing the data.
-        - df_map (pd.DataFrame): A DataFrame used for mapping data.
-        - rows (int): The number of rows to display in the widget for selecting tissues (default is 5).
-        - minlines (in): Minimum number of cell lines for tissue/lineage to be considered
-        - line_group (str): The column in 'df_map' to use for line selection (default is 'ModelID').
-        - line_col (str): The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
+        Parameters
+        ----------
+        df : pd.DataFrame
+            The main DataFrame containing the data.
+        df_map : pd.DataFrame
+            A DataFrame used for mapping data.
+        rows : int, optional
+            The number of rows to display in the widget for selecting tissues (default is 5).
+        minlines : int, optional
+            Minimum number of cell lines for tissue/lineage to be considered (default is 1).
+        line_group : str, optional
+            The column in 'df_map' to use for line selection (default is 'ModelID').
+        line_col : str, optional
+            The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
 
-        Returns:
-        - val (ipywidgets.ValueWidget): A widget containing the labeled cell lines.
-        
-        The function creates an interactive widget with the following components:
-        - A multi-select widget for choosing tissues.
-        - A button for triggering the labeling process.
-        - An output widget for displaying selected tissues and labeled cell lines.
-        - Options for saving the results to a CSV file.
-
-        Example:
-        ```
-        # Usage example:
-        result_widget = Help().labelling(my_dataframe, my_map_dataframe, rows=7, line_col='lineage_category')
-        ```
-
+        Returns
+        -------
+        ipywidgets.ValueWidget
+            Widget containing the labeled cell lines.
         """
+
         tl = df_map[line_col].dropna().value_counts()
         tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values.astype(str) , tl.values)))]
         # tissue_list = (np.unique(df_map[line_col].dropna().values.astype(str)))
@@ -146,27 +168,21 @@ def helpbox(df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, column='lineage
     """
     Generate an interactive widget for labeling cell lines based on specified criteria.
 
-    Parameters:
-    - df (pd.DataFrame): The main DataFrame containing the data.
-    - df_map (pd.DataFrame): A DataFrame used for mapping data.
-    - rows (int): The number of rows to display in the widget for selecting tissues (default is 5).
-    - column (str): The column in 'df_map' to use for tissue selection (default is 'lineage1').
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The main DataFrame containing the data.
+    df_map : pd.DataFrame
+        A DataFrame used for mapping data.
+    rows : int, optional
+        The number of rows to display in the widget for selecting tissues (default is 5).
+    column : str, optional
+        The column in 'df_map' to use for tissue selection (default is 'lineage1').
 
-    Returns:
-    - val (ipywidgets.ValueWidget): A widget containing the labeled cell lines.
-    
-    The function creates an interactive widget with the following components:
-    - A multi-select widget for choosing tissues.
-    - A button for triggering the labeling process.
-    - An output widget for displaying selected tissues and labeled cell lines.
-    - Options for saving the results to a CSV file.
-
-    Example:
-    ```
-    # Usage example:
-    result_widget = helpbox(my_dataframe, my_map_dataframe, rows=7, column='lineage_category')
-    ```
-
+    Returns
+    -------
+    ipywidgets.ValueWidget
+        Widget containing the labeled cell lines.
     """
     tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
     layout_hidden  = wid.Layout(visibility = 'hidden')
