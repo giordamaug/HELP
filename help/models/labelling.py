@@ -215,7 +215,7 @@ class Help:
     def help_core(df: pd.DataFrame, columns: List[str], three_class: bool = False,
                   verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
                   rowname: str = 'gene', colname: str = 'label') -> Tuple[pd.DataFrame, np.ndarray]:
-         """
+        """
         Core function for HELP algorithm.
     
         Parameters:
