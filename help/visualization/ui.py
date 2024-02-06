@@ -58,7 +58,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_column='ModelID'):
+    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -67,7 +67,8 @@ class Help_Dashboard():
         - df_map (pd.DataFrame): A DataFrame used for mapping data.
         - rows (int): The number of rows to display in the widget for selecting tissues (default is 5).
         - minlines (in): Minimum number of cell lines for tissue/lineage to be considered
-        - column (str): The column in 'df_map' to use for tissue selection (default is 'lineage1').
+        - line_group (str): The column in 'df_map' to use for line selection (default is 'ModelID').
+        - line_col (str): The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
 
         Returns:
         - val (ipywidgets.ValueWidget): A widget containing the labeled cell lines.
@@ -81,13 +82,13 @@ class Help_Dashboard():
         Example:
         ```
         # Usage example:
-        result_widget = Help().labelling(my_dataframe, my_map_dataframe, rows=7, column='lineage_category')
+        result_widget = Help().labelling(my_dataframe, my_map_dataframe, rows=7, line_col='lineage_category')
         ```
 
         """
-        tl = df_map[column].dropna().value_counts()
+        tl = df_map[line_col].dropna().value_counts()
         tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values.astype(str) , tl.values)))]
-        # tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
+        # tissue_list = (np.unique(df_map[line_col].dropna().values.astype(str)))
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
         seltissue = wid.SelectMultiple(
