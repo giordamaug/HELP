@@ -58,7 +58,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, column='lineage1'):
+    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, inlines=15, column='lineage1'):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -66,6 +66,7 @@ class Help_Dashboard():
         - df (pd.DataFrame): The main DataFrame containing the data.
         - df_map (pd.DataFrame): A DataFrame used for mapping data.
         - rows (int): The number of rows to display in the widget for selecting tissues (default is 5).
+        - minlines (in): Minimum number of cell lines for tissue/lineage to be considered
         - column (str): The column in 'df_map' to use for tissue selection (default is 'lineage1').
 
         Returns:
@@ -84,7 +85,9 @@ class Help_Dashboard():
         ```
 
         """
-        tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
+        tl = df_map[column].dropna().values.astype(str))
+        tissue_list = [x[0] for x in list(filter(lambda x: x[1] > 15, zip(tl.index.values, tl.values)))]
+        # tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
         seltissue = wid.SelectMultiple(
