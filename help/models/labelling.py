@@ -584,17 +584,27 @@ def HELP(df: pd.DataFrame, columns: List[List[str]] = [], three_class: bool = Fa
     """
     Main function for HELP algorithm.
 
-    Parameters:
-    - df (pd.DataFrame): Input DataFrame.
-    - columns (List[List[str]]): List of column names for partitioning (default: []).
-    - three_class (bool): Flag for three-class labeling (default: False).
-    - verbose (bool): Verbosity level for printing information (default: False).
-    - labelnames (Dict[int, str]): Dictionary mapping class labels to names (default: {}).
-    - rowname (str): Name of the DataFrame index (default: 'gene').
-    - colname (str): Name of the label column (default: 'label').
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Input DataFrame.
+    columns : List[List[str]], optional
+        List of column names for partitioning (default: []).
+    three_class : bool, optional
+        Flag for three-class labeling (default: False).
+    verbose : bool, optional
+        Verbosity level for printing information (default: False).
+    labelnames : Dict[int, str], optional
+        Dictionary mapping class labels to names (default: {}).
+    rowname : str, optional
+        Name of the DataFrame index (default: 'gene').
+    colname : str, optional
+        Name of the label column (default: 'label').
 
-    Returns:
-    - pd.DataFrame: Output DataFrame with labels.
+    Returns
+    -------
+    pd.DataFrame
+        Output DataFrame with labels.
     """
     if labelnames == {}:
         labelnames = {0: 'E', 1:'aE', 2:'sNE'} if three_class else {0: 'E', 1:'NE'}
