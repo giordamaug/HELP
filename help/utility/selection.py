@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from typing import List
+from typing import List, Dict, Union
 import matplotlib.pyplot as plt
 from ..models.labelling import Help
 from ..visualization.plot import svenn_intesect
