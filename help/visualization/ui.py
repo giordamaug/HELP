@@ -80,7 +80,7 @@ class Help_Dashboard():
         Example:
         ```
         # Usage example:
-        result_widget = helpbox(my_dataframe, my_map_dataframe, rows=7, column='lineage_category')
+        result_widget = Help().labelling(my_dataframe, my_map_dataframe, rows=7, column='lineage_category')
         ```
 
         """
