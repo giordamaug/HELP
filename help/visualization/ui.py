@@ -85,7 +85,7 @@ class Help_Dashboard():
         ```
 
         """
-        tl = df_map[column].dropna().values.astype(str))
+        tl = df_map[column].dropna().values.astype(str)
         tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values, tl.values)))]
         # tissue_list = (np.unique(df_map[column].dropna().values.astype(str)))
         layout_hidden  = wid.Layout(visibility = 'hidden')
