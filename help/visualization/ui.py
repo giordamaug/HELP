@@ -58,7 +58,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, column='lineage1'):
+    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_column='ModelID'):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -128,7 +128,7 @@ class Help_Dashboard():
         def on_button_clicked(b):
             with out2:
                 out2.clear_output()
-                cell_lines = select_cell_lines(df, df_map, seltissue.value, nested = False)
+                cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
                 val.value = Help(verbose=self.verbose).labelling(df, columns=cell_lines, three_class=mode_buttons.value)
                 if save_textbox.layout == layout_visible:
                     val.value.to_csv(save_textbox.value, index=True)
