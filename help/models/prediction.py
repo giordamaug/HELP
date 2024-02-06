@@ -20,19 +20,31 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     """
     Perform cross-validated predictions using a LightGBM classifier.
 
-    Parameters:
-    - X: Features DataFrame.
-    - Y: Target variable DataFrame.
-    - n_splits: Number of folds for cross-validation.
-    - balanced: Whether to use class weights to balance the classes.
-    - saveflag: Whether to save the predictions to a CSV file.
-    - outfile: File name for saving predictions.
-    - verbose: Whether to print verbose information.
-    - display: Whether to display a confusion matrix plot.
-    - seed: Random seed for reproducibility.
+    Parameters
+    ----------
+    X : DataFrame
+        Features DataFrame.
+    Y : DataFrame
+        Target variable DataFrame.
+    n_splits : int
+        Number of folds for cross-validation.
+    balanced : bool, optional
+        Whether to use class weights to balance the classes.
+    saveflag : bool, optional
+        Whether to save the predictions to a CSV file.
+    outfile : str or None, optional
+        File name for saving predictions.
+    verbose : bool, optional
+        Whether to print verbose information.
+    display : bool, optional
+        Whether to display a confusion matrix plot.
+    seed : int or None, optional
+        Random seed for reproducibility.
 
-    Returns:
-    - DataFrame: Summary statistics of the cross-validated predictions.
+    Returns
+    -------
+    DataFrame
+        Summary statistics of the cross-validated predictions.
     """
     # get the list of genes
     genes = Y.index
