@@ -1,13 +1,13 @@
 import ipywidgets as wid
 from typing import List
 import matplotlib.pyplot as plt
-from ..models.labelling import HELP
+from ..models.labelling import Help
 from ..utility.selection import select_cell_lines, feature_assemble
 import pandas as pd
 import numpy as np
 import os
 
-class HELP_Dashboard():
+class Help_Dashboard():
     def __init__(self, verbose: bool = False):
         self.verbose = verbose
 
