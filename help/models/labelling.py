@@ -11,7 +11,6 @@ import statistics
 class Help:
     def __init__(self, verbose: bool=False):
         self.verbose = verbose
-        pass
 
     @staticmethod
     def QuantizeByColumns(T: np.ndarray, n: int, verbose: int = 0) -> Tuple[np.ndarray, np.ndarray]:
