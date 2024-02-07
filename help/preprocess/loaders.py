@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
+import os
 from typing import List, Dict, Tuple, Union, Callable
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
                      colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
