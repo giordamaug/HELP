@@ -110,7 +110,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     # Calculate mean and standard deviation of evaluation metrics
     df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
                                                                      scores.loc[:, scores.columns != "CM"].std(axis=0))] +
-                             [(scores[['CM']].sum() / 10).values[0].tolist()],
+                             [(scores[['CM']].sum()).values[0].tolist()],
                              columns=['measure'], index=scores.columns)
 
     # Display confusion matrix if requested
