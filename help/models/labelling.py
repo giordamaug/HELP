@@ -37,7 +37,7 @@ class Help:
         
         for c in tqdm(range(0, T.shape[1])):
             ColValues = T[:, c]
-            ColTh, _ = otsuthresholding(ColValues, n - 1)
+            ColTh, _ = Help.otsuthresholding(ColValues, n - 1)
             If1 = ColValues.copy()
             ismiss = np.isnan(ColValues)
             
@@ -73,14 +73,14 @@ class Help:
             raise ValueError("N must be either 1 or 2.")
         
         num_bins = 256
-        p, minA, maxA = getpdf(A, num_bins)
+        p, minA, maxA = Help.getpdf(A, num_bins)
         assert len(p) > 0, "Cannot compute PDF."
         
         omega = np.cumsum(p)
         mu = np.cumsum(p * np.arange(num_bins))
         mu_t = mu[-1]
 
-        sigma_b_squared = compute_sigma_b_squared(N, num_bins, omega, mu, mu_t)
+        sigma_b_squared = Help.compute_sigma_b_squared(N, num_bins, omega, mu, mu_t)
         
         maxval = np.nanmax(sigma_b_squared)
         assert np.isfinite(maxval), "Cannot find a finite maximum for sigma_b_squared."
@@ -254,10 +254,10 @@ class Help:
         
         if verbose: print("Two-class labelling:") 
         # Perform quantization
-        Q2, Thr = QuantizeByColumns(T, NumberOfClasses, verbose = verbose)
+        Q2, Thr = Help.QuantizeByColumns(T, NumberOfClasses, verbose = verbose)
         Q2 = Q2 - 1
         #modeQ2 = stats.mode(Q2, axis=1, keepdims=False).mode
-        modeQ2 = modemax(Q2)
+        modeQ2 = Help.modemax(Q2)
         if verbose: print(modeQ2.shape)
         
         dfout =  pd.DataFrame(index=df.index)
@@ -273,10 +273,10 @@ class Help:
             else:
                 TNE = df[columns].loc[NE_genes].to_numpy()
             NumberOfClasses = 2
-            QNE2, ThrNE = QuantizeByColumns(TNE, NumberOfClasses, verbose = verbose)
+            QNE2, ThrNE = Help.QuantizeByColumns(TNE, NumberOfClasses, verbose = verbose)
             QNE2 = QNE2 - 1
             #modeQ2NE = stats.mode(QNE2, axis=1, keepdims=False).mode
-            modeQ2NE = modemax(QNE2)
+            modeQ2NE = Help.modemax(QNE2)
             if verbose: print(modeQ2NE.shape)
             dfout2 =  pd.DataFrame(index=NE_genes)
             dfout2.index.name = rowname
@@ -322,14 +322,14 @@ class Help:
             if verbose: print('performing mode of mode.')
             Q2_tot = []
             for lines in columns:
-                _, Q2 = help_core(df, lines, three_class=three_class, verbose=verbose, labelnames=labelnames, rowname=rowname, colname=colname)
+                _, Q2 = Help.help_core(df, lines, three_class=three_class, verbose=verbose, labelnames=labelnames, rowname=rowname, colname=colname)
                 Q2_tot += [Q2]
             # Execute mode on each tissue and sort'em
             if verbose: print(Q2_tot)
             Q2Mode_tot = []
             for k in Q2_tot:
                 #Q2Mode_tot.append(stats.mode(k, axis=1, keepdims=False).mode)
-                Q2Mode_tot.append(modemax(k))
+                Q2Mode_tot.append(Help.modemax(k))
 
             Q2Mode_tot = np.vstack(Q2Mode_tot).T
         
