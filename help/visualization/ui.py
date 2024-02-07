@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import os
 
-class HelpDashboard():
+class Help_Dashboard():
     def __init__(self, verbose: bool = False):
         """
         Initialize the Help Dashboard.
