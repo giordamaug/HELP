@@ -166,7 +166,7 @@ class Help_Dashboard():
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
                 val.value = df[cell_lines]
                 if save_textbox.layout == layout_visible:
-                    df[cell_lines].to_csv(save_textbox.value, index=True)
+                    val.value.to_csv(save_textbox.value, index=True)
                     display(f'Saved cell lines to file: {save_textbox.value}!')
         button.on_click(on_button_clicked)
         out1 = wid.Output()
@@ -201,7 +201,7 @@ class Help_Dashboard():
             Widget containing the labeled cell lines.
         """
 
-        tl = df_map[line_col].dropna().value_counts()
+        tl = df_map[line_group].dropna().value_counts()
         tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values.astype(str) , tl.values)))]
         # tissue_list = (np.unique(df_map[line_col].dropna().values.astype(str)))
         layout_hidden  = wid.Layout(visibility = 'hidden')

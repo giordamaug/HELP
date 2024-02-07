@@ -335,7 +335,7 @@ class Help:
         
             # Get mode of mode among tissues
             #modeOfmode = stats.mode(Q2Mode_tot, axis=1, keepdims=False).mode
-            modeOfmode = modemax(Q2Mode_tot)
+            modeOfmode = Help.modemax(Q2Mode_tot)
             dfout =  pd.DataFrame(index=df[sum(columns, [])].index)
             dfout.index.name = rowname
             dfout[colname] = modeOfmode #.ravel()
@@ -345,6 +345,6 @@ class Help:
         elif any(isinstance(sub, list) for sub in columns) and len(columns) > 0:
             raise Exception("Wrong columns partition format.")
         else:
-            dfout, Q2 = help_core(df, columns, three_class=three_class, verbose=verbose,  labelnames=labelnames, rowname=rowname, colname=colname)
+            dfout, Q2 = Help.help_core(df, columns, three_class=three_class, verbose=verbose,  labelnames=labelnames, rowname=rowname, colname=colname)
             return dfout
         

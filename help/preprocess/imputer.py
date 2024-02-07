@@ -2,6 +2,7 @@ from sklearn.impute import KNNImputer, SimpleImputer
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from ..utility.selection import select_cell_lines
 
 def imputer_knn_group(df: pd.DataFrame, df_map: pd.DataFrame, line_group: str='OncotreeLineage', line_col: str='ModelID',n_neighbors: int=5, missing_values=np.nan, weights: str="uniform", verbose: bool=False) -> pd.DataFrame:
     """
