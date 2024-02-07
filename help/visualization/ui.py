@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import os
 
-class Help_Dashboard():
+class HelpDashboard():
     def __init__(self, verbose: bool = False):
         """
         Initialize the Help Dashboard.
@@ -38,6 +38,8 @@ class Help_Dashboard():
         ipywidgets.ValueWidget
             Widget containing the assembled features and labels DataFrames.
         """
+        layout_hidden  = wid.Layout(visibility = 'hidden')
+        layout_visible = wid.Layout(visibility = 'visible')
         selfeature = wid.SelectMultiple(
             options=os.listdir(feature_path),
             value=[],
@@ -46,6 +48,7 @@ class Help_Dashboard():
             disabled=False
         )
         def selfeature_changed(b):
+            save_textbox.value = f"data_{'_'.join([s.split('.')[0] for s in selfeature.value])}.csv"
             with out2:
                 out2.clear_output()
                 display(selfeature.value)
@@ -62,15 +65,36 @@ class Help_Dashboard():
                 out3.clear_output()
                 display(sellabel.value)
         sellabel.observe(sellabel_changed, names='value')
+        saveto_but = wid.ToggleButton(value=False,
+                description='Save to:',
+                disabled=False,
+                button_style='', # 'success', 'info', 'warning', 'danger' or ''
+                icon='check' # (FontAwesome names without the `fa-` prefix)
+        )
+        def saveto_but_change(b):
+            out2.clear_output()
+            if save_textbox.layout == layout_hidden:
+                save_textbox.layout = layout_visible
+            else:
+                save_textbox.layout = layout_hidden
+        saveto_but.observe(saveto_but_change)
+        save_textbox = wid.Text(
+            value="",
+            description='',
+        )
+        save_textbox.layout = layout_visible
         button = wid.Button(description="Loading ...")
         def on_button_clicked(b):
             with out1:
                 out1.clear_output()
-                display(f'Loading {selfeature.value} on label {sellabel.value}... wait util DONE...')
+                display(f'Loading/Processing {selfeature.value} with label {sellabel.value} ... wait until DONE...')
             with out4:
                 out4.clear_output()
                 features = [{'fname' : os.path.join(feature_path, fname), 'fixna': True, 'normalize': 'std'} for fname in selfeature.value]
                 val.value = feature_assemble(os.path.join(label_path, sellabel.value), features=features,verbose=self.verbose)
+                if save_textbox.layout == layout_visible and save_textbox.value != '':
+                    pd.merge(val.value[0], val.value[1], left_index=True, right_index=True, how='outer').to_csv(save_textbox.value, index=True)
+                    display(f'Saved dataset to file: {save_textbox.value}.')
                 display('DONE')
         button.on_click(on_button_clicked)
         out1 = wid.Output()
@@ -80,7 +104,7 @@ class Help_Dashboard():
         val = wid.ValueWidget()
         cnt = wid.VBox([wid.HBox([button, out1]), 
                         wid.HBox([selfeature, out2]), 
-                        wid.HBox([sellabel, out3]), out4])
+                        wid.HBox([sellabel, out3]), wid.HBox([saveto_but, save_textbox]), out4])
         display(cnt)
         return val
         
@@ -137,7 +161,7 @@ class Help_Dashboard():
             readout=True
         )
         def minline_set_changed(b):
-            tl = df_map[line_col].dropna().value_counts()
+            tl = df_map[line_group].dropna().value_counts()
             tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minline_set.value, zip(tl.index.values.astype(str) , tl.values)))]
             seltissue.options = tissue_list
             seltissue.value=[]
@@ -159,20 +183,25 @@ class Help_Dashboard():
             value="",
             description='',
         )
-        button = wid.Button(description="Selecting ...")
+        save_textbox.layout = layout_visible
+        butsel = wid.Button(description="Selecting ...")
         def on_button_clicked(b):
+            with out1:
+                out1.clear_output()
+                display(f'Saving cell lines {seltissue.value} in file {save_textbox.value}... wait until DONE...')
             with out2:
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
                 val.value = df[cell_lines]
-                if save_textbox.layout == layout_visible:
+                if save_textbox.layout == layout_visible and save_textbox.value != '':
                     val.value.to_csv(save_textbox.value, index=True)
-                    display(f'Saved cell lines to file: {save_textbox.value}!')
-        button.on_click(on_button_clicked)
+                    display(f'Saved cell lines to file: {save_textbox.value}.')
+                display("DONE!")
+        butsel.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
         val = wid.ValueWidget()
-        cnt = wid.VBox([wid.HBox([button, out1]), minline_set, seltissue, wid.HBox([saveto_but, save_textbox]), out2])
+        cnt = wid.VBox([wid.HBox([butsel, out1]), minline_set, seltissue, wid.HBox([saveto_but, save_textbox]), out2])
         display(cnt)
         return val
     
@@ -240,15 +269,20 @@ class Help_Dashboard():
             value="",
             description='',
         )
+        save_textbox.layout = layout_visible
         button = wid.Button(description="Labelling ...")
         def on_button_clicked(b):
+            with out1:
+                out1.clear_output()
+                display(f'Labelling cell lines {seltissue.value} ... wait until DONE...')
             with out2:
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
                 val.value = Help(verbose=self.verbose).labelling(df, columns=cell_lines, three_class=mode_buttons.value)
-                if save_textbox.layout == layout_visible:
+                if save_textbox.layout == layout_visible and save_textbox.value != "":
                     val.value.to_csv(save_textbox.value, index=True)
-                    display(f'Saved cell lines to file: {save_textbox.value}!')
+                    display(f'Saved cell lines to file: {save_textbox.value}.')
+                display("DONE!")
         button.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
