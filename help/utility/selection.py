@@ -7,7 +7,7 @@ from ..visualization.plot import svenn_intesect
 import random
 
 # select cell lines from depmap CRISPR file
-def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], line_group: str='lineage1', line_col: str='ModelID', nested=False, verbose=0):
+def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
     """
     Select cell lines based on tissue and mapping information.
 
