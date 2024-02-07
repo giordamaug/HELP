@@ -49,7 +49,7 @@ def imputer_knn_group(df: pd.DataFrame, df_map: pd.DataFrame, line_group: str='O
     tissuel = np.unique(df_map[df_map[line_col].isin(df.columns.values)][line_group].values)
     dfout = pd.DataFrame()
     if verbose:
-        print("Imputation groups {tissuel}...")
+        print(f"Imputation groups {tissuel}...")
         tissuel = tqdm(tissuel)
     for tissue in tissuel:
         cell_lines = select_cell_lines(df, df_map, [tissue], line_group=line_group, line_col=line_col, nested = False)
