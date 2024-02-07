@@ -67,6 +67,88 @@ def set_seed(seed=1):
     random.seed(seed)
     np.random.seed(seed)
 
+import pandas as pd
+import numpy as np
+import os
+from typing import List, Dict, Tuple, Union, Callable
+import matplotlib.pyplot as plt
+from help.models.labelling import Help
+from help.visualization.plot import svenn_intesect
+import random
+def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd.DataFrame() = None,
+                         labelname: str='label', labelval: str='E', display: bool = False, verbose: bool = False, 
+                         barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> Tuple[set,set,set]:
+    """
+    Calculate the intersection and differences of gene sets across multiple tissues.
+
+    :param Dict[str, pd.DataFrame] tissues: Dictionary of tissue names and associated dataframes.
+    :param Union[None, pd.DataFrame] common_df: DataFrame containing common data.
+    :param str labelname: Name of the label column in the dataframes.
+    :param str labelval: Value to consider as the target label.
+    :param bool display: Whether to display a Venn diagram.
+    :param bool verbose: Whether to print verbose information.
+    :param int barheight: Height of bars in the Venn diagram.
+    :param int barwidth: Width of the Venn diagram.
+    :param int fontsize: Font size of the Venn diagram labels.
+
+    :return: Tuple[Dict[str, set], set, Dict[str, set]] A tuple containing sets of genes for each tissue,
+             the intersection of genes, and differences in genes.
+
+    :example:
+
+    .. code-block:: python
+
+        tissues = {'Tissue1': pd.DataFrame(...), 'Tissue2': pd.DataFrame(...), ...}
+        common_df = pd.DataFrame(...)  # Optional
+        sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname='label', labelval='E', display=True)
+    """
+    sets = {}
+
+    # If subtract_common is True, calculate the set of pan-tissue labels
+    if common_df is None:
+        common_set = set()
+    else:
+        common_set = set(common_df[common_df[labelname] == labelval].index.values)
+        if verbose:
+            print(f"Subtracting {len(common_set)} common EGs...")
+
+    # Iterate over each tissue in the provided list
+    for tissue, df in tissues.items():
+        newset = set(df[df[labelname] == labelval].index.values)
+
+        # subtract common eg labels
+        newset = newset - common_set
+
+        # Add the set of EGs for the tissue to the list
+        sets[tissue] = newset
+
+    # If display is True, display a Venn diagram
+    if display:
+        svenn_intesect(list(sets.values()), list(sets.keys()), figsize=(barwidth, barheight * len(tissues)), fontsize=fontsize)
+
+    # Calculate the intersection of sets
+    inset = set.intersection(*list(sets.values()))
+
+    # Print verbose information about the overlapping genes
+    if verbose:
+        print(f'Overlapping of {len(inset)} genes between {list(sets.keys())}')
+
+    # Calculate differences in EGs for each tissue
+    setsl = list(sets.values())
+    tl = list(sets.keys())
+    diffs = {}
+    for i, tl in enumerate(tl):
+        setrest = setsl[:i] + setsl[i + 1:]
+        if len(setrest) > 0:
+            diffs[tl] = setsl[i] - set.union(*setrest)
+        else:
+            diffs[tl] = setsl[i]
+        if verbose:
+            print(f'{len(diffs[tl])} genes only in {tl}')
+
+    # Return the sets of EGs, intersection, and differences
+    return sets, inset, diffs
+                             
 # Compute intersection of essential genes by tissues
 def EG_by_tissues_intersect(df: pd.DataFrame, df_map: pd.DataFrame, tissues: List[str] = [], subtract_common: bool = False, three_class: bool = False,
                               display: bool = False, verbose: bool = False, barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> pd.DataFrame:
