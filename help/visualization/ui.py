@@ -167,7 +167,7 @@ class Help_Dashboard():
                 val.value = df[cell_lines]
                 if save_textbox.layout == layout_visible:
                     df[cell_lines].to_csv(save_textbox.value, index=True)
-                display(f'Saved cell lines to file: {save_textbox.value}!')
+                    display(f'Saved cell lines to file: {save_textbox.value}!')
         button.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
@@ -248,7 +248,7 @@ class Help_Dashboard():
                 val.value = Help(verbose=self.verbose).labelling(df, columns=cell_lines, three_class=mode_buttons.value)
                 if save_textbox.layout == layout_visible:
                     val.value.to_csv(save_textbox.value, index=True)
-                display(f'Saved cell lines to file: {save_textbox.value}!')
+                    display(f'Saved cell lines to file: {save_textbox.value}!')
         button.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
