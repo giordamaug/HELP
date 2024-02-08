@@ -20,16 +20,17 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     :param bool nested: Whether to return cell lines as nested lists (lists for each tissue).
     :param int verbose: Verbosity level for printing information.
 
-    :return: List List of selected cell lines, either flattened or nested based on the 'nested' parameter.
+    :return: List of selected cell lines, either flattened or nested based on the 'nested' parameter.
+    :rtype: List
 
     :example:
 
     .. code-block:: python
 
-        df = pd.DataFrame(...)
-        df_map = pd.DataFrame(...)
-        tissue_list = ['Tissue1', 'Tissue2']
-        selected_lines = select_cell_lines(df, df_map, tissue_list, line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=1)
+    df = pd.DataFrame(...)
+    df_map = pd.DataFrame(...)
+    tissue_list = ['Tissue1', 'Tissue2']
+    selected_lines = select_cell_lines(df, df_map, tissue_list, line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=1)
     """
     lines = []
 
@@ -87,16 +88,17 @@ def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd
     :param int barwidth: Width of the Venn diagram.
     :param int fontsize: Font size of the Venn diagram labels.
 
-    :return: Tuple[Dict[str, set], set, Dict[str, set]] A tuple containing sets of genes for each tissue,
+    :return: A tuple containing sets of genes for each tissue,
              the intersection of genes, and differences in genes.
+    :rtype: Tuple[Dict[str, set], set, Dict[str, set]] 
 
     :example:
 
     .. code-block:: python
 
-        tissues = {'Tissue1': pd.DataFrame(...), 'Tissue2': pd.DataFrame(...), ...}
-        common_df = pd.DataFrame(...)  # Optional
-        sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname='label', labelval='E', display=True)
+    tissues = {'Tissue1': pd.DataFrame(...), 'Tissue2': pd.DataFrame(...), ...}
+    common_df = pd.DataFrame(...)  # Optional
+    sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname='label', labelval='E', display=True)
     """
     sets = {}
 
@@ -162,8 +164,8 @@ def EG_tissues_intersect_dolabelling(df: pd.DataFrame, df_map: pd.DataFrame, tis
     :param int barwidth: Width of the Venn diagram.
     :param int fontsize: Font size for the Venn diagram.
 
-    :return: Tuple[List[set], set, Dict[str, set]] Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
-    
+    :return: Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
+    :rtype: Tuple[List[set], set, Dict[str, set]] 
     :example:
 
     .. code-block:: python

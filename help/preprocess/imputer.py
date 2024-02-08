@@ -18,6 +18,7 @@ def imputer_knn_group(df: pd.DataFrame, df_map: pd.DataFrame, line_group: str='O
     :param bool verbose: If True, print progress information. Default is False.
 
     :return: DataFrame with missing values imputed using KNN grouped by lineages.
+    :rtype: pd.DataFrame
     
     :example:
 
@@ -63,22 +64,23 @@ def imputer_knn(df: pd.DataFrame, n_neighbors: int=5, missing_values=np.nan, wei
     :param str weights: Weight function used in prediction during KNN imputation.
         Optional, default is "uniform".
 
-    :returns pd.DataFrame: DataFrame with missing values imputed using KNN.
+    :returns: DataFrame with missing values imputed using KNN.
+    :rtype: pd.DataFrame
 
     :example:
 
     .. code-block:: python
 
-    from sklearn.impute import KNNImputer
-    import numpy as np
-    import pandas as pd
+        from sklearn.impute import KNNImputer
+        import numpy as np
+        import pandas as pd
 
-    # Create a DataFrame with missing values
-    data = {'A': [1, 2, np.nan, 4], 'B': [5, np.nan, 7, 8]}
-    df = pd.DataFrame(data)
+        # Create a DataFrame with missing values
+        data = {'A': [1, 2, np.nan, 4], 'B': [5, np.nan, 7, 8]}
+        df = pd.DataFrame(data)
 
-    # Impute missing values using KNN imputation
-    result = imputer_knn(df, n_neighbors=3, missing_values=np.nan, weights="distance")
+        # Impute missing values using KNN imputation
+        result = imputer_knn(df, n_neighbors=3, missing_values=np.nan, weights="distance")
     """
 
     imputer = KNNImputer(n_neighbors=n_neighbors, missing_values=missing_values, weights=weights)
@@ -96,21 +98,22 @@ def imputer_mean(df: pd.DataFrame, missing_values=np.nan, strategy: str='mean') 
     :param str strategy: Imputation strategy, e.g., 'mean', 'median', 'most_frequent'.
         Optional, default is "mean".
 
-    :return pd.DataFrame: DataFrame with missing values imputed using mean imputation.
+    :return: DataFrame with missing values imputed using mean imputation.
+    :rtype: pd.DataFrame
 
-    :example
+    :example:
 
     .. code-block:: python
 
-    from sklearn.impute import SimpleImputer
-    import pandas as pd
+        from sklearn.impute import SimpleImputer
+        import pandas as pd
 
-    # Create a DataFrame with missing values
-    data = {'A': [1, 2, np.nan, 4], 'B': [5, np.nan, 7, 8]}
-    df = pd.DataFrame(data)
+        # Create a DataFrame with missing values
+        data = {'A': [1, 2, np.nan, 4], 'B': [5, np.nan, 7, 8]}
+        df = pd.DataFrame(data)
 
-    # Impute missing values using mean imputation
-    result = imputer_mean(df, missing_values=np.nan, strategy='mean')
+        # Impute missing values using mean imputation
+        result = imputer_mean(df, missing_values=np.nan, strategy='mean')
     """
 
     imputer = SimpleImputer(missing_values=missing_values, strategy=strategy)

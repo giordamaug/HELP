@@ -21,9 +21,10 @@ class Help:
         :param int n: Number of quantization levels.
         :param int verbose: Verbosity level for printing information (default: 0).
 
-        :returns Tuple[np.ndarray, np.ndarray]: Tuple containing the quantized array and threshold vector.
+        :returns: Tuple containing the quantized array and threshold vector.
+        :rtype: Tuple[np.ndarray, np.ndarray]
 
-        :example
+        :example: 
 
         .. code-block:: python
 
@@ -66,7 +67,8 @@ class Help:
         :param np.ndarray A: Input array.
         :param int N: Number of classes (1 or 2).
 
-        :returns Tuple[float, float]: Tuple containing the threshold value and related metric.
+        :returns: Tuple containing the threshold value and related metric.
+        :rtype: Tuple[float, float]
 
         :example
         
@@ -117,7 +119,8 @@ class Help:
         :param np.ndarray A: Input array.
         :param int num_bins: Number of bins for histogram.
 
-        :returns Tuple[np.ndarray, float, float]: Tuple containing the PDF, minimum value, and maximum value.
+        :returns: Tuple containing the PDF, minimum value, and maximum value.
+        :rtype: Tuple[np.ndarray, float, float]
 
         :example
 
@@ -171,7 +174,8 @@ class Help:
         :param np.ndarray mu: Cumulative mean values.
         :param float mu_t: Total mean.
 
-        :returns np.ndarray: Sigma_b_squared values.
+        :returns: Sigma_b_squared values.
+        :rtype: np.ndarray
 
         :example
 
@@ -222,9 +226,10 @@ class Help:
         :param np.ndarray a: Input 2D array.
         :param Callable[[List[int]], int] reducefoo: Reduction function (default: max).
 
-        :returns np.ndarray: Mode values.
+        :returns: Mode values.
+        :rtype: np.ndarray
 
-        :example
+        :example:
 
         .. code-block:: python
 
@@ -253,7 +258,8 @@ class Help:
         :param str rowname: Name of the DataFrame index (default: 'gene').
         :param str colname: Name of the label column (default: 'label').
 
-        :returns Tuple[pd.DataFrame, np.ndarray]: Output DataFrame and quantized array.
+        :returns: Output DataFrame and quantized array.
+        :rtype: Tuple[pd.DataFrame, np.ndarray]
 
         :example
 
@@ -327,7 +333,8 @@ class Help:
         :param str rowname: Name of the DataFrame index (default: 'gene').
         :param str colname: Name of the label column (default: 'label').
 
-        :returns pd.DataFrame: Output DataFrame with labels.
+        :returns: Output DataFrame with labels.
+        :rtype: pd.DataFrame
 
         :example
        
