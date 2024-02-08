@@ -27,10 +27,10 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
 
     .. code-block:: python
 
-    df = pd.DataFrame(...)
-    df_map = pd.DataFrame(...)
-    tissue_list = ['Tissue1', 'Tissue2']
-    selected_lines = select_cell_lines(df, df_map, tissue_list, line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=1)
+        df = pd.DataFrame(...)
+        df_map = pd.DataFrame(...)
+        tissue_list = ['Tissue1', 'Tissue2']
+        selected_lines = select_cell_lines(df, df_map, tissue_list, line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=1)
     """
     lines = []
 
@@ -96,9 +96,9 @@ def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd
 
     .. code-block:: python
 
-    tissues = {'Tissue1': pd.DataFrame(...), 'Tissue2': pd.DataFrame(...), ...}
-    common_df = pd.DataFrame(...)  # Optional
-    sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname='label', labelval='E', display=True)
+        tissues = {'Tissue1': pd.DataFrame(...), 'Tissue2': pd.DataFrame(...), ...}
+        common_df = pd.DataFrame(...)  # Optional
+        sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname='label', labelval='E', display=True)
     """
     sets = {}
 
