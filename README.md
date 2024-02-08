@@ -7,7 +7,7 @@ The Help Framework for Essetial Gene detection and Prediction
 The HELP Framework was developed by the Computational Data Science group of High Performance Computing and Networking Institute of National Council of Research (ICAR-CNR).
 
 # Cite
-If you use this software, please cite the following bibliographic element.
+If you use this software, please cite the following article.
 
 ```
 @article{Granata2024,
