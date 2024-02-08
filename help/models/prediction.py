@@ -30,7 +30,8 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     :param bool display: Whether to display a confusion matrix plot.
     :param int or None seed: Random seed for reproducibility.
 
-    :returns pd.DataFrame: Summary statistics of the cross-validated predictions.
+    :returns: Summary statistics of the cross-validated predictions.
+    :rtype: pd.DataFrame
 
     :example
  
