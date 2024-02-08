@@ -20,31 +20,26 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     """
     Perform cross-validated predictions using a LightGBM classifier.
 
-    Parameters
-    ----------
-    X : DataFrame
-        Features DataFrame.
-    Y : DataFrame
-        Target variable DataFrame.
-    n_splits : int
-        Number of folds for cross-validation.
-    balanced : bool, optional
-        Whether to use class weights to balance the classes.
-    saveflag : bool, optional
-        Whether to save the predictions to a CSV file.
-    outfile : str or None, optional
-        File name for saving predictions.
-    verbose : bool, optional
-        Whether to print verbose information.
-    display : bool, optional
-        Whether to display a confusion matrix plot.
-    seed : int or None, optional
-        Random seed for reproducibility.
+    :param DataFrame X: Features DataFrame.
+    :param DataFrame Y: Target variable DataFrame.
+    :param int n_splits: Number of folds for cross-validation.
+    :param bool balanced: Whether to use class weights to balance the classes.
+    :param bool saveflag: Whether to save the predictions to a CSV file.
+    :param str or None outfile: File name for saving predictions.
+    :param bool verbose: Whether to print verbose information.
+    :param bool display: Whether to display a confusion matrix plot.
+    :param int or None seed: Random seed for reproducibility.
 
-    Returns
-    -------
-    DataFrame
-        Summary statistics of the cross-validated predictions.
+    :returns pd.DataFrame: Summary statistics of the cross-validated predictions.
+
+    :example
+ 
+    .. code-block:: python
+
+        # Example usage
+        X_data = pd.DataFrame(...)
+        Y_data = pd.DataFrame(...)
+        result = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)
     """
     # get the list of genes
     genes = Y.index
@@ -115,7 +110,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
 
     # Display confusion matrix if requested
     if display:
-        disp = ConfusionMatrixDisplay(confusion_matrix=cma, display_labels=encoder.inverse_transform(clf.classes_)).plot()
+        ConfusionMatrixDisplay(confusion_matrix=cma, display_labels=encoder.inverse_transform(clf.classes_)).plot()
 
     # Create DataFrame for storing detailed predictions
     df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions})

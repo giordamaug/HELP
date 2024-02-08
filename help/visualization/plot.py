@@ -6,35 +6,26 @@ def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize
     """
     Generate a Supervenn diagram to visualize the intersection of multiple sets.
 
-    Parameters
-    ----------
-    sets : List[set]
-        List of sets to be visualized.
-    labels : List[str]
-        List of labels corresponding to each set.
-    figsize : tuple, optional
-        Figure size in inches, as a tuple (width, height) (default is (10, 20)).
-    fontsize : int, optional
-        Font size for labels (default is 10).
-    saveflag : bool, optional
-        Whether to save the generated diagram as an image (default is False).
+    :param List[set] sets: List of sets to be visualized.
+    :param List[str] labels: List of labels corresponding to each set.
+    :param tuple figsize: Figure size in inches, as a tuple (width, height) (default is (10, 20)).
+    :param int fontsize: Font size for labels (default is 10).
+    :param bool saveflag: Whether to save the generated diagram as an image (default is False).
 
-    Returns
-    -------
-    None
+    :return: None
 
     The function generates a Supervenn diagram using the 'supervenn' library and Matplotlib.
     The diagram visualizes the intersection of multiple sets with labeled areas.
 
-    Example
-    -------
-    ```
-    # Usage example:
-    set1 = {1, 2, 3, 4, 5}
-    set2 = {3, 4, 5, 6, 7}
-    set3 = {5, 6, 7, 8, 9}
-    svenn_intersect([set1, set2, set3], ["Set A", "Set B", "Set C"], saveflag=True)
-    ```
+    :example:
+
+    .. code-block:: python
+
+        # Usage example:
+        set1 = {1, 2, 3, 4, 5}
+        set2 = {3, 4, 5, 6, 7}
+        set3 = {5, 6, 7, 8, 9}
+        svenn_intesect([set1, set2, set3], ["Set A", "Set B", "Set C"], saveflag=True)
     """
     plt.figure(figsize=figsize)
     supervenn(sets, labels, widths_minmax_ratio=0.05, side_plots='right')

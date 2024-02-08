@@ -12,29 +12,25 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     """
     Select cell lines based on tissue and mapping information.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        DataFrame containing cell line information.
-    df_map : pd.DataFrame
-        DataFrame containing mapping information.
-    tissue_list : List[str]
-        List of tissues for which cell lines need to be selected.
-    line_group : str, optional
-        The column in 'df_map' to use for line selection (default is 'ModelID').
-    line_col : str, optional
-        The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
-    nested : bool, optional
-        Whether to return cell lines as nested lists (lists for each tissue).
-    verbose : int, optional
-        Verbosity level for printing information.
+    :param pd.DataFrame df: DataFrame containing cell line information.
+    :param pd.DataFrame df_map: DataFrame containing mapping information.
+    :param List[str] tissue_list: List of tissues for which cell lines need to be selected.
+    :param str line_group: The column in 'df_map' to use for line selection (default is 'ModelID').
+    :param str line_col: The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
+    :param bool nested: Whether to return cell lines as nested lists (lists for each tissue).
+    :param int verbose: Verbosity level for printing information.
 
-    Returns
-    -------
-    List
-        List of selected cell lines, either flattened or nested based on the 'nested' parameter.
+    :return: List List of selected cell lines, either flattened or nested based on the 'nested' parameter.
+
+    :example:
+
+    .. code-block:: python
+
+        df = pd.DataFrame(...)
+        df_map = pd.DataFrame(...)
+        tissue_list = ['Tissue1', 'Tissue2']
+        selected_lines = select_cell_lines(df, df_map, tissue_list, line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=1)
     """
-
     lines = []
 
     # Iterate over each tissue in the provided list
@@ -150,38 +146,32 @@ def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd
     return sets, inset, diffs
                              
 # Compute intersection of essential genes by tissues
-def EG_by_tissues_intersect(df: pd.DataFrame, df_map: pd.DataFrame, tissues: List[str] = [], subtract_common: bool = False, three_class: bool = False,
+def EG_tissues_intersect_dolabelling(df: pd.DataFrame, df_map: pd.DataFrame, tissues: List[str] = [], subtract_common: bool = False, three_class: bool = False,
                               display: bool = False, verbose: bool = False, barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> pd.DataFrame:
     """
     Identify overlapping and unique Essential Genes (EGs) by tissues.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        DataFrame containing cell line information.
-    df_map : pd.DataFrame
-        DataFrame containing mapping information.
-    tissues : List[str]
-        List of tissues for which EGs need to be identified.
-    subtract_common : bool, optional
-        Whether to subtract common EGs from pantissue labeling.
-    three_class : bool, optional
-        Whether to use a three-class labeling (E, NE, NC).
-    display : bool, optional
-        Whether to display a Venn diagram.
-    verbose : bool, optional
-        Verbosity level for printing information.
-    barheight : int, optional
-        Height of the Venn diagram.
-    barwidth : int, optional
-        Width of the Venn diagram.
-    fontsize : int, optional
-        Font size for the Venn diagram.
+    :param pd.DataFrame df: DataFrame containing cell line information.
+    :param pd.DataFrame df_map: DataFrame containing mapping information.
+    :param List[str] tissues: List of tissues for which EGs need to be identified.
+    :param bool subtract_common: Whether to subtract common EGs from pantissue labeling.
+    :param bool three_class: Whether to use a three-class labeling (E, NE, NC).
+    :param bool display: Whether to display a Venn diagram.
+    :param bool verbose: Verbosity level for printing information.
+    :param int barheight: Height of the Venn diagram.
+    :param int barwidth: Width of the Venn diagram.
+    :param int fontsize: Font size for the Venn diagram.
 
-    Returns
-    -------
-    Tuple[pd.DataFrame]
-        Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
+    :return: Tuple[List[set], set, Dict[str, set]] Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
+    
+    :example:
+
+    .. code-block:: python
+
+        df = pd.DataFrame(...)
+        df_map = pd.DataFrame(...)
+        tissues = ['Tissue1', 'Tissue2']
+        sets, inset, diffs = EG_tissues_intersect_dolabelling(df, df_map, tissues, subtract_common=True, three_class=False, display=True, verbose=True)
     """
  
     sets = []

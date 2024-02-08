@@ -13,23 +13,29 @@ class Help:
         self.verbose = verbose
 
     @staticmethod
-    def QuantizeByColumns(T: np.ndarray, n: int, verbose: int = 0) -> Tuple[np.ndarray, np.ndarray]:
+    def quantize_2d_array(T: np.ndarray, n: int, verbose: int = 0) -> Tuple[np.ndarray, np.ndarray]:
         """
         Quantizes a 2D NumPy array column-wise.
-    
-        Parameters:
-        -----------
-        T : np.ndarray
-            The input 2D array.
-        n : int
-            Number of quantization levels.
-        verbose : int, optional
-            Verbosity level for printing information (default: 0).
-    
-        Returns
-        -------
-        Tuple[np.ndarray, np.ndarray]
-            Quantized array and threshold vector.
+
+        :param np.ndarray T: The input 2D array.
+        :param int n: Number of quantization levels.
+        :param int verbose: Verbosity level for printing information (default: 0).
+
+        :returns Tuple[np.ndarray, np.ndarray]: Tuple containing the quantized array and threshold vector.
+
+        :example
+
+        .. code-block:: python
+
+            import numpy as np
+            from help.models.labelling import Help
+
+            # Example usage
+            input_array = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+            quantization_levels = 3
+            verbosity = 1
+
+            quantized_array, threshold_vector = quantize_2d_array(input_array, quantization_levels, verbosity)
         """
         Q = np.zeros((T.shape[0], T.shape[1]), dtype=np.uint8)
         ValueForNaNs = np.nanmax(T) + 1
@@ -37,7 +43,7 @@ class Help:
         
         for c in tqdm(range(0, T.shape[1])):
             ColValues = T[:, c]
-            ColTh, _ = Help.otsuthresholding(ColValues, n - 1)
+            ColTh, _ = Help.otsu_thresholding(ColValues, n - 1)
             If1 = ColValues.copy()
             ismiss = np.isnan(ColValues)
             
@@ -53,27 +59,33 @@ class Help:
         return Q, threshVec
     
     @staticmethod
-    def otsuthresholding(A: np.ndarray, N: int = 1) -> Tuple[float, float]:
+    def otsu_thresholding(A: np.ndarray, N: int = 1) -> Tuple[float, float]:
         """
         Computes Otsu's threshold for image segmentation.
-    
-        Parameters:
-        -----------
-        A : np.ndarray
-            Input array.
-        N : int
-            Number of classes (1 or 2).
-    
-        Returns
-        -------
-        Tuple[float, float]
-            Threshold value and related metric.
+
+        :param np.ndarray A: Input array.
+        :param int N: Number of classes (1 or 2).
+
+        :returns Tuple[float, float]: Tuple containing the threshold value and related metric.
+
+        :example
+        
+        .. code-block:: python
+
+            import numpy as np
+            from help.models.labelling import Help
+
+            # Example usage
+            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+            num_classes = 2
+
+            threshold_value, metric = Help.otsu_thresholding(input_array, num_classes)
         """
         if N < 1 or N > 2:
             raise ValueError("N must be either 1 or 2.")
         
         num_bins = 256
-        p, minA, maxA = Help.getpdf(A, num_bins)
+        p, minA, maxA = Help.compute_pdf(A, num_bins)
         assert len(p) > 0, "Cannot compute PDF."
         
         omega = np.cumsum(p)
@@ -98,21 +110,27 @@ class Help:
         return thresh, metric
     
     @staticmethod
-    def getpdf(A: np.ndarray, num_bins: int) -> Tuple[np.ndarray, float, float]:
+    def compute_pdf(A: np.ndarray, num_bins: int) -> Tuple[np.ndarray, float, float]:
         """
         Computes the probability density function (PDF) of an array.
-    
-        Parameters:
-        -----------
-        A : np.ndarray
-            Input array.
-        num_bins : int
-            Number of bins for histogram.
-    
-        Returns
-        -------
-        Tuple[np.ndarray, float, float]
-            PDF, minimum value, and maximum value.
+
+        :param np.ndarray A: Input array.
+        :param int num_bins: Number of bins for histogram.
+
+        :returns Tuple[np.ndarray, float, float]: Tuple containing the PDF, minimum value, and maximum value.
+
+        :example
+
+        .. code-block:: python
+
+            from help.models.labelling import Help
+            import numpy as np
+
+            # Example usage
+            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+            num_bins = 5
+
+            pdf, min_val, max_val = Help.compute_pdf(input_array, num_bins)
         """
         A = A.ravel()  # Vectorize A for faster histogram computation
 
@@ -146,24 +164,28 @@ class Help:
     def compute_sigma_b_squared(N: int, num_bins: int, omega: np.ndarray, mu: np.ndarray, mu_t: float) -> np.ndarray:
         """
         Computes sigma_b_squared for Otsu's thresholding.
-    
-        Parameters:
-        -----------
-        N : int
-            Number of classes (1 or 2).
-        num_bins : int
-            Number of bins for histogram.
-        omega : np.ndarray
-            Cumulative distribution function.
-        mu : np.ndarray
-            Cumulative mean values.
-        mu_t : float
-            Total mean.
-    
-        Returns
-        -------
-        np.ndarray
-        Sigma_b_squared values.
+
+        :param int N: Number of classes (1 or 2).
+        :param int num_bins: Number of bins for histogram.
+        :param np.ndarray omega: Cumulative distribution function.
+        :param np.ndarray mu: Cumulative mean values.
+        :param float mu_t: Total mean.
+
+        :returns np.ndarray: Sigma_b_squared values.
+
+        :example
+
+        .. code-block:: python
+
+            # Example usage
+            from help.models.labelling import Help
+            N_value = 2
+            num_bins = 256
+            omega_array = np.array([0.2, 0.8])
+            mu_array = np.array([100.0, 150.0])
+            total_mean = 125.0
+
+            sigma_b_squared_values = Help.compute_sigma_b_squared(N_value, num_bins, omega_array, mu_array, total_mean)
         """
         if N == 1:
             sigma_b_squared = np.ones( (len(omega)) ) * np.nan
@@ -196,18 +218,23 @@ class Help:
     def modemax(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> np.ndarray:
         """
         Computes the mode of an array along each row. In case of ex-aequo modes, return the value computed by reducefoo (default: max).
-    
-        Parameters:
-        -----------
-        a : np.ndarray
-            Input 2D array.
-        reducefoo : Callable[[List[int]], int], optional
-            Reduction function (default: max).
-    
-        Returns
-        -------
-        np.ndarray
-            Mode values.
+
+        :param np.ndarray a: Input 2D array.
+        :param Callable[[List[int]], int] reducefoo: Reduction function (default: max).
+
+        :returns np.ndarray: Mode values.
+
+        :example
+
+        .. code-block:: python
+
+            # Example usage
+            from help.models.labelling import Help
+            input_array = np.array([[1, 2, 3, 3],
+                                    [2, 3, 4, 4],
+                                    [4, 5, 6, 6]])
+
+            mode_values = Help.modemax(input_array)
         """
         return np.array([reducefoo(statistics.multimode(a[x,:])) for x in range(a.shape[0])])
 
@@ -217,28 +244,26 @@ class Help:
                   rowname: str = 'gene', colname: str = 'label') -> Tuple[pd.DataFrame, np.ndarray]:
         """
         Core function for HELP algorithm.
-    
-        Parameters:
-        -----------
-        df : pd.DataFrame
-            Input DataFrame.
-        columns : List[str]
-            List of column names.
-        three_class : bool, optional
-            Flag for three-class labeling (default: False).
-        verbose : bool, optional
-            Verbosity level for printing information (default: False).
-        labelnames : Dict[int, str], optional
-            Dictionary mapping class labels to names (default: {0: 'E', 1: 'NE'}).
-        rowname : str, optional
-            Name of the DataFrame index (default: 'gene').
-        colname : str, optional
-            Name of the label column (default: 'label').
-    
-        Returns
-        -------
-        Tuple[pd.DataFrame, np.ndarray]
-            Output DataFrame and quantized array.
+
+        :param pd.DataFrame df: Input DataFrame.
+        :param List[str] columns: List of column names.
+        :param bool three_class: Flag for three-class labeling (default: False).
+        :param bool verbose: Verbosity level for printing information (default: False).
+        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {0: 'E', 1: 'NE'}).
+        :param str rowname: Name of the DataFrame index (default: 'gene').
+        :param str colname: Name of the label column (default: 'label').
+
+        :returns Tuple[pd.DataFrame, np.ndarray]: Output DataFrame and quantized array.
+
+        :example
+
+        .. code-block:: python
+
+            # Example usage
+            from help.models.labelling import Help
+            input_df = pd.DataFrame(...)
+            columns_list = ['feature1', 'feature2', 'feature3']
+            output_df, quantized_array = Help.help_core(input_df, columns_list, three_class=True, verbose=True, labelnames={0: 'E', 1: 'NE'}, rowname='gene', colname='label')
         """
         # check labelnames with two or three class modes
         if three_class:
@@ -254,7 +279,7 @@ class Help:
         
         if verbose: print("Two-class labelling:") 
         # Perform quantization
-        Q2, Thr = Help.QuantizeByColumns(T, NumberOfClasses, verbose = verbose)
+        Q2, Thr = Help.quantize_2d_array(T, NumberOfClasses, verbose = verbose)
         Q2 = Q2 - 1
         #modeQ2 = stats.mode(Q2, axis=1, keepdims=False).mode
         modeQ2 = Help.modemax(Q2)
@@ -273,7 +298,7 @@ class Help:
             else:
                 TNE = df[columns].loc[NE_genes].to_numpy()
             NumberOfClasses = 2
-            QNE2, ThrNE = Help.QuantizeByColumns(TNE, NumberOfClasses, verbose = verbose)
+            QNE2, ThrNE = Help.quantize_2d_array(TNE, NumberOfClasses, verbose = verbose)
             QNE2 = QNE2 - 1
             #modeQ2NE = stats.mode(QNE2, axis=1, keepdims=False).mode
             modeQ2NE = Help.modemax(QNE2)
@@ -293,28 +318,25 @@ class Help:
              rowname: str = 'gene', colname: str = 'label') -> pd.DataFrame:
         """
         Main function for HELP algorithm.
-    
-        Parameters:
-        -----------
-        df : pd.DataFrame
-            Input DataFrame.
-        columns : List[List[str]], optional
-            List of column names for partitioning (default: []).
-        three_class : bool, optional
-            Flag for three-class labeling (default: False).
-        verbose : bool, optional
-            Verbosity level for printing information (default: False).
-        labelnames : Dict[int, str], optional
-            Dictionary mapping class labels to names (default: {}).
-        rowname : str, optional
-            Name of the DataFrame index (default: 'gene').
-        colname : str, optional
-            Name of the label column (default: 'label').
-    
-        Returns
-        -------
-        pd.DataFrame
-            Output DataFrame with labels.
+
+        :param pd.DataFrame df: Input DataFrame.
+        :param List[List[str]] columns: List of column names for partitioning (default: []).
+        :param bool three_class: Flag for three-class labeling (default: False).
+        :param bool verbose: Verbosity level for printing information (default: False).
+        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).
+        :param str rowname: Name of the DataFrame index (default: 'gene').
+        :param str colname: Name of the label column (default: 'label').
+
+        :returns pd.DataFrame: Output DataFrame with labels.
+
+        :example
+       
+        .. code-block:: python
+
+            # Example usage
+            from help.models.labelling import Help
+            input_df = pd.DataFrame(...)
+            output_df = Help.labelling(input_df, columns=[], three_class=True, verbose=True, labelnames={0: 'E', 1: 'NE'}, rowname='gene', colname='label')
         """
         if labelnames == {}:
             labelnames = {0: 'E', 1:'aE', 2:'sNE'} if three_class else {0: 'E', 1:'NE'}

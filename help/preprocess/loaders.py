@@ -9,29 +9,32 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     """
     Assemble features and labels for machine learning tasks.
 
-    Parameters
-    ----------
-    label_file : str
-        Path to the label file.
-    features : List[Dict[str, Union[str, bool]]]
-        List of dictionaries specifying feature files and their processing options.
-    colname : str
-        Name of the column in the label file to be used as the target variable.
-    subsample : bool, optional
-        Whether to subsample the data.
-    seed : int or None, optional
-        Random seed for reproducibility.
-    fold : int or None, optional
-        Number of folds for subsampling.
-    saveflag : bool, optional
-        Whether to save the assembled data to files.
-    verbose : bool, optional
-        Whether to print verbose messages during processing.
+    :param str label_file: Path to the label file.
+    :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.
+        Default is [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}].
+    :param str colname: Name of the column in the label file to be used as the target variable. Default is "label".
+    :param bool subsample: Whether to subsample the data. Default is False.
+    :param int seed: Random seed for reproducibility. Default is 1.
+    :param int fold: Number of folds for subsampling. Default is 4.
+    :param bool saveflag: Whether to save the assembled data to files. Default is False.
+    :param bool verbose: Whether to print verbose messages during processing. Default is False.
 
-    Returns
-    -------
-    Tuple[pd.DataFrame, pd.DataFrame]
-        Tuple containing the assembled features (X) and labels (Y) DataFrames.
+    :returns Tuple[pd.DataFrame, pd.DataFrame]: Tuple containing the assembled features (X) and labels (Y) DataFrames.
+        
+    :example
+
+    .. code-block:: python
+
+        label_file = "path/to/label_file.csv"
+        features = [{'fname': 'path/to/feature_file.csv', 'fixna': True, 'normalize': 'std'}]
+        colname = "target_column"
+        subsample = False
+        seed = 1
+        fold = 4
+        saveflag = False
+        verbose = False
+
+        X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, saveflag, verbose)
     """
 
     # Load labels from the specified file

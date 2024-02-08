@@ -13,10 +13,7 @@ class Help_Dashboard():
         """
         Initialize the Help Dashboard.
 
-        Parameters
-        ----------
-        verbose : bool, optional
-            Whether to print verbose messages during processing (default is False).
+        :param bool verbose: Whether to print verbose messages during processing (default is False).
         """
         self.verbose = verbose
 
@@ -24,19 +21,11 @@ class Help_Dashboard():
         """
         Create an interactive widget for processing features.
 
-        Parameters
-        ----------
-        label_path : str, optional
-            Path to the label file (default is ".").
-        feature_path : str, optional
-            Path to the feature files (default is ".").
-        rows : int, optional
-            Number of rows to display in the widget (default is 5).
+        :param str label_path: Path to the label file (default is ".").
+        :param str feature_path: Path to the feature files (default is ".").
+        :param int rows: Number of rows to display in the widget (default is 5).
 
-        Returns
-        -------
-        ipywidgets.ValueWidget
-            Widget containing the assembled features and labels DataFrames.
+        :return: ipywidgets.ValueWidget Widget containing the assembled features and labels DataFrames.
         """
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
@@ -112,25 +101,14 @@ class Help_Dashboard():
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
-        Parameters
-        ----------
-        df : pd.DataFrame
-            The main DataFrame containing the data.
-        df_map : pd.DataFrame
-            A DataFrame used for mapping data.
-        rows : int, optional
-            The number of rows to display in the widget for selecting tissues (default is 5).
-        minlines : int, optional
-            Minimum number of cell lines for tissue/lineage to be considered (default is 1).
-        line_group : str, optional
-            The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
-        line_col : str, optional
-            The column in 'df_map' to use for line selection (default is 'ModelID').
+        :param pd.DataFrame df: The main DataFrame containing the data.
+        :param pd.DataFrame df_map: A DataFrame used for mapping data.
+        :param int rows: The number of rows to display in the widget for selecting tissues (default is 5).
+        :param int minlines: Minimum number of cell lines for tissue/lineage to be considered (default is 1).
+        :param str line_group: The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
+        :param str line_col: The column in 'df_map' to use for line selection (default is 'ModelID').
 
-        Returns
-        -------
-        ipywidgets.ValueWidget
-            Widget containing the labeled cell lines.
+        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.
         """
 
         tl = df_map[line_group].dropna().value_counts()
@@ -209,25 +187,14 @@ class Help_Dashboard():
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
-        Parameters
-        ----------
-        df : pd.DataFrame
-            The main DataFrame containing the data.
-        df_map : pd.DataFrame
-            A DataFrame used for mapping data.
-        rows : int, optional
-            The number of rows to display in the widget for selecting tissues (default is 5).
-        minlines : int, optional
-            Minimum number of cell lines for tissue/lineage to be considered (default is 1).
-        line_group : str, optional
-            The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
-        line_col : str, optional
-            The column in 'df_map' to use for line selection (default is 'ModelID').
+        :param pd.DataFrame df: The main DataFrame containing the data.
+        :param pd.DataFrame df_map: A DataFrame used for mapping data.
+        :param int rows: The number of rows to display in the widget for selecting tissues (default is 5).
+        :param int minlines: Minimum number of cell lines for tissue/lineage to be considered (default is 1).
+        :param str line_group: The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
+        :param str line_col: The column in 'df_map' to use for line selection (default is 'ModelID').
 
-        Returns
-        -------
-        ipywidgets.ValueWidget
-            Widget containing the labeled cell lines.
+        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.
         """
 
         tl = df_map[line_group].dropna().value_counts()
