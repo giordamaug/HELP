@@ -19,9 +19,10 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     :param bool saveflag: Whether to save the assembled data to files. Default is False.
     :param bool verbose: Whether to print verbose messages during processing. Default is False.
 
-    :returns Tuple[pd.DataFrame, pd.DataFrame]: Tuple containing the assembled features (X) and labels (Y) DataFrames.
+    :returns: Tuple containing the assembled features (X) and labels (Y) DataFrames.
+    :rtype: Tuple[pd.DataFrame, pd.DataFrame]
         
-    :example
+    :example:
 
     .. code-block:: python
 
