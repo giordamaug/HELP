@@ -7,6 +7,27 @@ from ..models.labelling import Help
 from ..visualization.plot import svenn_intesect
 import random
 
+def filter_cellmap(df_map, minlines, line_group='OncotreeLineage'):
+    """
+    Filters a cell map DataFrame based on the minimum number of lines per group.
+    
+    Parameters:
+    :param pd.DataFrame df_map: The input DataFrame containing cell map information.
+    :param int minlines: The minimum number of lines required to retain a group.
+    :param str line_group: Column name for the grouping information in the cell map DataFrame. Default: 'OncotreeLineage'.
+    
+    :return: Filtered DataFrame containing only the groups that meet the minimum lines criteria.
+    :rtype: pd.DataFrame
+    
+    :example:
+    
+    .. code-block:: python
+        filtered_df = filter_cellmap(cell_map_data, minlines=10, line_group='OncotreeLineage')
+    """
+    tl = df_map[line_group].dropna().value_counts()
+    tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values.astype(str) , tl.values)))]
+    return df_map[df_map[line_group].isin(tissue_list)]
+    
 # select cell lines from depmap CRISPR file
 def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
     """
