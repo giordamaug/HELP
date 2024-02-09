@@ -65,6 +65,6 @@ def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128,
     embedder.fit(ppiG)
     embedding = n2v.get_embedding()
     df_emb = pd.DataFrame(embedding, 
-             columns = [f'n2v{i}' for i in range(embedding.shape[1])], 
+             columns = [f'{method}_{i}' for i in range(embedding.shape[1])], 
              index = [idx2gene_mapping[i] for i in range(len(genes))]) 
     return df_emb
