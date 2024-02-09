@@ -65,7 +65,6 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     clf = LGBMClassifier(class_weight='balanced', verbose=-1) if balanced else LGBMClassifier(verbose=-1)
 
     nclasses = len(np.unique(y, return_counts=True))
-    cma = np.zeros(shape=(nclasses, nclasses), dtype=np.int64)
     mm = np.array([], dtype=np.int64)
     gg = np.array([])
     yy = np.array([], dtype=np.int64)
@@ -88,7 +87,6 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         gg = np.concatenate((gg, genes[test_idx]))
         yy = np.concatenate((yy, test_y))
         cm = confusion_matrix(test_y, preds)
-        cma += cm.astype(np.int64)
         predictions = np.concatenate((predictions, preds))
         probabilities = np.concatenate((probabilities, probs[:, 0]))
 
@@ -111,7 +109,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
 
     # Display confusion matrix if requested
     if display:
-        ConfusionMatrixDisplay(confusion_matrix=cma, display_labels=encoder.inverse_transform(clf.classes_)).plot()
+        ConfusionMatrixDisplay(confusion_matrix=scores[['CM']].sum(), display_labels=encoder.inverse_transform(clf.classes_)).plot()
 
     # Create DataFrame for storing detailed predictions
     df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions})
