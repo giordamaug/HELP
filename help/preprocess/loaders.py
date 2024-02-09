@@ -4,6 +4,35 @@ import os
 from typing import List, Dict, Tuple, Union, Callable
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
+import pandas as pd
+import numpy as np
+
+def scale_to_essentials(ge_fit, ess_genes, noness_genes):
+    """
+    Scales gene expression data to essential and non-essential genes.
+  
+    :param pd.DataFrame ge_fit: DataFrame containing the gene expression data.
+    :param list ess_genes: List of essential genes for scaling.
+    :param list noness_genes: List of non-essential genes for scaling.
+  
+    :return: Scaled gene expression data.
+    :rtype: pd.DataFrame
+  
+    :example:
+
+    .. code-block:: python
+      
+        scaled_data = scale_to_essentials(gene_expression_data, ess_genes_list, noness_genes_list)
+    """
+    essential_indices = ge_fit.index.isin(ess_genes)
+    nonessential_indices = ge_fit.index.isin(noness_genes)
+
+    scaled_ge_fit = ge_fit.apply(lambda x: (x - np.nanmedian(x[nonessential_indices]))
+                                          / (np.nanmedian(x[nonessential_indices]) - np.nanmedian(x[essential_indices])) if np.nanmedian(x[essential_indices]) != 0 else 0, axis=0)
+
+    return scaled_ge_fit
+
+
 def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
                      colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
