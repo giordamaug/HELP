@@ -3,7 +3,7 @@ import numpy as np
 import os
 from typing import List, Dict, Tuple, Union, Callable
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
-
+import warnings
 import pandas as pd
 import numpy as np
 
@@ -73,11 +73,16 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     
     lab_df = pd.read_csv(label_file, index_col=0)
 
-    # Subsample the data if required
+    # Subsample the data if required (subsample majority class fild-times rispect the minority class)
     if subsample:
-        idxNE = lab_df[lab_df[colname] == 'NE'].index[np.random.choice(len(lab_df[lab_df[colname] == 'NE']), fold * len(lab_df[lab_df[colname] == 'E']), replace=False)]
-        idxE = lab_df[lab_df[colname] == 'E'].index
-        lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxE]], axis=0).sample(frac=1)
+        maxlab, minlab = lab_df[colname].max(), lab_df[colname].min()
+        idxNE = lab_df[lab_df[colname] == maxlab].index[np.random.choice(len(lab_df[lab_df[colname] == maxlab]), fold * len(lab_df[lab_df[colname] == minlab]), replace=False)]
+        idxRest = lab_df[(lab_df[colname] != maxlab) & ((lab_df[colname] != minlab))].index
+        idxE = lab_df[lab_df[colname] == minlab].index
+        if idxRest.index.size > 0:
+            lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxRest], lab_df.loc[idxE]], axis=0).sample(frac=1)
+        else:
+            lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxE]], axis=0).sample(frac=1)
 
     # Common indices among labels and features
     idx_common = lab_df.index.values
