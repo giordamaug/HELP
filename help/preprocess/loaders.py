@@ -33,7 +33,7 @@ def scale_to_essentials(ge_fit, ess_genes, noness_genes):
     return scaled_ge_fit
 
 
-def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
+def featureassemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
                      colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
@@ -74,15 +74,20 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     lab_df = pd.read_csv(label_file, index_col=0)
 
     # Subsample the data if required (subsample majority class fild-times rispect the minority class)
+    minlab = lab_df[colname].value_counts().nsmallest(1).index[0]
+    maxlab = lab_df[colname].value_counts().nlargest(1).index[0]
+    print("Majority" , maxlab, lab_df[colname].value_counts()[maxlab], "minoriy", minlab, lab_df[colname].value_counts()[minlab])
     if subsample:
-        maxlab, minlab = lab_df[colname].max(), lab_df[colname].min()
-        idxNE = lab_df[lab_df[colname] == maxlab].index[np.random.choice(len(lab_df[lab_df[colname] == maxlab]), fold * len(lab_df[lab_df[colname] == minlab]), replace=False)]
-        idxRest = lab_df[(lab_df[colname] != maxlab) & ((lab_df[colname] != minlab))].index
-        idxE = lab_df[lab_df[colname] == minlab].index
-        if idxRest.index.size > 0:
-            lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxRest], lab_df.loc[idxE]], axis=0).sample(frac=1)
+        if lab_df[colname].value_counts()[maxlab] >= 4*lab_df[colname].value_counts()[minlab]:
+            idxNE = lab_df[lab_df[colname] == maxlab].index[np.random.choice(len(lab_df[lab_df[colname] == maxlab]), fold * len(lab_df[lab_df[colname] == minlab]), replace=False)]
+            idxRest = lab_df[(lab_df[colname] != maxlab) & ((lab_df[colname] != minlab))].index
+            idxE = lab_df[lab_df[colname] == minlab].index
+            if idxRest.size > 0:
+                lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxRest], lab_df.loc[idxE]], axis=0).sample(frac=1)
+            else:
+                lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxE]], axis=0).sample(frac=1)
         else:
-            lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxE]], axis=0).sample(frac=1)
+            warnings.warn("Subsampling cannot be applied: majority class is less then 4 time the minority one.")
 
     # Common indices among labels and features
     idx_common = lab_df.index.values
