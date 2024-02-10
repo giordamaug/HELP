@@ -1,4 +1,3 @@
-import pandas as pd
 from typing import Callable, List, Dict, Tuple
 import statistics
 import numpy as np
@@ -7,7 +6,6 @@ from skimage import io, color
 from skimage.filters import threshold_multiotsu
 import warnings
 from tqdm import tqdm
-import statistics
 
 def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu'):
     # Apply thresholds and segmentation column-wise
@@ -97,7 +95,7 @@ def modemax(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> np.nd
     """
     return np.array([reducefoo(statistics.multimode(a[x,:])) for x in range(a.shape[0])])
 
-def labelling_core(df: pd.DataFrame, columns: List[str], n_classes: int=2,
+def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
                   verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
                   mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label') -> Tuple[pd.DataFrame, np.ndarray]:
     """
@@ -136,7 +134,6 @@ def labelling_core(df: pd.DataFrame, columns: List[str], n_classes: int=2,
         T = df.to_numpy()
     else:
         T = df[columns].to_numpy()
-    NumberOfClasses = 2
 
     if mode == 'two-by-two':
         if verbose: print("[two-by-two]: 1. Two-class labelling:") 
@@ -156,26 +153,24 @@ def labelling_core(df: pd.DataFrame, columns: List[str], n_classes: int=2,
         NumberOfClasses = 2
         QNE, ThrNE = multi_threshold_with_nan_by_column(TNE, 2, algorithm=algorithm)
         Labels = modemax(QNE)
-        if verbose: print(L2mat.shape)
+        if verbose: print(Labels.shape)
         dfout2 =  pd.DataFrame(index=NE_genes)
         dfout2.index.name = rowname
         dfout2[colname] = Labels
         dfout2 = dfout2.replace({0: 1, 1: 2})
         dfout.loc[dfout.index.isin(dfout2.index), [colname]] = dfout2[[colname]]
         dfout = dfout.replace(labelnames)
-        #Q = Q + QNE
     elif mode == 'flat-multi':
         if verbose: print("[flat-multi]: 1. multi-class labelling:") 
         # Perform quantization
         Q, Thr = multi_threshold_with_nan_by_column(T, n_classes, algorithm=algorithm)
         Labels = modemax(Q)
-        if verbose: print(Labels.shape)
         dfout =  pd.DataFrame(index=df.index)
         dfout.index.name = rowname
         dfout[colname] = Labels
     else:
         raise Exception("Labelling mode not supported!")
-    return dfout, Q
+    return dfout
     
 def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2, 
              verbose: bool = False, labelnames: Dict[int, str] = {1 : 'NE', 0: 'E'},
@@ -207,30 +202,28 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
         input_df = pd.DataFrame(...)
         output_df = Help.labelling(input_df, columns=[], n_classes=2, labelnames={0: 'E', 1: 'NE'}, algorithm='otsu', mode='flat-multi')
     """
+    if mode=='two-by-two': n_classes = 3
     assert len(labelnames) == n_classes, "Label dictionary not same size of no. of classes!"
-    if all(isinstance(sub, list) for sub in columns) and len(columns) > 0:              # use mode of mode across tissues
-        if verbose: print(f'performing mode of mode on {n_classes}-class labelling.')
-        Q_tot = []
+    if all(isinstance(sub, list) for sub in columns) and len(columns) > 0:      # use mode of mode across tissues
+        if verbose: print(f'performing mode of mode on {n_classes}-class labelling ({mode}).')
+        L_tot = np.empty(shape=(len(df), 0))
         for lines in columns:
-            _, Q = labelling_core(df, lines, verbose=verbose, mode=mode,  
+            labels = labelling_core(df, columns=lines, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
                                   n_classes=n_classes, algorithm=algorithm)
-            Q_tot += [Q]
+            labels = labels.replace(dict(map(reversed, labelnames.items())))
+            L_tot = np.hstack((L_tot, labels.values))
         # Execute mode on each tissue and sort'em
-        QMode_tot = []
-        for k in Q_tot:
-            QMode_tot.append(modemax(k))
-        QMode_tot = np.vstack(QMode_tot).T
-        # Get mode of mode among tissues
-        modeOfmode = modemax(QMode_tot)
+        modeOfmode = modemax(L_tot)
         dfout =  pd.DataFrame(index=df[sum(columns, [])].index)
         dfout.index.name = rowname
-        dfout[colname] = modeOfmode #.ravel()
+        dfout[colname] = modeOfmode
+        dfout = dfout.replace(labelnames)
     elif any(isinstance(sub, list) for sub in columns) and len(columns) > 0:
         raise Exception("Wrong columns partition format.")
     else:
-        if verbose: print(f'performing flat mode on {n_classes}-class labelling.')
-        dfout, Q = labelling_core(df, columns, verbose=verbose, mode=mode,  
+        if verbose: print(f'performing flat mode on {n_classes}-class labelling ({mode}).')
+        dfout = labelling_core(df, columns=columns, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
                                   n_classes=n_classes,algorithm=algorithm)
     dfout.index.name = rowname

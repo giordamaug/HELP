@@ -41,7 +41,7 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     :param List[str] tissue_list: List of tissues for which cell lines need to be selected.
     :param str line_group: The column in 'df_map' to use for line selection (default is 'ModelID').
     :param str line_col: The column in 'df_map' to use for tissue selection (default is 'OncotreeLineage').
-    :param bool nested: Whether to return cell lines as nested lists (lists for each tissue).
+    :param bool nested: Whether to return cell lines as nested lists (lists for each tissue to enable mode of mode in labelling).
     :param int verbose: Verbosity level for printing information.
 
     :return: List of selected cell lines, either flattened or nested based on the 'nested' parameter.
