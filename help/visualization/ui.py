@@ -1,7 +1,7 @@
 import ipywidgets as wid
 from typing import List
 import matplotlib.pyplot as plt
-from ..models.labelling import Help
+from ..models.labelling import labelling
 from ..utility.selection import select_cell_lines
 from ..preprocess.loaders import feature_assemble
 import pandas as pd
@@ -278,7 +278,7 @@ class Help_Dashboard():
             with out2:
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
-                val.value = Help(verbose=self.verbose).labelling(df, columns=cell_lines, three_class=mode_buttons.value)
+                val.value = labelling(df, columns=cell_lines) #, three_class=mode_buttons.value)
                 if save_textbox.layout == layout_visible and save_textbox.value != "":
                     val.value.to_csv(save_textbox.value, index=True)
                     display(f'Saved cell lines to file: {save_textbox.value}.')
