@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 from ..models.labelling import labelling
 from ..visualization.plot import svenn_intesect
 import random
+from help.models.labelling import labelling
+from help.visualization.plot import svenn_intesect
+import random
 
 def filter_cellmap(df_map, minlines, line_group='OncotreeLineage'):
     """
@@ -85,14 +88,6 @@ def set_seed(seed=1):
     random.seed(seed)
     np.random.seed(seed)
 
-import pandas as pd
-import numpy as np
-import os
-from typing import List, Dict, Tuple, Union, Callable
-import matplotlib.pyplot as plt
-from help.models.labelling import Help
-from help.visualization.plot import svenn_intesect
-import random
 def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd.DataFrame() = None,
                          labelname: str='label', labelval: str='E', display: bool = False, verbose: bool = False, 
                          barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> Tuple[set,set,set]:
