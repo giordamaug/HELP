@@ -3,7 +3,7 @@ import numpy as np
 import os
 from typing import List, Dict, Tuple, Union, Callable
 import matplotlib.pyplot as plt
-from ..models.labelling import Help
+from ..models.labelling import labelling
 from ..visualization.plot import svenn_intesect
 import random
 
@@ -203,7 +203,7 @@ def EG_tissues_intersect_dolabelling(df: pd.DataFrame, df_map: pd.DataFrame, tis
     if subtract_common:
         if verbose:
             print("Subtracting common EG of pan-tissue labeling")
-        pan_labels_df = Help(verbose=verbose).labelling(df)
+        pan_labels_df = labelling(df, verbose=verbose)
         panset = set(pan_labels_df[pan_labels_df['label'] == 'E'].index.values)
 
     # Iterate over each tissue in the provided list
@@ -213,7 +213,7 @@ def EG_tissues_intersect_dolabelling(df: pd.DataFrame, df_map: pd.DataFrame, tis
 
         # If there are cell lines, calculate the set of EGs for the tissue
         if len(cell_lines) > 0:
-            labels_df = Help(verbose=verbose).labelling(df, cell_lines)
+            labels_df = labelling(df, cell_lines, verbose=verbose)
             newset = set(labels_df[labels_df['label'] == 'E'].index.values)
 
             # If subtract_common is True, subtract the pan-tissue labels
