@@ -217,7 +217,6 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
                                   n_classes=n_classes, algorithm=algorithm)
             Q_tot += [Q]
         # Execute mode on each tissue and sort'em
-        if verbose: print(Q_tot)
         QMode_tot = []
         for k in Q_tot:
             QMode_tot.append(modemax(k))
