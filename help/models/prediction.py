@@ -110,7 +110,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
 
     # Display confusion matrix if requested
     if display:
-        ConfusionMatrixDisplay(confusion_matrix=np.array(s.loc['CM']['measure']), display_labels=encoder.inverse_transform(clf.classes_)).plot()
+        ConfusionMatrixDisplay(confusion_matrix=np.array(df_scores.loc['CM']['measure']), display_labels=encoder.inverse_transform(clf.classes_)).plot()
 
     # Create DataFrame for storing detailed predictions
     df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions})
