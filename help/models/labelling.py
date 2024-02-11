@@ -96,8 +96,8 @@ def modemax(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> np.nd
     """
     res = []
     for x in range(a.shape[0]):
-        modes = statistics.multimode(a[x,:])
-        res += [reducefoo([x for x in modes if ~np.isnan(x)])]
+        modes = statistics.multimode([x for x in a[x,:] if ~np.isnan(x)])
+        res += [max(modes)] # if max(modes) is not np.nan else sorted(set(modes))[-2]]
     return np.array(res)
 
 def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
