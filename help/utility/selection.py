@@ -25,6 +25,7 @@ def filter_cellmap(df_map, minlines, line_group='OncotreeLineage'):
     :example:
     
     .. code-block:: python
+
         filtered_df = filter_cellmap(cell_map_data, minlines=10, line_group='OncotreeLineage')
     """
     tl = df_map[line_group].dropna().value_counts()
