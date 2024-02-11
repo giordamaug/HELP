@@ -99,7 +99,6 @@ def modemax(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> np.nd
     for x in range(a.shape[0]):
         modes = statistics.multimode([x for x in a[x,:] if ~np.isnan(x)])
         if modes == []: 
-            print(a[x,:])
             res += [m]
         else:
             res += [max(modes)] # if max(modes) is not np.nan else sorted(set(modes))[-2]]
