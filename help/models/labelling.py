@@ -253,6 +253,12 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
     if verbose: print(dfout.value_counts())
     return dfout
 
+
+#
+# The old Otsu labelling version:
+# from Otsu_module.py relase, translated into python from Lucia's matlab code.
+# it produces 
+#
 class Help:
     def __init__(self, verbose: bool=False):
         self.verbose = verbose

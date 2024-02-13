@@ -10,15 +10,52 @@ from help.models.labelling import labelling
 from help.visualization.plot import svenn_intesect
 import random
 
-def filter_crispr_by_model(df, df_map, minlines=1, line_colname='ModelID', line_group='OncotreeLineage'):
-    map_cell_lines = df_map[~df_map[line_group].isna()][line_colname].values  # get the lines in the model of all tisses (drop eventual NaN)
-    dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)               # and intersect with lines in CRISPR file
-    df_map_filterd = df_map[df_map[line_colname].isin(dep_cell_lines)]        # filter model on common cell-lines
-    sel_cell_lines = filter_cellmap(df_map_filterd, minlines, line_group=line_group) # select from model only tissue with more= than minlines
-    return df[np.intersect1d(df.columns,sel_cell_lines[line_colname].values)] # return filtered CRISPR based on selected cell-lines
+def rows_with_nan_percentage(df: pd.DataFrame, perc :float=0.0):    
+    """
+    Filter rows in a DataFrame based on the percentage of NaN values.
+
+    Parameters:
+    :param: pd.DataFrame df: The input DataFrame.
+    :param: float perc: The percentage of NaN values allowed in each row. Default is 0.0.
+
+    :return: A new DataFrame with rows filtered based on the specified percentage of NaN values.
+    :rtype: pd.DataFrame
+    """
+    min_count =  int(((100-perc)/100)*df.shape[1] + 1)  
+    return df.dropna(axis=0, thresh=min_count)
+
+def filter_crispr_by_model(df: pd.DataFrame, df_map: pd.DataFrame, minlines: int=1, 
+                           line_colname: str='ModelID', line_group: str='OncotreeLineage'):
+    """
+    Filter a CRISPR DataFrame based on a mapping DataFrame and specified conditions.
+
+    :param: pd.DataFrame df: The CRISPR DataFrame to be filtered.
+    :param: pd.DataFrame df_map: The mapping DataFrame containing information about cell lines and models.
+    :param: int minlines int: The minimum number of lines required for a tissue in the model. Default is 1.
+    :param: str line_colname: The column name in both DataFrames representing the cell line ID. Default is 'ModelID'.
+    :param: str line_group: The column name in the mapping DataFrame representing the tissue/lineage group. Default is 'OncotreeLineage'.
+
+    :return: A new DataFrame with CRISPR data filtered based on the selected cell lines and conditions.
+    :rtype: pd.DataFrame
+    """
+    # Get cell lines from the mapping DataFrame
+    map_cell_lines = df_map[~df_map[line_group].isna()][line_colname].values
+
+    # Intersect cell lines in the CRISPR DataFrame with cell lines in the mapping DataFrame
+    dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)
+
+    # Filter mapping DataFrame based on common cell lines
+    df_map_filtered = df_map[df_map[line_colname].isin(dep_cell_lines)]
+
+    # Select tissue models with lines greater than or equal to minlines
+    sel_cell_lines = filter_cellmap(df_map_filtered, minlines, line_group=line_group)
+
+    # Return filtered CRISPR DataFrame based on selected cell lines
+    return df[np.intersect1d(df.columns, sel_cell_lines[line_colname].values)]
 
 
-def filter_cellmap(df_map, minlines, line_group='OncotreeLineage'):
+def filter_cellmap(df_map: pd.DataFrame, minlines: int=1, line_group: str='OncotreeLineage'):
+
     """
     Filters a cell map DataFrame based on the minimum number of lines per group.
     
