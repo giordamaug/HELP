@@ -18,10 +18,10 @@ def rows_with_nan_percentage(df: pd.DataFrame, perc :float=0.0):
     :param: pd.DataFrame df: The input DataFrame.
     :param: float perc: The percentage of NaN values allowed in each row. Default is 0.0.
 
-    :return: A new DataFrame with rows filtered based on the specified percentage of NaN values.
+    :return: A new DataFrame filtered removing rows woth a percentage of NaN greather than perc.
     :rtype: pd.DataFrame
     """
-    min_count =  int(((100-perc)/100)*df.shape[1] + 1)  
+    min_count =  int(((perc)/100)*df.shape[1] + 1)  
     return df.dropna(axis=0, thresh=min_count)
 
 def filter_crispr_by_model(df: pd.DataFrame, df_map: pd.DataFrame, minlines: int=1, 
