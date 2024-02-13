@@ -4,8 +4,7 @@ import networkx as nx
 from karateclub import DeepWalk, Node2Vec, AE
 from typing import Dict
 from tqdm import tqdm
-
-def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128, 
+def PPIembed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128, 
               walk_number: int=10, walk_length: int=80, workers: int=1, epochs: int=1, learning_rate: float=0.05, seed: int=42,
               params: Dict={"p": 1.0, "q": 1.0, "window_size": 5,  "min_count": 1}, 
               source: str = 'A', target: str='B', weight: str='combined_score', verbose: bool=False):
@@ -34,7 +33,7 @@ def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128,
     .. code-block:: python
         df_embedding = PPI_embed(ppi_data, method='Node2Vec', dimensions=128, epochs=5, verbose=True)
     """
-    assert "method" in ['DeepWalk', 'Node2Vec', 'AE'], "Embedding method not supported!"
+    assert method in ['DeepWalk', 'Node2Vec', 'AE'], "Embedding method not supported!"
     params['dimensions'] = dimensions
     params['walk_length'] = walk_length
     params['walk_number'] = walk_number
@@ -48,6 +47,10 @@ def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128,
     edge_list = np.array([(gene2idx_mapping[v[0]], gene2idx_mapping[v[1]]) for v in list(df_net[[source,target]].values)])
     edge_attr = df_net[[weight]].values.T.ravel()
     # Create the movies undirected graph.
+    embedder = globals()[method](**params)
+    if verbose: 
+        print(f"Embedding with {method} and params:")
+        [print(f'{k}: {v}') for k,v in embedder.__dict__.items()]
     ppiG = nx.Graph()
     for pair, w in tqdm(zip(edge_list, edge_attr), total=len(edge_list),  desc="Creating the PPI graph"):
         ppiG.add_edge(*pair, weight=w)
@@ -60,10 +63,8 @@ def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128,
     if verbose: print("Average node degree:", round(sum(degrees) / len(degrees), 2))
     if verbose: print(f"There are {len(list(nx.isolates(ppiG)))} isolated genes")
 
-    embedder = globals()[method](**params)
-    if verbose: print(f"Embedding with {method}")
     embedder.fit(ppiG)
-    embedding = n2v.get_embedding()
+    embedding = embedder.get_embedding()
     df_emb = pd.DataFrame(embedding, 
              columns = [f'{method}_{i}' for i in range(embedding.shape[1])], 
              index = [idx2gene_mapping[i] for i in range(len(genes))]) 
