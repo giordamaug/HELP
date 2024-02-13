@@ -9,6 +9,7 @@ help.models.labelling module
 
 .. automodule:: help.models.labelling
    :members:
+   :exclude-members: Help
    :undoc-members:
    :show-inheritance:
 
