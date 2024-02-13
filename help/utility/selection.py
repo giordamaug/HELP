@@ -10,6 +10,14 @@ from help.models.labelling import labelling
 from help.visualization.plot import svenn_intesect
 import random
 
+def filter_crispr_by_model(df, df_map, minlines=1, line_colname='ModelID', line_group='OncotreeLineage'):
+    map_cell_lines = df_map[~df_map[line_group].isna()][line_colname].values  # get the lines in the model of all tisses (drop eventual NaN)
+    dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)               # and intersect with lines in CRISPR file
+    df_map_filterd = df_map[df_map[line_colname].isin(dep_cell_lines)]        # filter model on common cell-lines
+    sel_cell_lines = filter_cellmap(df_map_filterd, minlines, line_group=line_group) # select from model only tissue with more= than minlines
+    return df[np.intersect1d(df.columns,sel_cell_lines[line_colname].values)] # return filtered CRISPR based on selected cell-lines
+
+
 def filter_cellmap(df_map, minlines, line_group='OncotreeLineage'):
     """
     Filters a cell map DataFrame based on the minimum number of lines per group.
