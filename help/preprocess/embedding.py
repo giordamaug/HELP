@@ -4,7 +4,7 @@ import networkx as nx
 from karateclub import DeepWalk, Node2Vec, AE
 from typing import Dict
 from tqdm import tqdm
-def PPIembed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128, 
+def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128, 
               walk_number: int=10, walk_length: int=80, workers: int=1, epochs: int=1, learning_rate: float=0.05, seed: int=42,
               params: Dict={"p": 1.0, "q": 1.0, "window_size": 5,  "min_count": 1}, 
               source: str = 'A', target: str='B', weight: str='combined_score', verbose: bool=False):
