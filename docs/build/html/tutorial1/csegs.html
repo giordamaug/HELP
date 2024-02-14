@@ -57,7 +57,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html">EG detection for a tissue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context_Specific EG for tissues</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Set data path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-crispr-data-file">Load the CRISPR data file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
@@ -102,7 +102,6 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;&lt;your-data-path&gt;&quot;</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;../data&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -767,10 +766,10 @@ cell-lines. THis is obtained by properly calling the
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
 <span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
 <span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> tissue for a total of </span><span class="si">{</span><span class="nb">len</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cell_lines</span><span class="p">])</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> tissue for a total of </span><span class="si">{</span><span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cell_lines</span><span class="p">])</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">tissue</span> <span class="k">for</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">24</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">tissue</span> <span class="k">for</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">1091</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
 </pre></div>
 </div>
 <p>Once selected the tissues as a nested list of cell-lines, we can apply
@@ -884,9 +883,9 @@ EGs computed on all cell-lines in flat mode (<code class="docutils literal notra
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subtracting</span> <span class="mi">1250</span> <span class="n">common</span> <span class="n">EGs</span><span class="o">...</span>
-<span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
-<span class="mi">60</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
-<span class="mi">64</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
+<span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">5</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
+<span class="mi">55</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
+<span class="mi">63</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
 </pre></div>
 </div>
 <img alt="../_images/output_19_1.png" src="../_images/output_19_1.png" />
@@ -899,9 +898,9 @@ EGs computed on all cell-lines in flat mode (<code class="docutils literal notra
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subtracting</span> <span class="mi">1263</span> <span class="n">common</span> <span class="n">EGs</span><span class="o">...</span>
-<span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">5</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
-<span class="mi">60</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
-<span class="mi">57</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
+<span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">3</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
+<span class="mi">56</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
+<span class="mi">56</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
 </pre></div>
 </div>
 <img alt="../_images/output_20_1.png" src="../_images/output_20_1.png" />

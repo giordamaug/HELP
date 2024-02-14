@@ -6,7 +6,6 @@ Set data path
     datapath = "<your-data-path>"
     import warnings
     warnings.filterwarnings("ignore")
-    datapath = "../data"
 
 Load the CRISPR data file
 =========================
@@ -711,12 +710,12 @@ cell-lines. THis is obtained by properly calling the
     from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
     from help.models.labelling import labelling
     cell_lines = select_cell_lines(df, df_map, tissue_list='all', nested=True)
-    print(f"Selecting {len(cell_lines)} tissue for a total of {len([len(x) for x in cell_lines])} cell-lines")
+    print(f"Selecting {len(cell_lines)} tissue for a total of {sum([len(x) for x in cell_lines])} cell-lines")
 
 
 .. parsed-literal::
 
-    Selecting 24 tissue for a total of 24 cell-lines
+    Selecting 24 tissue for a total of 1091 cell-lines
 
 
 Once selected the tissues as a nested list of cell-lines, we can apply
@@ -863,9 +862,9 @@ EGs computed on all cell-lines in flat mode (``label_PanTissue.csv``)
 .. parsed-literal::
 
     Subtracting 1250 common EGs...
-    Overlapping of 7 genes between ['Kidney', 'Lung']
-    60 genes only in Kidney
-    64 genes only in Lung
+    Overlapping of 5 genes between ['Kidney', 'Lung']
+    55 genes only in Kidney
+    63 genes only in Lung
 
 
 
@@ -885,9 +884,9 @@ EGs computed on all cell-lines in flat mode (``label_PanTissue.csv``)
 .. parsed-literal::
 
     Subtracting 1263 common EGs...
-    Overlapping of 5 genes between ['Kidney', 'Lung']
-    60 genes only in Kidney
-    57 genes only in Lung
+    Overlapping of 3 genes between ['Kidney', 'Lung']
+    56 genes only in Kidney
+    56 genes only in Lung
 
 
 

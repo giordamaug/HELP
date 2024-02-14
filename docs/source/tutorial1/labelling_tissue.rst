@@ -3,7 +3,7 @@ Set data path
 
 .. code:: ipython3
 
-    datapath = "<your-data-path>"
+    datapath = "../../help/data"
 
 Load the CRISPR data file
 =========================
@@ -386,7 +386,7 @@ Load the map between cell lines and tissues
     Other                          1
     Embryonal                      1
     Adrenal Gland                  1
-    dtype: int64
+    Name: count, dtype: int64
 
 
 
@@ -451,7 +451,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NIHOVCAR3_OVARY</td>
           <td>HTB-71</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>2201.0</td>
@@ -475,7 +475,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>CCL-240</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>55.0</td>
@@ -499,7 +499,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>CACO2_LARGE_INTESTINE</td>
           <td>HTB-37</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -523,7 +523,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>HEL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>ACC 11</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>783.0</td>
@@ -547,7 +547,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>HEL9217_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>HEL9217</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -595,7 +595,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -619,7 +619,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -643,7 +643,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -667,7 +667,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -691,7 +691,7 @@ Load the map between cell lines and tissues
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -706,6 +706,330 @@ Load the map between cell lines and tissues
 
 
 
+.. code:: ipython3
+
+    from help.utility.selection import filter_crispr_by_model
+    df = filter_crispr_by_model(df, df_map, minlines=10, line_group='OncotreeLineage')
+    df
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th>gene</th>
+          <th>ACH-000001</th>
+          <th>ACH-000004</th>
+          <th>ACH-000005</th>
+          <th>ACH-000007</th>
+          <th>ACH-000009</th>
+          <th>ACH-000011</th>
+          <th>ACH-000012</th>
+          <th>ACH-000013</th>
+          <th>ACH-000015</th>
+          <th>ACH-000017</th>
+          <th>...</th>
+          <th>ACH-002693</th>
+          <th>ACH-002710</th>
+          <th>ACH-002785</th>
+          <th>ACH-002799</th>
+          <th>ACH-002800</th>
+          <th>ACH-002834</th>
+          <th>ACH-002847</th>
+          <th>ACH-002922</th>
+          <th>ACH-002925</th>
+          <th>ACH-002926</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A1BG</th>
+          <td>-0.122637</td>
+          <td>0.019756</td>
+          <td>-0.107208</td>
+          <td>-0.031027</td>
+          <td>0.008888</td>
+          <td>0.022670</td>
+          <td>-0.096631</td>
+          <td>0.049811</td>
+          <td>-0.099040</td>
+          <td>-0.044896</td>
+          <td>...</td>
+          <td>-0.072582</td>
+          <td>-0.033722</td>
+          <td>-0.053881</td>
+          <td>-0.060617</td>
+          <td>0.025795</td>
+          <td>-0.055721</td>
+          <td>-0.009973</td>
+          <td>-0.025991</td>
+          <td>-0.127639</td>
+          <td>-0.068666</td>
+        </tr>
+        <tr>
+          <th>A1CF</th>
+          <td>0.025881</td>
+          <td>-0.083640</td>
+          <td>-0.023211</td>
+          <td>-0.137850</td>
+          <td>-0.146566</td>
+          <td>-0.057743</td>
+          <td>-0.024440</td>
+          <td>-0.158811</td>
+          <td>-0.070409</td>
+          <td>-0.115830</td>
+          <td>...</td>
+          <td>-0.237311</td>
+          <td>-0.108704</td>
+          <td>-0.114864</td>
+          <td>-0.042591</td>
+          <td>-0.132627</td>
+          <td>-0.121228</td>
+          <td>-0.119813</td>
+          <td>-0.007706</td>
+          <td>-0.040705</td>
+          <td>-0.107530</td>
+        </tr>
+        <tr>
+          <th>A2M</th>
+          <td>0.034217</td>
+          <td>-0.060118</td>
+          <td>0.200204</td>
+          <td>0.067704</td>
+          <td>0.084471</td>
+          <td>0.079679</td>
+          <td>0.041922</td>
+          <td>-0.003968</td>
+          <td>-0.029389</td>
+          <td>0.024537</td>
+          <td>...</td>
+          <td>-0.065940</td>
+          <td>0.079277</td>
+          <td>0.069333</td>
+          <td>0.030989</td>
+          <td>0.249826</td>
+          <td>0.072790</td>
+          <td>0.044097</td>
+          <td>-0.038468</td>
+          <td>0.134556</td>
+          <td>0.067806</td>
+        </tr>
+        <tr>
+          <th>A2ML1</th>
+          <td>-0.128082</td>
+          <td>-0.027417</td>
+          <td>0.116039</td>
+          <td>0.107988</td>
+          <td>0.089419</td>
+          <td>0.227512</td>
+          <td>0.039121</td>
+          <td>0.034778</td>
+          <td>0.084594</td>
+          <td>-0.003710</td>
+          <td>...</td>
+          <td>0.101541</td>
+          <td>0.038977</td>
+          <td>0.066599</td>
+          <td>0.043809</td>
+          <td>0.064657</td>
+          <td>0.021916</td>
+          <td>0.041358</td>
+          <td>0.236576</td>
+          <td>-0.047984</td>
+          <td>0.112071</td>
+        </tr>
+        <tr>
+          <th>A3GALT2</th>
+          <td>-0.031285</td>
+          <td>-0.036116</td>
+          <td>-0.172227</td>
+          <td>0.007992</td>
+          <td>0.065109</td>
+          <td>-0.130448</td>
+          <td>0.028947</td>
+          <td>-0.120875</td>
+          <td>-0.052288</td>
+          <td>-0.336776</td>
+          <td>...</td>
+          <td>0.005374</td>
+          <td>-0.144070</td>
+          <td>-0.256227</td>
+          <td>-0.116473</td>
+          <td>-0.294305</td>
+          <td>-0.221940</td>
+          <td>-0.146565</td>
+          <td>-0.239690</td>
+          <td>-0.116114</td>
+          <td>-0.149897</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>ZYG11A</th>
+          <td>-0.289724</td>
+          <td>0.032983</td>
+          <td>-0.201273</td>
+          <td>-0.100344</td>
+          <td>-0.112703</td>
+          <td>0.013401</td>
+          <td>0.005124</td>
+          <td>-0.089180</td>
+          <td>-0.005409</td>
+          <td>-0.070396</td>
+          <td>...</td>
+          <td>-0.296880</td>
+          <td>-0.084936</td>
+          <td>-0.128569</td>
+          <td>-0.110504</td>
+          <td>-0.087171</td>
+          <td>0.024959</td>
+          <td>-0.119911</td>
+          <td>-0.079342</td>
+          <td>-0.043555</td>
+          <td>-0.045115</td>
+        </tr>
+        <tr>
+          <th>ZYG11B</th>
+          <td>-0.062972</td>
+          <td>-0.410392</td>
+          <td>-0.178877</td>
+          <td>-0.462160</td>
+          <td>-0.598698</td>
+          <td>-0.296421</td>
+          <td>-0.131949</td>
+          <td>-0.145737</td>
+          <td>-0.216393</td>
+          <td>-0.257916</td>
+          <td>...</td>
+          <td>-0.332415</td>
+          <td>-0.193408</td>
+          <td>-0.327408</td>
+          <td>-0.257879</td>
+          <td>-0.349111</td>
+          <td>0.015259</td>
+          <td>-0.289412</td>
+          <td>-0.347484</td>
+          <td>-0.335270</td>
+          <td>-0.307900</td>
+        </tr>
+        <tr>
+          <th>ZYX</th>
+          <td>0.074180</td>
+          <td>0.113156</td>
+          <td>-0.055349</td>
+          <td>-0.001555</td>
+          <td>0.095877</td>
+          <td>0.067705</td>
+          <td>-0.109147</td>
+          <td>-0.034886</td>
+          <td>-0.137350</td>
+          <td>0.029457</td>
+          <td>...</td>
+          <td>-0.005090</td>
+          <td>-0.218960</td>
+          <td>-0.053033</td>
+          <td>-0.041612</td>
+          <td>-0.057478</td>
+          <td>-0.306562</td>
+          <td>-0.195097</td>
+          <td>-0.085302</td>
+          <td>-0.208063</td>
+          <td>0.070671</td>
+        </tr>
+        <tr>
+          <th>ZZEF1</th>
+          <td>0.111244</td>
+          <td>0.234388</td>
+          <td>-0.002161</td>
+          <td>-0.325964</td>
+          <td>-0.026742</td>
+          <td>-0.232453</td>
+          <td>-0.164482</td>
+          <td>-0.175850</td>
+          <td>-0.168087</td>
+          <td>-0.284838</td>
+          <td>...</td>
+          <td>-0.188751</td>
+          <td>-0.120449</td>
+          <td>-0.267081</td>
+          <td>0.006148</td>
+          <td>-0.189602</td>
+          <td>-0.148368</td>
+          <td>-0.206400</td>
+          <td>-0.095965</td>
+          <td>-0.094741</td>
+          <td>-0.187813</td>
+        </tr>
+        <tr>
+          <th>ZZZ3</th>
+          <td>-0.467908</td>
+          <td>-0.088306</td>
+          <td>-0.186842</td>
+          <td>-0.486660</td>
+          <td>-0.320759</td>
+          <td>-0.347234</td>
+          <td>-0.277397</td>
+          <td>-0.519586</td>
+          <td>-0.282338</td>
+          <td>-0.247634</td>
+          <td>...</td>
+          <td>-0.239991</td>
+          <td>-0.311396</td>
+          <td>-0.202158</td>
+          <td>-0.195154</td>
+          <td>-0.107107</td>
+          <td>-0.579576</td>
+          <td>-0.486525</td>
+          <td>-0.346272</td>
+          <td>-0.222404</td>
+          <td>-0.452143</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>18443 rows × 1091 columns</p>
+    </div>
+
+
+
 Select some tissues
 ===================
 
@@ -715,16 +1039,19 @@ that there is no row (gene) in the datafile with all NaN as cell values.
 Inthat case we remove those rows (genes) before applying the labelling
 algorithm.
 
+We start labelling genes for the ``Kidney`` tissue…
+
 .. code:: ipython3
 
+    tissue = 'Kidney'
     from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
     from help.models.labelling import labelling
-    cell_lines = select_cell_lines(df, df_map, ['Kidney'])
+    cell_lines = select_cell_lines(df, df_map, [tissue])
     print(f"Selecting {len(cell_lines)} cell-lines")
     # remove rows with all nans
     df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=100)
     df_label = labelling(df_nonan, columns = cell_lines, n_classes=2, mode='flat-multi', algorithm='otsu')
-    df_label.to_csv(os.path.join(datapath, "label_Kidney.csv"))
+    df_label.to_csv(os.path.join(datapath, f"label_{tissue}.csv"))
     df_label.value_counts(), f"Nan: {df_label['label'].isna().sum()}"
 
 
@@ -736,7 +1063,7 @@ algorithm.
 
 .. parsed-literal::
 
-    100%|██████████| 37/37 [00:00<00:00, 240.21it/s]
+    100%|██████████| 37/37 [00:00<00:00, 647.37it/s]
 
 
 
@@ -744,9 +1071,96 @@ algorithm.
 .. parsed-literal::
 
     (label
-     NE       16667
-     E         1264
-     dtype: int64,
+     NE       16678
+     E         1253
+     Name: count, dtype: int64,
+     'Nan: 0')
+
+
+
+… then we do it for the ``Lung`` tissue …
+
+.. code:: ipython3
+
+    tissue = 'Lung'
+    from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
+    from help.models.labelling import labelling
+    cell_lines = select_cell_lines(df, df_map, [tissue])
+    print(f"Selecting {len(cell_lines)} cell-lines")
+    # remove rows with all nans
+    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=100)
+    df_label = labelling(df_nonan, columns = cell_lines, n_classes=2, mode='flat-multi', algorithm='otsu')
+    #df_label = labelling(df_nonan, columns = [cell_lines], n_classes=3, labelnames={2: 'NE', 1: 'aE', 0:'E'}, mode='two-by-two', algorithm='otsu')
+    df_label.to_csv(os.path.join(datapath, f"label_{tissue}.csv"))
+    df_label.value_counts(), f"Nan: {df_label['label'].isna().sum()}"
+
+
+.. parsed-literal::
+
+    Selecting 119 cell-lines
+    Removed 0 rows from 18443 with at least 100% NaN
+
+
+.. parsed-literal::
+
+    100%|██████████| 119/119 [00:00<00:00, 722.25it/s]
+
+
+
+
+.. parsed-literal::
+
+    (label
+     NE       17167
+     E         1276
+     Name: count, dtype: int64,
+     'Nan: 0')
+
+
+
+Working on diseases …
+=====================
+
+In the same way we can make gene essentiality labelling based on disease
+related information, by allowing the labelling algorith to focus on
+CRISPR cell-lines related so spcific disease. In order to work on
+disease-cells association, we use the same selection functions as before
+but using a different Model column as selector
+(``OncotreePrimaryDisease``).
+
+.. code:: ipython3
+
+    disease = 'Acute Myeloid Leukemia'
+    from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
+    from help.models.labelling import labelling
+    cell_lines = select_cell_lines(df, df_map, [disease], line_group='OncotreePrimaryDisease')  # change default from 'OncotreeLineage'
+    print(f"Selecting {len(cell_lines)} cell-lines")
+    # remove rows with all nans
+    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=100)
+    df_label = labelling(df_nonan, columns = cell_lines, n_classes=2, mode='flat-multi', algorithm='otsu')
+    df_label.to_csv(os.path.join(datapath, f"label_{disease}.csv"))
+    df_label.value_counts(), f"Nan: {df_label['label'].isna().sum()}"
+
+
+.. parsed-literal::
+
+    Selecting 24 cell-lines
+    Removed 512 rows from 18443 with at least 100% NaN
+
+
+.. parsed-literal::
+
+    100%|██████████| 24/24 [00:00<00:00, 592.96it/s]
+
+
+
+
+.. parsed-literal::
+
+    (label
+     NE       16609
+     E         1322
+     Name: count, dtype: int64,
      'Nan: 0')
 
 

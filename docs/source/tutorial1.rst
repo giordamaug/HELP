@@ -33,7 +33,7 @@ The notebook has few cells:
    tutorial1/embedding
 
 
-Context_Specific EG for tissues 
+Context-Specific EG for tissues 
 ===============================
 
 In notebook we show how
