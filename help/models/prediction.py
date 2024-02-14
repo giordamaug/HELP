@@ -91,7 +91,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         probabilities = np.concatenate((probabilities, probs[:, 0]))
 
         # Calculate and store evaluation metrics for each fold
-        roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="micro")
+        roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="macro")
         scores = pd.concat([scores, pd.DataFrame([[roc_auc,
                                                     accuracy_score(test_y, preds),
                                                     balanced_accuracy_score(test_y, preds),
