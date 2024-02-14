@@ -1,7 +1,7 @@
 Installation
 ============
 
-Requiremensts
+Requirements
 ~~~~~~~~~~~~~
 
 HELP depends on the following packages:
