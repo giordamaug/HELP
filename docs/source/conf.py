@@ -20,6 +20,7 @@ release = '1.0'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 templates_path = ['_templates']
+html_static_path = ['_static']
 extensions = [
     "sphinx.ext.githubpages", "nbsphinx",
     'sphinx.ext.mathjax', 'sphinx.ext.napoleon', 'sphinx.ext.autodoc',
@@ -34,3 +35,8 @@ exclude_patterns = ['modules.rst', 'notebook.rst']
 #html_theme = "sphinx_pdj_theme"
 #html_theme_path = sphinx_pdj_theme.get_html_theme_path()
 html_theme = 'sphinx_rtd_theme'
+html_logo = '_static/HELP_logo.png'
+html_theme_options = {
+    'logo_only': True,
+    'display_version': True,
+}
