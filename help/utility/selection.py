@@ -80,7 +80,7 @@ def filter_cellmap(df_map: pd.DataFrame, minlines: int=1, line_group: str='Oncot
     return df_map[df_map[line_group].isin(tissue_list)]
     
 # select cell lines from depmap CRISPR file
-def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[str], line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
+def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: Union[str,List[str]], line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
     """
     Select cell lines based on tissue and mapping information.
 
@@ -106,6 +106,15 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
     """
     lines = []
 
+    # Threat the case that all tissues are selected for mode on tissue-specific labels
+    if tissue_list=='all':
+        # Get all cell lines from the mapping DataFrame 
+        map_cell_lines = df_map[line_col].values
+        # Intersect with cell lines in the main DataFrame
+        dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)
+        # get tissue list cell lines belong to from mapping
+        tissue_list=np.unique(df_map[df_map[line_col].isin(dep_cell_lines)][line_group].values)
+
     # Iterate over each tissue in the provided list
     for tissue in tissue_list:
         # Get the cell lines from the mapping DataFrame for the given tissue
@@ -123,7 +132,7 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: List[
         # Print verbose information if requested
         if verbose:
             print(f'There are {len(dep_cell_lines)} "{tissue}" cell-lines in the CRISPR file '
-                  f'in common with the {len(map_cell_lines)} cell-lines in DepMap')
+                f'in common with the {len(map_cell_lines)} cell-lines in DepMap')
 
     # Print total selected cell lines if verbose
     if verbose:
