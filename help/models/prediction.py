@@ -64,7 +64,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     # Initialize classifier
     clf = LGBMClassifier(class_weight='balanced', verbose=-1) if balanced else LGBMClassifier(verbose=-1)
 
-    nclasses = len(np.unique(y, return_counts=True))
+    nclasses = len(np.unique(y))
     mm = np.array([], dtype=np.int64)
     gg = np.array([])
     yy = np.array([], dtype=np.int64)
@@ -91,7 +91,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         probabilities = np.concatenate((probabilities, probs[:, 0]))
 
         # Calculate and store evaluation metrics for each fold
-        roc_auc = roc_auc_score(test_y, probs[:, 0]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class='ovr')
+        roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="micro")
         scores = pd.concat([scores, pd.DataFrame([[roc_auc,
                                                     accuracy_score(test_y, preds),
                                                     balanced_accuracy_score(test_y, preds),
@@ -120,5 +120,5 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     if saveflag:
         df_results.to_csv(outfile)
 
-    # Return the summary statistics of cross-validated predictions
-    return df_scores
+    # Return the summary statistics of cross-validated predictions and the single measures
+    return df_scores, scores
