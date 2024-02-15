@@ -1,6 +1,6 @@
 .. code:: ipython3
 
-    datapath = "<your-data-path>"
+    datapath = "../data"
 
 Process the tissue attributes
 =============================
@@ -366,21 +366,13 @@ We process k-fold cross validation of a LightGBM classifier
 .. code:: ipython3
 
     from help.models.prediction import predict_cv
-    predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv') 
+    df_scores_means, df_scores = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv')
+    df_scores_means
 
 
 .. parsed-literal::
 
-    {'E': 0, 'NE': 1}
-    label
-    NE       15994
-    E         1242
-    Name: count, dtype: int64
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:33<00:00,  6.77s/it]
+    5-fold: 100%|██████████| 5/5 [00:31<00:00,  6.35s/it]
 
 
 
@@ -411,7 +403,7 @@ We process k-fold cross validation of a LightGBM classifier
       <tbody>
         <tr>
           <th>ROC-AUC</th>
-          <td>0.0434±0.0055</td>
+          <td>0.9566±0.0055</td>
         </tr>
         <tr>
           <th>Accuracy</th>
@@ -444,7 +436,7 @@ We process k-fold cross validation of a LightGBM classifier
 
 
 
-.. image:: output_4_3.png
+.. image:: output_4_2.png
 
 
 Prediction with undersampling
@@ -461,7 +453,8 @@ re-apply the k-fold cross validation of the a LightGBM classifier.
 
     df_X, df_y = feature_assemble(label_file = label_file, 
                                   features=features, subsample=True, seed=1, verbose=True)
-    predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv') 
+    df_scores_means, df_scores = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv')
+    df_scores_means
 
 
 .. parsed-literal::
@@ -475,16 +468,11 @@ re-apply the k-fold cross validation of the a LightGBM classifier.
     [Kidney_EmbN2V_128.csv] No normalization...
     6043 labeled genes over a total of 6265
     (6043, 3459) data input
-    {'E': 0, 'NE': 1}
-    label
-    NE       4801
-    E        1242
-    Name: count, dtype: int64
 
 
 .. parsed-literal::
 
-    5-fold: 100%|██████████| 5/5 [00:18<00:00,  3.79s/it]
+    5-fold: 100%|██████████| 5/5 [00:17<00:00,  3.57s/it]
 
 
 
@@ -515,7 +503,7 @@ re-apply the k-fold cross validation of the a LightGBM classifier.
       <tbody>
         <tr>
           <th>ROC-AUC</th>
-          <td>0.0466±0.0032</td>
+          <td>0.9534±0.0032</td>
         </tr>
         <tr>
           <th>Accuracy</th>
