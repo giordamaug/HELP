@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EG detection for a tissue &mdash; HELP 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Set data path" href="tutorial1/labelling_tissue.html" />
+    <link rel="prev" title="help.visualization package" href="help.visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HELP_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="help.html">help package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EG detection for a tissue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html">Set data path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html#select-some-tissues">Select some tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html#working-on-diseases">Working on diseases …</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/embedding.html">Set data path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/embedding.html#load-the-ppi-network-and-apply-embedding">Load the PPI network and apply embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/embedding.html#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#context-specific-eg-for-tissues">Context-Specific EG for tissues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/csegs.html">Set data path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/csegs.html#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/csegs.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/csegs.html#common-egs-pan-tissue-labelling">Common Egs (pan-tissue labelling)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/csegs.html#context-specific-egs">Context specific EGs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#eg-prediction-for-a-tissue">EG prediction for a tissue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/prediction.html">Process the tissue attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/prediction.html#prediction">Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/prediction.html#prediction-with-undersampling">Prediction with undersampling</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HELP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EG detection for a tissue</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial1.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="eg-detection-for-a-tissue">
+<h1>EG detection for a tissue<a class="headerlink" href="#eg-detection-for-a-tissue" title="Link to this heading"></a></h1>
+<p>In notebook we show how to make essentiality labelling of genes by considering cell-line scores for a specific tissue.
+In more details, the workflow implements the following steps</p>
+<ol class="arabic simple">
+<li><p>load CRISPR data file and the Model file that maps cell-lines to tissues:</p></li>
+<li><p>select from the CRISPR data file only cell-lines related to the chosen tissue, by using the mapping in the Model</p></li>
+<li><p>in the redced CRIPSR data matrix, remove all genes having a percentage of missing values grater than 80%</p></li>
+<li><p>apply the labelling process to get Essential/Non-Essential gene labels for the tissue</p></li>
+</ol>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/labelling_tissue.html">Set data path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/labelling_tissue.html#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/labelling_tissue.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/labelling_tissue.html#select-some-tissues">Select some tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/labelling_tissue.html#working-on-diseases">Working on diseases …</a></li>
+</ul>
+</div>
+</section>
+<section id="tissue-s-ppi-network-embedding">
+<h1>Tissue’s PPI network embedding<a class="headerlink" href="#tissue-s-ppi-network-embedding" title="Link to this heading"></a></h1>
+<p>In this notebook we show how to calculate embedding vectors for gene (nodes) in the PPI network
+of a tissue. The embedding matrix (gene x embedding vector components) can be used in successive processing,
+such as prediction of gene essentiality base on gene attributes.</p>
+<p>The notebook has few cells:</p>
+<ol class="arabic simple">
+<li><p>load the PPI network cvs file and apply mebdding by the [!Node2Vec](<a class="reference external" href="https://karateclub.readthedocs.io/en/latest/_modules/karateclub/node_embedding/neighbourhood/node2vec.html">https://karateclub.readthedocs.io/en/latest/_modules/karateclub/node_embedding/neighbourhood/node2vec.html</a>) embedding technique.</p></li>
+<li><p>display the embedding matrix and save it in a csv file.</p></li>
+</ol>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/embedding.html">Set data path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/embedding.html#load-the-ppi-network-and-apply-embedding">Load the PPI network and apply embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/embedding.html#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
+</ul>
+</div>
+</section>
+<section id="context-specific-eg-for-tissues">
+<h1>Context-Specific EG for tissues<a class="headerlink" href="#context-specific-eg-for-tissues" title="Link to this heading"></a></h1>
+<p>In notebook we show how</p>
+<p>#. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
+genes (NEGs) in two tissues and in all tissues (pan-tissue).
+#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
+#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/csegs.html">Set data path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/csegs.html#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/csegs.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/csegs.html#common-egs-pan-tissue-labelling">Common Egs (pan-tissue labelling)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/csegs.html#context-specific-egs">Context specific EGs</a></li>
+</ul>
+</div>
+</section>
+<section id="eg-prediction-for-a-tissue">
+<h1>EG prediction for a tissue<a class="headerlink" href="#eg-prediction-for-a-tissue" title="Link to this heading"></a></h1>
+<p>In notebook we show how</p>
+<p>#. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
+genes (NEGs) in two tissues and in all tissues (pan-tissue).
+#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
+#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/prediction.html">Process the tissue attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/prediction.html#prediction">Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/prediction.html#prediction-with-undersampling">Prediction with undersampling</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="help.visualization.html" class="btn btn-neutral float-left" title="help.visualization package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial1/labelling_tissue.html" class="btn btn-neutral float-right" title="Set data path" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

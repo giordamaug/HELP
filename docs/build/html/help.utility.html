@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>help.utility package &mdash; HELP 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="help.visualization package" href="help.visualization.html" />
+    <link rel="prev" title="help.preprocess package" href="help.preprocess.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HELP_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="help.html">help package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="help.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="help.models.html">help.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="help.preprocess.html">help.preprocess package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">help.utility package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-help.utility.selection">help.utility.selection module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-help.utility">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="help.visualization.html">help.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="help.html#module-help">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">EG detection for a tissue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HELP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="help.html">help package</a></li>
+      <li class="breadcrumb-item active">help.utility package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/help.utility.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="help-utility-package">
+<h1>help.utility package<a class="headerlink" href="#help-utility-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-help.utility.selection">
+<span id="help-utility-selection-module"></span><h2>help.utility.selection module<a class="headerlink" href="#module-help.utility.selection" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.EG_tissues_intersect">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">EG_tissues_intersect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#EG_tissues_intersect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.EG_tissues_intersect" title="Link to this definition"></a></dt>
+<dd><p>Calculate the intersection and differences of gene sets across multiple tissues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tissues</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – Dictionary of tissue names and associated dataframes.</p></li>
+<li><p><strong>common_df</strong> (<em>Union</em><em>[</em><em>None</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – DataFrame containing common data.</p></li>
+<li><p><strong>labelname</strong> (<em>str</em>) – Name of the label column in the dataframes.</p></li>
+<li><p><strong>labelval</strong> (<em>str</em>) – Value to consider as the target label.</p></li>
+<li><p><strong>display</strong> (<em>bool</em>) – Whether to display a Venn diagram.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print verbose information.</p></li>
+<li><p><strong>barheight</strong> (<em>int</em>) – Height of bars in the Venn diagram.</p></li>
+<li><p><strong>barwidth</strong> (<em>int</em>) – Width of the Venn diagram.</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em>) – Font size of the Venn diagram labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing sets of genes for each tissue,
+the intersection of genes, and differences in genes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Dict[str, set], set, Dict[str, set]]</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="o">...</span><span class="p">}</span>
+<span class="n">common_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># Optional</span>
+<span class="n">sets</span><span class="p">,</span> <span class="n">inset</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span><span class="p">,</span> <span class="n">common_df</span><span class="p">,</span> <span class="n">labelname</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">labelval</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.EG_tissues_intersect_dolabelling">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">EG_tissues_intersect_dolabelling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tissues</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtract_common</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">three_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barheight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barwidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">17</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/help/utility/selection.html#EG_tissues_intersect_dolabelling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.EG_tissues_intersect_dolabelling" title="Link to this definition"></a></dt>
+<dd><p>Identify overlapping and unique Essential Genes (EGs) by tissues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame containing cell line information.</p></li>
+<li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – DataFrame containing mapping information.</p></li>
+<li><p><strong>tissues</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of tissues for which EGs need to be identified.</p></li>
+<li><p><strong>subtract_common</strong> (<em>bool</em>) – Whether to subtract common EGs from pantissue labeling.</p></li>
+<li><p><strong>three_class</strong> (<em>bool</em>) – Whether to use a three-class labeling (E, NE, NC).</p></li>
+<li><p><strong>display</strong> (<em>bool</em>) – Whether to display a Venn diagram.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Verbosity level for printing information.</p></li>
+<li><p><strong>barheight</strong> (<em>int</em>) – Height of the Venn diagram.</p></li>
+<li><p><strong>barwidth</strong> (<em>int</em>) – Width of the Venn diagram.</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em>) – Font size for the Venn diagram.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing sets of EGs, intersection of EGs, and differences in EGs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[List[set], set, Dict[str, set]]</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">tissues</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">,</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">]</span>
+<span class="n">sets</span><span class="p">,</span> <span class="n">inset</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect_dolabelling</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissues</span><span class="p">,</span> <span class="n">subtract_common</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.delrows_with_nan_percentage">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">delrows_with_nan_percentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#delrows_with_nan_percentage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.delrows_with_nan_percentage" title="Link to this definition"></a></dt>
+<dd><p>Filter rows in a DataFrame based on the percentage of NaN values.</p>
+<p>Parameters:
+:param: pd.DataFrame df: The input DataFrame.
+:param: float perc: The percentage of NaN values allowed in each row. Default is 0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new DataFrame with rows filtered based on the specified percentage of NaN values.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.filter_cellmap">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">filter_cellmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#filter_cellmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.filter_cellmap" title="Link to this definition"></a></dt>
+<dd><p>Filters a cell map DataFrame based on the minimum number of lines per group.</p>
+<p>Parameters:
+:param pd.DataFrame df_map: The input DataFrame containing cell map information.
+:param int minlines: The minimum number of lines required to retain a group.
+:param str line_group: Column name for the grouping information in the cell map DataFrame. Default: ‘OncotreeLineage’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Filtered DataFrame containing only the groups that meet the minimum lines criteria.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_cellmap</span><span class="p">(</span><span class="n">cell_map_data</span><span class="p">,</span> <span class="n">minlines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.filter_crispr_by_model">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">filter_crispr_by_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ModelID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#filter_crispr_by_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.filter_crispr_by_model" title="Link to this definition"></a></dt>
+<dd><p>Filter a CRISPR DataFrame based on a mapping DataFrame and specified conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame df: The CRISPR DataFrame to be filtered.</p>
+</dd>
+<dt class="field-even">Param<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame df_map: The mapping DataFrame containing information about cell lines and models.</p>
+</dd>
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int minlines int: The minimum number of lines required for a tissue in the model. Default is 1.</p>
+</dd>
+<dt class="field-even">Param<span class="colon">:</span></dt>
+<dd class="field-even"><p>str line_colname: The column name in both DataFrames representing the cell line ID. Default is ‘ModelID’.</p>
+</dd>
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str line_group: The column name in the mapping DataFrame representing the tissue/lineage group. Default is ‘OncotreeLineage’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new DataFrame with CRISPR data filtered based on the selected cell lines and conditions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.select_cell_lines">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">select_cell_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tissue_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ModelID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#select_cell_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.select_cell_lines" title="Link to this definition"></a></dt>
+<dd><p>Select cell lines based on tissue and mapping information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame containing cell line information.</p></li>
+<li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – DataFrame containing mapping information.</p></li>
+<li><p><strong>tissue_list</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of tissues for which cell lines need to be selected.</p></li>
+<li><p><strong>line_group</strong> (<em>str</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>nested</strong> (<em>bool</em>) – Whether to return cell lines as nested lists (lists for each tissue to enable mode of mode in labelling).</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – Verbosity level for printing information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of selected cell lines, either flattened or nested based on the ‘nested’ parameter.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">tissue_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">,</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">]</span>
+<span class="n">selected_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.set_seed">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.set_seed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-help.utility">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-help.utility" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="help.preprocess.html" class="btn btn-neutral float-left" title="help.preprocess package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="help.visualization.html" class="btn btn-neutral float-right" title="help.visualization package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

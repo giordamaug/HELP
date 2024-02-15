@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>help.preprocess package &mdash; HELP 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="help.utility package" href="help.utility.html" />
+    <link rel="prev" title="help.models package" href="help.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HELP_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="help.html">help package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="help.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="help.models.html">help.models package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">help.preprocess package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-help.preprocess.imputer">help.preprocess.imputer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-help.preprocess.loaders">help.preprocess.loaders module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-help.preprocess">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="help.utility.html">help.utility package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="help.visualization.html">help.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="help.html#module-help">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">EG detection for a tissue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HELP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="help.html">help package</a></li>
+      <li class="breadcrumb-item active">help.preprocess package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/help.preprocess.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="help-preprocess-package">
+<h1>help.preprocess package<a class="headerlink" href="#help-preprocess-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-help.preprocess.imputer">
+<span id="help-preprocess-imputer-module"></span><h2>help.preprocess.imputer module<a class="headerlink" href="#module-help.preprocess.imputer" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.imputer.imputer_knn">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.imputer.</span></span><span class="sig-name descname"><span class="pre">imputer_knn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'uniform'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/help/preprocess/imputer.html#imputer_knn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.imputer.imputer_knn" title="Link to this definition"></a></dt>
+<dd><p>Impute missing values in a DataFrame using K-Nearest Neighbors (KNN) imputation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input DataFrame with missing values.</p></li>
+<li><p><strong>n_neighbors</strong> (<em>int</em>) – Number of neighbors to consider for imputation using KNN.
+Optional, default is 5.</p></li>
+<li><p><strong>missing_values</strong> (<em>any</em>) – The placeholder for missing values in the input DataFrame.
+Optional, default is np.nan.</p></li>
+<li><p><strong>weights</strong> (<em>str</em>) – Weight function used in prediction during KNN imputation.
+Optional, default is “uniform”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with missing values imputed using KNN.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using KNN imputation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_knn</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.imputer.imputer_knn_group">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.imputer.</span></span><span class="sig-name descname"><span class="pre">imputer_knn_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ModelID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/help/preprocess/imputer.html#imputer_knn_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.imputer.imputer_knn_group" title="Link to this definition"></a></dt>
+<dd><p>Impute missing values in a DataFrame grouped by specified lineages using K-Nearest Neighbors (KNN) imputation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input DataFrame with missing values.</p></li>
+<li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – DataFrame mapping cell lines to lineages.</p></li>
+<li><p><strong>line_group</strong> (<em>str</em>) – Column specifying the grouping of cell lines (lineages). Default is ‘OncotreeLineage’.</p></li>
+<li><p><strong>line_col</strong> (<em>str</em>) – Column containing cell line identifiers. Default is ‘ModelID’.</p></li>
+<li><p><strong>n_neighbors</strong> (<em>int</em>) – Number of neighbors to consider for imputation using KNN. Default is 5.</p></li>
+<li><p><strong>missing_values</strong> (<em>any</em>) – The placeholder for missing values in the input DataFrame. Default is np.nan.</p></li>
+<li><p><strong>weights</strong> (<em>str</em>) – Weight function used in prediction during KNN imputation. Default is “uniform”.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – If True, print progress information. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with missing values imputed using KNN grouped by lineages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Create a mapping DataFrame</span>
+<span class="n">data_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ModelID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;M2&#39;</span><span class="p">,</span> <span class="s1">&#39;M3&#39;</span><span class="p">,</span> <span class="s1">&#39;M4&#39;</span><span class="p">],</span> <span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">]}</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_map</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using KNN imputation grouped by lineages</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_knn_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.imputer.imputer_mean">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.imputer.</span></span><span class="sig-name descname"><span class="pre">imputer_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/help/preprocess/imputer.html#imputer_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.imputer.imputer_mean" title="Link to this definition"></a></dt>
+<dd><p>Impute missing values in a DataFrame using mean imputation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input DataFrame with missing values.</p></li>
+<li><p><strong>missing_values</strong> (<em>any</em>) – The placeholder for missing values in the input DataFrame.
+Optional, default is np.nan.</p></li>
+<li><p><strong>strategy</strong> (<em>str</em>) – Imputation strategy, e.g., ‘mean’, ‘median’, ‘most_frequent’.
+Optional, default is “mean”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with missing values imputed using mean imputation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using mean imputation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-help.preprocess.loaders">
+<span id="help-preprocess-loaders-module"></span><h2>help.preprocess.loaders module<a class="headerlink" href="#module-help.preprocess.loaders" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.loaders.feature_assemble">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.loaders.</span></span><span class="sig-name descname"><span class="pre">feature_assemble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[{'fixna':</span> <span class="pre">True,</span> <span class="pre">'fname':</span> <span class="pre">'bio+gtex.csv',</span> <span class="pre">'normalize':</span> <span class="pre">'std'}]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveflag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/help/preprocess/loaders.html#feature_assemble"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.loaders.feature_assemble" title="Link to this definition"></a></dt>
+<dd><p>Assemble features and labels for machine learning tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_file</strong> (<em>str</em>) – Path to the label file.</p></li>
+<li><p><strong>features</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Union</em><em>[</em><em>str</em><em>, </em><em>bool</em><em>]</em><em>]</em><em>]</em>) – List of dictionaries specifying feature files and their processing options.
+Default is [{‘fname’: ‘bio+gtex.csv’, ‘fixna’ : True, ‘normalize’: ‘std’}].</p></li>
+<li><p><strong>colname</strong> (<em>str</em>) – Name of the column in the label file to be used as the target variable. Default is “label”.</p></li>
+<li><p><strong>subsample</strong> (<em>bool</em>) – Whether to subsample the data. Default is False.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Random seed for reproducibility. Default is 1.</p></li>
+<li><p><strong>fold</strong> (<em>int</em>) – Number of folds for subsampling. Default is 4.</p></li>
+<li><p><strong>saveflag</strong> (<em>bool</em>) – Whether to save the assembled data to files. Default is False.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print verbose messages during processing. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the assembled features (X) and labels (Y) DataFrames.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[pd.DataFrame, pd.DataFrame]</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label_file</span> <span class="o">=</span> <span class="s2">&quot;path/to/label_file.csv&quot;</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;path/to/feature_file.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">}]</span>
+<span class="n">colname</span> <span class="o">=</span> <span class="s2">&quot;target_column&quot;</span>
+<span class="n">subsample</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fold</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">saveflag</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">colname</span><span class="p">,</span> <span class="n">subsample</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">fold</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.loaders.scale_to_essentials">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.loaders.</span></span><span class="sig-name descname"><span class="pre">scale_to_essentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ge_fit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ess_genes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noness_genes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/preprocess/loaders.html#scale_to_essentials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.loaders.scale_to_essentials" title="Link to this definition"></a></dt>
+<dd><p>Scales gene expression data to essential and non-essential genes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ge_fit</strong> (<em>pd.DataFrame</em>) – DataFrame containing the gene expression data.</p></li>
+<li><p><strong>ess_genes</strong> (<em>list</em>) – List of essential genes for scaling.</p></li>
+<li><p><strong>noness_genes</strong> (<em>list</em>) – List of non-essential genes for scaling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scaled gene expression data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_data</span> <span class="o">=</span> <span class="n">scale_to_essentials</span><span class="p">(</span><span class="n">gene_expression_data</span><span class="p">,</span> <span class="n">ess_genes_list</span><span class="p">,</span> <span class="n">noness_genes_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-help.preprocess">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-help.preprocess" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="help.models.html" class="btn btn-neutral float-left" title="help.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="help.utility.html" class="btn btn-neutral float-right" title="help.utility package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

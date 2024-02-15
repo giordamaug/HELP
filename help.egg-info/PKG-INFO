@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: help
+Version: 1.0
+Summary: The HELP Essential Genes framework
+Author: Maurizio Giordano and Ilaria Granata and Lucia Maddalena
+Author-email: maurizio.giordano@cnr.it
+License: LICENSE.txt
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: tqdm
+Requires-Dist: typing
+Requires-Dist: pandas
+Requires-Dist: supervenn
+Requires-Dist: matplotlib
+Requires-Dist: ipywidgets
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+
+# HELP
+The Help Framework for Essetial Gene detection and Prediction
+
+![Alt text of the image](https://github.com/giordamaug/HELP/blob/main/docs/images/GraphicAbstract_IG.jpg)
+
+# Documentation
+The HELP software documentation is available at: https://giordamaug.github.io
+# Credits
+The HELP Framework was developed by the Computational Data Science group of High Performance Computing and Networking Institute of National Research Council of Italy (ICAR-CNR).
+
+# Cite
+If you use this software, please cite the following article.
+
+```
+@article{Granata2024,
+    doi       = {some DOI},
+    year      = {2024},
+    publisher = {},
+    volume    = {},
+    number    = {},
+    pages     = {},
+    author    = {},
+    title     = {HELP: A computational framework for labelling and
+predicting human context-specific essential genes},
+    journal   = {Journal}
+}
+```

@@ -1,9 +1,13 @@
 import pandas as pd
-from help.preprocess.loaders import feature_assemble
+import numpy as np
+from help.preprocess.loaders import feature_assemble_df
 import os,sys
 import argparse
 from joblib import Parallel, delayed
 from help.models.prediction import predict_cv
+import tabulate
+from ast import literal_eval
+from tabulate import tabulate
 
 parser = argparse.ArgumentParser(description='BIOMAT 2022 Workbench')
 parser.add_argument('-i', "--inputfile", dest='inputfile', metavar='<inputfile>', nargs="+", type=str, help='input attribute filename list', required=True)
@@ -35,6 +39,7 @@ def vprint(string):
 print = vprint   
 
 label_file = args.labelfile
+label_name = args.labelname
 features = []
 for attrfile in args.inputfile:
     if 'Emb' in os.path.basename(attrfile):
@@ -42,14 +47,18 @@ for attrfile in args.inputfile:
     else:
         features += [{'fname': attrfile, 'fixna' : True, 'normalize': 'std'}]
 
-print(features)
-df_X, df_y = feature_assemble(label_file = label_file, features=features, subsample=False, seed=1, saveflag=False, verbose=False)
+df_lab = pd.read_csv(label_file, index_col=0)
+# get label aliases
+label_aliases = literal_eval(args.aliases)
+for key,newkey in label_aliases.items():
+    if key in np.unique(df_lab[label_name].values):
+        print(f'- replacing label {key} with {newkey}')
+        df_lab = df_lab.replace(key, newkey)
+# exclude labels
+print(f'- removing label {args.excludelabels}')
+df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 
-#scores, measures = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile=args.outfile)
-#scores.to_csv(args.scorefile)
-#print(measures)
-
-#sys.exit(0)
+df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=False, seed=1, saveflag=False, verbose=False)
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
@@ -64,11 +73,22 @@ def classify(nfolds, repeat, jobs, verbose):
   return out
 
 columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM']
-scores = pd.DataFrame(columns=columns_names)
+scores = pd.DataFrame()
 out = classify(args.folds, args.repeat, args.jobs, False)
 for iter,res in enumerate(out):
-  scores = pd.concat([scores,res[1]])
+   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])])
 if args.scorefile is not None:
-  scores.to_csv(args.scorefile, index=False)
+   scores.to_csv(args.scorefile, index=False)
 else:
    print(scores)
+df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
+                          scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()).values[0].tolist()],
+                          columns=['measure'], index=scores.columns)
+import sys
+ofile = sys.stdout if args.outfile is None else open(args.outfile, "a")
+ofile.write(f'METHOD: LGBM\n')
+ofile.write(f'PROBL: {"vs".join(list(np.unique(df_y.values)))}\n')
+ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
+ofile.write(f'LABEL: {os.path.basename(args.labelfile)} MODE: {"prob" if args.proba else "pred"}\n')
+ofile.write(tabulate(df_scores, headers='keys', tablefmt='psql') + '\n')
+ofile.close()
