@@ -67,20 +67,20 @@ df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=subsample,
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
     print(f'Running seq on 1 cpu...')
-    out = [predict_cv(df_X, df_y, n_splits=nfolds, balanced=True, seed=seed, verbose=verbose) for seed in range(repeat)]
+    result = [predict_cv(df_X, df_y, n_splits=nfolds, balanced=True, seed=seed, verbose=verbose) for seed in range(repeat)]
   else:
     if jobs == -1:
         print(f'Running par on {os.cpu_count()} cpus...')
     else:
         print(f'Running par on {jobs} cpus...')
-    out = Parallel(n_jobs=jobs, prefer='threads')(delayed(predict_cv)(df_X, df_y, n_splits=nfolds, balanced=True, seed=seed, verbose=verbose) for seed in range(repeat))
-  return out
+    result = Parallel(n_jobs=jobs, prefer='threads')(delayed(predict_cv)(df_X, df_y, n_splits=nfolds, balanced=True, seed=seed, verbose=verbose) for seed in range(repeat))
+  return result
 
 columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM']
 scores = pd.DataFrame()
 out = classify(args.folds, args.repeat, args.jobs, False)
 for iter,res in enumerate(out):
-   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])],axis=1)
+   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])])
 if args.scorefile is not None:
    scores.to_csv(args.scorefile, index=False)
 else:
