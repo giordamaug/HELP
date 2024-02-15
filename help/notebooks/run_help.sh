@@ -30,3 +30,5 @@ echo "running BIO+BPBeder"
 $CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_BPBeder.csv -l $TARGET/${LABELFILE} -A $ALIASES -X $EXCLABELS -j 1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_biobpbeder.csv
 echo "running BIO+N2V"
 $CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_EmbN2V_128.csv -l $TARGET/${LABELFILE} -A $ALIASES -X $EXCLABELS -j -1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_bion2v.csv
+echo "running BIO+N2V+CCcfs"
+$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_EmbN2V_128.csv $DATA/${TISSUE}_CCcfs.csv -l $TARGET/${LABELFILE} -A $ALIASES -X $EXCLABELS -j -1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_bion2v.csv
