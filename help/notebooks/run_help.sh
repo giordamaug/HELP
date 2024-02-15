@@ -1,7 +1,7 @@
 !/bin/bash
 METHOD=HELP
-ROOTDIR=
-ENV=
+ROOTDIR=PLOS_compBiology
+ENV=env/mytorch
 CMD=$HOME/miniconda3/$ENV/bin/python
 PRG=$HOME/$ROOTDIR/HELP/help/notebooks/EG_prediction.py
 DATA=$HOME/$ROOTDIR/HELP/help/data
