@@ -80,7 +80,7 @@ columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC",
 scores = pd.DataFrame()
 out = classify(args.folds, args.repeat, args.jobs, False)
 for iter,res in enumerate(out):
-   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])])
+   scores = pd.concat([scores,res[1]])
 if args.scorefile is not None:
    scores.to_csv(args.scorefile, index=False)
 else:
