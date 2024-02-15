@@ -22,6 +22,7 @@ parser.add_argument('-r', "--repeat", dest='repeat', metavar='<repeat>', type=in
 parser.add_argument('-f', "--folds", dest='folds', metavar='<folds>', type=int, help='n. of cv folds (default: 5)' , default=5, required=False)
 parser.add_argument('-j', "--jobs", dest='jobs', metavar='<jobs>', type=int, help='n. of parallel jobs (default: -1)' , default=-1, required=False)
 parser.add_argument('-B', "--batch", action='store_true', required=False)
+parser.add_argument('-S', "--subsample", action='store_true', required=False)
 parser.add_argument('-P', "--proba", action='store_true', required=False)
 parser.add_argument('-o', "--outfile", dest='outfile', metavar='<outfile>', type=str, help='output file', required=False)
 parser.add_argument('-s', "--scorefile", dest='scorefile', metavar='<scorefile>', type=str, help='score file', required=False)
@@ -38,6 +39,9 @@ def vprint(string):
     __builtins__.print(string)
 print = vprint   
 
+subsample=False
+if args.subsample:
+   subsample=True
 label_file = args.labelfile
 label_name = args.labelname
 features = []
@@ -58,7 +62,7 @@ for key,newkey in label_aliases.items():
 print(f'- removing label {args.excludelabels}')
 df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 
-df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=False, seed=1, saveflag=False, verbose=False)
+df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=subsample, seed=1, saveflag=False, verbose=False)
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
@@ -76,7 +80,7 @@ columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC",
 scores = pd.DataFrame()
 out = classify(args.folds, args.repeat, args.jobs, False)
 for iter,res in enumerate(out):
-   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])])
+   scores = pd.concat([scores,pd.DataFrame(res[1], columns=columns_names, index=[iter])],axis=1)
 if args.scorefile is not None:
    scores.to_csv(args.scorefile, index=False)
 else:
