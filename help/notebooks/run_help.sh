@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 METHOD=HELP
 ROOTDIR=PLOS_CompBiology
 ENV=envs/mytorch
