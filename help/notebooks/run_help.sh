@@ -1,11 +1,12 @@
 #!/bin/bash
 METHOD=HELP
+ROOTDIR=PLOS_CompBiology
 CMD=$HOME/miniconda3/bin/python
-PRG=$HOME/HELP/help/notebooks/EG_prediction.py
-DATA=$HOME/HELP/help/data
-TARGET=$HOME/HELP/help/data
-SCOREDIR=$HOME/HELP/help/scores
-LOGDIR=$HOME/HELP/help/logs
+PRG=$HOME/$ROOTDIR/HELP/help/notebooks/EG_prediction.py
+DATA=$HOME/$ROOTDIR/HELP/help/data
+TARGET=$HOME/$ROOTDIR/HELP/help/data
+SCOREDIR=$HOME/$ROOTDIR/HELP/help/scores
+LOGDIR=$HOME/$ROOTDIR/HELP/help/logs
 TISSUE=Kidney
 PROB=EvsNE
 ALIASES="{'aE':'NE', 'sNE': 'NE'}"
