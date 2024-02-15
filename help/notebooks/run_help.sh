@@ -12,7 +12,7 @@ TISSUE=Kidney
 PROB=EvsNE
 ALIASES="{'aE':'NE', 'sNE': 'NE'}"
 EXCLABELS=null
-LABELFILE=${METHOD}_${TISSUE}_3class.csv
+LABELFILE=${TISSUE}_${METHOD}_3class.csv
 
 echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -X $EXCLABELS  -j -1 -P -B -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_bio.csv" | bash
 echo "running CC"
