@@ -4,7 +4,7 @@ import statistics
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import io, color
-from skimage.filters import threshold_multiotsu
+from skimage.filters import threshold_multiotsu, threshold_yen
 import warnings
 from tqdm import tqdm
 
@@ -57,6 +57,12 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu')
                 thresh = threshold_multiotsu(valid_values, num_thresholds)
         elif algorithm == 'linspace':
             thresh = np.linspace(np.nanmin(valid_values), np.nanmax(valid_values), num_thresholds + 1)[1:-1]
+        elif algorithm == 'yen':
+            if num_thresholds > 2:
+                warnings.warn('Yen thresholding only upport one threshow (binary separation)... using linspace mode!')
+                thresh = np.linspace(np.nanmin(valid_values), np.nanmax(valid_values), num_thresholds + 1)[1:-1]
+            else:
+                thresh = np.array([threshold_yen(valid_values)])
         else:
             raise Exception("Thresholding method not supported")
         thresholds += [thresh]
