@@ -236,7 +236,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
             labels = labelling_core(df, columns=lines, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
                                   n_classes=n_classes, algorithm=algorithm)
-            labels = labels.replace(dict(map(reversed, labelnames.items()))).infer_objects(copy=False)
+            labels = labels.replace(dict(map(reversed, labelnames.items()))).infer_objects()
             L_tot = np.hstack((L_tot, labels.values))
         # Execute mode on each tissue and sort'em
         modeOfmode = modemax_nan(L_tot)
