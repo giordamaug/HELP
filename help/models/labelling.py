@@ -117,7 +117,7 @@ def modemax_nan(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> n
 
 def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
                   verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
-                  mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label') -> Tuple[pd.DataFrame, np.ndarray]:
+                  mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label', reducefoo=reducefoo) -> Tuple[pd.DataFrame, np.ndarray]:
     """
     Core function for HELP labelling algorithm.
 
@@ -135,6 +135,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     :param str algorithm: quantization algorithm type otsu|linspace (default: 'otsu'). 
     :param str rowname: Name of the DataFrame index (default: 'gene').
     :param str colname: Name of the label column (default: 'label').
+    :param Callable[[List[int]], int] reducefoo: function used for solving ex-aequo in mode.
 
     :returns: Output labelled DataFrame and quantized array.
     :rtype: Tuple[pd.DataFrame, np.ndarray]
@@ -159,7 +160,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
         if verbose: print("[two-by-two]: 1. Two-class labelling:") 
         # Perform quantization
         Q, Thr = multi_threshold_with_nan_by_column(T, 2, algorithm=algorithm)
-        Labels2 = modemax_nan(Q)
+        Labels2 = modemax_nan(Q, reducefoo=reducefoo)
         if verbose: print(Labels2.shape)
         dfout =  pd.DataFrame(index=df.index)
         dfout.index.name = rowname
@@ -172,7 +173,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
             TNE = df[columns].loc[NE_genes].to_numpy()
         NumberOfClasses = 2
         QNE, ThrNE = multi_threshold_with_nan_by_column(TNE, 2, algorithm=algorithm)
-        Labels = modemax_nan(QNE)
+        Labels = modemax_nan(QNE, reducefoo=reducefoo)
         if verbose: print(Labels.shape)
         dfout2 =  pd.DataFrame(index=NE_genes)
         dfout2.index.name = rowname
@@ -184,7 +185,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
         if verbose: print("[flat-multi]: 1. multi-class labelling:") 
         # Perform quantization
         Q, Thr = multi_threshold_with_nan_by_column(T, n_classes, algorithm=algorithm)
-        Labels = modemax_nan(Q)
+        Labels = modemax_nan(Q, reducefoo=reducefoo)
         dfout =  pd.DataFrame(index=df.index)
         dfout.index.name = rowname
         dfout[colname] = Labels
@@ -194,7 +195,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     
 def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2, 
              verbose: bool = False, labelnames: Dict[int, str] = {1 : 'NE', 0: 'E'},
-             mode='flat-multi', rowname: str = 'gene', colname: str = 'label', algorithm='otsu') -> pd.DataFrame:
+             mode='flat-multi', rowname: str = 'gene', colname: str = 'label', algorithm='otsu', reducefoo=max) -> pd.DataFrame:
     """
     Main function for HELP labelling algorithm.
 
@@ -209,6 +210,8 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
                                          (default: 'flat-multi').
     :param str rowname: Name of the DataFrame index (default: 'gene').
     :param str colname: Name of the label column (default: 'label').
+    :param str algorithm: quantization algorithm type otsu|linspace (default: 'otsu'). 
+    :param Callable[[List[int]], int] reducefoo: function used for solving ex-aequo in mode.
 
     :returns: Output DataFrame with labels.
     :rtype: pd.DataFrame
@@ -235,11 +238,11 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
                 warnings.warn("There are rows with all NaNs, please remove them using the function 'rows_with_all_nan()' and re-apply the labelling. Otherwise you will have NaN labels in your output.")
             labels = labelling_core(df, columns=lines, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
-                                  n_classes=n_classes, algorithm=algorithm)
+                                  n_classes=n_classes, algorithm=algorithm, reducefoo=reducefoo)
             labels = labels.replace(dict(map(reversed, labelnames.items()))).infer_objects()
             L_tot = np.hstack((L_tot, labels.values))
         # Execute mode on each tissue and sort'em
-        modeOfmode = modemax_nan(L_tot)
+        modeOfmode = modemax_nan(L_tot, reducefoo=reducefoo)
         dfout =  pd.DataFrame(index=df[sum(columns, [])].index)
         dfout.index.name = rowname
         dfout[colname] = modeOfmode
@@ -253,7 +256,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
             warnings.warn("There are rows with all NaNs, please remove them using the function 'rows_with_all_nan()' and re-apply the labelling. Otherwise you will ha NaN labels in your output.")
         dfout = labelling_core(df, columns=columns, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
-                                  n_classes=n_classes,algorithm=algorithm)
+                                  n_classes=n_classes,algorithm=algorithm, reducefoo=reducefoo)
     dfout.index.name = rowname
     dfout = dfout.replace(labelnames)
     if verbose: print(dfout.value_counts())
