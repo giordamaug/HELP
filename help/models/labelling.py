@@ -117,7 +117,8 @@ def modemax_nan(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> n
 
 def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
                   verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
-                  mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label', reducefoo: Callable[[List[int]], int]=max) -> Tuple[pd.DataFrame, np.ndarray]:
+                  mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label', 
+                  reducefoo: Callable[[List[int]], int]=max) -> Tuple[pd.DataFrame, np.ndarray]:
     """
     Core function for HELP labelling algorithm.
 
