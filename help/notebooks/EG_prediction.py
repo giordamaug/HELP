@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import random
 from help.preprocess.loaders import feature_assemble_df
 import os,sys
 import argparse
@@ -38,7 +39,11 @@ def vprint(string):
   else:
     __builtins__.print(string)
 print = vprint   
+def set_seed(seed=1):
+    random.seed(seed)
+    np.random.seed(seed)
 
+set_seed(1)
 subsample=False
 if args.subsample:
    subsample=True
