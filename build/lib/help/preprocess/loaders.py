@@ -186,6 +186,9 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
                 lab_df = pd.concat([lab_df.loc[idxNE], lab_df.loc[idxE]], axis=0).sample(frac=1)
         #else:
         #    warnings.warn("Subsampling cannot be applied: majority class is less then 4 times the minority one.")
+            if verbose:
+                print(f'Subsampling with factor 1:{fold}')
+
 
     # Common indices among labels and features
     idx_common = lab_df.index.values

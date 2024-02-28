@@ -64,10 +64,10 @@ print(f'- removing label {args.excludelabels}')
 df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 
 if args.subfolds > 0:
-   print(f'Subsampling with facto 1:{args.subfolds}...')
-   df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=True, fold=args.subfolds, seed=1, saveflag=False, verbose=False)
+   print(f'Subsampling with factor 1:{args.subfolds}...')
+   df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=True, fold=args.subfolds, seed=1, saveflag=False, verbose=verbose)
 else:
-   df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, saveflag=False, verbose=False)
+   df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, saveflag=False, verbose=verbose)
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
