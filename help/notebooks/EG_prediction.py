@@ -93,11 +93,12 @@ df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc
                           scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()).values[0].tolist()],
                           columns=['measure'], index=scores.columns)
 import sys
+distrib = np.unique(df_y[label_name].values, return_counts=True)
 ofile = sys.stdout if args.outfile is None else open(args.outfile, "a")
-ofile.write(f'METHOD: LGBM\n')
+ofile.write(f'METHOD: LGBM\tMODE: {"prob" if args.proba else "pred"}\n')
 ofile.write(f'PROBL: {" vs ".join(list(np.unique(df_y.values)))}\n')
 ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
-ofile.write(f'LABEL: {os.path.basename(args.labelfile)} MODE: {"prob" if args.proba else "pred"}\n')
+ofile.write(f'LABEL: {os.path.basename(args.labelfile)} DISTRIB: {distrib[0][0]} : {distrib[1][0]}, {distrib[1][0]}: {distrib[1][1]}\n')
 ofile.write(f'SUBSAMPLE: 1:{args.subfolds}\n' if args.subfolds>0 else 'SUBSAMPLE: NONE\n')
 ofile.write(tabulate(df_scores, headers='keys', tablefmt='psql') + '\n')
 ofile.close()
