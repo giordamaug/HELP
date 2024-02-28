@@ -83,7 +83,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         print(f'Classification with LightGBM...')
 
     # Iterate over each fold
-    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=verbose)):
+    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not verbose)):
         train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
         mm = np.concatenate((mm, test_idx))
         probs = clf.fit(train_x, train_y).predict_proba(test_x)

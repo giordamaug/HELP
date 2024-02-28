@@ -10,23 +10,21 @@ import tabulate
 from ast import literal_eval
 from tabulate import tabulate
 
-parser = argparse.ArgumentParser(description='BIOMAT 2022 Workbench')
+parser = argparse.ArgumentParser(description='PLOS COMPBIO')
 parser.add_argument('-i', "--inputfile", dest='inputfile', metavar='<inputfile>', nargs="+", type=str, help='input attribute filename list', required=True)
 parser.add_argument('-X', "--excludelabels", dest='excludelabels', metavar='<excludelabels>', nargs="+", default=[], help='labels to exclude (default NaN, values any list)', required=False)
 parser.add_argument('-L', "--labelname", dest='labelname', metavar='<labelname>',  type=str, help='label name (default label)', default='label', required=False)
 parser.add_argument('-l', "--labelfile", dest='labelfile', metavar='<labelfile>', type=str, help='label filename', required=True)
-parser.add_argument('-A', "--aliases", dest='aliases', default="{}", metavar='<aliases>', required=False)
-parser.add_argument('-Z', "--normalize", dest='normalize', metavar='<normalize>', type=str, help='normalize mode (default: None, choice: None|zscore|minmax)', choices=[None, 'zscore', 'minmax'], default=None, required=False)
-parser.add_argument('-I', "--imputation", dest='imputation', metavar='<imputation>', type=str, help='imputation mode (default: None, choice: None|mean|zero)', choices=[None, 'mean', 'zero'], default=None, required=False)
-parser.add_argument('-b', "--seed", dest='seed', metavar='<seed>', type=int, help='seed (default: 1)' , default='1', required=False)
+parser.add_argument('-A', "--aliases", dest='aliases', default="{}", metavar='<aliases>', help='the dictionary for label renaming (es: {"oldlabel": "newlabel"})', required=False)
+parser.add_argument('-b', "--seed", dest='seed', metavar='<seed>', type=int, help='random seed (default: 1)' , default='1', required=False)
 parser.add_argument('-r', "--repeat", dest='repeat', metavar='<repeat>', type=int, help='n. of iteration (default: 10)' , default=10, required=False)
 parser.add_argument('-f', "--folds", dest='folds', metavar='<folds>', type=int, help='n. of cv folds (default: 5)' , default=5, required=False)
 parser.add_argument('-j', "--jobs", dest='jobs', metavar='<jobs>', type=int, help='n. of parallel jobs (default: -1)' , default=-1, required=False)
-parser.add_argument('-B', "--batch", action='store_true', required=False)
-parser.add_argument('-S', "--subsample", action='store_true', required=False)
-parser.add_argument('-P', "--proba", action='store_true', required=False)
-parser.add_argument('-o', "--outfile", dest='outfile', metavar='<outfile>', type=str, help='output file', required=False)
-parser.add_argument('-s', "--scorefile", dest='scorefile', metavar='<scorefile>', type=str, help='score file', required=False)
+parser.add_argument('-B', "--batch", action='store_true', help='enable batch mode (no output)', required=False)
+parser.add_argument('-sf', "--subfolds", dest='subfolds', metavar='<subfolds>', type=int, help='n. of folds for subsampling (default: 0 - no subsampling)' , default=4, required=False)
+parser.add_argument('-P', "--proba", action='store_true', help='enable probability mode output (default disabled)', required=False)
+parser.add_argument('-o', "--outfile", dest='outfile', metavar='<outfile>', help='output file for performance measures sumup', type=str, required=False)
+parser.add_argument('-s', "--scorefile", dest='scorefile', metavar='<scorefile>', type=str, help='output file reporting all measurements', required=False)
 args = parser.parse_args()
 
 ## redefine print function
@@ -44,9 +42,6 @@ def set_seed(seed=1):
     np.random.seed(seed)
 
 set_seed(1)
-subsample=False
-if args.subsample:
-   subsample=True
 label_file = args.labelfile
 label_name = args.labelname
 features = []
@@ -67,7 +62,11 @@ for key,newkey in label_aliases.items():
 print(f'- removing label {args.excludelabels}')
 df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 
-df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=subsample, seed=1, saveflag=False, verbose=False)
+if args.subfolds > 0:
+   print(f'Subsampling with facto 1:{args.subfolds}...')
+   df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=True, fold=args.subfolds, seed=1, saveflag=False, verbose=False)
+else:
+   df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, saveflag=False, verbose=False)
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
@@ -96,8 +95,9 @@ df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc
 import sys
 ofile = sys.stdout if args.outfile is None else open(args.outfile, "a")
 ofile.write(f'METHOD: LGBM\n')
-ofile.write(f'PROBL: {"vs".join(list(np.unique(df_y.values)))}\n')
+ofile.write(f'PROBL: {" vs ".join(list(np.unique(df_y.values)))}\n')
 ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
 ofile.write(f'LABEL: {os.path.basename(args.labelfile)} MODE: {"prob" if args.proba else "pred"}\n')
+ofile.write(f'SUBSAMPLE: 1:{args.subfolds}\n' if args.subfolds>0 else 'SUBSAMPLE: NONE\n')
 ofile.write(tabulate(df_scores, headers='keys', tablefmt='psql') + '\n')
 ofile.close()
