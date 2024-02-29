@@ -125,4 +125,4 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         df_results.to_csv(outfile)
 
     # Return the summary statistics of cross-validated predictions and the single measures
-    return df_scores, scores
+    return df_scores, scores, df_results
