@@ -37,6 +37,11 @@ def vprint(string):
     fun
   else:
     __builtins__.print(string)
+
+if args.batch:
+   verbose = False
+else:
+   verbose = True
 print = vprint   
 def set_seed(seed=1):
     random.seed(seed)
