@@ -30,8 +30,8 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     :param bool display: Whether to display a confusion matrix plot.
     :param int or None seed: Random seed for reproducibility.
 
-    :returns: Summary statistics of the cross-validated predictions.
-    :rtype: pd.DataFrame
+    :returns: Summary statistics of the cross-validated predictions, single measures and label predictions
+    :rtype: Tuple(pd.DataFrame,pd.DataFrame,pd.DataFrame)
 
     :example
  
@@ -40,7 +40,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         # Example usage
         X_data = pd.DataFrame(...)
         Y_data = pd.DataFrame(...)
-        result = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)
+        result, _, _ = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)
     """
     # silent twdm if no verbosoti
     #if not verbose: 
@@ -124,5 +124,5 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     if saveflag:
         df_results.to_csv(outfile)
 
-    # Return the summary statistics of cross-validated predictions and the single measures
+    # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
