@@ -23,7 +23,9 @@ parser.add_argument('-j', "--jobs", dest='jobs', metavar='<jobs>', type=int, hel
 parser.add_argument('-B', "--batch", action='store_true', help='enable batch mode (no output)', required=False)
 parser.add_argument('-sf', "--subfolds", dest='subfolds', metavar='<subfolds>', type=int, help='n. of folds for subsampling (default: 0 - no subsampling)' , default=4, required=False)
 parser.add_argument('-P', "--proba", action='store_true', help='enable probability mode output (default disabled)', required=False)
-parser.add_argument('-ba', "--balanced", action='store_true', default=False, help='enable balancing in clasifier (default disabled)', required=False)
+parser.add_argument('-ba', "--balanced", action='store_true', default=False, help='enable balancing in classifier (default disabled)', required=False)
+parser.add_argument('-fx', "--fixna", action='store_true', default=False, help='enable fixing NaN (default disabled)', required=False)
+parser.add_argument('-n', "--normalize", dest='normalize', metavar='<normalize>',  type=str, help='normalization mode (default None)', choices=['max', 'std'], required=False)
 parser.add_argument('-o', "--outfile", dest='outfile', metavar='<outfile>', help='output file for performance measures sumup', type=str, required=False)
 parser.add_argument('-s', "--scorefile", dest='scorefile', metavar='<scorefile>', type=str, help='output file reporting all measurements', required=False)
 args = parser.parse_args()
@@ -52,10 +54,9 @@ label_file = args.labelfile
 label_name = args.labelname
 features = []
 for attrfile in args.inputfile:
-    if 'Emb' in os.path.basename(attrfile):
-        features += [{'fname': attrfile, 'fixna' : False, 'normalize': None}]
-    else:
-        features += [{'fname': attrfile, 'fixna' : True, 'normalize': 'std'}]
+    fixna = args.fixna
+    normalization = False if args.normalize is None else args.normalize
+    features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]  # no normalization for embedding
 
 df_lab = pd.read_csv(label_file, index_col=0)
 # get label aliases
