@@ -56,8 +56,11 @@ features = []
 for attrfile in args.inputfile:
     fixna = args.fixna
     normalization = False if args.normalize is None else args.normalize
-    features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]  # no normalization for embedding
-
+    if 'Emb' in os.path.basename(attrfile):
+      features += [{'fname': attrfile, 'fixna' : False, 'normalize': None}]  # no normalization for embedding
+    else:
+      features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]
+      
 df_lab = pd.read_csv(label_file, index_col=0)
 # get label aliases
 label_aliases = literal_eval(args.aliases)
