@@ -4,11 +4,11 @@ ROOTDIR=PLOS_CompBiology
 ENV=envs/mytorch
 CMD=$HOME/miniconda3/$ENV/bin/python
 PRG=$HOME/$ROOTDIR/HELP/help/notebooks/EG_prediction.py
-DATA=$HOME/$ROOTDIR/HELP/help/data
-TARGET=$HOME/$ROOTDIR/HELP/help/data
+DATA=$HOME/$ROOTDIR/HELP/help/datafinal
+TARGET=$HOME/$ROOTDIR/HELP/help/datafinal
 SCOREDIR=$HOME/$ROOTDIR/HELP/help/scoresfinal
 LOGDIR=$HOME/$ROOTDIR/HELP/help/logsfinal
-TISSUE=Lung
+TISSUE=Kidney
 PROB=AEvsSNE
 #ALIASES="{'aE':'NE', 'sNE': 'NE'}"
 ALIASES="{}"
@@ -33,5 +33,5 @@ echo "running BIO+N2V"
 echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_EmbN2V_128.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -ba -sf 4 $EXCLABELS -j -1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_bion2v.csv" | bash
 echo "running BIO+N2V+CCcfs"
 echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_CCcfs.csv $DATA/${TISSUE}_EmbN2V_128.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -ba -sf 4 $EXCLABELS -j -1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_bioccn2v.csv" | bash
-echo "running BIO+BPBeder"
-echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_BPBeder.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -ba -sf 4 $EXCLABELS -j 1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_biobpbeder.csv" | bash
+#echo "running BIO+BPBeder"
+#echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_BPBeder.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -ba -sf 4 $EXCLABELS -j 1 -P -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_biobpbeder.csv" | bash

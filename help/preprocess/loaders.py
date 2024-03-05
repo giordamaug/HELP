@@ -100,10 +100,12 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         feat_df.index = feat_df.index.map(str)
 
         # Handle missing values if required
-        if feat['fixna']:
+        if verbose:
             cntnan = feat_df.isna().sum().sum()
+            print(f"[{feattype}] found {cntnan} Nan...")
+        if feat['fixna']:
             if verbose:
-                print(f"[{feattype}] found {cntnan} Nan...")
+                print(f"[{feattype}] Fixing NaNs with mean ...")
             feat_df = feat_df.fillna(x.mean())
 
         # Normalize features
@@ -201,10 +203,12 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         feat_df.index = feat_df.index.map(str)
 
         # Handle missing values if required
-        if feat['fixna']:
+        if verbose:
             cntnan = feat_df.isna().sum().sum()
+            print(f"[{feattype}] found {cntnan} Nan...")
+        if feat['fixna']:
             if verbose:
-                print(f"[{feattype}] found {cntnan} Nan...")
+                print(f"[{feattype}] Fixing NaNs with mean ...")
             feat_df = feat_df.fillna(x.mean())
 
         # Normalize features
