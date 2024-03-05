@@ -1,0 +1,112 @@
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 15994
+SUBSAMPLE: NONE
++-------------+--------------------------------+
+|             | measure                        |
+|-------------+--------------------------------|
+| ROC-AUC     | 0.9560±0.0058                  |
+| Accuracy    | 0.9483±0.0029                  |
+| BA          | 0.8350±0.0166                  |
+| Sensitivity | 0.7026±0.0341                  |
+| Specificity | 0.9673±0.0028                  |
+| MCC         | 0.6353±0.0224                  |
+| CM          | [[8727, 3693], [5223, 154717]] |
++-------------+--------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 1206
+SUBSAMPLE: 1:1
++-------------+--------------------------------+
+|             | measure                        |
+|-------------+--------------------------------|
+| ROC-AUC     | 0.9443±0.0092                  |
+| Accuracy    | 0.8793±0.0131                  |
+| BA          | 0.8791±0.0131                  |
+| Sensitivity | 0.8944±0.0181                  |
+| Specificity | 0.8638±0.0198                  |
+| MCC         | 0.7591±0.0261                  |
+| CM          | [[11109, 1311], [1643, 10417]] |
++-------------+--------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 2416
+SUBSAMPLE: 1:2
++-------------+--------------------------------+
+|             | measure                        |
+|-------------+--------------------------------|
+| ROC-AUC     | 0.9491±0.0063                  |
+| Accuracy    | 0.8867±0.0108                  |
+| BA          | 0.8753±0.0120                  |
+| Sensitivity | 0.8398±0.0202                  |
+| Specificity | 0.9108±0.0122                  |
+| MCC         | 0.7485±0.0238                  |
+| CM          | [[10430, 1990], [2154, 22006]] |
++-------------+--------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 4809
+SUBSAMPLE: 1:4
++-------------+-------------------------------+
+|             | measure                       |
+|-------------+-------------------------------|
+| ROC-AUC     | 0.9528±0.0071                 |
+| Accuracy    | 0.9081±0.0081                 |
+| BA          | 0.8629±0.0130                 |
+| Sensitivity | 0.7862±0.0264                 |
+| Specificity | 0.9397±0.0092                 |
+| MCC         | 0.7209±0.0238                 |
+| CM          | [[9764, 2656], [2902, 45188]] |
++-------------+-------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 7223
+SUBSAMPLE: 1:6
++-------------+-------------------------------+
+|             | measure                       |
+|-------------+-------------------------------|
+| ROC-AUC     | 0.9557±0.0048                 |
+| Accuracy    | 0.9244±0.0056                 |
+| BA          | 0.8555±0.0129                 |
+| Sensitivity | 0.7580±0.0262                 |
+| Specificity | 0.9530±0.0055                 |
+| MCC         | 0.7022±0.0214                 |
+| CM          | [[9414, 3006], [3395, 68835]] |
++-------------+-------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 9606
+SUBSAMPLE: 1:8
++-------------+-------------------------------+
+|             | measure                       |
+|-------------+-------------------------------|
+| ROC-AUC     | 0.9558±0.0064                 |
+| Accuracy    | 0.9335±0.0054                 |
+| BA          | 0.8467±0.0137                 |
+| Sensitivity | 0.7342±0.0270                 |
+| Specificity | 0.9593±0.0050                 |
+| MCC         | 0.6794±0.0247                 |
+| CM          | [[9119, 3301], [3912, 92148]] |
++-------------+-------------------------------+
+METHOD: LGBM	MODE: prob	BALANCE: yes
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 12007
+SUBSAMPLE: 1:10
++-------------+--------------------------------+
+|             | measure                        |
+|-------------+--------------------------------|
+| ROC-AUC     | 0.9567±0.0047                  |
+| Accuracy    | 0.9403±0.0037                  |
+| BA          | 0.8421±0.0129                  |
+| Sensitivity | 0.7213±0.0262                  |
+| Specificity | 0.9630±0.0036                  |
+| MCC         | 0.6615±0.0201                  |
+| CM          | [[8959, 3461], [4448, 115622]] |
++-------------+--------------------------------+
