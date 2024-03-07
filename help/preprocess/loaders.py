@@ -105,7 +105,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
             dfl = []
             for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
                filename, file_ext = os.path.splitext(feat['fname'])
-               dfl += [pd.read_csv(f"{filename}_{id}.{file_ext}", index_col=0)]
+               dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)
         else:
             feat_df = pd.read_csv(feat['fname'], index_col=0)
@@ -220,7 +220,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
             dfl = []
             for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
                filename, file_ext = os.path.splitext(feat['fname'])
-               dfl += [pd.read_csv(f"{filename}_{id}.{file_ext}", index_col=0)]
+               dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)
         else:
             feat_df = pd.read_csv(feat['fname'], index_col=0)

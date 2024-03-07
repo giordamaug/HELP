@@ -6,6 +6,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import warnings
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 
 def scale_to_essentials(ge_fit, ess_genes, noness_genes):
     """
@@ -33,14 +34,18 @@ def scale_to_essentials(ge_fit, ess_genes, noness_genes):
     return scaled_ge_fit
 
 
-def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
+def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}], 
                      colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
     :param str label_file: Path to the label file.
     :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.
-        Default is [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}].
+        Default is [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}].
+        'fname' : str, filename of attributes (in CSV format)
+        'fixna' : bool, flag to enable fixing missing values with mean in column
+        'normalize': std|max|None, normalization option (z-score, minmax, or no normalization)
+        'nchunks': int, number of chunck the attribute file is split   
     :param str colname: Name of the column in the label file to be used as the target variable. Default is "label".
     :param bool subsample: Whether to subsample the data. Default is False.
     :param int seed: Random seed for reproducibility. Default is 1.
@@ -69,7 +74,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
 
     # Load labels from the specified file
     if verbose:
-        print(f"Loading {label_file}")
+        print(f"Loading label file {label_file}")
     
     lab_df = pd.read_csv(label_file, index_col=0)
 
@@ -95,7 +100,15 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
 
     # Process each feature
     for feat in features:
-        feat_df = pd.read_csv(feat['fname'], index_col=0)
+        # check for chunk splits
+        if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
+            dfl = []
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
+               filename, file_ext = os.path.splitext(feat['fname'])
+               dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
+            feat_df = pd.concat(dfl)
+        else:
+            feat_df = pd.read_csv(feat['fname'], index_col=0)
         feattype = os.path.split(feat['fname'])[1]
         feat_df.index = feat_df.index.map(str)
 
@@ -139,14 +152,18 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     # Return the assembled features (X) and labels (Y)
     return x, lab_df[[colname]].loc[idx_common]
 
-def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}], 
+def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std', 'nchunks': 1}], 
                      colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
     :param str label_file: Path to the label file.
     :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.
-        Default is [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std'}].
+        Default is [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}].
+        'fname' : str, filename of attributes (in CSV format)
+        'fixna' : bool, flag to enable fixing missing values with mean in column
+        'normalize': std|max|None, normalization option (z-score, minmax, or no normalization)
+        'nchunks': int, number of chunck the attribute file is split   
     :param str colname: Name of the column in the label file to be used as the target variable. Default is "label".
     :param bool subsample: Whether to subsample the data. Default is False.
     :param int seed: Random seed for reproducibility. Default is 1.
@@ -196,9 +213,17 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     idx_common = lab_df.index.values
     x = pd.DataFrame(index=lab_df.index)
 
-    # Process each feature
+    # Process each feature file
     for feat in features:
-        feat_df = pd.read_csv(feat['fname'], index_col=0)
+        # check for chunk splits
+        if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
+            dfl = []
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
+               filename, file_ext = os.path.splitext(feat['fname'])
+               dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
+            feat_df = pd.concat(dfl)
+        else:
+            feat_df = pd.read_csv(feat['fname'], index_col=0)
         feattype = os.path.split(feat['fname'])[1]
         feat_df.index = feat_df.index.map(str)
 
