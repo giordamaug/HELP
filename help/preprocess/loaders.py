@@ -6,6 +6,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import warnings
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 
 def scale_to_essentials(ge_fit, ess_genes, noness_genes):
     """
@@ -102,7 +103,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         # check for chunk splits
         if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
             dfl = []
-            for id in range(feat['nchunks']):
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
                filename, file_ext = os.path.splitext(feat['fname'])
                dfl += [pd.read_csv(f"{filename}_{id}.{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)
@@ -217,7 +218,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         # check for chunk splits
         if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
             dfl = []
-            for id in range(feat['nchunks']):
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
                filename, file_ext = os.path.splitext(feat['fname'])
                dfl += [pd.read_csv(f"{filename}_{id}.{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)
