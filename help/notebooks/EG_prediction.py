@@ -12,6 +12,7 @@ from tabulate import tabulate
 
 parser = argparse.ArgumentParser(description='PLOS COMPBIO')
 parser.add_argument('-i', "--inputfile", dest='inputfile', metavar='<inputfile>', nargs="+", type=str, help='input attribute filename list', required=True)
+parser.add_argument('-c', "--chunks", dest='chunks', metavar='<chunks>', nargs="+", type=int, help='no of chunks for attribute filename list', required=False)
 parser.add_argument('-X', "--excludelabels", dest='excludelabels', metavar='<excludelabels>', nargs="+", default=[], help='labels to exclude (default NaN, values any list)', required=False)
 parser.add_argument('-L', "--labelname", dest='labelname', metavar='<labelname>',  type=str, help='label name (default label)', default='label', required=False)
 parser.add_argument('-l', "--labelfile", dest='labelfile', metavar='<labelfile>', type=str, help='label filename', required=True)
@@ -53,13 +54,23 @@ set_seed(1)
 label_file = args.labelfile
 label_name = args.labelname
 features = []
-for attrfile in args.inputfile:
-    fixna = args.fixna
-    normalization = False if args.normalize is None else args.normalize
-    if 'Emb' in os.path.basename(attrfile):
-      features += [{'fname': attrfile, 'fixna' : False, 'normalize': None}]  # no normalization for embedding
-    else:
-      features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]
+if args.chunks is not None:                  # load files by chunks
+   assert len(args.chunks) == len(args.inputfile), "Chunk list must be same size of input list!" 
+   for attrfile,nchunks in zip(args.inputfile,args.chunks):
+      fixna = args.fixna
+      normalization = False if args.normalize is None else args.normalize
+      if 'Emb' in os.path.basename(attrfile):
+         features += [{'fname': attrfile, 'fixna' : False, 'normalize': None, 'nchunks': nchunks}]  # no normalization for embedding
+      else:
+         features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization, 'nchunks': nchunks}]
+else:                                         # no kile is are 
+   for attrfile in args.inputfile:
+      fixna = args.fixna
+      normalization = False if args.normalize is None else args.normalize
+      if 'Emb' in os.path.basename(attrfile):
+         features += [{'fname': attrfile, 'fixna' : False, 'normalize': None}]  # no normalization for embedding
+      else:
+         features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]
       
 df_lab = pd.read_csv(label_file, index_col=0)
 # get label aliases
