@@ -13,7 +13,7 @@ In more details, the workflow implements the following steps
 .. toctree::
    :maxdepth: 1
 
-   tutorial1/labelling_tissue
+   tutorial1/labelling
 
 Tissue's PPI network embedding 
 ==============================
