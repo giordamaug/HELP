@@ -1,6 +1,26 @@
+Install HELP from GitHub
+========================
+
+Skip this cell if you already have installed HELP.
+
 .. code:: ipython3
 
-    datapath = "../data"
+    !pip install git+https://github.com/giordamaug/HELP.git
+
+Download the input files
+========================
+
+In this cell we download from GitHub repository the label file and the
+attribute files. Skip this step if you already have these input files
+locally.
+
+.. code:: ipython3
+
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_HELP.csv
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_BIO.csv
+    for i in range(5):
+      !wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_CCcfs_{i}.csv
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_EmbN2V_128.csv
 
 Process the tissue attributes
 =============================
@@ -15,36 +35,53 @@ building.
 
 .. code:: ipython3
 
+    tissue='Kidney'
     import pandas as pd
-    from help.preprocess.loaders import feature_assemble
+    from help.preprocess.loaders import feature_assemble_df
     import os
-    label_file = os.path.join(datapath, 'label_Kidney.csv')
-    features = [{'fname': os.path.join(datapath, 'Kidney_BIO.csv'), 'fixna' : True, 'normalize': 'std'},
-                {'fname': os.path.join(datapath, 'Kidney_CCcfs.csv'), 'fixna' : True, 'normalize': 'std'},
-                {'fname': os.path.join(datapath, 'Kidney_EmbN2V_128.csv'), 'fixna' : None, 'normalize': None}]
-    df_X, df_y = feature_assemble(label_file = label_file, 
-                                  features=features, subsample=False, seed=1, saveflag=False, verbose=True)
+    df_y = pd.read_csv(f"{tissue}_HELP.csv", index_col=0)
+    df_y = df_y.replace({'aE': 'NE', 'sNE': 'NE'})
+    print(df_y.value_counts(normalize=False))
+    features = [{'fname': f'{tissue}_BIO.csv', 'fixna' : False, 'normalize': 'std'},
+                {'fname': f'{tissue}_CCcfs.csv', 'fixna' : False, 'normalize': 'std', 'nchunks' : 5},
+                {'fname': f'{tissue}_EmbN2V_128.csv', 'fixna' : False, 'normalize': None}]
+    df_X, df_y = feature_assemble_df(df_y, features=features, subsample=False, seed=1, saveflag=False, verbose=True)
     pd.merge(df_X, df_y, left_index=True, right_index=True, how='outer')
 
 
 .. parsed-literal::
 
-    Loading ../data/label_Kidney.csv
+    label
+    NE       16678
+    E         1253
+    dtype: int64
     Majority NE 16678 minoriy E 1253
-    [Kidney_BIO.csv] found 0 Nan...
+    [Kidney_BIO.csv] found 52532 Nan...
     [Kidney_BIO.csv] Normalization with std ...
-    [Kidney_CCcfs.csv] found 0 Nan...
+
+
+.. parsed-literal::
+
+    Loading file in chunks: 100%|██████████| 5/5 [00:11<00:00,  2.36s/it]
+
+
+.. parsed-literal::
+
+    [Kidney_CCcfs.csv] found 6676644 Nan...
     [Kidney_CCcfs.csv] Normalization with std ...
+    [Kidney_EmbN2V_128.csv] found 0 Nan...
     [Kidney_EmbN2V_128.csv] No normalization...
     17236 labeled genes over a total of 17931
-    (17236, 3459) data input
+    (17236, 3456) data input
 
 
 
 
 .. raw:: html
 
-    <div>
+    
+      <div id="df-0b535a8d-339f-4c4c-b065-ec50eb63c78d" class="colab-df-container">
+        <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -93,10 +130,10 @@ building.
           <td>0.501832</td>
           <td>2.044542e-05</td>
           <td>0.002950</td>
-          <td>0.651992</td>
+          <td>NaN</td>
           <td>0.000002</td>
-          <td>0.084365</td>
-          <td>0.038663</td>
+          <td>NaN</td>
+          <td>NaN</td>
           <td>0.115385</td>
           <td>...</td>
           <td>0.120922</td>
@@ -116,7 +153,7 @@ building.
           <td>0.047120</td>
           <td>0.160530</td>
           <td>1.980884e-05</td>
-          <td>0.021528</td>
+          <td>NaN</td>
           <td>0.556939</td>
           <td>0.000232</td>
           <td>0.069767</td>
@@ -165,7 +202,7 @@ building.
           <td>0.299948</td>
           <td>5.123403e-07</td>
           <td>0.017699</td>
-          <td>0.653681</td>
+          <td>NaN</td>
           <td>0.000000</td>
           <td>0.069767</td>
           <td>0.005128</td>
@@ -188,7 +225,7 @@ building.
           <td>0.000000</td>
           <td>0.473739</td>
           <td>1.421472e-06</td>
-          <td>0.018692</td>
+          <td>NaN</td>
           <td>0.663540</td>
           <td>0.000000</td>
           <td>0.069767</td>
@@ -236,11 +273,11 @@ building.
           <td>0.010471</td>
           <td>0.288257</td>
           <td>7.073108e-06</td>
-          <td>0.019355</td>
+          <td>NaN</td>
           <td>0.634761</td>
           <td>0.000055</td>
-          <td>0.059024</td>
-          <td>0.029878</td>
+          <td>NaN</td>
+          <td>NaN</td>
           <td>0.000000</td>
           <td>...</td>
           <td>-0.717935</td>
@@ -260,7 +297,7 @@ building.
           <td>0.005236</td>
           <td>0.248648</td>
           <td>7.271294e-05</td>
-          <td>0.016435</td>
+          <td>NaN</td>
           <td>0.646090</td>
           <td>0.000238</td>
           <td>0.000000</td>
@@ -284,7 +321,7 @@ building.
           <td>0.047120</td>
           <td>0.539522</td>
           <td>8.282866e-04</td>
-          <td>0.022104</td>
+          <td>NaN</td>
           <td>0.672638</td>
           <td>0.000177</td>
           <td>0.046512</td>
@@ -308,12 +345,12 @@ building.
           <td>0.052356</td>
           <td>0.304484</td>
           <td>9.626291e-05</td>
-          <td>0.044248</td>
-          <td>0.657491</td>
+          <td>NaN</td>
+          <td>NaN</td>
           <td>0.000121</td>
           <td>0.093023</td>
-          <td>0.010256</td>
-          <td>0.000000</td>
+          <td>NaN</td>
+          <td>NaN</td>
           <td>...</td>
           <td>-0.520060</td>
           <td>-0.000595</td>
@@ -333,7 +370,7 @@ building.
           <td>0.176758</td>
           <td>7.179946e-05</td>
           <td>0.000000</td>
-          <td>0.649737</td>
+          <td>NaN</td>
           <td>0.000267</td>
           <td>0.093023</td>
           <td>0.051282</td>
@@ -352,8 +389,217 @@ building.
         </tr>
       </tbody>
     </table>
-    <p>17236 rows × 3460 columns</p>
+    <p>17236 rows × 3457 columns</p>
     </div>
+        <div class="colab-df-buttons">
+    
+      <div class="colab-df-container">
+        <button class="colab-df-convert" onclick="convertToInteractive('df-0b535a8d-339f-4c4c-b065-ec50eb63c78d')"
+                title="Convert this dataframe to an interactive table."
+                style="display:none;">
+    
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+      </svg>
+        </button>
+    
+      <style>
+        .colab-df-container {
+          display:flex;
+          gap: 12px;
+        }
+    
+        .colab-df-convert {
+          background-color: #E8F0FE;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: none;
+          fill: #1967D2;
+          height: 32px;
+          padding: 0 0 0 0;
+          width: 32px;
+        }
+    
+        .colab-df-convert:hover {
+          background-color: #E2EBFA;
+          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+          fill: #174EA6;
+        }
+    
+        .colab-df-buttons div {
+          margin-bottom: 4px;
+        }
+    
+        [theme=dark] .colab-df-convert {
+          background-color: #3B4455;
+          fill: #D2E3FC;
+        }
+    
+        [theme=dark] .colab-df-convert:hover {
+          background-color: #434B5C;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+          fill: #FFFFFF;
+        }
+      </style>
+    
+        <script>
+          const buttonEl =
+            document.querySelector('#df-0b535a8d-339f-4c4c-b065-ec50eb63c78d button.colab-df-convert');
+          buttonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+    
+          async function convertToInteractive(key) {
+            const element = document.querySelector('#df-0b535a8d-339f-4c4c-b065-ec50eb63c78d');
+            const dataTable =
+              await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                        [key], {});
+            if (!dataTable) return;
+    
+            const docLinkHtml = 'Like what you see? Visit the ' +
+              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+              + ' to learn more about interactive tables.';
+            element.innerHTML = '';
+            dataTable['output_type'] = 'display_data';
+            await google.colab.output.renderOutput(dataTable, element);
+            const docLink = document.createElement('div');
+            docLink.innerHTML = docLinkHtml;
+            element.appendChild(docLink);
+          }
+        </script>
+      </div>
+    
+    
+    <div id="df-6d5afd22-23fe-4635-aa07-00c368aad7b5">
+      <button class="colab-df-quickchart" onclick="quickchart('df-6d5afd22-23fe-4635-aa07-00c368aad7b5')"
+                title="Suggest charts"
+                style="display:none;">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+         width="24px">
+        <g>
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+        </g>
+    </svg>
+      </button>
+    
+    <style>
+      .colab-df-quickchart {
+          --bg-color: #E8F0FE;
+          --fill-color: #1967D2;
+          --hover-bg-color: #E2EBFA;
+          --hover-fill-color: #174EA6;
+          --disabled-fill-color: #AAA;
+          --disabled-bg-color: #DDD;
+      }
+    
+      [theme=dark] .colab-df-quickchart {
+          --bg-color: #3B4455;
+          --fill-color: #D2E3FC;
+          --hover-bg-color: #434B5C;
+          --hover-fill-color: #FFFFFF;
+          --disabled-bg-color: #3B4455;
+          --disabled-fill-color: #666;
+      }
+    
+      .colab-df-quickchart {
+        background-color: var(--bg-color);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: var(--fill-color);
+        height: 32px;
+        padding: 0;
+        width: 32px;
+      }
+    
+      .colab-df-quickchart:hover {
+        background-color: var(--hover-bg-color);
+        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: var(--button-hover-fill-color);
+      }
+    
+      .colab-df-quickchart-complete:disabled,
+      .colab-df-quickchart-complete:disabled:hover {
+        background-color: var(--disabled-bg-color);
+        fill: var(--disabled-fill-color);
+        box-shadow: none;
+      }
+    
+      .colab-df-spinner {
+        border: 2px solid var(--fill-color);
+        border-color: transparent;
+        border-bottom-color: var(--fill-color);
+        animation:
+          spin 1s steps(1) infinite;
+      }
+    
+      @keyframes spin {
+        0% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+          border-left-color: var(--fill-color);
+        }
+        20% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        30% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+          border-right-color: var(--fill-color);
+        }
+        40% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        60% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+        }
+        80% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-bottom-color: var(--fill-color);
+        }
+        90% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+        }
+      }
+    </style>
+    
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-6d5afd22-23fe-4635-aa07-00c368aad7b5 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+        </div>
+      </div>
+
 
 
 
@@ -361,25 +607,37 @@ Prediction
 ==========
 
 We process k-fold cross validation of a LightGBM classifier
-(``n_splits=5``), and then storing predictions and printing metrics.
+(``n_splits=5``), and then we store predictions and print metrics.
 
 .. code:: ipython3
 
     from help.models.prediction import predict_cv
-    df_scores_means, df_scores = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv')
+    df_scores_means, df_scores, predictions = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, verbose=True, saveflag=True, outfile='pred_Kidney.csv')
     df_scores_means
 
 
 .. parsed-literal::
 
-    5-fold: 100%|██████████| 5/5 [00:31<00:00,  6.35s/it]
+    {'E': 0, 'NE': 1}
+    label
+    NE       15994
+    E         1242
+    dtype: int64
+    Classification with LightGBM...
+
+
+.. parsed-literal::
+
+    5-fold: 100%|██████████| 5/5 [05:10<00:00, 62.04s/it]
 
 
 
 
 .. raw:: html
 
-    <div>
+    
+      <div id="df-aa4faf8e-009f-4118-be5b-fe810ec4e4d8" class="colab-df-container">
+        <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -403,40 +661,249 @@ We process k-fold cross validation of a LightGBM classifier
       <tbody>
         <tr>
           <th>ROC-AUC</th>
-          <td>0.9566±0.0055</td>
+          <td>0.9551±0.0063</td>
         </tr>
         <tr>
           <th>Accuracy</th>
-          <td>0.9476±0.0026</td>
+          <td>0.9470±0.0033</td>
         </tr>
         <tr>
           <th>BA</th>
-          <td>0.8344±0.0085</td>
+          <td>0.8326±0.0126</td>
         </tr>
         <tr>
           <th>Sensitivity</th>
-          <td>0.7021±0.0173</td>
+          <td>0.6989±0.0244</td>
         </tr>
         <tr>
           <th>Specificity</th>
-          <td>0.9667±0.0027</td>
+          <td>0.9663±0.0025</td>
         </tr>
         <tr>
           <th>MCC</th>
-          <td>0.6321±0.0152</td>
+          <td>0.6283±0.0220</td>
         </tr>
         <tr>
           <th>CM</th>
-          <td>[[872, 370], [533, 15461]]</td>
+          <td>[[868, 374], [539, 15455]]</td>
         </tr>
       </tbody>
     </table>
     </div>
+        <div class="colab-df-buttons">
+    
+      <div class="colab-df-container">
+        <button class="colab-df-convert" onclick="convertToInteractive('df-aa4faf8e-009f-4118-be5b-fe810ec4e4d8')"
+                title="Convert this dataframe to an interactive table."
+                style="display:none;">
+    
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+      </svg>
+        </button>
+    
+      <style>
+        .colab-df-container {
+          display:flex;
+          gap: 12px;
+        }
+    
+        .colab-df-convert {
+          background-color: #E8F0FE;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: none;
+          fill: #1967D2;
+          height: 32px;
+          padding: 0 0 0 0;
+          width: 32px;
+        }
+    
+        .colab-df-convert:hover {
+          background-color: #E2EBFA;
+          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+          fill: #174EA6;
+        }
+    
+        .colab-df-buttons div {
+          margin-bottom: 4px;
+        }
+    
+        [theme=dark] .colab-df-convert {
+          background-color: #3B4455;
+          fill: #D2E3FC;
+        }
+    
+        [theme=dark] .colab-df-convert:hover {
+          background-color: #434B5C;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+          fill: #FFFFFF;
+        }
+      </style>
+    
+        <script>
+          const buttonEl =
+            document.querySelector('#df-aa4faf8e-009f-4118-be5b-fe810ec4e4d8 button.colab-df-convert');
+          buttonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+    
+          async function convertToInteractive(key) {
+            const element = document.querySelector('#df-aa4faf8e-009f-4118-be5b-fe810ec4e4d8');
+            const dataTable =
+              await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                        [key], {});
+            if (!dataTable) return;
+    
+            const docLinkHtml = 'Like what you see? Visit the ' +
+              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+              + ' to learn more about interactive tables.';
+            element.innerHTML = '';
+            dataTable['output_type'] = 'display_data';
+            await google.colab.output.renderOutput(dataTable, element);
+            const docLink = document.createElement('div');
+            docLink.innerHTML = docLinkHtml;
+            element.appendChild(docLink);
+          }
+        </script>
+      </div>
+    
+    
+    <div id="df-45d61ca5-7781-4b46-8b20-adf580c0ee8f">
+      <button class="colab-df-quickchart" onclick="quickchart('df-45d61ca5-7781-4b46-8b20-adf580c0ee8f')"
+                title="Suggest charts"
+                style="display:none;">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+         width="24px">
+        <g>
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+        </g>
+    </svg>
+      </button>
+    
+    <style>
+      .colab-df-quickchart {
+          --bg-color: #E8F0FE;
+          --fill-color: #1967D2;
+          --hover-bg-color: #E2EBFA;
+          --hover-fill-color: #174EA6;
+          --disabled-fill-color: #AAA;
+          --disabled-bg-color: #DDD;
+      }
+    
+      [theme=dark] .colab-df-quickchart {
+          --bg-color: #3B4455;
+          --fill-color: #D2E3FC;
+          --hover-bg-color: #434B5C;
+          --hover-fill-color: #FFFFFF;
+          --disabled-bg-color: #3B4455;
+          --disabled-fill-color: #666;
+      }
+    
+      .colab-df-quickchart {
+        background-color: var(--bg-color);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: var(--fill-color);
+        height: 32px;
+        padding: 0;
+        width: 32px;
+      }
+    
+      .colab-df-quickchart:hover {
+        background-color: var(--hover-bg-color);
+        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: var(--button-hover-fill-color);
+      }
+    
+      .colab-df-quickchart-complete:disabled,
+      .colab-df-quickchart-complete:disabled:hover {
+        background-color: var(--disabled-bg-color);
+        fill: var(--disabled-fill-color);
+        box-shadow: none;
+      }
+    
+      .colab-df-spinner {
+        border: 2px solid var(--fill-color);
+        border-color: transparent;
+        border-bottom-color: var(--fill-color);
+        animation:
+          spin 1s steps(1) infinite;
+      }
+    
+      @keyframes spin {
+        0% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+          border-left-color: var(--fill-color);
+        }
+        20% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        30% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+          border-right-color: var(--fill-color);
+        }
+        40% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        60% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+        }
+        80% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-bottom-color: var(--fill-color);
+        }
+        90% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+        }
+      }
+    </style>
+    
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-45d61ca5-7781-4b46-8b20-adf580c0ee8f button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+        </div>
+      </div>
 
 
 
 
-.. image:: output_4_2.png
+
+.. image:: output_8_3.png
 
 
 Prediction with undersampling
@@ -451,35 +918,54 @@ re-apply the k-fold cross validation of the a LightGBM classifier.
 
 .. code:: ipython3
 
-    df_X, df_y = feature_assemble(label_file = label_file, 
-                                  features=features, subsample=True, seed=1, verbose=True)
-    df_scores_means, df_scores = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, outfile='pred_Kidney.csv')
+    df_y = pd.read_csv(f"{tissue}_HELP.csv", index_col=0)
+    df_y = df_y.replace({'aE': 'NE', 'sNE': 'NE'})
+    df_X, df_y = feature_assemble_df(df_y,features=features, subsample=True, fold=4, seed=1, verbose=True)
+    df_scores_means, df_scores, predictions = predict_cv(df_X, df_y, n_splits=5, balanced=True, display=True, verbose=True, saveflag=True, outfile='pred_Kidney_sub.csv')
     df_scores_means
 
 
 .. parsed-literal::
 
-    Loading ../data/label_Kidney.csv
     Majority NE 16678 minoriy E 1253
-    [Kidney_BIO.csv] found 0 Nan...
+    Subsampling with factor 1:4
+    [Kidney_BIO.csv] found 52532 Nan...
     [Kidney_BIO.csv] Normalization with std ...
-    [Kidney_CCcfs.csv] found 0 Nan...
-    [Kidney_CCcfs.csv] Normalization with std ...
-    [Kidney_EmbN2V_128.csv] No normalization...
-    6043 labeled genes over a total of 6265
-    (6043, 3459) data input
 
 
 .. parsed-literal::
 
-    5-fold: 100%|██████████| 5/5 [00:17<00:00,  3.57s/it]
+    Loading file in chunks: 100%|██████████| 5/5 [00:14<00:00,  3.00s/it]
+
+
+.. parsed-literal::
+
+    [Kidney_CCcfs.csv] found 6676644 Nan...
+    [Kidney_CCcfs.csv] Normalization with std ...
+    [Kidney_EmbN2V_128.csv] found 0 Nan...
+    [Kidney_EmbN2V_128.csv] No normalization...
+    6043 labeled genes over a total of 6265
+    (6043, 3456) data input
+    {'E': 0, 'NE': 1}
+    label
+    NE       4801
+    E        1242
+    dtype: int64
+    Classification with LightGBM...
+
+
+.. parsed-literal::
+
+    5-fold: 100%|██████████| 5/5 [02:32<00:00, 30.57s/it]
 
 
 
 
 .. raw:: html
 
-    <div>
+    
+      <div id="df-73f2ea45-2c02-4bb3-a811-34fe14b10973" class="colab-df-container">
+        <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -503,38 +989,247 @@ re-apply the k-fold cross validation of the a LightGBM classifier.
       <tbody>
         <tr>
           <th>ROC-AUC</th>
-          <td>0.9534±0.0032</td>
+          <td>0.9538±0.0052</td>
         </tr>
         <tr>
           <th>Accuracy</th>
-          <td>0.9136±0.0097</td>
+          <td>0.9125±0.0071</td>
         </tr>
         <tr>
           <th>BA</th>
-          <td>0.8689±0.0213</td>
+          <td>0.8703±0.0163</td>
         </tr>
         <tr>
           <th>Sensitivity</th>
-          <td>0.7930±0.0425</td>
+          <td>0.7987±0.0331</td>
         </tr>
         <tr>
           <th>Specificity</th>
-          <td>0.9448±0.0060</td>
+          <td>0.9419±0.0046</td>
         </tr>
         <tr>
           <th>MCC</th>
-          <td>0.7361±0.0329</td>
+          <td>0.7343±0.0244</td>
         </tr>
         <tr>
           <th>CM</th>
-          <td>[[985, 257], [265, 4536]]</td>
+          <td>[[992, 250], [279, 4522]]</td>
         </tr>
       </tbody>
     </table>
     </div>
+        <div class="colab-df-buttons">
+    
+      <div class="colab-df-container">
+        <button class="colab-df-convert" onclick="convertToInteractive('df-73f2ea45-2c02-4bb3-a811-34fe14b10973')"
+                title="Convert this dataframe to an interactive table."
+                style="display:none;">
+    
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+      </svg>
+        </button>
+    
+      <style>
+        .colab-df-container {
+          display:flex;
+          gap: 12px;
+        }
+    
+        .colab-df-convert {
+          background-color: #E8F0FE;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: none;
+          fill: #1967D2;
+          height: 32px;
+          padding: 0 0 0 0;
+          width: 32px;
+        }
+    
+        .colab-df-convert:hover {
+          background-color: #E2EBFA;
+          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+          fill: #174EA6;
+        }
+    
+        .colab-df-buttons div {
+          margin-bottom: 4px;
+        }
+    
+        [theme=dark] .colab-df-convert {
+          background-color: #3B4455;
+          fill: #D2E3FC;
+        }
+    
+        [theme=dark] .colab-df-convert:hover {
+          background-color: #434B5C;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+          fill: #FFFFFF;
+        }
+      </style>
+    
+        <script>
+          const buttonEl =
+            document.querySelector('#df-73f2ea45-2c02-4bb3-a811-34fe14b10973 button.colab-df-convert');
+          buttonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+    
+          async function convertToInteractive(key) {
+            const element = document.querySelector('#df-73f2ea45-2c02-4bb3-a811-34fe14b10973');
+            const dataTable =
+              await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                        [key], {});
+            if (!dataTable) return;
+    
+            const docLinkHtml = 'Like what you see? Visit the ' +
+              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+              + ' to learn more about interactive tables.';
+            element.innerHTML = '';
+            dataTable['output_type'] = 'display_data';
+            await google.colab.output.renderOutput(dataTable, element);
+            const docLink = document.createElement('div');
+            docLink.innerHTML = docLinkHtml;
+            element.appendChild(docLink);
+          }
+        </script>
+      </div>
+    
+    
+    <div id="df-081f5979-6f4e-4934-a27f-9dc4293791e6">
+      <button class="colab-df-quickchart" onclick="quickchart('df-081f5979-6f4e-4934-a27f-9dc4293791e6')"
+                title="Suggest charts"
+                style="display:none;">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+         width="24px">
+        <g>
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+        </g>
+    </svg>
+      </button>
+    
+    <style>
+      .colab-df-quickchart {
+          --bg-color: #E8F0FE;
+          --fill-color: #1967D2;
+          --hover-bg-color: #E2EBFA;
+          --hover-fill-color: #174EA6;
+          --disabled-fill-color: #AAA;
+          --disabled-bg-color: #DDD;
+      }
+    
+      [theme=dark] .colab-df-quickchart {
+          --bg-color: #3B4455;
+          --fill-color: #D2E3FC;
+          --hover-bg-color: #434B5C;
+          --hover-fill-color: #FFFFFF;
+          --disabled-bg-color: #3B4455;
+          --disabled-fill-color: #666;
+      }
+    
+      .colab-df-quickchart {
+        background-color: var(--bg-color);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: var(--fill-color);
+        height: 32px;
+        padding: 0;
+        width: 32px;
+      }
+    
+      .colab-df-quickchart:hover {
+        background-color: var(--hover-bg-color);
+        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: var(--button-hover-fill-color);
+      }
+    
+      .colab-df-quickchart-complete:disabled,
+      .colab-df-quickchart-complete:disabled:hover {
+        background-color: var(--disabled-bg-color);
+        fill: var(--disabled-fill-color);
+        box-shadow: none;
+      }
+    
+      .colab-df-spinner {
+        border: 2px solid var(--fill-color);
+        border-color: transparent;
+        border-bottom-color: var(--fill-color);
+        animation:
+          spin 1s steps(1) infinite;
+      }
+    
+      @keyframes spin {
+        0% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+          border-left-color: var(--fill-color);
+        }
+        20% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        30% {
+          border-color: transparent;
+          border-left-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+          border-right-color: var(--fill-color);
+        }
+        40% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-top-color: var(--fill-color);
+        }
+        60% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+        }
+        80% {
+          border-color: transparent;
+          border-right-color: var(--fill-color);
+          border-bottom-color: var(--fill-color);
+        }
+        90% {
+          border-color: transparent;
+          border-bottom-color: var(--fill-color);
+        }
+      }
+    </style>
+    
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-081f5979-6f4e-4934-a27f-9dc4293791e6 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+        </div>
+      </div>
 
 
 
 
-.. image:: output_6_3.png
+
+.. image:: output_10_5.png
 

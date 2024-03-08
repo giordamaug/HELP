@@ -121,8 +121,8 @@
 <span class="sd">    :param bool display: Whether to display a confusion matrix plot.</span>
 <span class="sd">    :param int or None seed: Random seed for reproducibility.</span>
 
-<span class="sd">    :returns: Summary statistics of the cross-validated predictions.</span>
-<span class="sd">    :rtype: pd.DataFrame</span>
+<span class="sd">    :returns: Summary statistics of the cross-validated predictions, single measures and label predictions</span>
+<span class="sd">    :rtype: Tuple(pd.DataFrame,pd.DataFrame,pd.DataFrame)</span>
 
 <span class="sd">    :example</span>
 <span class="sd"> </span>
@@ -131,8 +131,12 @@
 <span class="sd">        # Example usage</span>
 <span class="sd">        X_data = pd.DataFrame(...)</span>
 <span class="sd">        Y_data = pd.DataFrame(...)</span>
-<span class="sd">        result = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</span>
+<span class="sd">        result, _, _ = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># silent twdm if no verbosoti</span>
+    <span class="c1">#if not verbose: </span>
+    <span class="c1">#    def notqdm(iterable, *args, **kwargs): return iterable</span>
+    <span class="c1">#    tqdm = notqdm</span>
     <span class="c1"># get the list of genes</span>
     <span class="n">genes</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">index</span>
 
@@ -144,7 +148,7 @@
     <span class="c1"># Display class information</span>
     <span class="n">distrib</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="n">classes_mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">classes_mapping</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">classes_mapping</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="c1"># Set random seed</span>
     <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -155,7 +159,7 @@
     <span class="c1"># Initialize classifier</span>
     <span class="n">clf</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">balanced</span> <span class="k">else</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">nclasses</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">nclasses</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
     <span class="n">mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
     <span class="n">gg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
@@ -170,7 +174,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Classification with LightGBM...&#39;</span><span class="p">)</span>
 
     <span class="c1"># Iterate over each fold</span>
-    <span class="k">for</span> <span class="n">fold</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="n">y</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="n">kf</span><span class="o">.</span><span class="n">get_n_splits</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_splits</span><span class="si">}</span><span class="s2">-fold&quot;</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">fold</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="n">y</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="n">kf</span><span class="o">.</span><span class="n">get_n_splits</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_splits</span><span class="si">}</span><span class="s2">-fold&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">)):</span>
         <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span>
         <span class="n">mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">mm</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">))</span>
         <span class="n">probs</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
@@ -182,7 +186,7 @@
         <span class="n">probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">probs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
 
         <span class="c1"># Calculate and store evaluation metrics for each fold</span>
-        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">probs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">nclasses</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">probs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">nclasses</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s2">&quot;ovr&quot;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">scores</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">roc_auc</span><span class="p">,</span>
                                                     <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">preds</span><span class="p">),</span>
                                                     <span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">preds</span><span class="p">),</span>
@@ -211,8 +215,8 @@
     <span class="k">if</span> <span class="n">saveflag</span><span class="p">:</span>
         <span class="n">df_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 
-    <span class="c1"># Return the summary statistics of cross-validated predictions</span>
-    <span class="k">return</span> <span class="n">df_scores</span></div>
+    <span class="c1"># Return the summary statistics of cross-validated predictions, the single measures and the prediction results</span>
+    <span class="k">return</span> <span class="n">df_scores</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">df_results</span></div>
 
 </pre></div>
 

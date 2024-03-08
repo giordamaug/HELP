@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Set data path &mdash; HELP 1.0 documentation</title>
+  <title>Install HELP from GitHub (and Karateclub) &mdash; HELP 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Set data path" href="csegs.html" />
+    <link rel="next" title="Install HELP from GitHub" href="csegs.html" />
     <link rel="prev" title="Set data path" href="labelling_tissue.html" /> 
 </head>
 
@@ -58,9 +58,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html">EG detection for a tissue</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Set data path</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install HELP from GitHub (and Karateclub)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">Download the input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-ppi-network-and-apply-embedding">Load the PPI network and apply embedding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save-the-embedding-and-show-it">Save the embedding and show it</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
@@ -82,7 +83,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../tutorial1.html">EG detection for a tissue</a></li>
-      <li class="breadcrumb-item active">Set data path</li>
+      <li class="breadcrumb-item active">Install HELP from GitHub (and Karateclub)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tutorial1/embedding.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,9 +93,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="set-data-path">
-<h1>Set data path<a class="headerlink" href="#set-data-path" title="Link to this heading"></a></h1>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;&lt;your-data-path&gt;&quot;</span>
+  <section id="install-help-from-github-and-karateclub">
+<h1>Install HELP from GitHub (and Karateclub)<a class="headerlink" href="#install-help-from-github-and-karateclub" title="Link to this heading"></a></h1>
+<p>Skip this cell if you already have installed HELP.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>karateclub
+</pre></div>
+</div>
+</section>
+<section id="download-the-input-files">
+<h1>Download the input files<a class="headerlink" href="#download-the-input-files" title="Link to this heading"></a></h1>
+<p>In this cell we download from GitHub repository the label file and the
+attribute files. Skip this step if you already have these input files
+locally.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_PPI.csv
 </pre></div>
 </div>
 </section>
@@ -105,7 +117,7 @@ is the gene name of a edge source + <code class="docutils literal notranslate"><
 traget + <code class="docutils literal notranslate"><span class="pre">combined_score</span></code> is an attribute describeing the type of edge</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">help.preprocess.embedding</span> <span class="kn">import</span> <span class="n">PPI_embed</span>
-<span class="n">df_net</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Lung_PPI.csv&#39;</span><span class="p">)</span>
+<span class="n">df_net</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Kidney_PPI.csv&#39;</span><span class="p">)</span>
 <span class="n">df_embed</span> <span class="o">=</span> <span class="n">PPI_embed</span><span class="p">(</span><span class="n">df_net</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;Node2Vec&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -133,13 +145,13 @@ traget + <code class="docutils literal notranslate"><span class="pre">combined_s
 </pre></div>
 </div>
 </section>
-<section id="save-the-embedding-and-display-it">
-<h1>Save the embedding and display it<a class="headerlink" href="#save-the-embedding-and-display-it" title="Link to this heading"></a></h1>
+<section id="save-the-embedding-and-show-it">
+<h1>Save the embedding and show it<a class="headerlink" href="#save-the-embedding-and-show-it" title="Link to this heading"></a></h1>
 <p>After almost 2 hour in sequential execution, the PPI network embedding
 is extracted and saved in a csv file as new attributes for the
 prediction model buling, which will be described in the last notebook of
 the examples.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/Lung_EmbN2V_128.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Kidney_EmbN2V_128.csv&#39;</span><span class="p">)</span>
 <span class="n">df_embed</span>
 </pre></div>
 </div>
@@ -459,7 +471,7 @@ the examples.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="labelling_tissue.html" class="btn btn-neutral float-left" title="Set data path" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="csegs.html" class="btn btn-neutral float-right" title="Set data path" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="csegs.html" class="btn btn-neutral float-right" title="Install HELP from GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
