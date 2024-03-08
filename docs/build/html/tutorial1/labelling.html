@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Install HELP from GitHub &mdash; HELP 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
+    <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=f2a433a1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Install HELP from GitHub (and Karateclub)" href="embedding.html" />
+    <link rel="prev" title="EG detection for a tissue" href="../tutorial1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,12 +34,12 @@
 
           
           
-          <a href="index.html">
+          <a href="../index.html">
             
-              <img src="_static/HELP_logo.png" class="logo" alt="Logo"/>
+              <img src="../_static/HELP_logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -46,18 +48,26 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="help.html">help package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">help package</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">EG detection for a tissue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html">EG detection for a tissue</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install HELP from GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">Download the input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-some-tissues">Select some tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-on-diseases">Working on diseases …</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
 </ul>
 
         </div>
@@ -66,17 +76,18 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">HELP</a>
+          <a href="../index.html">HELP</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tutorial1.html">EG detection for a tissue</a></li>
       <li class="breadcrumb-item active">Install HELP from GitHub</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/labelling.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial1/labelling.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -1828,7 +1839,10 @@ but using a different Model column as selector
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorial1.html" class="btn btn-neutral float-left" title="EG detection for a tissue" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="embedding.html" class="btn btn-neutral float-right" title="Install HELP from GitHub (and Karateclub)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
