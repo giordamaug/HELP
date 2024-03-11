@@ -81,7 +81,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     # Subsample the data if required (subsample majority class fild-times rispect the minority class)
     minlab = lab_df[colname].value_counts().nsmallest(1).index[0]
     maxlab = lab_df[colname].value_counts().nlargest(1).index[0]
-    if verbose: print("Majority" , maxlab, lab_df[colname].value_counts()[maxlab], "minoriy", minlab, lab_df[colname].value_counts()[minlab])
+    if verbose: print("Majority" , maxlab, lab_df[colname].value_counts()[maxlab], "minority", minlab, lab_df[colname].value_counts()[minlab])
     if subsample:
         #if lab_df[colname].value_counts()[maxlab] >= 4*lab_df[colname].value_counts()[minlab]:
             idxNE = lab_df[lab_df[colname] == maxlab].index[np.random.choice(len(lab_df[lab_df[colname] == maxlab]), fold * len(lab_df[lab_df[colname] == minlab]), replace=False)]
@@ -193,7 +193,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     # Subsample the data if required (subsample majority class fild-times rispect the minority class)
     minlab = lab_df[colname].value_counts().nsmallest(1).index[0]
     maxlab = lab_df[colname].value_counts().nlargest(1).index[0]
-    if verbose: print("Majority" , maxlab, lab_df[colname].value_counts()[maxlab], "minoriy", minlab, lab_df[colname].value_counts()[minlab])
+    if verbose: print("Majority" , maxlab, lab_df[colname].value_counts()[maxlab], "minority", minlab, lab_df[colname].value_counts()[minlab])
     if subsample:
         #if lab_df[colname].value_counts()[maxlab] >= 4*lab_df[colname].value_counts()[minlab]:
             idxNE = lab_df[lab_df[colname] == maxlab].index[np.random.choice(len(lab_df[lab_df[colname] == maxlab]), fold * len(lab_df[lab_df[colname] == minlab]), replace=False)]

@@ -1,3 +1,8 @@
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb
+
 Install HELP from GitHub
 ========================
 
@@ -1521,7 +1526,9 @@ cell-lines in flat mode (``label_PanTissue.csv``)
     Length: 180249 (176K) [text/plain]
     Saving to: ‘Kidney_HELP.csv.1’
     
-    Kidney_HELP.csv.1     0%[                    ]       0  --.-KB/s               Kidney_HELP.csv.1   100%[===================>] 176.02K  --.-KB/s    in 0.03s   
+    
+Kidney_HELP.csv.1     0%[                    ]       0  --.-KB/s               
+Kidney_HELP.csv.1   100%[===================>] 176.02K  --.-KB/s    in 0.03s   
     
     2024-03-08 12:02:24 (6.74 MB/s) - ‘Kidney_HELP.csv.1’ saved [180249/180249]
     
