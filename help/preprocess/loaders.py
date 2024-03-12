@@ -157,7 +157,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     """
     Assemble features and labels for machine learning tasks.
 
-    :param str label_file: Path to the label file.
+    :param pd.DataFrame lab_df: DataFrame of labels (in column named colnname).
     :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.
         Default is [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}].
         'fname' : str, filename of attributes (in CSV format)
@@ -187,7 +187,8 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         saveflag = False
         verbose = False
 
-        X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, saveflag, verbose)
+        df_label = pd.read_csv("label_file.csv2, index_col=0)
+        X, Y = feature_assemble_df(df_label, colname='label', features, colname, subsample, seed, fold, saveflag, verbose)
     """
 
     # Subsample the data if required (subsample majority class fild-times rispect the minority class)
