@@ -15,7 +15,7 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu')
 
     :param np.ndarray matrix: Input matrix.
     :param int num_thresholds: number of quantized levels.
-    :param str algorithm: quantization algorithm type 'otsu|'linspace' (default: 'otsu').
+    :param str algorithm: quantization algorithm type 'otsu|linspace|yen' (default: 'otsu').
 
     :returns: The quantized array and the thresholds used.
     :rtype: Tuple[np.ndarray, c]
@@ -59,7 +59,7 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu')
             thresh = np.linspace(np.nanmin(valid_values), np.nanmax(valid_values), num_thresholds + 1)[1:-1]
         elif algorithm == 'yen':
             if num_thresholds > 2:
-                warnings.warn('Yen thresholding only upport one threshow (binary separation)... using linspace mode!')
+                warnings.warn('Yen thresholding only support one threshow (binary separation)... using linspace mode!')
                 thresh = np.linspace(np.nanmin(valid_values), np.nanmax(valid_values), num_thresholds + 1)[1:-1]
             else:
                 thresh = np.array([threshold_yen(valid_values)])
@@ -79,6 +79,14 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu')
     return segmented_matrix, thresholds
 
 def rows_with_all_nan(df):    
+    """
+    Computes the mode of an array along each row. In case of ex-aequo modes, return the value computed by reducefoo (default: max).
+
+    :param pd.DatFrame df: the input DataFrame.
+
+    :returns: the array of indices in DataFrame with all NaNs.
+    :rtype: np.ndarray
+    """
     idx = df.index[df.isnull().all(1)]
     nans = df.loc[idx]
     return idx.values
@@ -98,12 +106,10 @@ def modemax_nan(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> n
     .. code-block:: python
 
         # Example usage
-        from help.models.labelling import modemax_nan
-        input_array = np.array([[np.nan, 2, 3, 3],
-                                [2, np.nan, 4, 4],
-                                [4, 5, 6, 6]])
-
-        mode_values = modemax_nan(input_array)
+	    input_array = np.array([[np.nan, 2, 3, 3, 5, 5],
+           	             [2, np.nan, 4, 4, 6, 6],
+                      	  [4, 5, 6, 6, 8, 8]])
+	    mode_values = modemax_nan(input_array, min)
     """
     res = []
     m = a.max()
@@ -123,7 +129,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     Core function for HELP labelling algorithm.
 
     :param pd.DataFrame df: Input DataFrame.
-    :param List[str] columns: List of column names.
+    :param List[str] columns: List of column names used for labelling computation.
     :param int n_classes: Number of classes for 'flat-multi' labelling mode, 
                           In 'two-by-two' mode the param is ignored: two binary labelling are computed
                           (default: 2).
@@ -198,10 +204,14 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
              verbose: bool = False, labelnames: Dict[int, str] = {1 : 'NE', 0: 'E'},
              mode='flat-multi', rowname: str = 'gene', colname: str = 'label', algorithm='otsu', reducefoo: Callable[[List[int]], int]=max) -> pd.DataFrame:
     """
-    Main function for HELP labelling algorithm.
+    Main function for HELP labelling algorithm. Genes are labelled based on a selection of columns in the CRISPR DataFrame (columns=[line1, ..., lineN]). 
+    By default (columns=[]) and the labelling algorithm uses all columns of CRISPR DataFrame. If the columns=[[list1_of_lines], ..., [listN_of_lines]] argument is a list of list, 
+    it represents a partition of CRISPR lines: in this case the labelling is computed in each partition adn then the mode of mode is 
+    applied to compute the final gene labels.
+    =[[...], ..., [...]]
 
     :param pd.DataFrame df: Input DataFrame.
-    :param List[List[str]] columns: List of column names for partitioning (default: []).
+    :param List[List[str]] columns: List of column names in DataFrame used for labelling (default: []).
     :param bool three_class: Flag for three-class labeling (default: False).
     :param bool verbose: Verbosity level for printing information (default: False).
     :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).
@@ -217,14 +227,14 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
     :returns: Output DataFrame with labels.
     :rtype: pd.DataFrame
 
-    :example
+    :example:
 
     .. code-block:: python
 
         # Example usage
-        from help.models.labelling import Help
+        from help.models.labelling import labelling
         input_df = pd.DataFrame(...)
-        output_df = Help.labelling(input_df, columns=[], n_classes=2, labelnames={0: 'E', 1: 'NE'}, algorithm='otsu', mode='flat-multi')
+        output_df = labelling(input_df, columns=[], n_classes=2, labelnames={0: 'E', 1: 'NE'}, algorithm='otsu', mode='flat-multi')
     """
     if mode=='two-by-two': n_classes = 3
     assert len(labelnames) == n_classes, "Label dictionary not same size of no. of classes!"

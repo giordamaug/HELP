@@ -13,6 +13,13 @@ from typing import List,Dict,Union,Tuple
 
 
 def set_seed(seed=1):
+    """
+    Set random and numpy random seed for reproducibility
+
+    :param int seed: inistalization seed
+
+    :returns None.
+    """
     random.seed(seed)
     np.random.seed(seed)
 
