@@ -251,7 +251,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Assemble features and labels for machine learning tasks.</span>
 
-<span class="sd">    :param str label_file: Path to the label file.</span>
+<span class="sd">    :param pd.DataFrame lab_df: DataFrame of labels (in column named colnname).</span>
 <span class="sd">    :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.</span>
 <span class="sd">        Default is [{&#39;fname&#39;: &#39;BIO.csv&#39;, &#39;fixna&#39; : False, &#39;normalize&#39;: &#39;std&#39;, &#39;nchunks&#39;: 1}].</span>
 <span class="sd">        &#39;fname&#39; : str, filename of attributes (in CSV format)</span>
@@ -281,7 +281,8 @@
 <span class="sd">        saveflag = False</span>
 <span class="sd">        verbose = False</span>
 
-<span class="sd">        X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, saveflag, verbose)</span>
+<span class="sd">        df_label = pd.read_csv(&quot;label_file.csv2, index_col=0)</span>
+<span class="sd">        X, Y = feature_assemble_df(df_label, colname=&#39;label&#39;, features, colname, subsample, seed, fold, saveflag, verbose)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Subsample the data if required (subsample majority class fild-times rispect the minority class)</span>

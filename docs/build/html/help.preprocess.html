@@ -283,7 +283,7 @@ Default is [{‘fname’: ‘BIO.csv’, ‘fixna’ : False, ‘normalize’: �
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_file</strong> (<em>str</em>) – Path to the label file.</p></li>
+<li><p><strong>lab_df</strong> (<em>pd.DataFrame</em>) – DataFrame of labels (in column named colnname).</p></li>
 <li><p><strong>features</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Union</em><em>[</em><em>str</em><em>, </em><em>bool</em><em>]</em><em>]</em><em>]</em>) – List of dictionaries specifying feature files and their processing options.
 Default is [{‘fname’: ‘BIO.csv’, ‘fixna’ : False, ‘normalize’: ‘std’, ‘nchunks’: 1}].
 ‘fname’ : str, filename of attributes (in CSV format)
@@ -316,7 +316,8 @@ Default is [{‘fname’: ‘BIO.csv’, ‘fixna’ : False, ‘normalize’: �
 <span class="n">saveflag</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">colname</span><span class="p">,</span> <span class="n">subsample</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">fold</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+<span class="n">df_label</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;label_file.csv2, index_col=0)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">feature_assemble_df</span><span class="p">(</span><span class="n">df_label</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">colname</span><span class="p">,</span> <span class="n">subsample</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">fold</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
