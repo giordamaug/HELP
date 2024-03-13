@@ -137,7 +137,7 @@ paper.
     +-------------+-------------------------------+
 
 
-E vs sNE experiments for Kidney
+E vs sNE experiments for kidney
 ===============================
 
 This cell’s code reproduce results of Table 4(A) in the reference paper.
