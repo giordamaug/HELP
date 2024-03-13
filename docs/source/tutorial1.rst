@@ -64,8 +64,9 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
 
    tutorial1/prediction
 
+
 Experiments 
-==========================
+===========
 
 In notebook we show how we conducted the experiments in the work published on these topics:
 
@@ -73,6 +74,7 @@ In notebook we show how we conducted the experiments in the work published on th
 #. by configuring a batch script to iterate cross-validation of a LightGBM model to address binary classification 
 in a specific problem (E vs NE, E vs sNE, e vs aE, aE vs sNE)
 #. we obtain all measures and their statistics of the experiments.
+
 
 .. toctree::
    :maxdepth: 1
