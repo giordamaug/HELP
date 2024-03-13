@@ -63,3 +63,17 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
    :maxdepth: 1
 
    tutorial1/prediction
+
+Experiments 
+==========================
+
+In notebook we show how we conducted the experiments in the cited work.
+
+#. 
+#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
+#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs. 
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorial1/experiment
