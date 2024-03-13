@@ -67,11 +67,12 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
 Experiments 
 ==========================
 
-In notebook we show how we conducted the experiments in the cited work.
+In notebook we show how we conducted the experiments in the work published on these topics:
 
-#. 
-#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
-#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs. 
+#. starting from downloading the input files used to build EG prediction odels, 
+#. by configuring a batch script to iterate cross-validation of a LightGBM model to address binary classification 
+in a specific problem (E vs NE, E vs sNE, e vs aE, aE vs sNE)
+#. we obtain all measures and their statistics of the experiments.
 
 .. toctree::
    :maxdepth: 1
