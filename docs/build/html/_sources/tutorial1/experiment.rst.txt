@@ -124,7 +124,9 @@ paper.
     INPUT: Kidney_BIO.csv Kidney_CCcfs.csv
     LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 4809
     SUBSAMPLE: 1:4
+    +-------------+-------------------------------+
     |             | measure                       |
+    |-------------+-------------------------------|
     | ROC-AUC     | 0.9500±0.0067                 |
     | Accuracy    | 0.9038±0.0077                 |
     | BA          | 0.8616±0.0123                 |
@@ -132,6 +134,7 @@ paper.
     | Specificity | 0.9332±0.0078                 |
     | MCC         | 0.7110±0.0225                 |
     | CM          | [[9812, 2608], [3212, 44878]] |
+    +-------------+-------------------------------+
 
 
 E vs sNE experiments for Kidney
@@ -166,7 +169,9 @@ This cell’s code reproduce results of Table 4(A) in the reference paper.
     INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
     LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 4810
     SUBSAMPLE: 1:4
+    +-------------+--------------------------------+
     |             | measure                        |
+    |-------------+--------------------------------|
     | ROC-AUC     | 0.9701±0.0062                  |
     | Accuracy    | 0.9354±0.0070                  |
     | BA          | 0.9020±0.0120                  |
@@ -174,4 +179,5 @@ This cell’s code reproduce results of Table 4(A) in the reference paper.
     | Specificity | 0.9587±0.0065                  |
     | MCC         | 0.8026±0.0215                  |
     | CM          | [[10500, 1920], [1988, 46112]] |
+    +-------------+--------------------------------+
 
