@@ -68,7 +68,7 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
 Experiments 
 ===========
 
-In notebook we show how we conducted the experiments in the work published on these topics:
+In this notebook we show how we conducted the experiments in the work published on these topics:
 
 #. starting from downloading the input files used to build EG prediction odels, 
 #. by configuring a batch script to iterate cross-validation of a LightGBM model to address binary classification 
