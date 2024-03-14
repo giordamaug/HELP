@@ -119,7 +119,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         if feat['fixna']:
             if verbose:
                 print(f"[{feattype}] Fixing NaNs with mean ...")
-            feat_df = feat_df.fillna(x.mean())
+            feat_df = feat_df.fillna(feat_df.mean())
 
         # Normalize features
         if feat['normalize'] == 'std':
@@ -235,7 +235,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         if feat['fixna']:
             if verbose:
                 print(f"[{feattype}] Fixing NaNs with mean ...")
-            feat_df = feat_df.fillna(x.mean())
+            feat_df = feat_df.fillna(feat_df.mean())
 
         # Normalize features
         if feat['normalize'] == 'std':

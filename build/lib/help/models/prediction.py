@@ -7,16 +7,24 @@ from sklearn.metrics import *
 from sklearn.model_selection import StratifiedKFold
 from collections import Counter
 from lightgbm import LGBMClassifier
+from sklearn.ensemble import RandomForestClassifier
 from tqdm import tqdm
 from tabulate import tabulate
 from typing import List,Dict,Union,Tuple
 
 
 def set_seed(seed=1):
+    """
+    Set random and numpy random seed for reproducibility
+
+    :param int seed: inistalization seed
+
+    :returns None.
+    """
     random.seed(seed)
     np.random.seed(seed)
 
-def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+def predict_cv(X, Y, n_splits=10, method='RF', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a LightGBM classifier.
 
@@ -42,7 +50,9 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         Y_data = pd.DataFrame(...)
         result, _, _ = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)
     """
-    # silent twdm if no verbosoti
+    methods = {'RF': RandomForestClassifier, 'LGBM': LGBMClassifier}
+
+    # silent twdm if no verbosity
     #if not verbose: 
     #    def notqdm(iterable, *args, **kwargs): return iterable
     #    tqdm = notqdm
@@ -66,7 +76,8 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     kf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
 
     # Initialize classifier
-    clf = LGBMClassifier(class_weight='balanced', verbose=-1) if balanced else LGBMClassifier(verbose=-1)
+    #clf = LGBMClassifier(class_weight='balanced', verbose=-1) if balanced else LGBMClassifier(verbose=-1)
+    clf = methods[method](class_weight='balanced') if balanced else methods[method]()
 
     nclasses = len(np.unique(y))
     mm = np.array([], dtype=np.int64)
@@ -80,7 +91,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
     scores = pd.DataFrame()
 
     if verbose:
-        print(f'Classification with LightGBM...')
+        print(f'Classification with {method}...')
 
     # Iterate over each fold
     for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not verbose)):
@@ -117,7 +128,7 @@ def predict_cv(X, Y, n_splits=10, balanced=False, saveflag: bool = False, outfil
         ConfusionMatrixDisplay(confusion_matrix=np.array(df_scores.loc['CM']['measure']), display_labels=encoder.inverse_transform(clf.classes_)).plot()
 
     # Create DataFrame for storing detailed predictions
-    df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions})
+    df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions, 'probabilities': probabilities})
     df_results = df_results.set_index(['gene'])
 
     # Save detailed predictions to a CSV file if requested
