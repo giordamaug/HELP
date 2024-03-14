@@ -138,3 +138,92 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
 
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
+
+def predict_cv_sf(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+    """
+    Perform cross-validated predictions by soft voting of a set of LightGBM classifiers.
+
+    :param DataFrame X: Features DataFrame.
+    :param DataFrame Y: Target variable DataFrame.
+    :param int n_splits: Number of folds for cross-validation.
+    :param str method: Classifier method (default LGBM)
+    :param bool balanced: Whether to use class weights to balance the classes.
+    :param bool saveflag: Whether to save the predictions to a CSV file.
+    :param str or None outfile: File name for saving predictions.
+    :param bool verbose: Whether to print verbose information.
+    :param bool display: Whether to display a confusion matrix plot.
+    :param int or None seed: Random seed for reproducibility.
+
+    :returns: Summary statistics of the cross-validated predictions, single measures and label predictions
+    :rtype: Tuple(pd.DataFrame,pd.DataFrame,pd.DataFrame)
+
+    :example
+ 
+    .. code-block:: python
+
+        # Example usage
+        X_data = pd.DataFrame(...)
+        Y_data = pd.DataFrame(...)
+        result, _, _ = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)
+    """
+    methods = {'RF': RandomForestClassifier, 'LGBM': LGBMClassifier}
+
+    # silent twdm if no verbosity
+    #if not verbose: 
+    #    def notqdm(iterable, *args, **kwargs): return iterable
+    #    tqdm = notqdm
+    # get the list of genes
+    genes = Y.index
+
+    # Encode target variable labels
+    encoder = LabelEncoder()
+    X = X.values
+    y = encoder.fit_transform(Y.values.ravel())
+
+    # Display class information
+    classes_mapping = dict(zip(encoder.classes_, encoder.transform(encoder.classes_)))
+    if verbose: print(f'{classes_mapping}\n{Y.value_counts()}')
+
+    # Set random seed
+    set_seed(seed)
+
+    # Initialize StratifiedKFold
+    kf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
+
+    # Initialize classifier
+    #clf = LGBMClassifier(class_weight='balanced', verbose=-1) if balanced else LGBMClassifier(verbose=-1)
+    clf = methods[method](class_weight='balanced') if balanced else methods[method]()
+
+    nclasses = len(np.unique(y))
+
+    # separate labels
+    df_y_ne = Y[Y['label']=='NE']
+    df_y_e = Y[Y['label']=='E']
+    #df_y_ne = df_y_ne.sample(frac=1)
+    n_voters = 10
+    splits = np.array_split(df_y_ne, n_voters) 
+    predictions_ne = pd.DataFrame()
+    predictions_e = pd.DataFrame(index=df_y_e.index)
+    d=np.empty((len(df_y_e.index),),object)
+    d[...]=[list() for _ in range(len(df_y_e.index))]
+    predictions_e['probabilities'] = d
+    predictions_e['label'] = np.array([0 for idx in df_y_e.index])
+    predictions_e['prediction'] = np.array([np.nan for idx in df_y_e.index])
+    for df_index_ne in splits:
+        df_x = pd.concat([X.loc[df_index_ne.index], X.loc[df_y_e.index]])
+        df_yy = pd.concat([Y.loc[df_index_ne.index], df_y_e])
+        _, _, preds = predict_cv(df_x, df_yy, n_splits=5, method='LGBM', balanced=True, verbose=True)
+        predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
+        r = np.empty((len(df_y_e.index),),object)
+        r[...]=[predictions_e.loc[idx]['probabilities'] + [preds.loc[idx]['probabilities']]  for idx in df_y_e.index]
+        predictions_e['probabilities'] = r
+    predictions_e['prediction'] = predictions_e['probabilities'].map(lambda x: 0 if sum(x)/n_voters > 0.5 else 1)
+    predictions_e['probabilities'] = predictions_e['probabilities'].map(lambda x: sum(x)/n_voters)
+    predictions = pd.concat([predictions_ne, predictions_e])
+
+    # Save detailed predictions to a CSV file if requested
+    if saveflag:
+        predictions.to_csv(f"pred_Kidney_SV_{n_voters}.csv", index=True)
+
+    # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
+    return predictions
