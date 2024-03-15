@@ -90,9 +90,9 @@ print(f'Working with {args.voters} classifiers...')
 
 def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, verbose=False):
    df_y_ne = df_y[df_y['label']=='NE']
-   df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
+   #df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
    df_y_e = df_y[df_y['label']=='E']
-   splits = np.array_split(df_y_ne, n_voters) 
+   splits = np.array_split(df_y_ne, n_voters)
    predictions_ne = pd.DataFrame()
    predictions_e = pd.DataFrame(index=df_y_e.index)
    d=np.empty((len(df_y_e.index),),object)
