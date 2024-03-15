@@ -31,6 +31,7 @@ parser.add_argument('-fx', "--fixna", action='store_true', default=False, help='
 parser.add_argument('-n', "--normalize", dest='normalize', metavar='<normalize>',  type=str, help='normalization mode (default None)', choices=['max', 'std'], required=False)
 parser.add_argument('-o', "--outfile", dest='outfile', metavar='<outfile>', help='output file for performance measures sumup', type=str, required=False)
 parser.add_argument('-s', "--scorefile", dest='scorefile', metavar='<scorefile>', type=str, help='output file reporting all measurements', required=False)
+parser.add_argument('-p', "--predfile", dest='predfile', metavar='<predfile>', type=str, help='output file reporting predictions', required=False)
 args = parser.parse_args()
 
 ## redefine print function
@@ -120,7 +121,6 @@ def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, v
                            cm[1, 1] / (cm[1, 0] + cm[1, 1]),
                            matthews_corrcoef(test_y, preds),cm]], 
                            columns=["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM'], index=[seed])
-
    return scores, predictions
 
 def classify(n_voters, repeat, n_splits, jobs, verbose):
@@ -137,14 +137,21 @@ def classify(n_voters, repeat, n_splits, jobs, verbose):
 
 columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM']
 scores = pd.DataFrame()
+preds = pd.DataFrame()
 out = classify(args.voters, args.repeat, args.folds, args.jobs, verbose)
 print(out)
 for iter,res in enumerate(out):
    scores = pd.concat([scores,res[0]])
+   preds = pd.concat([preds,res[1]])
 if args.scorefile is not None:
    scores.to_csv(args.scorefile, index=False)
 else:
    print(scores)
+if args.predfile is not None:
+   preds.to_csv(args.predfile, index=False)
+else:
+   print(preds)
+
 df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
                           scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()/args.repeat).values[0].tolist()],
                           columns=['measure'], index=scores.columns)
