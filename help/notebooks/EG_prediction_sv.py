@@ -26,7 +26,6 @@ parser.add_argument('-f', "--folds", dest='folds', metavar='<folds>', type=int, 
 parser.add_argument('-j', "--jobs", dest='jobs', metavar='<jobs>', type=int, help='n. of parallel jobs (default: -1)' , default=-1, required=False)
 parser.add_argument('-B', "--batch", action='store_true', help='enable batch mode (no output)', required=False)
 parser.add_argument('-v', "--voters", dest='voters', metavar='<voters>', type=int, help='n. of voter predictors (default: 1 - one classifier)' , default=1, required=False)
-parser.add_argument('-P', "--proba", action='store_true', help='enable probability mode output (default disabled)', required=False)
 parser.add_argument('-ba', "--balanced", action='store_true', default=False, help='enable balancing in classifier (default disabled)', required=False)
 parser.add_argument('-fx', "--fixna", action='store_true', default=False, help='enable fixing NaN (default disabled)', required=False)
 parser.add_argument('-n', "--normalize", dest='normalize', metavar='<normalize>',  type=str, help='normalization mode (default None)', choices=['max', 'std'], required=False)
