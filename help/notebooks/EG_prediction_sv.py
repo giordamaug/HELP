@@ -92,7 +92,7 @@ def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, colname='label', balanced=
    # Subsample the data if required (subsample majority class fild-times rispect the minority class)
    minlab = df_y[colname].value_counts().nsmallest(1).index[0]
    maxlab = df_y[colname].value_counts().nlargest(1).index[0]
-   if verbose: print("Majority" , maxlab, df_y[colname].value_counts()[maxlab], "minority", minlab, df_y[colname].value_counts()[minlab])
+   if verbose: print(f"Majority {maxlab} {df_y[colname].value_counts()[maxlab]}, minority {minlab} {df_y[colname].value_counts()[minlab]}")
 
    df_y_ne = df_y[df_y['label']==maxlab]
    #df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
