@@ -90,7 +90,7 @@ print(f'Working with {args.voters} classifiers...')
 
 def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, verbose=False):
    df_y_ne = df_y[df_y['label']=='NE']
-   #df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
+   df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
    df_y_e = df_y[df_y['label']=='E']
    splits = np.array_split(df_y_ne, n_voters)
    predictions_ne = pd.DataFrame()
@@ -102,7 +102,7 @@ def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, v
    predictions_e['prediction'] = np.array([np.nan for idx in df_y_e.index])
    for df_index_ne in splits:
       df_x = pd.concat([df_X.loc[df_index_ne.index], df_X.loc[df_y_e.index]])
-      df_yy = pd.concat([df_y.loc[df_index_ne.index], df_y_e])
+      df_yy = pd.concat([df_y.loc[df_index_ne.index], df_y.loc[df_y_e.index]])
       _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
       predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
       r = np.empty((len(df_y_e.index),),object)
