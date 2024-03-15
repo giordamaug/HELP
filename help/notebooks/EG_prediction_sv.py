@@ -10,6 +10,8 @@ import tabulate
 from ast import literal_eval
 from tabulate import tabulate
 from sklearn.metrics import *
+import warnings
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description='PLOS COMPBIO')
 parser.add_argument('-i', "--inputfile", dest='inputfile', metavar='<inputfile>', nargs="+", type=str, help='input attribute filename list', required=True)
@@ -101,7 +103,7 @@ def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, v
    for df_index_ne in splits:
       df_x = pd.concat([df_X.loc[df_index_ne.index], df_X.loc[df_y_e.index]])
       df_yy = pd.concat([df_y.loc[df_index_ne.index], df_y_e])
-      _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=True, verbose=True, seed=seed)
+      _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
       predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
       r = np.empty((len(df_y_e.index),),object)
       r[...]=[predictions_e.loc[idx]['probabilities'] + [preds.loc[idx]['probabilities']]  for idx in df_y_e.index]
@@ -113,7 +115,7 @@ def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, v
    preds = predictions['prediction'].values
    probs = predictions['probabilities'].values
    cm = confusion_matrix(test_y, preds)
-   scores = pd.DataFrame([[roc_auc_score(test_y, probs), accuracy_score(test_y, preds),
+   scores = pd.DataFrame([[roc_auc_score(test_y, 1-probs), accuracy_score(test_y, preds),
                            balanced_accuracy_score(test_y, preds),
                            cm[0, 0] / (cm[0, 0] + cm[0, 1]),
                            cm[1, 1] / (cm[1, 0] + cm[1, 1]),
@@ -140,17 +142,17 @@ out = classify(args.voters, args.repeat, args.folds, args.jobs, verbose)
 print(out)
 for iter,res in enumerate(out):
    scores = pd.concat([scores,res[0]])
-#if args.scorefile is not None:
-#  scores.to_csv(args.scorefile, index=False)
-#else:
-print(scores)
+if args.scorefile is not None:
+   scores.to_csv(args.scorefile, index=False)
+else:
+   print(scores)
 df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
                           scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()/args.repeat).values[0].tolist()],
                           columns=['measure'], index=scores.columns)
 import sys
 distrib = np.unique(df_y[label_name].values, return_counts=True)
 ofile = sys.stdout if args.outfile is None else open(args.outfile, "a")
-ofile.write(f'METHOD: LGBM\tMODE: {"prob" if args.proba else "pred"}\tBALANCE: {"yes" if args.balanced else "no"}\n')
+ofile.write(f'METHOD: LGBM\tBALANCE: {"yes" if args.balanced else "no"}\n')
 ofile.write(f'PROBL: {" vs ".join(list(np.unique(df_y.values)))}\n')
 ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
 ofile.write(f'LABEL: {os.path.basename(args.labelfile)} DISTRIB: {distrib[0][0]} : {distrib[1][0]}, {distrib[0][1]}: {distrib[1][1]}\n')
