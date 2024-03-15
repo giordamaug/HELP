@@ -8,12 +8,12 @@ DATA=$HOME/$ROOTDIR/HELP/help/datafinal
 TARGET=$HOME/$ROOTDIR/HELP/help/datafinal
 SCOREDIR=$HOME/$ROOTDIR/HELP/help/scores_sv
 LOGDIR=$HOME/$ROOTDIR/HELP/help/logs_sv
-TISSUE=Lung
+TISSUE=Kidney
 PROB=EvsSNE
 #ALIASES="{'aE':'NE', 'sNE': 'NE'}"
 ALIASES="{}"
 EXCLABELS="-X aE"
-VOTERS="-v 10"
+VOTERS="-v 6"
 LABELFILE=${TISSUE}_${METHOD}.csv
 
 echo "running BIO"
