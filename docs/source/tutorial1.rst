@@ -13,7 +13,7 @@ In more details, the workflow implements the following steps
 .. toctree::
    :maxdepth: 1
 
-   tutorial1/labelling_tissue
+   tutorial1/labelling
 
 Tissue's PPI network embedding 
 ==============================
@@ -63,3 +63,20 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
    :maxdepth: 1
 
    tutorial1/prediction
+
+
+Experiments 
+===========
+
+In this notebook we show how we conducted the experiments in the work published on these topics:
+
+#. starting from downloading the input files used to build EG prediction odels, 
+#. by configuring a batch script to iterate cross-validation of a LightGBM model to address binary classification 
+in a specific problem (E vs NE, E vs sNE, e vs aE, aE vs sNE)
+#. we obtain all measures and their statistics of the experiments.
+
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorial1/experiment

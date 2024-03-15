@@ -1,88 +1,335 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../../">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>help.models.labelling &mdash; HELP 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>help.models.labelling &#8212; HELP 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
   
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/help/models/labelling';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
-</head>
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="../../../index.html">
-            
-              <img src="../../../_static/HELP_logo.png" class="logo" alt="Logo"/>
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../help.html">help package</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html">EG detection for a tissue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
-</ul>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-        </div>
-      </div>
-    </nav>
+  
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">HELP</a>
-      </nav>
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/HELP_logo.png" class="logo__image only-light" alt="HELP 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/HELP_logo.png" class="logo__image only-dark" alt="HELP 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">help.models.labelling</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">help.models....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for help.models.labelling</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span>
@@ -90,7 +337,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_multiotsu</span>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_multiotsu</span><span class="p">,</span> <span class="n">threshold_yen</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
@@ -103,7 +350,7 @@
 
 <span class="sd">    :param np.ndarray matrix: Input matrix.</span>
 <span class="sd">    :param int num_thresholds: number of quantized levels.</span>
-<span class="sd">    :param str algorithm: quantization algorithm type &#39;otsu|&#39;linspace&#39; (default: &#39;otsu&#39;).</span>
+<span class="sd">    :param str algorithm: quantization algorithm type &#39;otsu|linspace|yen&#39; (default: &#39;otsu&#39;).</span>
 
 <span class="sd">    :returns: The quantized array and the thresholds used.</span>
 <span class="sd">    :rtype: Tuple[np.ndarray, c]</span>
@@ -145,6 +392,12 @@
                 <span class="n">thresh</span> <span class="o">=</span> <span class="n">threshold_multiotsu</span><span class="p">(</span><span class="n">valid_values</span><span class="p">,</span> <span class="n">num_thresholds</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s1">&#39;linspace&#39;</span><span class="p">:</span>
             <span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">valid_values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">valid_values</span><span class="p">),</span> <span class="n">num_thresholds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s1">&#39;yen&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_thresholds</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Yen thresholding only support one threshow (binary separation)... using linspace mode!&#39;</span><span class="p">)</span>
+                <span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">valid_values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">valid_values</span><span class="p">),</span> <span class="n">num_thresholds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">threshold_yen</span><span class="p">(</span><span class="n">valid_values</span><span class="p">)])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Thresholding method not supported&quot;</span><span class="p">)</span>
         <span class="n">thresholds</span> <span class="o">+=</span> <span class="p">[</span><span class="n">thresh</span><span class="p">]</span>
@@ -164,6 +417,14 @@
 <div class="viewcode-block" id="rows_with_all_nan">
 <a class="viewcode-back" href="../../../help.models.html#help.models.labelling.rows_with_all_nan">[docs]</a>
 <span class="k">def</span> <span class="nf">rows_with_all_nan</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>    
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the mode of an array along each row. In case of ex-aequo modes, return the value computed by reducefoo (default: max).</span>
+
+<span class="sd">    :param pd.DatFrame df: the input DataFrame.</span>
+
+<span class="sd">    :returns: the array of indices in DataFrame with all NaNs.</span>
+<span class="sd">    :rtype: np.ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
     <span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">values</span></div>
@@ -186,12 +447,10 @@
 <span class="sd">    .. code-block:: python</span>
 
 <span class="sd">        # Example usage</span>
-<span class="sd">        from help.models.labelling import modemax</span>
-<span class="sd">        input_array = np.array([[np.nan, 2, 3, 3],</span>
-<span class="sd">                                [2, np.nan, 4, 4],</span>
-<span class="sd">                                [4, 5, 6, 6]])</span>
-
-<span class="sd">        mode_values = modemax(input_array)</span>
+<span class="sd">	    input_array = np.array([[np.nan, 2, 3, 3, 5, 5],</span>
+<span class="sd">           	             [2, np.nan, 4, 4, 6, 6],</span>
+<span class="sd">                      	  [4, 5, 6, 6, 8, 8]])</span>
+<span class="sd">	    mode_values = modemax_nan(input_array, min)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -208,12 +467,13 @@
 <a class="viewcode-back" href="../../../help.models.html#help.models.labelling.labelling_core">[docs]</a>
 <span class="k">def</span> <span class="nf">labelling_core</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">n_classes</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                   <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">labelnames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
-                  <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+                  <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> 
+                  <span class="n">reducefoo</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="nb">max</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Core function for HELP labelling algorithm.</span>
 
 <span class="sd">    :param pd.DataFrame df: Input DataFrame.</span>
-<span class="sd">    :param List[str] columns: List of column names.</span>
+<span class="sd">    :param List[str] columns: List of column names used for labelling computation.</span>
 <span class="sd">    :param int n_classes: Number of classes for &#39;flat-multi&#39; labelling mode, </span>
 <span class="sd">                          In &#39;two-by-two&#39; mode the param is ignored: two binary labelling are computed</span>
 <span class="sd">                          (default: 2).</span>
@@ -226,6 +486,7 @@
 <span class="sd">    :param str algorithm: quantization algorithm type otsu|linspace (default: &#39;otsu&#39;). </span>
 <span class="sd">    :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
 <span class="sd">    :param str colname: Name of the label column (default: &#39;label&#39;).</span>
+<span class="sd">    :param Callable[[List[int]], int] reducefoo: function used for solving ex-aequo in mode.</span>
 
 <span class="sd">    :returns: Output labelled DataFrame and quantized array.</span>
 <span class="sd">    :rtype: Tuple[pd.DataFrame, np.ndarray]</span>
@@ -250,7 +511,7 @@
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[two-by-two]: 1. Two-class labelling:&quot;</span><span class="p">)</span> 
         <span class="c1"># Perform quantization</span>
         <span class="n">Q</span><span class="p">,</span> <span class="n">Thr</span> <span class="o">=</span> <span class="n">multi_threshold_with_nan_by_column</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
-        <span class="n">Labels2</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+        <span class="n">Labels2</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">Labels2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
         <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
@@ -263,7 +524,7 @@
             <span class="n">TNE</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">NE_genes</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
         <span class="n">NumberOfClasses</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="n">QNE</span><span class="p">,</span> <span class="n">ThrNE</span> <span class="o">=</span> <span class="n">multi_threshold_with_nan_by_column</span><span class="p">(</span><span class="n">TNE</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
-        <span class="n">Labels</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">QNE</span><span class="p">)</span>
+        <span class="n">Labels</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">QNE</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">Labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">dfout2</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">NE_genes</span><span class="p">)</span>
         <span class="n">dfout2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
@@ -275,7 +536,7 @@
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[flat-multi]: 1. multi-class labelling:&quot;</span><span class="p">)</span> 
         <span class="c1"># Perform quantization</span>
         <span class="n">Q</span><span class="p">,</span> <span class="n">Thr</span> <span class="o">=</span> <span class="n">multi_threshold_with_nan_by_column</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
-        <span class="n">Labels</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+        <span class="n">Labels</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
         <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
         <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
         <span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">Labels</span>
@@ -288,12 +549,16 @@
 <a class="viewcode-back" href="../../../help.models.html#help.models.labelling.labelling">[docs]</a>
 <span class="k">def</span> <span class="nf">labelling</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">n_classes</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
              <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">labelnames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span> <span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">},</span>
-             <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+             <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">reducefoo</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="nb">max</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Main function for HELP labelling algorithm.</span>
+<span class="sd">    Main function for HELP labelling algorithm. Genes are labelled based on a selection of columns in the CRISPR DataFrame (columns=[line1, ..., lineN]). </span>
+<span class="sd">    By default (columns=[]) and the labelling algorithm uses all columns of CRISPR DataFrame. If the columns=[[list1_of_lines], ..., [listN_of_lines]] argument is a list of list, </span>
+<span class="sd">    it represents a partition of CRISPR lines: in this case the labelling is computed in each partition adn then the mode of mode is </span>
+<span class="sd">    applied to compute the final gene labels.</span>
+<span class="sd">    =[[...], ..., [...]]</span>
 
 <span class="sd">    :param pd.DataFrame df: Input DataFrame.</span>
-<span class="sd">    :param List[List[str]] columns: List of column names for partitioning (default: []).</span>
+<span class="sd">    :param List[List[str]] columns: List of column names in DataFrame used for labelling (default: []).</span>
 <span class="sd">    :param bool three_class: Flag for three-class labeling (default: False).</span>
 <span class="sd">    :param bool verbose: Verbosity level for printing information (default: False).</span>
 <span class="sd">    :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).</span>
@@ -303,18 +568,20 @@
 <span class="sd">                                         (default: &#39;flat-multi&#39;).</span>
 <span class="sd">    :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
 <span class="sd">    :param str colname: Name of the label column (default: &#39;label&#39;).</span>
+<span class="sd">    :param str algorithm: quantization algorithm type otsu|linspace (default: &#39;otsu&#39;). </span>
+<span class="sd">    :param Callable[[List[int]], int] reducefoo: function used for solving ex-aequo in mode.</span>
 
 <span class="sd">    :returns: Output DataFrame with labels.</span>
 <span class="sd">    :rtype: pd.DataFrame</span>
 
-<span class="sd">    :example</span>
+<span class="sd">    :example:</span>
 
 <span class="sd">    .. code-block:: python</span>
 
 <span class="sd">        # Example usage</span>
-<span class="sd">        from help.models.labelling import Help</span>
+<span class="sd">        from help.models.labelling import labelling</span>
 <span class="sd">        input_df = pd.DataFrame(...)</span>
-<span class="sd">        output_df = Help.labelling(input_df, columns=[], n_classes=2, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, algorithm=&#39;otsu&#39;, mode=&#39;flat-multi&#39;)</span>
+<span class="sd">        output_df = labelling(input_df, columns=[], n_classes=2, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, algorithm=&#39;otsu&#39;, mode=&#39;flat-multi&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">mode</span><span class="o">==</span><span class="s1">&#39;two-by-two&#39;</span><span class="p">:</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">labelnames</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_classes</span><span class="p">,</span> <span class="s2">&quot;Label dictionary not same size of no. of classes!&quot;</span>
@@ -329,11 +596,11 @@
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;</span><span class="p">)</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="n">labelling_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">lines</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>  
                                   <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">,</span> 
-                                  <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
-            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">reversed</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span><span class="o">.</span><span class="n">infer_objects</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                  <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">reversed</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span><span class="o">.</span><span class="n">infer_objects</span><span class="p">()</span>
             <span class="n">L_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">L_tot</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="c1"># Execute mode on each tissue and sort&#39;em</span>
-        <span class="n">modeOfmode</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">L_tot</span><span class="p">)</span>
+        <span class="n">modeOfmode</span> <span class="o">=</span> <span class="n">modemax_nan</span><span class="p">(</span><span class="n">L_tot</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
         <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="p">[])]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
         <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
         <span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeOfmode</span>
@@ -347,414 +614,84 @@
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will ha NaN labels in your output.&quot;</span><span class="p">)</span>
         <span class="n">dfout</span> <span class="o">=</span> <span class="n">labelling_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>  
                                   <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">,</span> 
-                                  <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">)</span>
+                                  <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">reducefoo</span><span class="o">=</span><span class="n">reducefoo</span><span class="p">)</span>
     <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
     <span class="n">dfout</span> <span class="o">=</span> <span class="n">dfout</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">labelnames</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">dfout</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">dfout</span></div>
 
-
-
-<span class="c1">#</span>
-<span class="c1"># The old Otsu labelling version:</span>
-<span class="c1"># from Otsu_module.py relase, translated into python from Lucia&#39;s matlab code.</span>
-<span class="c1"># it produces </span>
-<span class="c1">#</span>
-<span class="k">class</span> <span class="nc">Help</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">quantize_2d_array</span><span class="p">(</span><span class="n">T</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Quantizes a 2D NumPy array column-wise.</span>
-
-<span class="sd">        :param np.ndarray T: The input 2D array.</span>
-<span class="sd">        :param int n: Number of quantization levels.</span>
-<span class="sd">        :param int verbose: Verbosity level for printing information (default: 0).</span>
-
-<span class="sd">        :returns: Tuple containing the quantized array and threshold vector.</span>
-<span class="sd">        :rtype: Tuple[np.ndarray, np.ndarray]</span>
-
-<span class="sd">        :example: </span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            import numpy as np</span>
-<span class="sd">            from help.models.labelling import Help</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            input_array = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])</span>
-<span class="sd">            quantization_levels = 3</span>
-<span class="sd">            verbosity = 1</span>
-
-<span class="sd">            quantized_array, threshold_vector = quantize_2d_array(input_array, quantization_levels, verbosity)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-        <span class="n">ValueForNaNs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">threshVec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
-            <span class="n">ColValues</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:,</span> <span class="n">c</span><span class="p">]</span>
-            <span class="n">ColTh</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">otsu_thresholding</span><span class="p">(</span><span class="n">ColValues</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">If1</span> <span class="o">=</span> <span class="n">ColValues</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">ismiss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ColValues</span><span class="p">)</span>
-            
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">ismiss</span><span class="p">):</span>
-                <span class="n">If1</span><span class="p">[</span><span class="n">ismiss</span><span class="p">]</span> <span class="o">=</span> <span class="n">ValueForNaNs</span>
-                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cell line </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1"> has </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ismiss</span><span class="p">)</span><span class="si">}</span><span class="s1"> NaNs&#39;</span><span class="p">)</span>
-            
-            <span class="n">threshVec</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">ColTh</span>
-            <span class="n">ConNans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">If1</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">ColTh</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">T</span><span class="p">)])</span>
-            <span class="n">ConNans</span><span class="p">[</span><span class="n">ismiss</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">Q</span><span class="p">[:,</span> <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ConNans</span>
-            
-        <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">threshVec</span>
-    
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">otsu_thresholding</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Computes Otsu&#39;s threshold for image segmentation.</span>
-
-<span class="sd">        :param np.ndarray A: Input array.</span>
-<span class="sd">        :param int N: Number of classes (1 or 2).</span>
-
-<span class="sd">        :returns: Tuple containing the threshold value and related metric.</span>
-<span class="sd">        :rtype: Tuple[float, float]</span>
-
-<span class="sd">        :example</span>
-<span class="sd">        </span>
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            import numpy as np</span>
-<span class="sd">            from help.models.labelling import Help</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])</span>
-<span class="sd">            num_classes = 2</span>
-
-<span class="sd">            threshold_value, metric = Help.otsu_thresholding(input_array, num_classes)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;N must be either 1 or 2.&quot;</span><span class="p">)</span>
-        
-        <span class="n">num_bins</span> <span class="o">=</span> <span class="mi">256</span>
-        <span class="n">p</span><span class="p">,</span> <span class="n">minA</span><span class="p">,</span> <span class="n">maxA</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">compute_pdf</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Cannot compute PDF.&quot;</span>
-        
-        <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_bins</span><span class="p">))</span>
-        <span class="n">mu_t</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">)</span>
-        
-        <span class="n">maxval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">sigma_b_squared</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">maxval</span><span class="p">),</span> <span class="s2">&quot;Cannot find a finite maximum for sigma_b_squared.&quot;</span>
-        
-        <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">sigma_b_squared</span><span class="p">)</span>
-            <span class="c1">#idx = np.where(sigma_b_squared == maxval)[0]</span>
-            <span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">maxR</span><span class="p">,</span> <span class="n">maxC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sigma_b_squared</span><span class="p">),</span> <span class="n">sigma_b_squared</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-            <span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">maxR</span><span class="p">,</span> <span class="n">maxC</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
-        
-        <span class="n">thresh</span> <span class="o">=</span> <span class="n">minA</span> <span class="o">+</span> <span class="n">thresh</span> <span class="o">/</span> <span class="mi">255</span> <span class="o">*</span> <span class="p">(</span><span class="n">maxA</span> <span class="o">-</span> <span class="n">minA</span><span class="p">)</span>
-        <span class="n">metric</span> <span class="o">=</span> <span class="n">maxval</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_bins</span><span class="p">)</span> <span class="o">-</span> <span class="n">mu_t</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">thresh</span><span class="p">,</span> <span class="n">metric</span>
-    
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">compute_pdf</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Computes the probability density function (PDF) of an array.</span>
-
-<span class="sd">        :param np.ndarray A: Input array.</span>
-<span class="sd">        :param int num_bins: Number of bins for histogram.</span>
-
-<span class="sd">        :returns: Tuple containing the PDF, minimum value, and maximum value.</span>
-<span class="sd">        :rtype: Tuple[np.ndarray, float, float]</span>
-
-<span class="sd">        :example</span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            from help.models.labelling import Help</span>
-<span class="sd">            import numpy as np</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])</span>
-<span class="sd">            num_bins = 5</span>
-
-<span class="sd">            pdf, min_val, max_val = Help.compute_pdf(input_array, num_bins)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>  <span class="c1"># Vectorize A for faster histogram computation</span>
-
-        <span class="c1"># replace NaNs with empty values (both in float and integer matrix)</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">A</span><span class="p">)]</span>
-        <span class="c1"># if A was full of only NaNs return a null distribution</span>
-        <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">):</span>   <span class="c1"># if a float A the scale to the range [0 1]</span>
-            <span class="c1"># apply sclaing only to finite elements</span>
-            <span class="n">idx_isfinite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">idx_isfinite</span><span class="p">):</span>
-                <span class="n">minA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">idx_isfinite</span><span class="p">])</span>
-                <span class="n">maxA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">idx_isfinite</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>  <span class="c1"># ... A has only Infs and NaNs, return a null distribution</span>
-                <span class="n">minA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-                <span class="n">maxA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-            <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">minA</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxA</span> <span class="o">-</span> <span class="n">minA</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if an integer A no need to scale</span>
-            <span class="n">minA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-            <span class="n">maxA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">minA</span> <span class="o">==</span> <span class="n">maxA</span><span class="p">:</span>   <span class="c1"># if therei no range, retunr null distribution</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="n">minA</span><span class="p">,</span> <span class="n">maxA</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">counts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">num_bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="n">distrib</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">distrib</span><span class="p">,</span> <span class="n">minA</span><span class="p">,</span> <span class="n">maxA</span>
-        
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">omega</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Computes sigma_b_squared for Otsu&#39;s thresholding.</span>
-
-<span class="sd">        :param int N: Number of classes (1 or 2).</span>
-<span class="sd">        :param int num_bins: Number of bins for histogram.</span>
-<span class="sd">        :param np.ndarray omega: Cumulative distribution function.</span>
-<span class="sd">        :param np.ndarray mu: Cumulative mean values.</span>
-<span class="sd">        :param float mu_t: Total mean.</span>
-
-<span class="sd">        :returns: Sigma_b_squared values.</span>
-<span class="sd">        :rtype: np.ndarray</span>
-
-<span class="sd">        :example</span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            from help.models.labelling import Help</span>
-<span class="sd">            N_value = 2</span>
-<span class="sd">            num_bins = 256</span>
-<span class="sd">            omega_array = np.array([0.2, 0.8])</span>
-<span class="sd">            mu_array = np.array([100.0, 150.0])</span>
-<span class="sd">            total_mean = 125.0</span>
-
-<span class="sd">            sigma_b_squared_values = Help.compute_sigma_b_squared(N_value, num_bins, omega_array, mu_array, total_mean)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">omega</span><span class="p">))</span> <span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">((</span><span class="n">mu_t</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,(</span><span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)),</span> <span class="n">out</span><span class="o">=</span><span class="n">sigma_b_squared</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">))</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="c1">#sigma_b_squared = (mu_t * omega - mu)**2 / (omega * (1 - omega))</span>
-        <span class="k">elif</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="c1"># Rows represent thresh(1) (lower threshold) and columns represent</span>
-            <span class="c1"># thresh(2) (higher threshold).</span>
-            <span class="n">omega0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="p">(</span><span class="n">num_bins</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="n">mu_0_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">((</span><span class="n">mu_t</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">/</span> <span class="n">omega</span><span class="p">),</span> <span class="p">(</span><span class="n">num_bins</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="n">omega1</span> <span class="o">=</span> <span class="n">omega</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_bins</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">omega</span>
-            <span class="n">mu_1_t</span> <span class="o">=</span> <span class="n">mu_t</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">omega1</span>
-            
-            <span class="c1"># Set entries corresponding to non-viable solutions to NaN</span>
-            <span class="n">allPixR</span><span class="p">,</span> <span class="n">allPixC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_bins</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_bins</span><span class="p">))</span>
-            <span class="n">pixNaN</span> <span class="o">=</span> <span class="n">allPixR</span> <span class="o">&gt;=</span> <span class="n">allPixC</span>  <span class="c1"># Enforce thresh(1) &lt; thresh(2)</span>
-            <span class="n">omega0</span><span class="p">[</span><span class="n">pixNaN</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-            <span class="n">omega1</span><span class="p">[</span><span class="n">pixNaN</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-            
-            <span class="n">term1</span> <span class="o">=</span> <span class="n">omega0</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu_0_t</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">term2</span> <span class="o">=</span> <span class="n">omega1</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu_1_t</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">omega2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">omega0</span> <span class="o">+</span> <span class="n">omega1</span><span class="p">)</span>
-            <span class="n">omega2</span><span class="p">[</span><span class="n">omega2</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># Avoid divide-by-zero Infs in term3</span>
-            <span class="n">term3</span> <span class="o">=</span> <span class="p">((</span><span class="n">omega0</span> <span class="o">*</span> <span class="n">mu_0_t</span> <span class="o">+</span> <span class="n">omega1</span> <span class="o">*</span> <span class="n">mu_1_t</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">omega2</span>
-            <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">term1</span> <span class="o">+</span> <span class="n">term2</span> <span class="o">+</span> <span class="n">term3</span>
-        
-        <span class="k">return</span> <span class="n">sigma_b_squared</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">modemax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">reducefoo</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Computes the mode of an array along each row. In case of ex-aequo modes, return the value computed by reducefoo (default: max).</span>
-
-<span class="sd">        :param np.ndarray a: Input 2D array.</span>
-<span class="sd">        :param Callable[[List[int]], int] reducefoo: Reduction function (default: max).</span>
-
-<span class="sd">        :returns: Mode values.</span>
-<span class="sd">        :rtype: np.ndarray</span>
-
-<span class="sd">        :example:</span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            from help.models.labelling import Help</span>
-<span class="sd">            input_array = np.array([[1, 2, 3, 3],</span>
-<span class="sd">                                    [2, 3, 4, 4],</span>
-<span class="sd">                                    [4, 5, 6, 6]])</span>
-
-<span class="sd">            mode_values = Help.modemax(input_array)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">reducefoo</span><span class="p">(</span><span class="n">statistics</span><span class="o">.</span><span class="n">multimode</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">,:]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">three_class</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                  <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">labelnames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
-                  <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Core function for HELP algorithm.</span>
-
-<span class="sd">        :param pd.DataFrame df: Input DataFrame.</span>
-<span class="sd">        :param List[str] columns: List of column names.</span>
-<span class="sd">        :param bool three_class: Flag for three-class labeling (default: False).</span>
-<span class="sd">        :param bool verbose: Verbosity level for printing information (default: False).</span>
-<span class="sd">        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {0: &#39;E&#39;, 1: &#39;NE&#39;}).</span>
-<span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
-<span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
-
-<span class="sd">        :returns: Output DataFrame and quantized array.</span>
-<span class="sd">        :rtype: Tuple[pd.DataFrame, np.ndarray]</span>
-
-<span class="sd">        :example</span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            from help.models.labelling import Help</span>
-<span class="sd">            input_df = pd.DataFrame(...)</span>
-<span class="sd">            columns_list = [&#39;feature1&#39;, &#39;feature2&#39;, &#39;feature3&#39;]</span>
-<span class="sd">            output_df, quantized_array = Help.help_core(input_df, columns_list, three_class=True, verbose=True, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, rowname=&#39;gene&#39;, colname=&#39;label&#39;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># check labelnames with two or three class modes</span>
-        <span class="k">if</span> <span class="n">three_class</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="n">labelnames</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;Label names </span><span class="si">{</span><span class="n">labelnames</span><span class="si">}</span><span class="s2"> incompatible with three class mode.&quot;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="n">labelnames</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;Label names </span><span class="si">{</span><span class="n">labelnames</span><span class="si">}</span><span class="s2"> incompatible with two class mode&quot;</span>
-        <span class="c1"># Extract data from the dataframe</span>
-        <span class="k">if</span> <span class="n">columns</span> <span class="o">==</span> <span class="p">[]:</span>
-            <span class="n">T</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">T</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-        <span class="n">NumberOfClasses</span> <span class="o">=</span> <span class="mi">2</span>
-        
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Two-class labelling:&quot;</span><span class="p">)</span> 
-        <span class="c1"># Perform quantization</span>
-        <span class="n">Q2</span><span class="p">,</span> <span class="n">Thr</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">quantize_2d_array</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
-        <span class="n">Q2</span> <span class="o">=</span> <span class="n">Q2</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="c1">#modeQ2 = stats.mode(Q2, axis=1, keepdims=False).mode</span>
-        <span class="n">modeQ2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">Q2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">modeQ2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-        
-        <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-        <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
-        <span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeQ2</span>   <span class="c1"># .ravel()</span>
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">dfout</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-        
-        <span class="k">if</span> <span class="n">three_class</span><span class="p">:</span> 
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Three-class labelling:&quot;</span><span class="p">)</span>
-            <span class="n">NE_genes</span> <span class="o">=</span> <span class="n">dfout</span><span class="p">[</span><span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
-            <span class="k">if</span> <span class="n">columns</span> <span class="o">==</span> <span class="p">[]:</span>
-                <span class="n">TNE</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">NE_genes</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">TNE</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">NE_genes</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-            <span class="n">NumberOfClasses</span> <span class="o">=</span> <span class="mi">2</span>
-            <span class="n">QNE2</span><span class="p">,</span> <span class="n">ThrNE</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">quantize_2d_array</span><span class="p">(</span><span class="n">TNE</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
-            <span class="n">QNE2</span> <span class="o">=</span> <span class="n">QNE2</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="c1">#modeQ2NE = stats.mode(QNE2, axis=1, keepdims=False).mode</span>
-            <span class="n">modeQ2NE</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">QNE2</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">modeQ2NE</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-            <span class="n">dfout2</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">NE_genes</span><span class="p">)</span>
-            <span class="n">dfout2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
-            <span class="n">dfout2</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeQ2NE</span> <span class="c1">#.ravel()</span>
-            <span class="n">dfout2</span> <span class="o">=</span> <span class="n">dfout2</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
-            <span class="n">dfout</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">dfout2</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="p">[</span><span class="n">colname</span><span class="p">]]</span> <span class="o">=</span> <span class="n">dfout2</span><span class="p">[[</span><span class="n">colname</span><span class="p">]]</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">dfout</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-        <span class="n">dfout</span> <span class="o">=</span> <span class="n">dfout</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">labelnames</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dfout</span><span class="p">,</span> <span class="n">Q2</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">labelling</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">three_class</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-             <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">labelnames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
-             <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Main function for HELP algorithm.</span>
-
-<span class="sd">        :param pd.DataFrame df: Input DataFrame.</span>
-<span class="sd">        :param List[List[str]] columns: List of column names for partitioning (default: []).</span>
-<span class="sd">        :param bool three_class: Flag for three-class labeling (default: False).</span>
-<span class="sd">        :param bool verbose: Verbosity level for printing information (default: False).</span>
-<span class="sd">        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).</span>
-<span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
-<span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
-
-<span class="sd">        :returns: Output DataFrame with labels.</span>
-<span class="sd">        :rtype: pd.DataFrame</span>
-
-<span class="sd">        :example</span>
-<span class="sd">       </span>
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            # Example usage</span>
-<span class="sd">            from help.models.labelling import Help</span>
-<span class="sd">            input_df = pd.DataFrame(...)</span>
-<span class="sd">            output_df = Help.labelling(input_df, columns=[], three_class=True, verbose=True, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, rowname=&#39;gene&#39;, colname=&#39;label&#39;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">labelnames</span> <span class="o">==</span> <span class="p">{}:</span>
-            <span class="n">labelnames</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;aE&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;sNE&#39;</span><span class="p">}</span> <span class="k">if</span> <span class="n">three_class</span> <span class="k">else</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;NE&#39;</span><span class="p">}</span>
-        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>              <span class="c1"># use mode of mode across tissues</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;performing mode of mode.&#39;</span><span class="p">)</span>
-            <span class="n">Q2_tot</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">lines</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
-                <span class="n">_</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
-                <span class="n">Q2_tot</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Q2</span><span class="p">]</span>
-            <span class="c1"># Execute mode on each tissue and sort&#39;em</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">Q2_tot</span><span class="p">)</span>
-            <span class="n">Q2Mode_tot</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">Q2_tot</span><span class="p">:</span>
-                <span class="c1">#Q2Mode_tot.append(stats.mode(k, axis=1, keepdims=False).mode)</span>
-                <span class="n">Q2Mode_tot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-
-            <span class="n">Q2Mode_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Q2Mode_tot</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-        
-            <span class="c1"># Get mode of mode among tissues</span>
-            <span class="c1">#modeOfmode = stats.mode(Q2Mode_tot, axis=1, keepdims=False).mode</span>
-            <span class="n">modeOfmode</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">Q2Mode_tot</span><span class="p">)</span>
-            <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="p">[])]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-            <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
-            <span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeOfmode</span> <span class="c1">#.ravel()</span>
-            <span class="n">dfout</span> <span class="o">=</span> <span class="n">dfout</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">labelnames</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">dfout</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-            <span class="k">return</span> <span class="n">dfout</span>
-        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Wrong columns partition format.&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dfout</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>  <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">dfout</span>
 </pre></div>
 
-           </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
   </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
 
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <p class="copyright">
+    
+      © Copyright 2024, National Research Council of Italy.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-</body>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>

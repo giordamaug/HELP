@@ -1,125 +1,419 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Set data path &mdash; HELP 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Install HELP from GitHub &#8212; HELP 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial1/csegs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Process the tissue attributes" href="prediction.html" />
-    <link rel="prev" title="Set data path" href="embedding.html" /> 
-</head>
+    <link rel="next" title="Install HELP from GitHub" href="prediction.html" />
+    <link rel="prev" title="Install HELP from GitHub (and Karateclub)" href="embedding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="../index.html">
-            
-              <img src="../_static/HELP_logo.png" class="logo" alt="Logo"/>
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../help.html">help package</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html">EG detection for a tissue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Set data path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-the-crispr-data-file">Load the CRISPR data file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#common-egs-pan-tissue-labelling">Common Egs (pan-tissue labelling)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ignoring-in-model-tissue-with-few-cell-lines">Ignoring in Model tissue with few cell-lines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#labelling-egs-across-tissues">labelling EGs across tissues</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#context-specific-egs">Context specific EGs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
-</ul>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-        </div>
-      </div>
-    </nav>
+  
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">HELP</a>
-      </nav>
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/HELP_logo.png" class="logo__image only-light" alt="HELP 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/HELP_logo.png" class="logo__image only-dark" alt="HELP 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../tutorial1.html">EG detection for a tissue</a></li>
-      <li class="breadcrumb-item active">Set data path</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/tutorial1/csegs.rst.txt" rel="nofollow"> View page source</a>
-      </li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="set-data-path">
-<h1>Set data path<a class="headerlink" href="#set-data-path" title="Link to this heading"></a></h1>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;&lt;your-data-path&gt;&quot;</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="labelling.html">Install HELP from GitHub</a></li>
+
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Install HELP from GitHub (and Karateclub)</a></li>
+
+
+
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Install HELP from GitHub</a></li>
+
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prediction.html">Install HELP from GitHub</a></li>
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">Install HELP from GitHub</a></li>
+
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tutorial1.html" class="nav-link">EG detection for a tissue</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Install...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <a class="reference external image-reference" href="https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb"><img alt="https://colab.research.google.com/assets/colab-badge.svg" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+<a class="reference external image-reference" href="https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb"><img alt="https://kaggle.com/static/images/open-in-kaggle.svg" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
+<section id="install-help-from-github">
+<h1>Install HELP from GitHub<a class="headerlink" href="#install-help-from-github" title="Link to this heading">#</a></h1>
+<p>Skip this cell if you alread have installed HELP.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
+</pre></div>
+</div>
+</section>
+<section id="download-the-input-files">
+<h1>Download the input files<a class="headerlink" href="#download-the-input-files" title="Link to this heading">#</a></h1>
+<p>In this cell we download from GitHub repository the label file and the
+attribute files. Skip this step if you already have these input files
+locally.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43346616<span class="w"> </span>-O<span class="w"> </span>CRISPRGeneEffect.csv
+<span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43746708<span class="w"> </span>-O<span class="w"> </span>Model.csv
 </pre></div>
 </div>
 </section>
 <section id="load-the-crispr-data-file">
-<h1>Load the CRISPR data file<a class="headerlink" href="#load-the-crispr-data-file" title="Link to this heading"></a></h1>
+<h1>Load the CRISPR data file<a class="headerlink" href="#load-the-crispr-data-file" title="Link to this heading">#</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">df_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;CRISPRGeneEffect.csv&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> NaN over </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1"> values&#39;</span><span class="p">)</span>
+<span class="n">df_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CRISPRGeneEffect.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_orig</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> NaN over </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_orig</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df_orig</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1"> values&#39;</span><span class="p">)</span>
 <span class="n">df_orig</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">739493</span> <span class="n">NaN</span> <span class="n">over</span> <span class="mi">20287300</span> <span class="n">values</span>
 </pre></div>
 </div>
-<div>
+  <div id="df-dfbcf913-fd17-4eb1-b07a-5a9f56f661c3" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -308,14 +602,222 @@
   </tbody>
 </table>
 <p>18443 rows × 1100 columns</p>
-</div></section>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-dfbcf913-fd17-4eb1-b07a-5a9f56f661c3')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-dfbcf913-fd17-4eb1-b07a-5a9f56f661c3 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-dfbcf913-fd17-4eb1-b07a-5a9f56f661c3');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-44d8ba97-0ecd-4940-a285-7352ca5e7c6a">
+  <button class="colab-df-quickchart" onclick="quickchart('df-44d8ba97-0ecd-4940-a285-7352ca5e7c6a')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-44d8ba97-0ecd-4940-a285-7352ca5e7c6a button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div></section>
 <section id="load-the-map-between-cell-lines-and-tissues">
-<h1>Load the map between cell lines and tissues<a class="headerlink" href="#load-the-map-between-cell-lines-and-tissues" title="Link to this heading"></a></h1>
+<h1>Load the map between cell lines and tissues<a class="headerlink" href="#load-the-map-between-cell-lines-and-tissues" title="Link to this heading">#</a></h1>
 <p>In this code we load the file that maps cell-lines identifiers (column
 <code class="docutils literal notranslate"><span class="pre">ModelID</span></code>) to tissue, disease or tumor type (respectively:
 <code class="docutils literal notranslate"><span class="pre">OncotreeLineage</span></code>, <code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code>, <code class="docutils literal notranslate"><span class="pre">OncotreeSubtype</span></code>).
 As a second step, we print the counts of lines for each tissue.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;Model.csv&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Model.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 <span class="n">df_map</span>
 </pre></div>
@@ -355,10 +857,11 @@ As a second step, we print the counts of lines for each tissue.</p>
 <span class="n">Other</span>                          <span class="mi">1</span>
 <span class="n">Embryonal</span>                      <span class="mi">1</span>
 <span class="n">Adrenal</span> <span class="n">Gland</span>                  <span class="mi">1</span>
-<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </pre></div>
 </div>
-<div>
+  <div id="df-0710dc5d-1dd9-4f78-b687-ed6f79c73b0b" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -547,16 +1050,224 @@ As a second step, we print the counts of lines for each tissue.</p>
   </tbody>
 </table>
 <p>1921 rows × 36 columns</p>
-</div></section>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0710dc5d-1dd9-4f78-b687-ed6f79c73b0b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0710dc5d-1dd9-4f78-b687-ed6f79c73b0b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0710dc5d-1dd9-4f78-b687-ed6f79c73b0b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-67c9961d-466a-411a-9c41-93b94804e957">
+  <button class="colab-df-quickchart" onclick="quickchart('df-67c9961d-466a-411a-9c41-93b94804e957')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-67c9961d-466a-411a-9c41-93b94804e957 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div></section>
 <section id="common-egs-pan-tissue-labelling">
-<h1>Common Egs (pan-tissue labelling)<a class="headerlink" href="#common-egs-pan-tissue-labelling" title="Link to this heading"></a></h1>
+<h1>Common Egs (pan-tissue labelling)<a class="headerlink" href="#common-egs-pan-tissue-labelling" title="Link to this heading">#</a></h1>
 <p>We can apply the labelling algorithm to all cell lines present in the
 CRISPR data file to compute the common essential genes, i.e. the
 <em>pan-tissue</em> (or pan-cancer, pan-disease, etc). This set of labels will
 be used in the following to get the context-specific essential genes for
 single tissue.</p>
 <section id="ignoring-in-model-tissue-with-few-cell-lines">
-<h2>Ignoring in Model tissue with few cell-lines<a class="headerlink" href="#ignoring-in-model-tissue-with-few-cell-lines" title="Link to this heading"></a></h2>
+<h2>Ignoring in Model tissue with few cell-lines<a class="headerlink" href="#ignoring-in-model-tissue-with-few-cell-lines" title="Link to this heading">#</a></h2>
 <p>in this code we select in the CRISPR data file only cell lines belonging
 to tissue reported in the Model such that the number of lines is greater
 (or equal) to a specific amount.</p>
@@ -565,7 +1276,8 @@ to tissue reported in the Model such that the number of lines is greater
 <span class="n">df</span>
 </pre></div>
 </div>
-<div>
+  <div id="df-0d7b1529-24ec-435d-a474-d8436f289d5d" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -754,9 +1466,217 @@ to tissue reported in the Model such that the number of lines is greater
   </tbody>
 </table>
 <p>18443 rows × 1091 columns</p>
-</div></section>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0d7b1529-24ec-435d-a474-d8436f289d5d')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0d7b1529-24ec-435d-a474-d8436f289d5d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0d7b1529-24ec-435d-a474-d8436f289d5d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-f66d0981-6b03-4c86-9ae4-a49c5ff69c3e">
+  <button class="colab-df-quickchart" onclick="quickchart('df-f66d0981-6b03-4c86-9ae4-a49c5ff69c3e')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-f66d0981-6b03-4c86-9ae4-a49c5ff69c3e button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div></section>
 <section id="labelling-egs-across-tissues">
-<h2>labelling EGs across tissues<a class="headerlink" href="#labelling-egs-across-tissues" title="Link to this heading"></a></h2>
+<h2>labelling EGs across tissues<a class="headerlink" href="#labelling-egs-across-tissues" title="Link to this heading">#</a></h2>
 <p>In this example we compute common EGs by applying the labelling
 algorithm within each tissue-specufic cell lines. Then the common
 essentiality label is computed by making the mode of previously-computed
@@ -783,43 +1703,53 @@ greater than 80%.</p>
 <span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">perc</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">df_label</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">},</span>
                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
-<span class="n">df_label</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_PanTissue_group.csv&quot;</span><span class="p">))</span>
+<span class="n">df_label</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;label_PanTissue_group.csv&quot;</span><span class="p">)</span>
 <span class="n">df_label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="sa">f</span><span class="s2">&quot;Nan: </span><span class="si">{</span><span class="n">df_label</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">80</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 34/34 [00:00&lt;00:00, 536.51it/s]
-100%|██████████| 32/32 [00:00&lt;00:00, 735.38it/s]
-100%|██████████| 37/37 [00:00&lt;00:00, 732.73it/s]
-100%|██████████| 59/59 [00:00&lt;00:00, 727.16it/s]
-100%|██████████| 48/48 [00:00&lt;00:00, 749.96it/s]
-100%|██████████| 86/86 [00:00&lt;00:00, 747.68it/s]
-100%|██████████| 18/18 [00:00&lt;00:00, 729.10it/s]
-100%|██████████| 65/65 [00:00&lt;00:00, 737.15it/s]
-100%|██████████| 15/15 [00:00&lt;00:00, 675.03it/s]
-100%|██████████| 72/72 [00:00&lt;00:00, 736.44it/s]
-100%|██████████| 37/37 [00:00&lt;00:00, 685.08it/s]
-100%|██████████| 24/24 [00:00&lt;00:00, 744.16it/s]
-100%|██████████| 119/119 [00:00&lt;00:00, 713.84it/s]
-100%|██████████| 81/81 [00:00&lt;00:00, 715.60it/s]
-100%|██████████| 37/37 [00:00&lt;00:00, 739.63it/s]
-100%|██████████| 59/59 [00:00&lt;00:00, 757.11it/s]
-100%|██████████| 47/47 [00:00&lt;00:00, 752.14it/s]
-100%|██████████| 41/41 [00:00&lt;00:00, 730.64it/s]
-100%|██████████| 19/19 [00:00&lt;00:00, 736.97it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 649.65it/s]
-100%|██████████| 71/71 [00:00&lt;00:00, 754.01it/s]
-100%|██████████| 36/36 [00:00&lt;00:00, 741.70it/s]
-100%|██████████| 11/11 [00:00&lt;00:00, 725.30it/s]
-100%|██████████| 33/33 [00:00&lt;00:00, 711.01it/s]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 34/34 [00:00&lt;00:00, 260.19it/s]
+/usr/local/lib/python3.10/dist-packages/help/models/labelling.py:239: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 32/32 [00:00&lt;00:00, 424.17it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 433.34it/s]
+100%|██████████| 59/59 [00:00&lt;00:00, 413.31it/s]
+100%|██████████| 48/48 [00:00&lt;00:00, 418.10it/s]
+100%|██████████| 86/86 [00:00&lt;00:00, 432.36it/s]
+/usr/local/lib/python3.10/dist-packages/help/models/labelling.py:239: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 18/18 [00:00&lt;00:00, 417.12it/s]
+100%|██████████| 65/65 [00:00&lt;00:00, 428.64it/s]
+/usr/local/lib/python3.10/dist-packages/help/models/labelling.py:239: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 15/15 [00:00&lt;00:00, 213.07it/s]
+100%|██████████| 72/72 [00:00&lt;00:00, 270.59it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 428.57it/s]
+/usr/local/lib/python3.10/dist-packages/help/models/labelling.py:239: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 24/24 [00:00&lt;00:00, 428.91it/s]
+100%|██████████| 119/119 [00:00&lt;00:00, 426.87it/s]
+100%|██████████| 81/81 [00:00&lt;00:00, 422.94it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 434.84it/s]
+100%|██████████| 59/59 [00:00&lt;00:00, 243.62it/s]
+100%|██████████| 47/47 [00:00&lt;00:00, 409.77it/s]
+100%|██████████| 41/41 [00:00&lt;00:00, 399.38it/s]
+100%|██████████| 19/19 [00:00&lt;00:00, 395.83it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 360.85it/s]
+100%|██████████| 71/71 [00:00&lt;00:00, 428.74it/s]
+100%|██████████| 36/36 [00:00&lt;00:00, 419.54it/s]
+/usr/local/lib/python3.10/dist-packages/help/models/labelling.py:239: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 11/11 [00:00&lt;00:00, 298.77it/s]
+100%|██████████| 33/33 [00:00&lt;00:00, 433.54it/s]
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">label</span>
  <span class="n">NE</span>       <span class="mi">16681</span>
  <span class="n">E</span>         <span class="mi">1250</span>
- <span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
+ <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
  <span class="s1">&#39;Nan: 0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -844,106 +1774,228 @@ values greater than 80%.</p>
 <span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
 <span class="c1"># remove rows with all nans</span>
 <span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">perc</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-<span class="n">df_label</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">},</span>
+<span class="n">df_label</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                     <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">},</span>
                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
-<span class="n">df_label</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_PanTissue.csv&quot;</span><span class="p">))</span>
+<span class="n">df_label</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;label_PanTissue.csv&quot;</span><span class="p">)</span>
 <span class="n">df_label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="sa">f</span><span class="s2">&quot;Nan: </span><span class="si">{</span><span class="n">df_label</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">80</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1091/1091 [00:01&lt;00:00, 690.96it/s]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1091/1091 [00:02&lt;00:00, 372.72it/s]
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">label</span>
  <span class="n">NE</span>       <span class="mi">16668</span>
  <span class="n">E</span>         <span class="mi">1263</span>
- <span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
+ <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
  <span class="s1">&#39;Nan: 0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="context-specific-egs">
-<h1>Context specific EGs<a class="headerlink" href="#context-specific-egs" title="Link to this heading"></a></h1>
+<h1>Context specific EGs<a class="headerlink" href="#context-specific-egs" title="Link to this heading">#</a></h1>
 <p>In this section we make the difference between pan-tissue EGs (common
 EGs) and tissue EGs to get the context-specific EGs for the tissue
 (csEGs). The EGs for Kidney and Lung tissues (previously generated) are
-loade from csv data files. In this forst code/plot we show the csEGs of
-Lung and Kidney by subtracting the common EGs computed by grouping
-tissue cell-lines (<code class="docutils literal notranslate"><span class="pre">label_PanTissue_group.csv</span></code>). In the second
-code/plot we show the csEGs of the two tissues by subtracting the common
-EGs computed on all cell-lines in flat mode (<code class="docutils literal notranslate"><span class="pre">label_PanTissue.csv</span></code>)</p>
+loaded from csv data files (downloaded from the GitHub repository). In
+this forst code/plot we show the csEGs of Lung and Kidney by subtracting
+the common EGs computed by grouping tissue cell-lines
+(<code class="docutils literal notranslate"><span class="pre">label_PanTissue_group.csv</span></code>). In the second code/plot we show the
+csEGs of the two tissues by subtracting the common EGs computed on all
+cell-lines in flat mode (<code class="docutils literal notranslate"><span class="pre">label_PanTissue.csv</span></code>)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_HELP.csv
+<span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Lung_HELP.csv
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--2024-03-08 12:02:24--  https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_HELP.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 180249 (176K) [text/plain]
+Saving to: ‘Kidney_HELP.csv.1’
+</pre></div>
+</div>
+<p>Kidney_HELP.csv.1     0%[                    ]       0  –.-KB/s
+Kidney_HELP.csv.1   100%[===================&gt;] 176.02K  –.-KB/s    in 0.03s</p>
+<blockquote>
+<div><p>2024-03-08 12:02:24 (6.74 MB/s) - ‘Kidney_HELP.csv.1’ saved [180249/180249]</p>
+<p class="attribution">—2024-03-08 12:02:24–  <a class="reference external" href="https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Lung_HELP.csv">https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Lung_HELP.csv</a>
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)… 185.199.108.133, 185.199.109.133, 185.199.110.133, …
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443… connected.
+HTTP request sent, awaiting response… 200 OK
+Length: 180657 (176K) [text/plain]
+Saving to: ‘Lung_HELP.csv’</p>
+</div></blockquote>
+<blockquote>
+<div><p>Lung_HELP.csv       100%[===================&gt;] 176.42K  –.-KB/s    in 0.02s</p>
+<p>2024-03-08 12:02:25 (6.93 MB/s) - ‘Lung_HELP.csv’ saved [180657/180657]</p>
+</div></blockquote>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">EG_tissues_intersect</span>
-<span class="n">csEGs</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kidney&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_Kidney.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
-                                                        <span class="s1">&#39;Lung&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_Lung.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">csEGs</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kidney&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Kidney_HELP.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                                                        <span class="s1">&#39;Lung&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Lung_HELP.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
                                                        <span class="p">},</span>
-                        <span class="n">common_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_PanTissue_group.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                        <span class="n">common_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;label_PanTissue_group.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
                         <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subtracting</span> <span class="mi">1250</span> <span class="n">common</span> <span class="n">EGs</span><span class="o">...</span>
 <span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">5</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
 <span class="mi">55</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
-<span class="mi">63</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
+<span class="mi">23</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
 </pre></div>
 </div>
-<img alt="../_images/output_19_1.png" src="../_images/output_19_1.png" />
+<img alt="../_images/output_23_1.png" src="../_images/output_23_1.png" />
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">EG_tissues_intersect</span>
-<span class="n">csEGs</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kidney&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_Kidney.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
-                                                        <span class="s1">&#39;Lung&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_Lung.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">csEGs</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kidney&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Kidney_HELP.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                                                        <span class="s1">&#39;Lung&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Lung_HELP.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
                                                        <span class="p">},</span>
-                        <span class="n">common_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;label_PanTissue.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                        <span class="c1">#common_df = pd.read_csv(os.path.join(datapath, &quot;PanTissue_HELP.csv&quot;), index_col=0),</span>
                         <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subtracting</span> <span class="mi">1263</span> <span class="n">common</span> <span class="n">EGs</span><span class="o">...</span>
-<span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">3</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
-<span class="mi">56</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
-<span class="mi">56</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Overlapping</span> <span class="n">of</span> <span class="mi">1168</span> <span class="n">genes</span> <span class="n">between</span> <span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;Lung&#39;</span><span class="p">]</span>
+<span class="mi">85</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Kidney</span>
+<span class="mi">67</span> <span class="n">genes</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">Lung</span>
 </pre></div>
 </div>
-<img alt="../_images/output_20_1.png" src="../_images/output_20_1.png" />
+<img alt="../_images/output_24_1.png" src="../_images/output_24_1.png" />
 <p>As we ca see, the overlapping of cdEgs between the two tissues differs
 in two genes. Then we save the csEGs into a file (the last one).</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;csEG_Kidney.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;csEG_Kidney.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">csEGs</span><span class="p">[</span><span class="s1">&#39;Kidney&#39;</span><span class="p">])))</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="s2">&quot;csEG_Lung.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;csEG_Lung.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">csEGs</span><span class="p">[</span><span class="s1">&#39;Lung&#39;</span><span class="p">])))</span>
 </pre></div>
 </div>
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="embedding.html" class="btn btn-neutral float-left" title="Set data path" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="prediction.html" class="btn btn-neutral float-right" title="Process the tissue attributes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="embedding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Install HELP from GitHub (and Karateclub)</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="prediction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Install HELP from GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install HELP from GitHub</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-input-files">Download the input files</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-egs-pan-tissue-labelling">Common Egs (pan-tissue labelling)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ignoring-in-model-tissue-with-few-cell-lines">Ignoring in Model tissue with few cell-lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labelling-egs-across-tissues">labelling EGs across tissues</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#context-specific-egs">Context specific EGs</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tutorial1/csegs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, National Research Council of Italy.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>

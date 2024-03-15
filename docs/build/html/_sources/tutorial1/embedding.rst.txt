@@ -1,9 +1,29 @@
-Set data path
-=============
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/embedding.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/embedding.ipynb
+
+
+Install HELP from GitHub (and Karateclub)
+=========================================
+
+Skip this cell if you already have installed HELP.
 
 .. code:: ipython3
 
-    datapath = "<your-data-path>"
+    !pip install git+https://github.com/giordamaug/HELP.git
+    !pip install -q karateclub
+
+Download the input files
+========================
+
+In this cell we download from GitHub repository the label file and the
+attribute files. Skip this step if you already have these input files
+locally.
+
+.. code:: ipython3
+
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_PPI.csv
 
 Load the PPI network and apply embedding
 ========================================
@@ -16,7 +36,7 @@ traget + ``combined_score`` is an attribute describeing the type of edge
 
     import pandas as pd
     from help.preprocess.embedding import PPI_embed
-    df_net = pd.read_csv('../data/Lung_PPI.csv')
+    df_net = pd.read_csv('Kidney_PPI.csv')
     df_embed = PPI_embed(df_net, method="Node2Vec", verbose=True)
 
 
@@ -49,8 +69,8 @@ traget + ``combined_score`` is an attribute describeing the type of edge
     There are 0 isolated genes
 
 
-Save the embedding and display it
-=================================
+Save the embedding and show it
+==============================
 
 After almost 2 hour in sequential execution, the PPI network embedding
 is extracted and saved in a csv file as new attributes for the
@@ -59,7 +79,7 @@ the examples.
 
 .. code:: ipython3
 
-    df_embed.to_csv('../data/Lung_EmbN2V_128.csv')
+    df_embed.to_csv('Kidney_EmbN2V_128.csv')
     df_embed
 
 

@@ -1,88 +1,335 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../../">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>help.preprocess.loaders &mdash; HELP 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>help.preprocess.loaders &#8212; HELP 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
   
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/help/preprocess/loaders';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
-</head>
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="../../../index.html">
-            
-              <img src="../../../_static/HELP_logo.png" class="logo" alt="Logo"/>
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../help.html">help package</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html">EG detection for a tissue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#context-specific-eg-for-tissues">Context-Specific EG for tissues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
-</ul>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-        </div>
-      </div>
-    </nav>
+  
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">HELP</a>
-      </nav>
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/HELP_logo.png" class="logo__image only-light" alt="HELP 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/HELP_logo.png" class="logo__image only-dark" alt="HELP 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">help.preprocess.loaders</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">help.preproc...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for help.preprocess.loaders</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -92,6 +339,7 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <div class="viewcode-block" id="scale_to_essentials">
 <a class="viewcode-back" href="../../../help.preprocess.html#help.preprocess.loaders.scale_to_essentials">[docs]</a>
@@ -124,14 +372,18 @@
 
 <div class="viewcode-block" id="feature_assemble">
 <a class="viewcode-back" href="../../../help.preprocess.html#help.preprocess.loaders.feature_assemble">[docs]</a>
-<span class="k">def</span> <span class="nf">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;bio+gtex.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">}],</span> 
+<span class="k">def</span> <span class="nf">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;BIO.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;nchunks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> 
                      <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">subsample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Assemble features and labels for machine learning tasks.</span>
 
 <span class="sd">    :param str label_file: Path to the label file.</span>
 <span class="sd">    :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.</span>
-<span class="sd">        Default is [{&#39;fname&#39;: &#39;bio+gtex.csv&#39;, &#39;fixna&#39; : True, &#39;normalize&#39;: &#39;std&#39;}].</span>
+<span class="sd">        Default is [{&#39;fname&#39;: &#39;BIO.csv&#39;, &#39;fixna&#39; : False, &#39;normalize&#39;: &#39;std&#39;, &#39;nchunks&#39;: 1}].</span>
+<span class="sd">        &#39;fname&#39; : str, filename of attributes (in CSV format)</span>
+<span class="sd">        &#39;fixna&#39; : bool, flag to enable fixing missing values with mean in column</span>
+<span class="sd">        &#39;normalize&#39;: std|max|None, normalization option (z-score, minmax, or no normalization)</span>
+<span class="sd">        &#39;nchunks&#39;: int, number of chunck the attribute file is split   </span>
 <span class="sd">    :param str colname: Name of the column in the label file to be used as the target variable. Default is &quot;label&quot;.</span>
 <span class="sd">    :param bool subsample: Whether to subsample the data. Default is False.</span>
 <span class="sd">    :param int seed: Random seed for reproducibility. Default is 1.</span>
@@ -160,16 +412,16 @@
 
     <span class="c1"># Load labels from the specified file</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">label_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading label file </span><span class="si">{</span><span class="n">label_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
     <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Subsample the data if required (subsample majority class fild-times rispect the minority class)</span>
     <span class="n">minlab</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">maxlab</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Majority&quot;</span> <span class="p">,</span> <span class="n">maxlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">maxlab</span><span class="p">],</span> <span class="s2">&quot;minoriy&quot;</span><span class="p">,</span> <span class="n">minlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">minlab</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Majority&quot;</span> <span class="p">,</span> <span class="n">maxlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">maxlab</span><span class="p">],</span> <span class="s2">&quot;minority&quot;</span><span class="p">,</span> <span class="n">minlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">minlab</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">subsample</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">maxlab</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="o">*</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">minlab</span><span class="p">]:</span>
+        <span class="c1">#if lab_df[colname].value_counts()[maxlab] &gt;= 4*lab_df[colname].value_counts()[minlab]:</span>
             <span class="n">idxNE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxlab</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxlab</span><span class="p">]),</span> <span class="n">fold</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">minlab</span><span class="p">]),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
             <span class="n">idxRest</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">!=</span> <span class="n">maxlab</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">!=</span> <span class="n">minlab</span><span class="p">))]</span><span class="o">.</span><span class="n">index</span>
             <span class="n">idxE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">minlab</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
@@ -177,8 +429,8 @@
                 <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxNE</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxRest</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxE</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxNE</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxE</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Subsampling cannot be applied: majority class is less then 4 time the minority one.&quot;</span><span class="p">)</span>
+        <span class="c1">#else:</span>
+        <span class="c1">#    warnings.warn(&quot;Subsampling cannot be applied: majority class is less then 4 time the minority one.&quot;)</span>
 
     <span class="c1"># Common indices among labels and features</span>
     <span class="n">idx_common</span> <span class="o">=</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
@@ -186,16 +438,145 @@
 
     <span class="c1"># Process each feature</span>
     <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-        <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># check for chunk splits</span>
+        <span class="k">if</span> <span class="s1">&#39;nchunks&#39;</span> <span class="ow">in</span> <span class="n">feat</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">dfl</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">]),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Loading file in chunks&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">):</span>
+               <span class="n">filename</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])</span>
+               <span class="n">dfl</span> <span class="o">+=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">id</span><span class="si">}{</span><span class="n">file_ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfl</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">feattype</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
         <span class="c1"># Handle missing values if required</span>
-        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fixna&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
             <span class="n">cntnan</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] found </span><span class="si">{</span><span class="n">cntnan</span><span class="si">}</span><span class="s2"> Nan...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fixna&#39;</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] found </span><span class="si">{</span><span class="n">cntnan</span><span class="si">}</span><span class="s2"> Nan...&quot;</span><span class="p">)</span>
-            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Fixing NaNs with mean ...&quot;</span><span class="p">)</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">feat_df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+        <span class="c1"># Normalize features</span>
+        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Normalization with </span><span class="si">{</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> ...&quot;</span><span class="p">)</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">feat_df</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Normalization with </span><span class="si">{</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">feat_df</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] No normalization...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Update common indices and concatenate features</span>
+        <span class="n">idx_common</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">idx_common</span><span class="p">,</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">],</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">)</span><span class="si">}</span><span class="s1"> labeled genes over a total of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> data input&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Save the assembled data if required</span>
+    <span class="k">if</span> <span class="n">saveflag</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s2">&quot;X.csv&quot;</span><span class="p">))</span>
+        <span class="n">lab_df</span><span class="p">[[</span><span class="n">colname</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s2">&quot;Y.csv&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Return the assembled features (X) and labels (Y)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[[</span><span class="n">colname</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="feature_assemble_df">
+<a class="viewcode-back" href="../../../help.preprocess.html#help.preprocess.loaders.feature_assemble_df">[docs]</a>
+<span class="k">def</span> <span class="nf">feature_assemble_df</span><span class="p">(</span><span class="n">lab_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;bio+gtex.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;nchunks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> 
+                     <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">subsample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assemble features and labels for machine learning tasks.</span>
+
+<span class="sd">    :param pd.DataFrame lab_df: DataFrame of labels (in column named colnname).</span>
+<span class="sd">    :param List[Dict[str, Union[str, bool]]] features: List of dictionaries specifying feature files and their processing options.</span>
+<span class="sd">        Default is [{&#39;fname&#39;: &#39;BIO.csv&#39;, &#39;fixna&#39; : False, &#39;normalize&#39;: &#39;std&#39;, &#39;nchunks&#39;: 1}].</span>
+<span class="sd">        &#39;fname&#39; : str, filename of attributes (in CSV format)</span>
+<span class="sd">        &#39;fixna&#39; : bool, flag to enable fixing missing values with mean in column</span>
+<span class="sd">        &#39;normalize&#39;: std|max|None, normalization option (z-score, minmax, or no normalization)</span>
+<span class="sd">        &#39;nchunks&#39;: int, number of chunck the attribute file is split   </span>
+<span class="sd">    :param str colname: Name of the column in the label file to be used as the target variable. Default is &quot;label&quot;.</span>
+<span class="sd">    :param bool subsample: Whether to subsample the data. Default is False.</span>
+<span class="sd">    :param int seed: Random seed for reproducibility. Default is 1.</span>
+<span class="sd">    :param int fold: Number of folds for subsampling. Default is 4.</span>
+<span class="sd">    :param bool saveflag: Whether to save the assembled data to files. Default is False.</span>
+<span class="sd">    :param bool verbose: Whether to print verbose messages during processing. Default is False.</span>
+
+<span class="sd">    :returns: Tuple containing the assembled features (X) and labels (Y) DataFrames.</span>
+<span class="sd">    :rtype: Tuple[pd.DataFrame, pd.DataFrame]</span>
+<span class="sd">        </span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        label_file = &quot;path/to/label_file.csv&quot;</span>
+<span class="sd">        features = [{&#39;fname&#39;: &#39;path/to/feature_file.csv&#39;, &#39;fixna&#39;: True, &#39;normalize&#39;: &#39;std&#39;}]</span>
+<span class="sd">        colname = &quot;target_column&quot;</span>
+<span class="sd">        subsample = False</span>
+<span class="sd">        seed = 1</span>
+<span class="sd">        fold = 4</span>
+<span class="sd">        saveflag = False</span>
+<span class="sd">        verbose = False</span>
+
+<span class="sd">        df_label = pd.read_csv(&quot;label_file.csv2, index_col=0)</span>
+<span class="sd">        X, Y = feature_assemble_df(df_label, colname=&#39;label&#39;, features, colname, subsample, seed, fold, saveflag, verbose)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Subsample the data if required (subsample majority class fild-times rispect the minority class)</span>
+    <span class="n">minlab</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">maxlab</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Majority&quot;</span> <span class="p">,</span> <span class="n">maxlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">maxlab</span><span class="p">],</span> <span class="s2">&quot;minority&quot;</span><span class="p">,</span> <span class="n">minlab</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">minlab</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">subsample</span><span class="p">:</span>
+        <span class="c1">#if lab_df[colname].value_counts()[maxlab] &gt;= 4*lab_df[colname].value_counts()[minlab]:</span>
+            <span class="n">idxNE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxlab</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxlab</span><span class="p">]),</span> <span class="n">fold</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">minlab</span><span class="p">]),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+            <span class="n">idxRest</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">!=</span> <span class="n">maxlab</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">!=</span> <span class="n">minlab</span><span class="p">))]</span><span class="o">.</span><span class="n">index</span>
+            <span class="n">idxE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="n">minlab</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+            <span class="k">if</span> <span class="n">idxRest</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxNE</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxRest</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxE</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxNE</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxE</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">#else:</span>
+        <span class="c1">#    warnings.warn(&quot;Subsampling cannot be applied: majority class is less then 4 times the minority one.&quot;)</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Subsampling with factor 1:</span><span class="si">{</span><span class="n">fold</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+    <span class="c1"># Common indices among labels and features</span>
+    <span class="n">idx_common</span> <span class="o">=</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">lab_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="c1"># Process each feature file</span>
+    <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="c1"># check for chunk splits</span>
+        <span class="k">if</span> <span class="s1">&#39;nchunks&#39;</span> <span class="ow">in</span> <span class="n">feat</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">dfl</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;nchunks&#39;</span><span class="p">]),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Loading file in chunks&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">):</span>
+               <span class="n">filename</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])</span>
+               <span class="n">dfl</span> <span class="o">+=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">id</span><span class="si">}{</span><span class="n">file_ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfl</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">feattype</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="c1"># Handle missing values if required</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">cntnan</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] found </span><span class="si">{</span><span class="n">cntnan</span><span class="si">}</span><span class="s2"> Nan...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fixna&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Fixing NaNs with mean ...&quot;</span><span class="p">)</span>
+            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">feat_df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
         <span class="c1"># Normalize features</span>
         <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span>
@@ -230,31 +611,76 @@
 
 </pre></div>
 
-           </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
   </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
 
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <p class="copyright">
+    
+      © Copyright 2024, National Research Council of Italy.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-</body>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>

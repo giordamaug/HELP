@@ -9,6 +9,8 @@ from help.models.prediction import predict_cv
 import tabulate
 from ast import literal_eval
 from tabulate import tabulate
+import warnings
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description='PLOS COMPBIO')
 parser.add_argument('-i', "--inputfile", dest='inputfile', metavar='<inputfile>', nargs="+", type=str, help='input attribute filename list', required=True)
@@ -22,7 +24,7 @@ parser.add_argument('-r', "--repeat", dest='repeat', metavar='<repeat>', type=in
 parser.add_argument('-f', "--folds", dest='folds', metavar='<folds>', type=int, help='n. of cv folds (default: 5)' , default=5, required=False)
 parser.add_argument('-j', "--jobs", dest='jobs', metavar='<jobs>', type=int, help='n. of parallel jobs (default: -1)' , default=-1, required=False)
 parser.add_argument('-B', "--batch", action='store_true', help='enable batch mode (no output)', required=False)
-parser.add_argument('-sf', "--subfolds", dest='subfolds', metavar='<subfolds>', type=int, help='n. of folds for subsampling (default: 0 - no subsampling)' , default=4, required=False)
+parser.add_argument('-sf', "--subfolds", dest='subfolds', metavar='<subfolds>', type=int, help='n. of folds for subsampling (default: 0 - no subsampling)' , default=0, required=False)
 parser.add_argument('-P', "--proba", action='store_true', help='enable probability mode output (default disabled)', required=False)
 parser.add_argument('-ba', "--balanced", action='store_true', default=False, help='enable balancing in classifier (default disabled)', required=False)
 parser.add_argument('-fx', "--fixna", action='store_true', default=False, help='enable fixing NaN (default disabled)', required=False)

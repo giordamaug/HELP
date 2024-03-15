@@ -1,0 +1,2247 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Install HELP from GitHub &#8212; HELP 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial1/labelling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Install HELP from GitHub (and Karateclub)" href="embedding.html" />
+    <link rel="prev" title="EG detection for a tissue" href="../tutorial1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/HELP_logo.png" class="logo__image only-light" alt="HELP 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/HELP_logo.png" class="logo__image only-dark" alt="HELP 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help.html">
+                        help package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tutorial1.html">
+                        EG detection for a tissue
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Install HELP from GitHub</a></li>
+
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Install HELP from GitHub (and Karateclub)</a></li>
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="csegs.html">Install HELP from GitHub</a></li>
+
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prediction.html">Install HELP from GitHub</a></li>
+
+
+
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">Install HELP from GitHub</a></li>
+
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tutorial1.html" class="nav-link">EG detection for a tissue</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Install...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <a class="reference external image-reference" href="https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb"><img alt="https://colab.research.google.com/assets/colab-badge.svg" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+<a class="reference external image-reference" href="https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb"><img alt="https://kaggle.com/static/images/open-in-kaggle.svg" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
+<section id="install-help-from-github">
+<h1>Install HELP from GitHub<a class="headerlink" href="#install-help-from-github" title="Link to this heading">#</a></h1>
+<p>Skip this cell if you alread have installed HELP.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
+</pre></div>
+</div>
+</section>
+<section id="download-the-input-files">
+<h1>Download the input files<a class="headerlink" href="#download-the-input-files" title="Link to this heading">#</a></h1>
+<p>In this cell we download from GitHub repository the label file and the
+attribute files. Skip this step if you already have these input files
+locally.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43346616<span class="w"> </span>-O<span class="w"> </span>CRISPRGeneEffect.csv
+<span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43746708<span class="w"> </span>-O<span class="w"> </span>Model.csv
+</pre></div>
+</div>
+</section>
+<section id="load-the-crispr-data-file">
+<h1>Load the CRISPR data file<a class="headerlink" href="#load-the-crispr-data-file" title="Link to this heading">#</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CRISPRGeneEffect.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> NaN over </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1"> values&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">739493</span> <span class="n">NaN</span> <span class="n">over</span> <span class="mi">20287300</span> <span class="n">values</span>
+</pre></div>
+</div>
+  <div id="df-96b856ba-40cd-4f40-bc51-de98c98cb478" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>ACH-000011</th>
+      <th>ACH-000012</th>
+      <th>ACH-000013</th>
+      <th>ACH-000015</th>
+      <th>ACH-000017</th>
+      <th>...</th>
+      <th>ACH-002693</th>
+      <th>ACH-002710</th>
+      <th>ACH-002785</th>
+      <th>ACH-002799</th>
+      <th>ACH-002800</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>0.022670</td>
+      <td>-0.096631</td>
+      <td>0.049811</td>
+      <td>-0.099040</td>
+      <td>-0.044896</td>
+      <td>...</td>
+      <td>-0.072582</td>
+      <td>-0.033722</td>
+      <td>-0.053881</td>
+      <td>-0.060617</td>
+      <td>0.025795</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>-0.057743</td>
+      <td>-0.024440</td>
+      <td>-0.158811</td>
+      <td>-0.070409</td>
+      <td>-0.115830</td>
+      <td>...</td>
+      <td>-0.237311</td>
+      <td>-0.108704</td>
+      <td>-0.114864</td>
+      <td>-0.042591</td>
+      <td>-0.132627</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>0.079679</td>
+      <td>0.041922</td>
+      <td>-0.003968</td>
+      <td>-0.029389</td>
+      <td>0.024537</td>
+      <td>...</td>
+      <td>-0.065940</td>
+      <td>0.079277</td>
+      <td>0.069333</td>
+      <td>0.030989</td>
+      <td>0.249826</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>0.227512</td>
+      <td>0.039121</td>
+      <td>0.034778</td>
+      <td>0.084594</td>
+      <td>-0.003710</td>
+      <td>...</td>
+      <td>0.101541</td>
+      <td>0.038977</td>
+      <td>0.066599</td>
+      <td>0.043809</td>
+      <td>0.064657</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>-0.130448</td>
+      <td>0.028947</td>
+      <td>-0.120875</td>
+      <td>-0.052288</td>
+      <td>-0.336776</td>
+      <td>...</td>
+      <td>0.005374</td>
+      <td>-0.144070</td>
+      <td>-0.256227</td>
+      <td>-0.116473</td>
+      <td>-0.294305</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>0.013401</td>
+      <td>0.005124</td>
+      <td>-0.089180</td>
+      <td>-0.005409</td>
+      <td>-0.070396</td>
+      <td>...</td>
+      <td>-0.296880</td>
+      <td>-0.084936</td>
+      <td>-0.128569</td>
+      <td>-0.110504</td>
+      <td>-0.087171</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>-0.296421</td>
+      <td>-0.131949</td>
+      <td>-0.145737</td>
+      <td>-0.216393</td>
+      <td>-0.257916</td>
+      <td>...</td>
+      <td>-0.332415</td>
+      <td>-0.193408</td>
+      <td>-0.327408</td>
+      <td>-0.257879</td>
+      <td>-0.349111</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>0.067705</td>
+      <td>-0.109147</td>
+      <td>-0.034886</td>
+      <td>-0.137350</td>
+      <td>0.029457</td>
+      <td>...</td>
+      <td>-0.005090</td>
+      <td>-0.218960</td>
+      <td>-0.053033</td>
+      <td>-0.041612</td>
+      <td>-0.057478</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>-0.232453</td>
+      <td>-0.164482</td>
+      <td>-0.175850</td>
+      <td>-0.168087</td>
+      <td>-0.284838</td>
+      <td>...</td>
+      <td>-0.188751</td>
+      <td>-0.120449</td>
+      <td>-0.267081</td>
+      <td>0.006148</td>
+      <td>-0.189602</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>-0.347234</td>
+      <td>-0.277397</td>
+      <td>-0.519586</td>
+      <td>-0.282338</td>
+      <td>-0.247634</td>
+      <td>...</td>
+      <td>-0.239991</td>
+      <td>-0.311396</td>
+      <td>-0.202158</td>
+      <td>-0.195154</td>
+      <td>-0.107107</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1100 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-96b856ba-40cd-4f40-bc51-de98c98cb478')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-96b856ba-40cd-4f40-bc51-de98c98cb478 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-96b856ba-40cd-4f40-bc51-de98c98cb478');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div></section>
+<section id="load-the-map-between-cell-lines-and-tissues">
+<h1>Load the map between cell lines and tissues<a class="headerlink" href="#load-the-map-between-cell-lines-and-tissues" title="Link to this heading">#</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Model.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">df_map</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OncotreeLineage</span>
+<span class="n">Lung</span>                         <span class="mi">249</span>
+<span class="n">Lymphoid</span>                     <span class="mi">211</span>
+<span class="n">CNS</span><span class="o">/</span><span class="n">Brain</span>                    <span class="mi">122</span>
+<span class="n">Skin</span>                         <span class="mi">120</span>
+<span class="n">Esophagus</span><span class="o">/</span><span class="n">Stomach</span>             <span class="mi">95</span>
+<span class="n">Breast</span>                        <span class="mi">94</span>
+<span class="n">Bowel</span>                         <span class="mi">89</span>
+<span class="n">Head</span> <span class="ow">and</span> <span class="n">Neck</span>                 <span class="mi">84</span>
+<span class="n">Bone</span>                          <span class="mi">77</span>
+<span class="n">Myeloid</span>                       <span class="mi">77</span>
+<span class="n">Ovary</span><span class="o">/</span><span class="n">Fallopian</span> <span class="n">Tube</span>          <span class="mi">75</span>
+<span class="n">Kidney</span>                        <span class="mi">73</span>
+<span class="n">Pancreas</span>                      <span class="mi">66</span>
+<span class="n">Peripheral</span> <span class="n">Nervous</span> <span class="n">System</span>     <span class="mi">56</span>
+<span class="n">Soft</span> <span class="n">Tissue</span>                   <span class="mi">55</span>
+<span class="n">Biliary</span> <span class="n">Tract</span>                 <span class="mi">44</span>
+<span class="n">Uterus</span>                        <span class="mi">41</span>
+<span class="n">Fibroblast</span>                    <span class="mi">41</span>
+<span class="n">Bladder</span><span class="o">/</span><span class="n">Urinary</span> <span class="n">Tract</span>         <span class="mi">39</span>
+<span class="n">Normal</span>                        <span class="mi">39</span>
+<span class="n">Pleura</span>                        <span class="mi">35</span>
+<span class="n">Liver</span>                         <span class="mi">29</span>
+<span class="n">Cervix</span>                        <span class="mi">25</span>
+<span class="n">Eye</span>                           <span class="mi">21</span>
+<span class="n">Thyroid</span>                       <span class="mi">18</span>
+<span class="n">Prostate</span>                      <span class="mi">15</span>
+<span class="n">Testis</span>                         <span class="mi">7</span>
+<span class="n">Vulva</span><span class="o">/</span><span class="n">Vagina</span>                   <span class="mi">5</span>
+<span class="n">Muscle</span>                         <span class="mi">5</span>
+<span class="n">Ampulla</span> <span class="n">of</span> <span class="n">Vater</span>               <span class="mi">4</span>
+<span class="n">Hair</span>                           <span class="mi">2</span>
+<span class="n">Other</span>                          <span class="mi">1</span>
+<span class="n">Embryonal</span>                      <span class="mi">1</span>
+<span class="n">Adrenal</span> <span class="n">Gland</span>                  <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+  <div id="df-364386d7-22ea-4946-a637-2f766cb60b07" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ModelID</th>
+      <th>PatientID</th>
+      <th>CellLineName</th>
+      <th>StrippedCellLineName</th>
+      <th>DepmapModelType</th>
+      <th>OncotreeLineage</th>
+      <th>OncotreePrimaryDisease</th>
+      <th>OncotreeSubtype</th>
+      <th>OncotreeCode</th>
+      <th>LegacyMolecularSubtype</th>
+      <th>...</th>
+      <th>TissueOrigin</th>
+      <th>CCLEName</th>
+      <th>CatalogNumber</th>
+      <th>PlateCoating</th>
+      <th>ModelDerivationMaterial</th>
+      <th>PublicComments</th>
+      <th>WTSIMasterCellID</th>
+      <th>SangerModelID</th>
+      <th>COSMICID</th>
+      <th>LegacySubSubtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ACH-000001</td>
+      <td>PT-gj46wT</td>
+      <td>NIH:OVCAR-3</td>
+      <td>NIHOVCAR3</td>
+      <td>HGSOC</td>
+      <td>Ovary/Fallopian Tube</td>
+      <td>Ovarian Epithelial Tumor</td>
+      <td>High-Grade Serous Ovarian Cancer</td>
+      <td>HGSOC</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NIHOVCAR3_OVARY</td>
+      <td>HTB-71</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2201.0</td>
+      <td>SIDM00105</td>
+      <td>905933.0</td>
+      <td>high_grade_serous</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ACH-000002</td>
+      <td>PT-5qa3uk</td>
+      <td>HL-60</td>
+      <td>HL60</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>CCL-240</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55.0</td>
+      <td>SIDM00829</td>
+      <td>905938.0</td>
+      <td>M3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ACH-000003</td>
+      <td>PT-puKIyc</td>
+      <td>CACO2</td>
+      <td>CACO2</td>
+      <td>COAD</td>
+      <td>Bowel</td>
+      <td>Colorectal Adenocarcinoma</td>
+      <td>Colon Adenocarcinoma</td>
+      <td>COAD</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>CACO2_LARGE_INTESTINE</td>
+      <td>HTB-37</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>SIDM00891</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ACH-000004</td>
+      <td>PT-q4K2cp</td>
+      <td>HEL</td>
+      <td>HEL</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HEL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>ACC 11</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>783.0</td>
+      <td>SIDM00594</td>
+      <td>907053.0</td>
+      <td>M6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ACH-000005</td>
+      <td>PT-q4K2cp</td>
+      <td>HEL 92.1.7</td>
+      <td>HEL9217</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HEL9217_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>HEL9217</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>SIDM00593</td>
+      <td>NaN</td>
+      <td>M6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1916</th>
+      <td>ACH-003157</td>
+      <td>PT-QDEP9D</td>
+      <td>ABM-T0822</td>
+      <td>ABMT0822</td>
+      <td>ZIMMMPLC</td>
+      <td>Lung</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized MPLC Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1917</th>
+      <td>ACH-003158</td>
+      <td>PT-nszsxG</td>
+      <td>ABM-T9220</td>
+      <td>ABMT9220</td>
+      <td>ZIMMSMCI</td>
+      <td>Muscle</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Smooth Muscle Cells, Intestinal</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1918</th>
+      <td>ACH-003159</td>
+      <td>PT-AUxVvV</td>
+      <td>ABM-T9233</td>
+      <td>ABMT9233</td>
+      <td>ZIMMRSCH</td>
+      <td>Hair</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Hair Follicle Inner Root Sheath C...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1919</th>
+      <td>ACH-003160</td>
+      <td>PT-AUxVvV</td>
+      <td>ABM-T9249</td>
+      <td>ABMT9249</td>
+      <td>ZIMMGMCH</td>
+      <td>Hair</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Hair Germinal Matrix Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1920</th>
+      <td>ACH-003161</td>
+      <td>PT-or1hkT</td>
+      <td>ABM-T9430</td>
+      <td>ABMT9430</td>
+      <td>ZIMMPSC</td>
+      <td>Pancreas</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Pancreatic Stromal Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 36 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-364386d7-22ea-4946-a637-2f766cb60b07')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-364386d7-22ea-4946-a637-2f766cb60b07 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-364386d7-22ea-4946-a637-2f766cb60b07');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-7a24c151-30c4-496f-82e2-690109ff81f9">
+  <button class="colab-df-quickchart" onclick="quickchart('df-7a24c151-30c4-496f-82e2-690109ff81f9')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-7a24c151-30c4-496f-82e2-690109ff81f9 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">filter_crispr_by_model</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">filter_crispr_by_model</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">minlines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+  <div id="df-68fb011e-3c77-44db-96de-2aa825812a16" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>ACH-000011</th>
+      <th>ACH-000012</th>
+      <th>ACH-000013</th>
+      <th>ACH-000015</th>
+      <th>ACH-000017</th>
+      <th>...</th>
+      <th>ACH-002693</th>
+      <th>ACH-002710</th>
+      <th>ACH-002785</th>
+      <th>ACH-002799</th>
+      <th>ACH-002800</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>0.022670</td>
+      <td>-0.096631</td>
+      <td>0.049811</td>
+      <td>-0.099040</td>
+      <td>-0.044896</td>
+      <td>...</td>
+      <td>-0.072582</td>
+      <td>-0.033722</td>
+      <td>-0.053881</td>
+      <td>-0.060617</td>
+      <td>0.025795</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>-0.057743</td>
+      <td>-0.024440</td>
+      <td>-0.158811</td>
+      <td>-0.070409</td>
+      <td>-0.115830</td>
+      <td>...</td>
+      <td>-0.237311</td>
+      <td>-0.108704</td>
+      <td>-0.114864</td>
+      <td>-0.042591</td>
+      <td>-0.132627</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>0.079679</td>
+      <td>0.041922</td>
+      <td>-0.003968</td>
+      <td>-0.029389</td>
+      <td>0.024537</td>
+      <td>...</td>
+      <td>-0.065940</td>
+      <td>0.079277</td>
+      <td>0.069333</td>
+      <td>0.030989</td>
+      <td>0.249826</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>0.227512</td>
+      <td>0.039121</td>
+      <td>0.034778</td>
+      <td>0.084594</td>
+      <td>-0.003710</td>
+      <td>...</td>
+      <td>0.101541</td>
+      <td>0.038977</td>
+      <td>0.066599</td>
+      <td>0.043809</td>
+      <td>0.064657</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>-0.130448</td>
+      <td>0.028947</td>
+      <td>-0.120875</td>
+      <td>-0.052288</td>
+      <td>-0.336776</td>
+      <td>...</td>
+      <td>0.005374</td>
+      <td>-0.144070</td>
+      <td>-0.256227</td>
+      <td>-0.116473</td>
+      <td>-0.294305</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>0.013401</td>
+      <td>0.005124</td>
+      <td>-0.089180</td>
+      <td>-0.005409</td>
+      <td>-0.070396</td>
+      <td>...</td>
+      <td>-0.296880</td>
+      <td>-0.084936</td>
+      <td>-0.128569</td>
+      <td>-0.110504</td>
+      <td>-0.087171</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>-0.296421</td>
+      <td>-0.131949</td>
+      <td>-0.145737</td>
+      <td>-0.216393</td>
+      <td>-0.257916</td>
+      <td>...</td>
+      <td>-0.332415</td>
+      <td>-0.193408</td>
+      <td>-0.327408</td>
+      <td>-0.257879</td>
+      <td>-0.349111</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>0.067705</td>
+      <td>-0.109147</td>
+      <td>-0.034886</td>
+      <td>-0.137350</td>
+      <td>0.029457</td>
+      <td>...</td>
+      <td>-0.005090</td>
+      <td>-0.218960</td>
+      <td>-0.053033</td>
+      <td>-0.041612</td>
+      <td>-0.057478</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>-0.232453</td>
+      <td>-0.164482</td>
+      <td>-0.175850</td>
+      <td>-0.168087</td>
+      <td>-0.284838</td>
+      <td>...</td>
+      <td>-0.188751</td>
+      <td>-0.120449</td>
+      <td>-0.267081</td>
+      <td>0.006148</td>
+      <td>-0.189602</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>-0.347234</td>
+      <td>-0.277397</td>
+      <td>-0.519586</td>
+      <td>-0.282338</td>
+      <td>-0.247634</td>
+      <td>...</td>
+      <td>-0.239991</td>
+      <td>-0.311396</td>
+      <td>-0.202158</td>
+      <td>-0.195154</td>
+      <td>-0.107107</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1091 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-68fb011e-3c77-44db-96de-2aa825812a16')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-68fb011e-3c77-44db-96de-2aa825812a16 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-68fb011e-3c77-44db-96de-2aa825812a16');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e5cfc771-e368-4284-a192-75b546f442e5">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e5cfc771-e368-4284-a192-75b546f442e5')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e5cfc771-e368-4284-a192-75b546f442e5 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div></section>
+<section id="select-some-tissues">
+<h1>Select some tissues<a class="headerlink" href="#select-some-tissues" title="Link to this heading">#</a></h1>
+<p>In this section we select only cell-lines of a specific tissue. We check
+that, once CRISPR datafile is reduced to a subset of total cell-lines,
+that there is no row (gene) in the datafile with all NaN as cell values.
+Inthat case we remove those rows (genes) before applying the labelling
+algorithm.</p>
+<p>We start labelling genes for the <code class="docutils literal notranslate"><span class="pre">Kidney</span></code> tissue…</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tissue</span> <span class="o">=</span> <span class="s1">&#39;Kidney&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">tissue</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="c1"># remove rows with all nans</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cell_lines</span><span class="p">],</span> <span class="n">perc</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+<span class="n">df_label1</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;aE&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;sNE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;two-by-two&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="n">df_label1</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP.csv&quot;</span><span class="p">)</span>
+<span class="n">df_label1</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Nan: </span><span class="si">{</span><span class="n">df_label1</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">37</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 37/37 [00:01&lt;00:00, 29.77it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 207.00it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">label</span>
+ <span class="n">sNE</span>      <span class="mi">13457</span>
+ <span class="n">aE</span>        <span class="mi">3221</span>
+ <span class="n">E</span>         <span class="mi">1253</span>
+ <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
+ <span class="s1">&#39;Nan: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>… then we do it for the <code class="docutils literal notranslate"><span class="pre">Lung</span></code> tissue …</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tissue</span> <span class="o">=</span> <span class="s1">&#39;Lung&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">tissue</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="c1"># remove rows with all nans</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cell_lines</span><span class="p">],</span> <span class="n">perc</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+<span class="n">df_label2</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">cell_lines</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;sNE&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;aE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;two-by-two&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="n">df_label2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP.csv&quot;</span><span class="p">)</span>
+<span class="n">df_label2</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="sa">f</span><span class="s2">&quot;Nan: </span><span class="si">{</span><span class="n">df_label2</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">119</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 119/119 [00:00&lt;00:00, 124.62it/s]
+100%|██████████| 119/119 [00:01&lt;00:00, 95.06it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">label</span>
+ <span class="n">sNE</span>      <span class="mi">13847</span>
+ <span class="n">aE</span>        <span class="mi">2849</span>
+ <span class="n">E</span>         <span class="mi">1235</span>
+ <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
+ <span class="s1">&#39;Nan: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="working-on-diseases">
+<h1>Working on diseases …<a class="headerlink" href="#working-on-diseases" title="Link to this heading">#</a></h1>
+<p>In the same way we can make gene essentiality labelling based on disease
+related information, by allowing the labelling algorith to focus on
+CRISPR cell-lines related so spcific disease. In order to work on
+disease-cells association, we use the same selection functions as before
+but using a different Model column as selector
+(<code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code>).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disease</span> <span class="o">=</span> <span class="s1">&#39;Acute Myeloid Leukemia&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">disease</span><span class="p">],</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreePrimaryDisease&#39;</span><span class="p">)</span>  <span class="c1"># change default from &#39;OncotreeLineage&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="c1"># remove rows with all nans</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cell_lines</span><span class="p">],</span> <span class="n">perc</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">df_label</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="n">df_label</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">disease</span><span class="si">}</span><span class="s2">_HELP.csv&quot;</span><span class="p">)</span>
+<span class="n">df_label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="sa">f</span><span class="s2">&quot;Nan: </span><span class="si">{</span><span class="n">df_label</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">100</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 24/24 [00:00&lt;00:00, 210.68it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">label</span>
+ <span class="n">NE</span>       <span class="mi">16609</span>
+ <span class="n">E</span>         <span class="mi">1322</span>
+ <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span><span class="p">,</span>
+ <span class="s1">&#39;Nan: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tutorial1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">EG detection for a tissue</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="embedding.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Install HELP from GitHub (and Karateclub)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install HELP from GitHub</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-input-files">Download the input files</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-crispr-data-file">Load the CRISPR data file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#select-some-tissues">Select some tissues</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-on-diseases">Working on diseases …</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tutorial1/labelling.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, National Research Council of Italy.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
