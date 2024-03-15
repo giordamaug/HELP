@@ -88,10 +88,15 @@ df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 df_X, df_y = feature_assemble_df(df_lab, features=features, subsample=False, seed=1, saveflag=False, verbose=verbose)
 print(f'Working with {args.voters} classifiers...')
 
-def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, verbose=False):
-   df_y_ne = df_y[df_y['label']=='NE']
+def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, colname='label', balanced=False, seed=42, verbose=False):
+   # Subsample the data if required (subsample majority class fild-times rispect the minority class)
+   minlab = df_y[colname].value_counts().nsmallest(1).index[0]
+   maxlab = df_y[colname].value_counts().nlargest(1).index[0]
+   if verbose: print("Majority" , maxlab, df_y[colname].value_counts()[maxlab], "minority", minlab, df_y[colname].value_counts()[minlab])
+
+   df_y_ne = df_y[df_y['label']==maxlab]
    #df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
-   df_y_e = df_y[df_y['label']=='E']
+   df_y_e = df_y[df_y['label']!=maxlab]
    splits = np.array_split(df_y_ne, n_voters)
    predictions_ne = pd.DataFrame()
    predictions_e = pd.DataFrame(index=df_y_e.index)
