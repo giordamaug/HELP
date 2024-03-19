@@ -2,7 +2,7 @@ from supervenn import supervenn
 from typing import List
 import matplotlib.pyplot as plt
 
-def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize=10, saveflag: bool=False) ->  None:
+def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize=10, ylabel='EG', xlabel ='no. Genes', saveflag: bool=False) ->  None:
     """
     Generate a Supervenn diagram to visualize the intersection of multiple sets.
 
@@ -10,6 +10,8 @@ def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize
     :param List[str] labels: List of labels corresponding to each set.
     :param tuple figsize: Figure size in inches, as a tuple (width, height) (default is (10, 20)).
     :param int fontsize: Font size for labels (default is 10).
+    :param str xlabel: label for x axis (default is 'no. Genes')
+    :param str ylabel: label for y axis (default is 'EG')
     :param bool saveflag: Whether to save the generated diagram as an image (default is False).
 
     :return: None
@@ -29,7 +31,7 @@ def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize
     """
     plt.figure(figsize=figsize)
     supervenn(sets, labels, widths_minmax_ratio=0.05, side_plots='right')
-    plt.xlabel('no. Genes', fontsize = fontsize)
-    plt.ylabel('CFG label', fontsize = fontsize)
+    plt.xlabel(xlabel, fontsize = fontsize)
+    plt.ylabel(ylabel, fontsize = fontsize)
     if saveflag: plt.savefig(f"{'_'.join(labels)}_svenn.jpg", dpi=600)
 
