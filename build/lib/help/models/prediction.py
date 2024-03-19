@@ -24,13 +24,14 @@ def set_seed(seed=1):
     random.seed(seed)
     np.random.seed(seed)
 
-def predict_cv(X, Y, n_splits=10, method='RF', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a LightGBM classifier.
 
     :param DataFrame X: Features DataFrame.
     :param DataFrame Y: Target variable DataFrame.
     :param int n_splits: Number of folds for cross-validation.
+    :param str method: Classifier method (default LGBM)
     :param bool balanced: Whether to use class weights to balance the classes.
     :param bool saveflag: Whether to save the predictions to a CSV file.
     :param str or None outfile: File name for saving predictions.
@@ -137,3 +138,38 @@ def predict_cv(X, Y, n_splits=10, method='RF', balanced=False, saveflag: bool = 
 
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
+
+def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, balanced=False, seed=42, verbose=False):
+   df_y_ne = df_y[df_y['label']=='NE']
+   df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
+   df_y_e = df_y[df_y['label']=='E']
+   splits = np.array_split(df_y_ne, n_voters) 
+   predictions_ne = pd.DataFrame()
+   predictions_e = pd.DataFrame(index=df_y_e.index)
+   d=np.empty((len(df_y_e.index),),object)
+   d[...]=[list() for _ in range(len(df_y_e.index))]
+   predictions_e['probabilities'] = d
+   predictions_e['label'] = np.array([0 for idx in df_y_e.index])
+   predictions_e['prediction'] = np.array([np.nan for idx in df_y_e.index])
+   for df_index_ne in splits:
+      df_x = pd.concat([df_X.loc[df_index_ne.index], df_X.loc[df_y_e.index]])
+      df_yy = pd.concat([df_y.loc[df_index_ne.index], df_y_e])
+      _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
+      predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
+      r = np.empty((len(df_y_e.index),),object)
+      r[...]=[predictions_e.loc[idx]['probabilities'] + [preds.loc[idx]['probabilities']]  for idx in df_y_e.index]
+      predictions_e['probabilities'] = r
+   predictions_e['prediction'] = predictions_e['probabilities'].map(lambda x: 0 if sum(x)/n_voters > 0.5 else 1)
+   predictions_e['probabilities'] = predictions_e['probabilities'].map(lambda x: sum(x)/n_voters)
+   predictions = pd.concat([predictions_ne, predictions_e])
+   test_y = predictions['label'].values
+   preds = predictions['prediction'].values
+   probs = predictions['probabilities'].values
+   cm = confusion_matrix(test_y, preds)
+   scores = pd.DataFrame([[roc_auc_score(test_y, 1-probs), accuracy_score(test_y, preds),
+                           balanced_accuracy_score(test_y, preds),
+                           cm[0, 0] / (cm[0, 0] + cm[0, 1]),
+                           cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                           matthews_corrcoef(test_y, preds),cm]], 
+                           columns=["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM'], index=[seed])
+   return scores, predictions

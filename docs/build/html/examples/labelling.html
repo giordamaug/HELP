@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Install HELP from GitHub &mdash; HELP 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Example 1: Identification of EGs" href="../examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/HELP_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">help package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Example 1: Identification of EGs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Install HELP from GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-input-files">3. Load the input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information">Example 1.1 two-class labeling of EGs based on tissue information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-2-two-class-labeling-of-egs-based-on-tissue-information">Example 1.2 two-class labeling of EGs based on tissue information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">Example 1.3 two-class labeling of EGs based on disease-related information</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Example 1: Identification of EGs</a></li>
+      <li class="breadcrumb-item active">1. Install HELP from GitHub</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/labelling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-help-from-github">
+<h1>1. Install HELP from GitHub<a class="headerlink" href="#install-help-from-github" title="Link to this heading"></a></h1>
+<p>Skip this cell if you alread have installed HELP.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
+</pre></div>
+</div>
+</section>
+<section id="download-the-input-files">
+<h1>2. Download the input files<a class="headerlink" href="#download-the-input-files" title="Link to this heading"></a></h1>
+<p>Download from the DepMap portal the gene deletion expression scores
+(<code class="docutils literal notranslate"><span class="pre">CRISPRGeneEffect.csv</span></code>) and the map between cell-lines and tissues
+(<code class="docutils literal notranslate"><span class="pre">Model.csv</span></code>). Skip this step if you already have these input files
+locally.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43346616<span class="w"> </span>-O<span class="w"> </span>CRISPRGeneEffect.csv
+<span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43746708<span class="w"> </span>-O<span class="w"> </span>Model.csv
+</pre></div>
+</div>
+</section>
+<section id="load-the-input-files">
+<h1>3. Load the input files<a class="headerlink" href="#load-the-input-files" title="Link to this heading"></a></h1>
+<p>Load the CRISPR data and show the content.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CRISPRGeneEffect.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> NaN over </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1"> values&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">739493</span> <span class="n">NaN</span> <span class="n">over</span> <span class="mi">20287300</span> <span class="n">values</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>ACH-000011</th>
+      <th>ACH-000012</th>
+      <th>ACH-000013</th>
+      <th>ACH-000015</th>
+      <th>ACH-000017</th>
+      <th>...</th>
+      <th>ACH-002693</th>
+      <th>ACH-002710</th>
+      <th>ACH-002785</th>
+      <th>ACH-002799</th>
+      <th>ACH-002800</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>0.022670</td>
+      <td>-0.096631</td>
+      <td>0.049811</td>
+      <td>-0.099040</td>
+      <td>-0.044896</td>
+      <td>...</td>
+      <td>-0.072582</td>
+      <td>-0.033722</td>
+      <td>-0.053881</td>
+      <td>-0.060617</td>
+      <td>0.025795</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>-0.057743</td>
+      <td>-0.024440</td>
+      <td>-0.158811</td>
+      <td>-0.070409</td>
+      <td>-0.115830</td>
+      <td>...</td>
+      <td>-0.237311</td>
+      <td>-0.108704</td>
+      <td>-0.114864</td>
+      <td>-0.042591</td>
+      <td>-0.132627</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>0.079679</td>
+      <td>0.041922</td>
+      <td>-0.003968</td>
+      <td>-0.029389</td>
+      <td>0.024537</td>
+      <td>...</td>
+      <td>-0.065940</td>
+      <td>0.079277</td>
+      <td>0.069333</td>
+      <td>0.030989</td>
+      <td>0.249826</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>0.227512</td>
+      <td>0.039121</td>
+      <td>0.034778</td>
+      <td>0.084594</td>
+      <td>-0.003710</td>
+      <td>...</td>
+      <td>0.101541</td>
+      <td>0.038977</td>
+      <td>0.066599</td>
+      <td>0.043809</td>
+      <td>0.064657</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>-0.130448</td>
+      <td>0.028947</td>
+      <td>-0.120875</td>
+      <td>-0.052288</td>
+      <td>-0.336776</td>
+      <td>...</td>
+      <td>0.005374</td>
+      <td>-0.144070</td>
+      <td>-0.256227</td>
+      <td>-0.116473</td>
+      <td>-0.294305</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>0.013401</td>
+      <td>0.005124</td>
+      <td>-0.089180</td>
+      <td>-0.005409</td>
+      <td>-0.070396</td>
+      <td>...</td>
+      <td>-0.296880</td>
+      <td>-0.084936</td>
+      <td>-0.128569</td>
+      <td>-0.110504</td>
+      <td>-0.087171</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>-0.296421</td>
+      <td>-0.131949</td>
+      <td>-0.145737</td>
+      <td>-0.216393</td>
+      <td>-0.257916</td>
+      <td>...</td>
+      <td>-0.332415</td>
+      <td>-0.193408</td>
+      <td>-0.327408</td>
+      <td>-0.257879</td>
+      <td>-0.349111</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>0.067705</td>
+      <td>-0.109147</td>
+      <td>-0.034886</td>
+      <td>-0.137350</td>
+      <td>0.029457</td>
+      <td>...</td>
+      <td>-0.005090</td>
+      <td>-0.218960</td>
+      <td>-0.053033</td>
+      <td>-0.041612</td>
+      <td>-0.057478</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>-0.232453</td>
+      <td>-0.164482</td>
+      <td>-0.175850</td>
+      <td>-0.168087</td>
+      <td>-0.284838</td>
+      <td>...</td>
+      <td>-0.188751</td>
+      <td>-0.120449</td>
+      <td>-0.267081</td>
+      <td>0.006148</td>
+      <td>-0.189602</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>-0.347234</td>
+      <td>-0.277397</td>
+      <td>-0.519586</td>
+      <td>-0.282338</td>
+      <td>-0.247634</td>
+      <td>...</td>
+      <td>-0.239991</td>
+      <td>-0.311396</td>
+      <td>-0.202158</td>
+      <td>-0.195154</td>
+      <td>-0.107107</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1100 columns</p>
+</div><p>Then load the mapping information and show the content.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Model.csv&quot;</span><span class="p">)</span>
+<span class="n">df_map</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ModelID</th>
+      <th>PatientID</th>
+      <th>CellLineName</th>
+      <th>StrippedCellLineName</th>
+      <th>DepmapModelType</th>
+      <th>OncotreeLineage</th>
+      <th>OncotreePrimaryDisease</th>
+      <th>OncotreeSubtype</th>
+      <th>OncotreeCode</th>
+      <th>LegacyMolecularSubtype</th>
+      <th>...</th>
+      <th>TissueOrigin</th>
+      <th>CCLEName</th>
+      <th>CatalogNumber</th>
+      <th>PlateCoating</th>
+      <th>ModelDerivationMaterial</th>
+      <th>PublicComments</th>
+      <th>WTSIMasterCellID</th>
+      <th>SangerModelID</th>
+      <th>COSMICID</th>
+      <th>LegacySubSubtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ACH-000001</td>
+      <td>PT-gj46wT</td>
+      <td>NIH:OVCAR-3</td>
+      <td>NIHOVCAR3</td>
+      <td>HGSOC</td>
+      <td>Ovary/Fallopian Tube</td>
+      <td>Ovarian Epithelial Tumor</td>
+      <td>High-Grade Serous Ovarian Cancer</td>
+      <td>HGSOC</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NIHOVCAR3_OVARY</td>
+      <td>HTB-71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2201.0</td>
+      <td>SIDM00105</td>
+      <td>905933.0</td>
+      <td>high_grade_serous</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ACH-000002</td>
+      <td>PT-5qa3uk</td>
+      <td>HL-60</td>
+      <td>HL60</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>CCL-240</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55.0</td>
+      <td>SIDM00829</td>
+      <td>905938.0</td>
+      <td>M3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ACH-000003</td>
+      <td>PT-puKIyc</td>
+      <td>CACO2</td>
+      <td>CACO2</td>
+      <td>COAD</td>
+      <td>Bowel</td>
+      <td>Colorectal Adenocarcinoma</td>
+      <td>Colon Adenocarcinoma</td>
+      <td>COAD</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>CACO2_LARGE_INTESTINE</td>
+      <td>HTB-37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>SIDM00891</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ACH-000004</td>
+      <td>PT-q4K2cp</td>
+      <td>HEL</td>
+      <td>HEL</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HEL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>ACC 11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>783.0</td>
+      <td>SIDM00594</td>
+      <td>907053.0</td>
+      <td>M6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ACH-000005</td>
+      <td>PT-q4K2cp</td>
+      <td>HEL 92.1.7</td>
+      <td>HEL9217</td>
+      <td>AML</td>
+      <td>Myeloid</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>Acute Myeloid Leukemia</td>
+      <td>AML</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>HEL9217_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
+      <td>HEL9217</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>SIDM00593</td>
+      <td>NaN</td>
+      <td>M6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1916</th>
+      <td>ACH-003157</td>
+      <td>PT-QDEP9D</td>
+      <td>ABM-T0822</td>
+      <td>ABMT0822</td>
+      <td>ZIMMMPLC</td>
+      <td>Lung</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized MPLC Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1917</th>
+      <td>ACH-003158</td>
+      <td>PT-nszsxG</td>
+      <td>ABM-T9220</td>
+      <td>ABMT9220</td>
+      <td>ZIMMSMCI</td>
+      <td>Muscle</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Smooth Muscle Cells, Intestinal</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1918</th>
+      <td>ACH-003159</td>
+      <td>PT-AUxVvV</td>
+      <td>ABM-T9233</td>
+      <td>ABMT9233</td>
+      <td>ZIMMRSCH</td>
+      <td>Hair</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Hair Follicle Inner Root Sheath C...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1919</th>
+      <td>ACH-003160</td>
+      <td>PT-AUxVvV</td>
+      <td>ABM-T9249</td>
+      <td>ABMT9249</td>
+      <td>ZIMMGMCH</td>
+      <td>Hair</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Hair Germinal Matrix Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1920</th>
+      <td>ACH-003161</td>
+      <td>PT-or1hkT</td>
+      <td>ABM-T9430</td>
+      <td>ABMT9430</td>
+      <td>ZIMMPSC</td>
+      <td>Pancreas</td>
+      <td>Non-Cancerous</td>
+      <td>Immortalized Pancreatic Stromal Cells</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 36 columns</p>
+</div></section>
+<section id="example-1-1-two-class-labeling-of-egs-based-on-tissue-information">
+<h1>Example 1.1 two-class labeling of EGs based on tissue information<a class="headerlink" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Filter the information to be exploited</p></li>
+</ul>
+<hr class="docutils" />
+<p>Filter the genes mapped to tissues (<code class="docutils literal notranslate"><span class="pre">OncotreeLineage</span></code> column in the
+mapping file) having less than <code class="docutils literal notranslate"><span class="pre">minlines</span></code> cell-lines.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">filter_crispr_by_model</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">filter_crispr_by_model</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">minlines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>ACH-000011</th>
+      <th>ACH-000012</th>
+      <th>ACH-000013</th>
+      <th>ACH-000015</th>
+      <th>ACH-000017</th>
+      <th>...</th>
+      <th>ACH-002693</th>
+      <th>ACH-002710</th>
+      <th>ACH-002785</th>
+      <th>ACH-002799</th>
+      <th>ACH-002800</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>0.022670</td>
+      <td>-0.096631</td>
+      <td>0.049811</td>
+      <td>-0.099040</td>
+      <td>-0.044896</td>
+      <td>...</td>
+      <td>-0.072582</td>
+      <td>-0.033722</td>
+      <td>-0.053881</td>
+      <td>-0.060617</td>
+      <td>0.025795</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>-0.057743</td>
+      <td>-0.024440</td>
+      <td>-0.158811</td>
+      <td>-0.070409</td>
+      <td>-0.115830</td>
+      <td>...</td>
+      <td>-0.237311</td>
+      <td>-0.108704</td>
+      <td>-0.114864</td>
+      <td>-0.042591</td>
+      <td>-0.132627</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>0.079679</td>
+      <td>0.041922</td>
+      <td>-0.003968</td>
+      <td>-0.029389</td>
+      <td>0.024537</td>
+      <td>...</td>
+      <td>-0.065940</td>
+      <td>0.079277</td>
+      <td>0.069333</td>
+      <td>0.030989</td>
+      <td>0.249826</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>0.227512</td>
+      <td>0.039121</td>
+      <td>0.034778</td>
+      <td>0.084594</td>
+      <td>-0.003710</td>
+      <td>...</td>
+      <td>0.101541</td>
+      <td>0.038977</td>
+      <td>0.066599</td>
+      <td>0.043809</td>
+      <td>0.064657</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>-0.130448</td>
+      <td>0.028947</td>
+      <td>-0.120875</td>
+      <td>-0.052288</td>
+      <td>-0.336776</td>
+      <td>...</td>
+      <td>0.005374</td>
+      <td>-0.144070</td>
+      <td>-0.256227</td>
+      <td>-0.116473</td>
+      <td>-0.294305</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>0.013401</td>
+      <td>0.005124</td>
+      <td>-0.089180</td>
+      <td>-0.005409</td>
+      <td>-0.070396</td>
+      <td>...</td>
+      <td>-0.296880</td>
+      <td>-0.084936</td>
+      <td>-0.128569</td>
+      <td>-0.110504</td>
+      <td>-0.087171</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>-0.296421</td>
+      <td>-0.131949</td>
+      <td>-0.145737</td>
+      <td>-0.216393</td>
+      <td>-0.257916</td>
+      <td>...</td>
+      <td>-0.332415</td>
+      <td>-0.193408</td>
+      <td>-0.327408</td>
+      <td>-0.257879</td>
+      <td>-0.349111</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>0.067705</td>
+      <td>-0.109147</td>
+      <td>-0.034886</td>
+      <td>-0.137350</td>
+      <td>0.029457</td>
+      <td>...</td>
+      <td>-0.005090</td>
+      <td>-0.218960</td>
+      <td>-0.053033</td>
+      <td>-0.041612</td>
+      <td>-0.057478</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>-0.232453</td>
+      <td>-0.164482</td>
+      <td>-0.175850</td>
+      <td>-0.168087</td>
+      <td>-0.284838</td>
+      <td>...</td>
+      <td>-0.188751</td>
+      <td>-0.120449</td>
+      <td>-0.267081</td>
+      <td>0.006148</td>
+      <td>-0.189602</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>-0.347234</td>
+      <td>-0.277397</td>
+      <td>-0.519586</td>
+      <td>-0.282338</td>
+      <td>-0.247634</td>
+      <td>...</td>
+      <td>-0.239991</td>
+      <td>-0.311396</td>
+      <td>-0.202158</td>
+      <td>-0.195154</td>
+      <td>-0.107107</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1091 columns</p>
+</div><p>Show which are the tissues available from the mapping file:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OncotreeLineage</span>
+<span class="n">Lung</span>                         <span class="mi">249</span>
+<span class="n">Lymphoid</span>                     <span class="mi">211</span>
+<span class="n">CNS</span><span class="o">/</span><span class="n">Brain</span>                    <span class="mi">122</span>
+<span class="n">Skin</span>                         <span class="mi">120</span>
+<span class="n">Esophagus</span><span class="o">/</span><span class="n">Stomach</span>             <span class="mi">95</span>
+<span class="n">Breast</span>                        <span class="mi">94</span>
+<span class="n">Bowel</span>                         <span class="mi">89</span>
+<span class="n">Head</span> <span class="ow">and</span> <span class="n">Neck</span>                 <span class="mi">84</span>
+<span class="n">Bone</span>                          <span class="mi">77</span>
+<span class="n">Myeloid</span>                       <span class="mi">77</span>
+<span class="n">Ovary</span><span class="o">/</span><span class="n">Fallopian</span> <span class="n">Tube</span>          <span class="mi">75</span>
+<span class="n">Kidney</span>                        <span class="mi">73</span>
+<span class="n">Pancreas</span>                      <span class="mi">66</span>
+<span class="n">Peripheral</span> <span class="n">Nervous</span> <span class="n">System</span>     <span class="mi">56</span>
+<span class="n">Soft</span> <span class="n">Tissue</span>                   <span class="mi">55</span>
+<span class="n">Biliary</span> <span class="n">Tract</span>                 <span class="mi">44</span>
+<span class="n">Uterus</span>                        <span class="mi">41</span>
+<span class="n">Fibroblast</span>                    <span class="mi">41</span>
+<span class="n">Bladder</span><span class="o">/</span><span class="n">Urinary</span> <span class="n">Tract</span>         <span class="mi">39</span>
+<span class="n">Normal</span>                        <span class="mi">39</span>
+<span class="n">Pleura</span>                        <span class="mi">35</span>
+<span class="n">Liver</span>                         <span class="mi">29</span>
+<span class="n">Cervix</span>                        <span class="mi">25</span>
+<span class="n">Eye</span>                           <span class="mi">21</span>
+<span class="n">Thyroid</span>                       <span class="mi">18</span>
+<span class="n">Prostate</span>                      <span class="mi">15</span>
+<span class="n">Testis</span>                         <span class="mi">7</span>
+<span class="n">Vulva</span><span class="o">/</span><span class="n">Vagina</span>                   <span class="mi">5</span>
+<span class="n">Muscle</span>                         <span class="mi">5</span>
+<span class="n">Ampulla</span> <span class="n">of</span> <span class="n">Vater</span>               <span class="mi">4</span>
+<span class="n">Hair</span>                           <span class="mi">2</span>
+<span class="n">Other</span>                          <span class="mi">1</span>
+<span class="n">Embryonal</span>                      <span class="mi">1</span>
+<span class="n">Adrenal</span> <span class="n">Gland</span>                  <span class="mi">1</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<p>Select only cell-lines of a chosen tissue (here <code class="docutils literal notranslate"><span class="pre">Kidney</span></code>) and remove
+cell-lines having more than a certain percentage of NaN values (here
+95%):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tissue</span> <span class="o">=</span> <span class="s1">&#39;Kidney&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">tissue</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="c1"># remove rows with more than perc NaNs</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">perc</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">37</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Apply two-class HELP labelling</p></li>
+</ul>
+<hr class="docutils" />
+<p>Compute the two-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='flat-multi'</span></code>) using the Otsu
+algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>) and save the results in a csv file
+(<code class="docutils literal notranslate"><span class="pre">Kidney_HELP_twoClasses.csv</span></code>):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label2</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># save the result</span>
+<span class="n">df_label2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP_twoClasses.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">performing</span> <span class="n">flat</span> <span class="n">mode</span> <span class="n">on</span> <span class="mi">2</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span> <span class="p">(</span><span class="n">flat</span><span class="o">-</span><span class="n">multi</span><span class="p">)</span><span class="o">.</span>
+<span class="p">[</span><span class="n">flat</span><span class="o">-</span><span class="n">multi</span><span class="p">]:</span> <span class="mf">1.</span> <span class="n">multi</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 37/37 [00:00&lt;00:00, 598.29it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span>
+<span class="n">NE</span>       <span class="mi">16678</span>
+<span class="n">E</span>         <span class="mi">1253</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+</section>
+<section id="example-1-2-two-class-labeling-of-egs-based-on-tissue-information">
+<h1>Example 1.2 two-class labeling of EGs based on tissue information<a class="headerlink" href="#example-1-2-two-class-labeling-of-egs-based-on-tissue-information" title="Link to this heading"></a></h1>
+<p>Genes have already been filtered according to tissue information for
+Example 1.1, so we only need to: ##### - Apply three-class HELP
+labelling Compute the three-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='two-by-two'</span></code>) using
+the Otsu algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>) and save the results in a csv
+file (<code class="docutils literal notranslate"><span class="pre">'Kidney_HELP_threeClasses.csv'</span></code>):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label3</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;aE&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;sNE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;two-by-two&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># save the result</span>
+<span class="n">df_label3</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP_threeClasses.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">performing</span> <span class="n">flat</span> <span class="n">mode</span> <span class="n">on</span> <span class="mi">3</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span> <span class="p">(</span><span class="n">two</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">two</span><span class="p">)</span><span class="o">.</span>
+<span class="p">[</span><span class="n">two</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">two</span><span class="p">]:</span> <span class="mf">1.</span> <span class="n">Two</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 37/37 [00:00&lt;00:00, 572.91it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">17931</span><span class="p">,)</span>
+<span class="p">[</span><span class="n">two</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">two</span><span class="p">]:</span> <span class="mf">2.</span> <span class="n">Two</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span> <span class="n">on</span> <span class="mi">1</span><span class="o">-</span><span class="n">label</span> <span class="n">rows</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 37/37 [00:00&lt;00:00, 737.77it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">16678</span><span class="p">,)</span>
+<span class="n">label</span>
+<span class="n">sNE</span>      <span class="mi">13457</span>
+<span class="n">aE</span>        <span class="mi">3221</span>
+<span class="n">E</span>         <span class="mi">1253</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+</section>
+<section id="example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">
+<h1>Example 1.3 two-class labeling of EGs based on disease-related information<a class="headerlink" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Filter the information to be exploited</p></li>
+</ul>
+<hr class="docutils" />
+<p>Show which are the diseases available from the mapping file
+(<code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code> column):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreePrimaryDisease&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OncotreePrimaryDisease</span>
+<span class="n">Non</span><span class="o">-</span><span class="n">Small</span> <span class="n">Cell</span> <span class="n">Lung</span> <span class="n">Cancer</span>                                       <span class="mi">161</span>
+<span class="n">Non</span><span class="o">-</span><span class="n">Cancerous</span>                                                    <span class="mi">131</span>
+<span class="n">Mature</span> <span class="n">B</span><span class="o">-</span><span class="n">Cell</span> <span class="n">Neoplasms</span>                                          <span class="mi">113</span>
+<span class="n">Melanoma</span>                                                         <span class="mi">107</span>
+<span class="n">Diffuse</span> <span class="n">Glioma</span>                                                    <span class="mi">94</span>
+                                                                <span class="o">...</span>
+<span class="n">Hepatocellular</span> <span class="n">Carcinoma</span> <span class="n">plus</span> <span class="n">Intrahepatic</span> <span class="n">Cholangiocarcinoma</span>      <span class="mi">1</span>
+<span class="n">Myelodysplastic</span> <span class="n">Syndromes</span>                                          <span class="mi">1</span>
+<span class="n">Mixed</span> <span class="n">Cervical</span> <span class="n">Carcinoma</span>                                           <span class="mi">1</span>
+<span class="n">Hereditary</span> <span class="n">Spherocytosis</span>                                           <span class="mi">1</span>
+<span class="n">Acute</span> <span class="n">Leukemias</span> <span class="n">of</span> <span class="n">Ambiguous</span> <span class="n">Lineage</span>                               <span class="mi">1</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<p>Select only cell-lines mapped (via the <code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code> column
+of the mapping file) to a chosen disease (here
+<code class="docutils literal notranslate"><span class="pre">Acute</span> <span class="pre">Myeloid</span> <span class="pre">Leukemia</span></code>’) and remove cell-lines having more than a
+certain percentage of NaN values (here 95%):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disease</span> <span class="o">=</span> <span class="s1">&#39;Acute Myeloid Leukemia&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span><span class="p">,</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">disease</span><span class="p">],</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreePrimaryDisease&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="c1"># remove rows with more than perc NaNs</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cell_lines</span><span class="p">],</span> <span class="n">perc</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+<span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Apply two-class HELP labelling</p></li>
+</ul>
+<hr class="docutils" />
+<p>Compute the two-class labeling (mode=‘flat-multi’) using the Otsu
+algorithm (algorithm=‘otsu’), save the results in a csv file (‘Acute
+Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label2</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># save the result</span>
+<span class="n">df_label2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">disease</span><span class="si">}</span><span class="s2">_HELP_twoClasses.csv&quot;</span><span class="p">)</span>
+<span class="c1"># print the number of NaNs</span>
+<span class="n">df_label2</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">performing</span> <span class="n">flat</span> <span class="n">mode</span> <span class="n">on</span> <span class="mi">2</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span> <span class="p">(</span><span class="n">flat</span><span class="o">-</span><span class="n">multi</span><span class="p">)</span><span class="o">.</span>
+<span class="p">[</span><span class="n">flat</span><span class="o">-</span><span class="n">multi</span><span class="p">]:</span> <span class="mf">1.</span> <span class="n">multi</span><span class="o">-</span><span class="k">class</span> <span class="nc">labelling</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 24/24 [00:00&lt;00:00, 492.87it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span>
+<span class="n">NE</span>       <span class="mi">16609</span>
+<span class="n">E</span>         <span class="mi">1322</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span>
+<span class="n">NE</span>       <span class="mi">16609</span>
+<span class="n">E</span>         <span class="mi">1322</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Example 1: Identification of EGs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

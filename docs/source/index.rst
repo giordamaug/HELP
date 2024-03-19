@@ -35,7 +35,7 @@ This is the Big Picture to understand the HELP approach.
    :maxdepth: 4
    :caption: EXAMPLES:
 
-   tutorial1
+   examples
 
 Indices and tables
 ==================

@@ -34,8 +34,8 @@ exclude_patterns = ['modules.rst', 'notebook.rst']
 
 #html_theme = "sphinx_pdj_theme"
 #html_theme_path = sphinx_pdj_theme.get_html_theme_path()
-html_theme = "pydata_sphinx_theme"
-#html_theme = 'sphinx_rtd_theme'
+#html_theme = "pydata_sphinx_theme"
+html_theme = 'sphinx_rtd_theme'
 html_logo = '_static/HELP_logo.png'
 html_theme_options = {
     'logo_only': True,
