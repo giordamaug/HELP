@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Install HELP from GitHub &mdash; HELP 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="1. Install HELP from GitHub" href="labelling.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">help package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example 1: Identification of EGs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html#example-2-identification-of-tissue-specific-egs">Example 2: Identification of tissue-specific EGs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Install HELP from GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-input-file">3. Load the input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filter-the-information-to-be-exploited">4. Filter the information to be exploited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compute-egs-common-to-all-tissues-pan-tissue-labeling">5. Compute EGs common to all tissues (pan-tissue labeling)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#labelling-egs-across-tissues">labelling EGs across tissues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subtract-pan-tissue-egs-from-those-of-the-chosen-tissue">6. Subtract pan-tissue EGs from those of the chosen tissue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-the-obtained-results">Visualizing the obtained results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../examples.html">Example 1: Identification of EGs</a> &raquo;</li>
+        
+      <li>1. Install HELP from GitHub</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/examples/csegs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="install-help-from-github">
+<h1>1. Install HELP from GitHub<a class="headerlink" href="#install-help-from-github" title="Permalink to this heading">¶</a></h1>
+<p>Skip this cell if you alread have installed HELP.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
+</pre></div>
+</div>
+</section>
+<section id="download-the-input-files">
+<h1>2. Download the input files<a class="headerlink" href="#download-the-input-files" title="Permalink to this heading">¶</a></h1>
+<p>Download from the DepMap portal the gene deletion expression scores
+(<code class="docutils literal notranslate"><span class="pre">CRISPRGeneEffect.csv</span></code>) and the map between cell-lines and tissues
+(<code class="docutils literal notranslate"><span class="pre">Model.csv</span></code>). Skip this step if you already have these input files
+locally.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43346616<span class="w"> </span>-O<span class="w"> </span>CRISPRGeneEffect.csv
+<span class="o">!</span>wget<span class="w"> </span>-c<span class="w"> </span>https://figshare.com/ndownloader/files/43746708<span class="w"> </span>-O<span class="w"> </span>Model.csv
+</pre></div>
+</div>
+</section>
+<section id="load-the-input-file">
+<h1>3. Load the input file<a class="headerlink" href="#load-the-input-file" title="Permalink to this heading">¶</a></h1>
+<p>Load the CRISPR data and show the content.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">df_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CRISPRGeneEffect.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_orig</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> NaNs over </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_orig</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df_orig</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1"> values&#39;</span><span class="p">)</span>
+<span class="n">df_orig</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">739493</span> <span class="n">NaNs</span> <span class="n">over</span> <span class="mi">20287300</span> <span class="n">values</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>...</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>...</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>...</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>...</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>...</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>...</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>...</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>...</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>...</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>...</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>...</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1100 columns</p>
+</div><p>Then load the mapping information and show the content.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Model.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">         ModelID  PatientID CellLineName StrippedCellLineName DepmapModelType  0     ACH-000001  PT-gj46wT  NIH:OVCAR-3            NIHOVCAR3           HGSOC
+1     ACH-000002  PT-5qa3uk        HL-60                 HL60             AML
+2     ACH-000003  PT-puKIyc        CACO2                CACO2            COAD
+3     ACH-000004  PT-q4K2cp          HEL                  HEL             AML
+4     ACH-000005  PT-q4K2cp   HEL 92.1.7              HEL9217             AML
+...          ...        ...          ...                  ...             ...
+1916  ACH-003157  PT-QDEP9D    ABM-T0822             ABMT0822        ZIMMMPLC
+1917  ACH-003158  PT-nszsxG    ABM-T9220             ABMT9220        ZIMMSMCI
+1918  ACH-003159  PT-AUxVvV    ABM-T9233             ABMT9233        ZIMMRSCH
+1919  ACH-003160  PT-AUxVvV    ABM-T9249             ABMT9249        ZIMMGMCH
+1920  ACH-003161  PT-or1hkT    ABM-T9430             ABMT9430         ZIMMPSC
+
+      ... PublicComments WTSIMasterCellID SangerModelID  COSMICID  0     ...            NaN           2201.0     SIDM00105  905933.0
+1     ...            NaN             55.0     SIDM00829  905938.0
+2     ...            NaN              NaN     SIDM00891       NaN
+3     ...            NaN            783.0     SIDM00594  907053.0
+4     ...            NaN              NaN     SIDM00593       NaN
+...   ...            ...              ...           ...       ...
+1916  ...            NaN              NaN           NaN       NaN
+1917  ...            NaN              NaN           NaN       NaN
+1918  ...            NaN              NaN           NaN       NaN
+1919  ...            NaN              NaN           NaN       NaN
+1920  ...            NaN              NaN           NaN       NaN
+
+       LegacySubSubtype
+0     high_grade_serous
+1                    M3
+2                   NaN
+3                    M6
+4                    M6
+...                 ...
+1916                NaN
+1917                NaN
+1918                NaN
+1919                NaN
+1920                NaN
+
+[1921 rows x 36 columns]</pre>
+</section>
+<section id="filter-the-information-to-be-exploited">
+<h1>4. Filter the information to be exploited<a class="headerlink" href="#filter-the-information-to-be-exploited" title="Permalink to this heading">¶</a></h1>
+<p>Filter the genes mapped to tissues (<code class="docutils literal notranslate"><span class="pre">OncotreeLineage</span></code> column in the
+mapping file) having less than <code class="docutils literal notranslate"><span class="pre">minlines</span></code> cell-lines:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">filter_crispr_by_model</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">filter_crispr_by_model</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">minlines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gene</th>
+      <th>ACH-000001</th>
+      <th>ACH-000004</th>
+      <th>ACH-000005</th>
+      <th>ACH-000007</th>
+      <th>ACH-000009</th>
+      <th>...</th>
+      <th>ACH-002834</th>
+      <th>ACH-002847</th>
+      <th>ACH-002922</th>
+      <th>ACH-002925</th>
+      <th>ACH-002926</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A1BG</th>
+      <td>-0.122637</td>
+      <td>0.019756</td>
+      <td>-0.107208</td>
+      <td>-0.031027</td>
+      <td>0.008888</td>
+      <td>...</td>
+      <td>-0.055721</td>
+      <td>-0.009973</td>
+      <td>-0.025991</td>
+      <td>-0.127639</td>
+      <td>-0.068666</td>
+    </tr>
+    <tr>
+      <th>A1CF</th>
+      <td>0.025881</td>
+      <td>-0.083640</td>
+      <td>-0.023211</td>
+      <td>-0.137850</td>
+      <td>-0.146566</td>
+      <td>...</td>
+      <td>-0.121228</td>
+      <td>-0.119813</td>
+      <td>-0.007706</td>
+      <td>-0.040705</td>
+      <td>-0.107530</td>
+    </tr>
+    <tr>
+      <th>A2M</th>
+      <td>0.034217</td>
+      <td>-0.060118</td>
+      <td>0.200204</td>
+      <td>0.067704</td>
+      <td>0.084471</td>
+      <td>...</td>
+      <td>0.072790</td>
+      <td>0.044097</td>
+      <td>-0.038468</td>
+      <td>0.134556</td>
+      <td>0.067806</td>
+    </tr>
+    <tr>
+      <th>A2ML1</th>
+      <td>-0.128082</td>
+      <td>-0.027417</td>
+      <td>0.116039</td>
+      <td>0.107988</td>
+      <td>0.089419</td>
+      <td>...</td>
+      <td>0.021916</td>
+      <td>0.041358</td>
+      <td>0.236576</td>
+      <td>-0.047984</td>
+      <td>0.112071</td>
+    </tr>
+    <tr>
+      <th>A3GALT2</th>
+      <td>-0.031285</td>
+      <td>-0.036116</td>
+      <td>-0.172227</td>
+      <td>0.007992</td>
+      <td>0.065109</td>
+      <td>...</td>
+      <td>-0.221940</td>
+      <td>-0.146565</td>
+      <td>-0.239690</td>
+      <td>-0.116114</td>
+      <td>-0.149897</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZYG11A</th>
+      <td>-0.289724</td>
+      <td>0.032983</td>
+      <td>-0.201273</td>
+      <td>-0.100344</td>
+      <td>-0.112703</td>
+      <td>...</td>
+      <td>0.024959</td>
+      <td>-0.119911</td>
+      <td>-0.079342</td>
+      <td>-0.043555</td>
+      <td>-0.045115</td>
+    </tr>
+    <tr>
+      <th>ZYG11B</th>
+      <td>-0.062972</td>
+      <td>-0.410392</td>
+      <td>-0.178877</td>
+      <td>-0.462160</td>
+      <td>-0.598698</td>
+      <td>...</td>
+      <td>0.015259</td>
+      <td>-0.289412</td>
+      <td>-0.347484</td>
+      <td>-0.335270</td>
+      <td>-0.307900</td>
+    </tr>
+    <tr>
+      <th>ZYX</th>
+      <td>0.074180</td>
+      <td>0.113156</td>
+      <td>-0.055349</td>
+      <td>-0.001555</td>
+      <td>0.095877</td>
+      <td>...</td>
+      <td>-0.306562</td>
+      <td>-0.195097</td>
+      <td>-0.085302</td>
+      <td>-0.208063</td>
+      <td>0.070671</td>
+    </tr>
+    <tr>
+      <th>ZZEF1</th>
+      <td>0.111244</td>
+      <td>0.234388</td>
+      <td>-0.002161</td>
+      <td>-0.325964</td>
+      <td>-0.026742</td>
+      <td>...</td>
+      <td>-0.148368</td>
+      <td>-0.206400</td>
+      <td>-0.095965</td>
+      <td>-0.094741</td>
+      <td>-0.187813</td>
+    </tr>
+    <tr>
+      <th>ZZZ3</th>
+      <td>-0.467908</td>
+      <td>-0.088306</td>
+      <td>-0.186842</td>
+      <td>-0.486660</td>
+      <td>-0.320759</td>
+      <td>...</td>
+      <td>-0.579576</td>
+      <td>-0.486525</td>
+      <td>-0.346272</td>
+      <td>-0.222404</td>
+      <td>-0.452143</td>
+    </tr>
+  </tbody>
+</table>
+<p>18443 rows × 1091 columns</p>
+</div><p>and remove also those having more than a certain percentage of NaN
+values (here 80%):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">delrows_with_nan_percentage</span>
+<span class="c1"># remove rows with more than perc NaNs</span>
+<span class="n">df_nonan</span> <span class="o">=</span> <span class="n">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">perc</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">80</span><span class="o">%</span> <span class="n">NaN</span>
+</pre></div>
+</div>
+</section>
+<section id="compute-egs-common-to-all-tissues-pan-tissue-labeling">
+<h1>5. Compute EGs common to all tissues (pan-tissue labeling)<a class="headerlink" href="#compute-egs-common-to-all-tissues-pan-tissue-labeling" title="Permalink to this heading">¶</a></h1>
+<p>Here, pan-tissue EGs are obtained by 1. identifying EGs in all
+tissue-specific cell-lines and 2. computing the label of each gene as
+the mode of the obtained labels.</p>
+<p>In order to do that, we need to select from the mapping file all
+cell-lines (<code class="docutils literal notranslate"><span class="pre">tissue_list='all'</span></code>) as a nested list of cell-lines (lists
+of lists for each tissue, obtained with <code class="docutils literal notranslate"><span class="pre">'nested=True'</span></code>):</p>
+<section id="labelling-egs-across-tissues">
+<h2>labelling EGs across tissues<a class="headerlink" href="#labelling-egs-across-tissues" title="Permalink to this heading">¶</a></h2>
+<p>In this example we compute common EGs by applying the labelling
+algorithm within each tissue-specufic cell lines. Then the common
+essentiality label is computed by making the mode of previously-computed
+labels across tissue. In order to do that, we with need to select
+cell-lines form the <code class="docutils literal notranslate"><span class="pre">Model.csv</span></code> as a nested list of lists of
+cell-lines. THis is obtained by properly calling the
+<code class="docutils literal notranslate"><span class="pre">select-cell-Lines</span></code> function.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span>
+<span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> tissues for a total of </span><span class="si">{</span><span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cell_lines</span><span class="p">])</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">tissues</span> <span class="k">for</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">1091</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+</pre></div>
+</div>
+<p>Then, we compute the two-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='flat-multi'</span></code>) using
+the Otsu algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>), returning the mode of the
+labels (due to the input nested list of cell-lines), save the results in
+a csv file (<code class="docutils literal notranslate"><span class="pre">'PanTissue_group_HELP.csv'</span></code>) and print their summary:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="c1"># remove rows with all nans</span>
+<span class="n">df_common</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="n">df_common</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;PanTissue_group_HELP.csv&quot;</span><span class="p">)</span>
+<span class="n">df_common</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/34 [00:00&lt;?, ?it/s]100%|██████████| 34/34 [00:00&lt;00:00, 158.93it/s]
+/Users/maurizio/opt/anaconda3/lib/python3.8/site-packages/help/models/labelling.py:249: UserWarning: There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.
+  warnings.warn(&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;)
+100%|██████████| 32/32 [00:00&lt;00:00, 227.62it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 241.00it/s]
+100%|██████████| 59/59 [00:00&lt;00:00, 148.71it/s]
+100%|██████████| 48/48 [00:00&lt;00:00, 206.04it/s]
+100%|██████████| 86/86 [00:00&lt;00:00, 245.78it/s]
+100%|██████████| 18/18 [00:00&lt;00:00, 244.79it/s]
+100%|██████████| 65/65 [00:00&lt;00:00, 251.14it/s]
+100%|██████████| 15/15 [00:00&lt;00:00, 170.63it/s]
+100%|██████████| 72/72 [00:00&lt;00:00, 165.18it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 159.06it/s]
+100%|██████████| 24/24 [00:00&lt;00:00, 84.81it/s]
+100%|██████████| 119/119 [00:00&lt;00:00, 171.15it/s]
+100%|██████████| 81/81 [00:00&lt;00:00, 115.81it/s]
+100%|██████████| 37/37 [00:00&lt;00:00, 158.80it/s]
+100%|██████████| 59/59 [00:00&lt;00:00, 146.91it/s]
+100%|██████████| 47/47 [00:00&lt;00:00, 136.58it/s]
+100%|██████████| 41/41 [00:00&lt;00:00, 159.62it/s]
+100%|██████████| 19/19 [00:00&lt;00:00, 145.02it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 129.34it/s]
+100%|██████████| 71/71 [00:00&lt;00:00, 129.70it/s]
+100%|██████████| 36/36 [00:00&lt;00:00, 147.09it/s]
+100%|██████████| 11/11 [00:00&lt;00:00, 183.88it/s]
+100%|██████████| 33/33 [00:00&lt;00:00, 133.39it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span>
+<span class="n">NE</span>       <span class="mi">16677</span>
+<span class="n">E</span>         <span class="mi">1254</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<p>An alternative way for computing pan-tissue EGs could be to select all
+cell-lines as a flat list of identifiers (<code class="docutils literal notranslate"><span class="pre">'nested=False'</span></code>), so
+disregarding their mapping to tissues, and compute the EG labeling:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span>
+<span class="n">cell_lines_un</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> tissues for a total of </span><span class="si">{</span><span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cell_lines_un</span><span class="p">])</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="n">df_common_flat</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cell_lines_un</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="c1">#df_common_flat.to_csv(&quot;PanTissue.csv&quot;)</span>
+<span class="n">df_common_flat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">24</span> <span class="n">tissues</span> <span class="k">for</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">10910</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1091/1091 [00:06&lt;00:00, 163.52it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span>
+<span class="n">NE</span>       <span class="mi">16664</span>
+<span class="n">E</span>         <span class="mi">1267</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<p>In this case, the cell-lines contribute in the same way to the labelling
+criterion regardless of the related tissue, thus providing a different,
+less stringent labelling.</p>
+</section>
+</section>
+<section id="subtract-pan-tissue-egs-from-those-of-the-chosen-tissue">
+<h1>6. Subtract pan-tissue EGs from those of the chosen tissue<a class="headerlink" href="#subtract-pan-tissue-egs-from-those-of-the-chosen-tissue" title="Permalink to this heading">¶</a></h1>
+<p>Context-specific EGs (csEGs) for a chosen tissue (here
+<code class="docutils literal notranslate"><span class="pre">tissueK</span> <span class="pre">=</span> <span class="pre">'Kidney'</span></code>) are obtained by subtracting the pan-tissue EGs
+computed in the previous step (<code class="docutils literal notranslate"><span class="pre">df_common</span></code>) by the EGs identified for
+the chosen tissue.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">#Identification of EGs in Kidney tissue (as in Example 1)</span>
+<span class="n">tissueK</span> <span class="o">=</span> <span class="s1">&#39;Kidney&#39;</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">cell_linesK</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">tissueK</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_linesK</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="n">df_labelK</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_linesK</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+<span class="n">df_labelK</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissueK</span><span class="si">}</span><span class="s2">_HELP_twoClasses.csv&quot;</span><span class="p">)</span>
+<span class="c1">#Alternatively, you can download the Kidney labels already computed:</span>
+<span class="c1">#!wget https://raw.githubusercontent.com/giordamaug/HELP/main/help/datafinal/Kidney_HELP.csv</span>
+
+<span class="c1">#Identification of Kidney context-specific EGs</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">)</span>
+<span class="n">EG_kidney</span> <span class="o">=</span> <span class="n">df_labelK</span><span class="p">[</span><span class="n">df_labelK</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cEG</span> <span class="o">=</span> <span class="n">df_common</span><span class="p">[</span><span class="n">df_common</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;E&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cs_EG_kidney</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">EG_kidney</span><span class="p">,</span> <span class="n">cEG</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_EG_kidney</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;csEG_Kidney.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cs_EG_kidney</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">37</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 37/37 [00:00&lt;00:00, 178.92it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ACTB&#39;</span> <span class="s1">&#39;ACTG1&#39;</span> <span class="s1">&#39;ACTR6&#39;</span> <span class="s1">&#39;ARF4&#39;</span> <span class="s1">&#39;ARFRP1&#39;</span> <span class="s1">&#39;ARPC4&#39;</span> <span class="s1">&#39;CDK6&#39;</span> <span class="s1">&#39;CFLAR&#39;</span> <span class="s1">&#39;CHMP7&#39;</span>
+ <span class="s1">&#39;COG1&#39;</span> <span class="s1">&#39;COPS3&#39;</span> <span class="s1">&#39;CTU2&#39;</span> <span class="s1">&#39;DCTN3&#39;</span> <span class="s1">&#39;DDX11&#39;</span> <span class="s1">&#39;DDX52&#39;</span> <span class="s1">&#39;EMC3&#39;</span> <span class="s1">&#39;EXOSC1&#39;</span> <span class="s1">&#39;FERMT2&#39;</span>
+ <span class="s1">&#39;GEMIN7&#39;</span> <span class="s1">&#39;GET3&#39;</span> <span class="s1">&#39;HGS&#39;</span> <span class="s1">&#39;HNF1B&#39;</span> <span class="s1">&#39;ITGAV&#39;</span> <span class="s1">&#39;KIF4A&#39;</span> <span class="s1">&#39;MCM10&#39;</span> <span class="s1">&#39;MDM2&#39;</span> <span class="s1">&#39;METAP2&#39;</span>
+ <span class="s1">&#39;MLST8&#39;</span> <span class="s1">&#39;NCAPH2&#39;</span> <span class="s1">&#39;NDOR1&#39;</span> <span class="s1">&#39;NHLRC2&#39;</span> <span class="s1">&#39;OXA1L&#39;</span> <span class="s1">&#39;PAX8&#39;</span> <span class="s1">&#39;PFN1&#39;</span> <span class="s1">&#39;PIK3C3&#39;</span> <span class="s1">&#39;PPIE&#39;</span>
+ <span class="s1">&#39;PPP1CA&#39;</span> <span class="s1">&#39;PPP4R2&#39;</span> <span class="s1">&#39;PTK2&#39;</span> <span class="s1">&#39;RAB7A&#39;</span> <span class="s1">&#39;RAD1&#39;</span> <span class="s1">&#39;RBM42&#39;</span> <span class="s1">&#39;RBMX2&#39;</span> <span class="s1">&#39;RTEL1&#39;</span> <span class="s1">&#39;SEPHS2&#39;</span>
+ <span class="s1">&#39;SNAP23&#39;</span> <span class="s1">&#39;SNRPB2&#39;</span> <span class="s1">&#39;SPTLC1&#39;</span> <span class="s1">&#39;SRSF10&#39;</span> <span class="s1">&#39;TAF1D&#39;</span> <span class="s1">&#39;TMED10&#39;</span> <span class="s1">&#39;TMED2&#39;</span> <span class="s1">&#39;TRIM37&#39;</span>
+ <span class="s1">&#39;TTF2&#39;</span> <span class="s1">&#39;UBA5&#39;</span> <span class="s1">&#39;UBC&#39;</span> <span class="s1">&#39;UBE2D3&#39;</span> <span class="s1">&#39;URM1&#39;</span> <span class="s1">&#39;USP10&#39;</span> <span class="s1">&#39;VPS33A&#39;</span> <span class="s1">&#39;VPS52&#39;</span> <span class="s1">&#39;WDR25&#39;</span>
+ <span class="s1">&#39;YWHAZ&#39;</span> <span class="s1">&#39;ZNF335&#39;</span> <span class="s1">&#39;ZNG1B&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="visualizing-the-obtained-results">
+<h2>Visualizing the obtained results<a class="headerlink" href="#visualizing-the-obtained-results" title="Permalink to this heading">¶</a></h2>
+<p>Show the supervenn plot of pan-tissue EGs, Kidney EGs and Kidney csEGs.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.visualization.plot</span> <span class="kn">import</span> <span class="n">svenn_intesect</span>
+<span class="n">svenn_intesect</span><span class="p">([</span><span class="nb">set</span><span class="p">(</span><span class="n">cs_EG_kidney</span><span class="p">),</span><span class="nb">set</span><span class="p">(</span><span class="n">EG_kidney</span><span class="p">),</span> <span class="nb">set</span><span class="p">(</span><span class="n">cEG</span><span class="p">)],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;kidney csEGs&#39;</span><span class="p">,</span> <span class="s1">&#39;kidney EGs&#39;</span><span class="p">,</span> <span class="s1">&#39;common EGs&#39;</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;EGs&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="../_images/output_24_0.png" src="../_images/output_24_0.png" />
+<p>The plot shows that the Kidney tissue shares 1193 EGs with all the other
+tissues (over a total of 1250 cEGs) and has 60 csEGs.</p>
+<p>Show the supervenn plot of Kidney csEGs against Lung csEGs.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.visualization.plot</span> <span class="kn">import</span> <span class="n">svenn_intesect</span>
+<span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">labelling</span>
+<span class="n">tissueL</span> <span class="o">=</span> <span class="s1">&#39;Lung&#39;</span>
+<span class="c1">#a) Identify Lung EGs (as in Example 1)</span>
+<span class="n">cell_linesL</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="p">[</span><span class="n">tissueL</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_linesL</span><span class="p">)</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
+<span class="n">df_labelL</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_linesL</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;flat-multi&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;otsu&#39;</span><span class="p">)</span>
+
+<span class="c1">#b) Compute Lung csEGs</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">)</span>
+<span class="n">EG_lung</span> <span class="o">=</span> <span class="n">df_labelL</span><span class="p">[</span><span class="n">df_labelL</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cs_EG_lung</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">EG_lung</span><span class="p">,</span> <span class="n">cEG</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_EG_lung</span><span class="p">)</span>
+<span class="c1">#with open(&quot;csEG_Lung.txt&quot;, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:</span>
+<span class="c1">#    f.write(&#39;\n&#39;.join(list(cs_EG_lung)))</span>
+
+<span class="c1">#Show the supervenn plot</span>
+<span class="n">svenn_intesect</span><span class="p">([</span><span class="nb">set</span><span class="p">(</span><span class="n">cs_EG_kidney</span><span class="p">),</span> <span class="nb">set</span><span class="p">(</span><span class="n">cs_EG_lung</span><span class="p">)],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;kidney&#39;</span><span class="p">,</span> <span class="s1">&#39;lung&#39;</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;csEGs&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selecting</span> <span class="mi">119</span> <span class="n">cell</span><span class="o">-</span><span class="n">lines</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 119/119 [00:00&lt;00:00, 229.57it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ACO2&#39;</span> <span class="s1">&#39;AP2M1&#39;</span> <span class="s1">&#39;ATP5F1D&#39;</span> <span class="s1">&#39;BORA&#39;</span> <span class="s1">&#39;CCDC86&#39;</span> <span class="s1">&#39;CDK2&#39;</span> <span class="s1">&#39;CKS1B&#39;</span> <span class="s1">&#39;COPS3&#39;</span> <span class="s1">&#39;CYCS&#39;</span>
+ <span class="s1">&#39;DCTN3&#39;</span> <span class="s1">&#39;DDX11&#39;</span> <span class="s1">&#39;DDX39B&#39;</span> <span class="s1">&#39;DGCR8&#39;</span> <span class="s1">&#39;GEMIN7&#39;</span> <span class="s1">&#39;NCAPH2&#39;</span> <span class="s1">&#39;NFYB&#39;</span> <span class="s1">&#39;NUMA1&#39;</span>
+ <span class="s1">&#39;NUP153&#39;</span> <span class="s1">&#39;OXA1L&#39;</span> <span class="s1">&#39;PI4KA&#39;</span> <span class="s1">&#39;PPAT&#39;</span> <span class="s1">&#39;PTCD3&#39;</span> <span class="s1">&#39;SCD&#39;</span> <span class="s1">&#39;SLBP&#39;</span> <span class="s1">&#39;SLC25A3&#39;</span> <span class="s1">&#39;TFRC&#39;</span>
+ <span class="s1">&#39;TRPM7&#39;</span> <span class="s1">&#39;YPEL5&#39;</span> <span class="s1">&#39;YTHDC1&#39;</span> <span class="s1">&#39;ZNF335&#39;</span> <span class="s1">&#39;ZNF407&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<img alt="../_images/output_26_3.png" src="../_images/output_26_3.png" />
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="labelling.html" class="btn btn-neutral float-left" title="1. Install HELP from GitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, National Research Council of Italy.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
