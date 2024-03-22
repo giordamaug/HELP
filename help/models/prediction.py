@@ -139,41 +139,88 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
 
-def predict_cv_sv(df_X, df_y, n_voters=1, n_splits=5, colname='label', balanced=False, seed=42, verbose=False):
-   # find the majority class: will be split among voters
-   minlab = df_y[colname].value_counts().nsmallest(1).index[0]
-   maxlab = df_y[colname].value_counts().nlargest(1).index[0]
-   if verbose: print(f"Majority {maxlab} {df_y[colname].value_counts()[maxlab]}, minority {minlab} {df_y[colname].value_counts()[minlab]}")
-   df_y_ne = df_y[df_y['label']==maxlab]
-   #df_y_ne = df_y_ne.sample(frac=1, random_state=seed)
-   df_y_e = df_y[df_y['label']!=maxlab]
-   splits = np.array_split(df_y_ne, n_voters)
-   predictions_ne = pd.DataFrame()
-   predictions_e = pd.DataFrame(index=df_y_e.index)
-   d=np.empty((len(df_y_e.index),),object)
-   d[...]=[list() for _ in range(len(df_y_e.index))]
-   predictions_e['probabilities'] = d
-   predictions_e['label'] = np.array([0 for idx in df_y_e.index])
-   predictions_e['prediction'] = np.array([np.nan for idx in df_y_e.index])
-   for df_index_ne in splits:
-      df_x = pd.concat([df_X.loc[df_index_ne.index], df_X.loc[df_y_e.index]])
-      df_yy = pd.concat([df_y.loc[df_index_ne.index], df_y.loc[df_y_e.index]])
-      _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
-      predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
-      r = np.empty((len(df_y_e.index),),object)
-      r[...]=[predictions_e.loc[idx]['probabilities'] + [preds.loc[idx]['probabilities']]  for idx in df_y_e.index]
-      predictions_e['probabilities'] = r
-   predictions_e['prediction'] = predictions_e['probabilities'].map(lambda x: 0 if sum(x)/n_voters > 0.5 else 1)
-   predictions_e['probabilities'] = predictions_e['probabilities'].map(lambda x: sum(x)/n_voters)
-   predictions = pd.concat([predictions_ne, predictions_e])
-   test_y = predictions['label'].values
-   preds = predictions['prediction'].values
-   probs = predictions['probabilities'].values
-   cm = confusion_matrix(test_y, preds)
-   scores = pd.DataFrame([[roc_auc_score(test_y, 1-probs), accuracy_score(test_y, preds),
-                           balanced_accuracy_score(test_y, preds),
-                           cm[0, 0] / (cm[0, 0] + cm[0, 1]),
-                           cm[1, 1] / (cm[1, 0] + cm[1, 1]),
-                           matthews_corrcoef(test_y, preds),cm]], 
-                           columns=["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM'], index=[seed])
-   return scores, predictions
+def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False, seed=42, verbose=False):
+    """
+    Function to perform cross-validation with stratified sampling using LightGBM classifier 
+    and a voting mechanism for binary classification. This function takes in features 
+    (df_X) and labels (df_y) DataFrames for a classification problem, and performs cross-validation 
+    with stratified sampling using LightGBM classifier. It then employs a voting mechanism to 
+    handle imbalanced classes for binary classification tasks. Finally, it evaluates the predictions 
+    and returns evaluation scores along with the predicted labels and probabilities.
+
+    :param DataFrame X: Features DataFrame.
+    :param DataFrame Y: Target variable DataFrame.
+    :param int n_voters: Number of voters to split the majority class.
+    :param int n_splits: Number of folds for cross-validation.
+    :param str colname: Name of the column containing the labels.
+    :param bool balanced: Whether to use class weights to balance the classes.
+    :param int or None seed: Random seed for reproducibility.
+    :param bool verbose: Whether to print verbose information.
+
+    :returns: 
+        DataFrame scores: containing evaluation scores. 
+        DataFrame predictions:  containing predicted labels and probabilities.
+    :rtype: Tuple(pd.DataFrame,pd.DataFrame)
+        
+    """
+
+    # Find the majority and minority class
+    minlab = Y[colname].value_counts().nsmallest(1).index[0]
+    maxlab = Y[colname].value_counts().nlargest(1).index[0]
+
+    if verbose:
+        print(f"Majority {maxlab} {Y[colname].value_counts()[maxlab]}, minority {minlab} {Y[colname].value_counts()[minlab]}")
+
+    # Separate majority and minority class
+    df_y_ne = Y[Y['label'] == maxlab]
+    df_y_e = Y[Y['label'] != maxlab]
+
+    # Split majority class among voters
+    splits = np.array_split(df_y_ne, n_voters)
+
+    # Initialize empty DataFrame for predictions
+    predictions_ne = pd.DataFrame()
+    predictions_e = pd.DataFrame(index=df_y_e.index)
+    d = np.empty((len(df_y_e.index),), object)
+    d[...] = [list() for _ in range(len(df_y_e.index))]
+    predictions_e['probabilities'] = d
+    predictions_e['label'] = np.array([0 for idx in df_y_e.index])
+    predictions_e['prediction'] = np.array([np.nan for idx in df_y_e.index])
+
+    # Perform cross-validation for each split
+    for df_index_ne in splits:
+        df_x = pd.concat([X.loc[df_index_ne.index], X.loc[df_y_e.index]])
+        df_yy = pd.concat([Y.loc[df_index_ne.index], Y.loc[df_y_e.index]])
+        
+        _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
+        
+        # Concatenate predictions for the minority class
+        predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
+
+        # Update probabilities for the minority class
+        r = np.empty((len(df_y_e.index),), object)
+        r[...] = [predictions_e.loc[idx]['probabilities'] + [preds.loc[idx]['probabilities']]  for idx in df_y_e.index]
+        predictions_e['probabilities'] = r
+
+    # Combine probabilities for the minority class
+    predictions_e['prediction'] = predictions_e['probabilities'].map(lambda x: 0 if sum(x)/n_voters > 0.5 else 1)
+    predictions_e['probabilities'] = predictions_e['probabilities'].map(lambda x: sum(x)/n_voters)
+
+    # Combine predictions
+    predictions = pd.concat([predictions_ne, predictions_e])
+
+    # Evaluate predictions
+    test_y = predictions['label'].values
+    preds = predictions['prediction'].values
+    probs = predictions['probabilities'].values
+    cm = confusion_matrix(test_y, preds)
+    
+    # Calculate evaluation scores
+    scores = pd.DataFrame([[roc_auc_score(test_y, 1-probs), accuracy_score(test_y, preds),
+                            balanced_accuracy_score(test_y, preds),
+                            cm[0, 0] / (cm[0, 0] + cm[0, 1]),
+                            cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                            matthews_corrcoef(test_y, preds), cm]],
+                          columns=["ROC-AUC", "Accuracy", "BA", "Sensitivity", "Specificity", "MCC", 'CM'], index=[seed])
+
+    return scores, predictions

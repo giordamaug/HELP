@@ -1043,17 +1043,6 @@ In order to do that, we need to select from the mapping file all
 cell-lines (``tissue_list='all'``) as a nested list of cell-lines (lists
 of lists for each tissue, obtained with ``'nested=True'``):
 
-labelling EGs across tissues
-''''''''''''''''''''''''''''
-
-In this example we compute common EGs by applying the labelling
-algorithm within each tissue-specufic cell lines. Then the common
-essentiality label is computed by making the mode of previously-computed
-labels across tissue. In order to do that, we with need to select
-cell-lines form the ``Model.csv`` as a nested list of lists of
-cell-lines. THis is obtained by properly calling the
-``select-cell-Lines`` function.
-
 .. code:: ipython3
 
     from help.utility.selection import select_cell_lines
