@@ -1,3 +1,8 @@
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
+
 1. Install HELP from GitHub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
