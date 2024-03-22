@@ -245,7 +245,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
         for lines in columns:
             # check if there are rows with all Nans
             nanrows = rows_with_all_nan(df[lines])
-            if len(nanrows) > 0:
+            if len(nanrows) and verbose:
                 warnings.warn("There are rows with all NaNs, please remove them using the function 'rows_with_all_nan()' and re-apply the labelling. Otherwise you will have NaN labels in your output.")
             labels = labelling_core(df, columns=lines, verbose=verbose, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
