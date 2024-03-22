@@ -61,10 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-input-file">3. Load the input file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#filter-the-information-to-be-exploited">4. Filter the information to be exploited</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#compute-egs-common-to-all-tissues-pan-tissue-labeling">5. Compute EGs common to all tissues (pan-tissue labeling)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#labelling-egs-across-tissues">labelling EGs across tissues</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#compute-egs-common-to-all-tissues-pan-tissue-labeling">5. Compute EGs common to all tissues (pan-tissue labeling)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subtract-pan-tissue-egs-from-those-of-the-chosen-tissue">6. Subtract pan-tissue EGs from those of the chosen tissue</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#visualizing-the-obtained-results">Visualizing the obtained results</a></li>
 </ul>
@@ -1092,15 +1089,6 @@ the mode of the obtained labels.</p>
 <p>In order to do that, we need to select from the mapping file all
 cell-lines (<code class="docutils literal notranslate"><span class="pre">tissue_list='all'</span></code>) as a nested list of cell-lines (lists
 of lists for each tissue, obtained with <code class="docutils literal notranslate"><span class="pre">'nested=True'</span></code>):</p>
-<section id="labelling-egs-across-tissues">
-<h2>labelling EGs across tissues<a class="headerlink" href="#labelling-egs-across-tissues" title="Link to this heading"></a></h2>
-<p>In this example we compute common EGs by applying the labelling
-algorithm within each tissue-specufic cell lines. Then the common
-essentiality label is computed by making the mode of previously-computed
-labels across tissue. In order to do that, we with need to select
-cell-lines form the <code class="docutils literal notranslate"><span class="pre">Model.csv</span></code> as a nested list of lists of
-cell-lines. THis is obtained by properly calling the
-<code class="docutils literal notranslate"><span class="pre">select-cell-Lines</span></code> function.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.utility.selection</span> <span class="kn">import</span> <span class="n">select_cell_lines</span>
 <span class="n">cell_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> tissues for a total of </span><span class="si">{</span><span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cell_lines</span><span class="p">])</span><span class="si">}</span><span class="s2"> cell-lines&quot;</span><span class="p">)</span>
@@ -1181,7 +1169,6 @@ disregarding their mapping to tissues, and compute the EG labeling:</p>
 <p>In this case, the cell-lines contribute in the same way to the labelling
 criterion regardless of the related tissue, thus providing a different,
 less stringent labelling.</p>
-</section>
 </section>
 <section id="subtract-pan-tissue-egs-from-those-of-the-chosen-tissue">
 <h1>6. Subtract pan-tissue EGs from those of the chosen tissue<a class="headerlink" href="#subtract-pan-tissue-egs-from-those-of-the-chosen-tissue" title="Link to this heading"></a></h1>

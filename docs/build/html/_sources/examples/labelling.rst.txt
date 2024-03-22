@@ -1124,12 +1124,16 @@ algorithm (``algorithm='otsu'``) and save the results in a csv file
     Name: count, dtype: int64
 
 
-Example 1.2 two-class labeling of EGs based on tissue information
+Example 1.2 three-class labeling of EGs based on tissue information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Genes have already been filtered according to tissue information for
-Example 1.1, so we only need to: ##### - Apply three-class HELP
-labelling Compute the three-class labeling (``mode='two-by-two'``) using
+Example 1.1, so we only need to: 
+
+- Apply three-class HELP labelling
+''''''''''''''''''''''''''''''''''
+
+Compute the three-class labeling (``mode='two-by-two'``) using
 the Otsu algorithm (``algorithm='otsu'``) and save the results in a csv
 file (``'Kidney_HELP_threeClasses.csv'``):
 
