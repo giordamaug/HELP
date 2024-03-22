@@ -27,7 +27,7 @@ extensions = [
     'sphinx.ext.autosummary', 'sphinx.ext.intersphinx', 'sphinx.ext.viewcode',
 ]
 
-exclude_patterns = ['modules.rst', 'notebook.rst']
+exclude_patterns = ['modules.rst', 'notebook.rst', 'tutorial1.rst']
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
