@@ -42,7 +42,7 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
     :returns: Summary statistics of the cross-validated predictions, single measures and label predictions
     :rtype: Tuple(pd.DataFrame,pd.DataFrame,pd.DataFrame)
 
-    :example
+    :example:
  
     .. code-block:: python
 
@@ -162,6 +162,14 @@ def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False,
         DataFrame predictions:  containing predicted labels and probabilities.
     :rtype: Tuple(pd.DataFrame,pd.DataFrame)
         
+    :example:
+
+    .. code-block:: python
+
+        # Example usage
+        X_data = pd.DataFrame(...)
+        Y_data = pd.DataFrame(...)
+        result, prediction = predict_cv_sv(X_data, Y_data, n_voters=10, n_splits=5, balanced=True, verbose=True, seed=42)
     """
 
     # Find the majority and minority class
