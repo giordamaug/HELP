@@ -13,7 +13,7 @@ PROB=EvsAE
 #ALIASES="{'aE':'NE', 'sNE': 'NE'}"
 ALIASES="{}"
 EXCLABELS="-X sNE"
-VOTERS="-v 10"
+VOTERS="-v 2"
 LABELFILE=${TISSUE}_${METHOD}.csv
 
 echo "running BIO"
