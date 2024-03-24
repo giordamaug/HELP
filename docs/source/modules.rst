@@ -1,8 +1,7 @@
-help
-====
+HELPpy
+======
 
 .. toctree::
    :maxdepth: 4
 
-   index
-   help
+   HELPpy

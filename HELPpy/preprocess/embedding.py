@@ -32,6 +32,7 @@ def PPI_embed(df_net: pd.DataFrame, method: str='Node2Vec', dimensions: int=128,
 
     :example:
     .. code-block:: python
+
         df_embedding = PPI_embed(ppi_data, method='Node2Vec', dimensions=128, epochs=5, verbose=True)
     """
     assert method in ['DeepWalk', 'Node2Vec', 'AE'], "Embedding method not supported!"

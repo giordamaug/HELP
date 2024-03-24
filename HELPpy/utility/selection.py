@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from ..models.labelling import labelling
 from ..visualization.plot import svenn_intesect
 import random
-from help.models.labelling import labelling
-from help.visualization.plot import svenn_intesect
+from ..models.labelling import labelling
+from ..visualization.plot import svenn_intesect
 import random
 
 def delrows_with_nan_percentage(df: pd.DataFrame, perc: float=100.):    

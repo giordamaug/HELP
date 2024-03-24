@@ -11,7 +11,7 @@ import sys
 #sys.setrecursionlimit(10000)
 sys.path.insert(0, os.path.abspath('../..'))
 
-project = 'HELP'
+project = 'HELPpy'
 copyright = '2024, National Research Council of Italy'
 author = 'Maurizio Giordano'
 release = '1.0'
@@ -27,7 +27,7 @@ extensions = [
     'sphinx.ext.autosummary', 'sphinx.ext.intersphinx', 'sphinx.ext.viewcode',
 ]
 
-exclude_patterns = ['modules.rst', 'notebook.rst', 'tutorial1.rst']
+exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
