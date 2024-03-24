@@ -1,9 +1,0 @@
-numpy
-tqdm
-typing
-pandas
-supervenn
-matplotlib
-ipywidgets
-scikit-learn
-scipy
