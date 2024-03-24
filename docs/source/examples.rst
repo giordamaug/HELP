@@ -41,3 +41,22 @@ Finally, the example shows various ways of visualizing the obtained results.
    :maxdepth: 1
 
    examples/csegs
+
+Example 3: Prediction of tissue-specific EGs
+============================================
+
+This example shows how to use HELP for identifying tissue-specific EGs. 
+The workflow involves the following steps
+
+#. Install HELP from GitHub
+#. Download the input files
+#. Processing tissue-specific attributes
+#. Prediction
+#. True Positive rates of context-specific EGs
+
+Finally, the example shows various ways of visualizing the obtained results.
+
+.. toctree::
+   :maxdepth: 1
+
+   examples/prediction
