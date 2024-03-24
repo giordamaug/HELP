@@ -1,13 +1,15 @@
 from setuptools import setup
 
 setup(
-   name='help',
+#   name='help',
+   name='HELPpy',
    version='1.0',
    author='Maurizio Giordano and Ilaria Granata and Lucia Maddalena',
    author_email='maurizio.giordano@cnr.it',
+   #packages=['HELPpy', 'HELPpy.preprocess', 'HELPpy.models', 'HELPpy.utility', 'HELPpy.visualization'],
    packages=['help', 'help.preprocess', 'help.models', 'help.utility', 'help.visualization'],
    license='LICENSE.txt',
-   description='The HELP Essential Genes framework',
+   description='The Human gene Essentiality Labelling & Prediction (HELP) framework implementation in Python',
    long_description=open('README.md').read(),
    install_requires=[
        "numpy",
