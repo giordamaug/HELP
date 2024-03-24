@@ -1,10 +1,3 @@
-.. image:: https://colab.research.google.com/assets/colab-badge.svg
-   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
-.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
-   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
-
-
-
 1. Install HELP from GitHub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -699,7 +692,7 @@ mapping file) having less than ``minlines`` cell-lines.
 
 .. code:: ipython3
 
-    from help.utility.selection import filter_crispr_by_model
+    from HELPpy.utility.selection import filter_crispr_by_model
     df = filter_crispr_by_model(df, df_map, minlines=10, line_group='OncotreeLineage')
     df
 
@@ -1075,8 +1068,8 @@ cell-lines having more than a certain percentage of NaN values (here
 .. code:: ipython3
 
     tissue = 'Kidney'
-    from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
-    from help.models.labelling import labelling
+    from HELPpy.utility.selection import select_cell_lines, delrows_with_nan_percentage
+    from HELPpy.models.labelling import labelling
     cell_lines = select_cell_lines(df, df_map, [tissue])
     print(f"Selecting {len(cell_lines)} cell-lines")
     # remove rows with more than perc NaNs
@@ -1125,15 +1118,11 @@ algorithm (``algorithm='otsu'``) and save the results in a csv file
 
 
 Example 1.2 three-class labeling of EGs based on tissue information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Genes have already been filtered according to tissue information for
-Example 1.1, so we only need to: 
-
-- Apply three-class HELP labelling
-''''''''''''''''''''''''''''''''''
-
-Compute the three-class labeling (``mode='two-by-two'``) using
+Example 1.1, so we only need to: ##### - Apply three-class HELP
+labelling Compute the three-class labeling (``mode='two-by-two'``) using
 the Otsu algorithm (``algorithm='otsu'``) and save the results in a csv
 file (``'Kidney_HELP_threeClasses.csv'``):
 
@@ -1217,8 +1206,8 @@ certain percentage of NaN values (here 95%):
 .. code:: ipython3
 
     disease = 'Acute Myeloid Leukemia'
-    from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
-    from help.models.labelling import labelling
+    from HELPpy.utility.selection import select_cell_lines, delrows_with_nan_percentage
+    from HELPpy.models.labelling import labelling
     cell_lines = select_cell_lines(df, df_map, [disease], line_group='OncotreePrimaryDisease')
     
     print(f"Selecting {len(cell_lines)} cell-lines")
