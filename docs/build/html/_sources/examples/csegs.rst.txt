@@ -1,9 +1,3 @@
-.. image:: https://colab.research.google.com/assets/colab-badge.svg
-   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb
-.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
-   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/csegs.ipynb
-   
-
 1. Install HELP from GitHub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,6 +19,16 @@ locally.
 
     !wget -c https://figshare.com/ndownloader/files/43346616 -O CRISPRGeneEffect.csv
     !wget -c https://figshare.com/ndownloader/files/43746708 -O Model.csv
+
+.. code:: ipython3
+
+    %cd ../../help/datafinal
+
+
+.. parsed-literal::
+
+    /Users/maurizio/HELP/help/datafinal
+
 
 3. Load the input file
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -432,7 +436,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NIHOVCAR3_OVARY</td>
           <td>HTB-71</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>2201.0</td>
@@ -456,7 +460,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>CCL-240</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>55.0</td>
@@ -480,7 +484,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>CACO2_LARGE_INTESTINE</td>
           <td>HTB-37</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -504,7 +508,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HEL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>ACC 11</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>783.0</td>
@@ -528,7 +532,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HEL9217_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>HEL9217</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -576,7 +580,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -600,7 +604,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -624,7 +628,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -648,7 +652,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -672,7 +676,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>NaN</td>
+          <td>None</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -695,7 +699,7 @@ mapping file) having less than ``minlines`` cell-lines:
 
 .. code:: ipython3
 
-    from help.utility.selection import filter_crispr_by_model
+    from HELPpy.utility.selection import filter_crispr_by_model
     df = filter_crispr_by_model(df_orig, df_map, minlines=10, line_group='OncotreeLineage')
     df
 
@@ -1022,7 +1026,7 @@ values (here 80%):
 
 .. code:: ipython3
 
-    from help.utility.selection import delrows_with_nan_percentage
+    from HELPpy.utility.selection import delrows_with_nan_percentage
     # remove rows with more than perc NaNs
     df_nonan = delrows_with_nan_percentage(df, perc=80)
 
@@ -1045,7 +1049,7 @@ of lists for each tissue, obtained with ``'nested=True'``):
 
 .. code:: ipython3
 
-    from help.utility.selection import select_cell_lines
+    from HELPpy.utility.selection import select_cell_lines
     cell_lines = select_cell_lines(df_nonan, df_map, tissue_list='all', nested=True)
     print(f"Selecting {len(cell_lines)} tissues for a total of {sum([len(x) for x in cell_lines])} cell-lines")
 
@@ -1062,7 +1066,7 @@ a csv file (``'PanTissue_group_HELP.csv'``) and print their summary:
 
 .. code:: ipython3
 
-    from help.models.labelling import labelling
+    from HELPpy.models.labelling import labelling
     # remove rows with all nans
     df_common = labelling(df_nonan, columns=cell_lines, n_classes=2, labelnames={0:'E', 1: 'NE'}, mode='flat-multi', algorithm='otsu')
     df_common.to_csv("PanTissue_group_HELP.csv")
@@ -1071,34 +1075,30 @@ a csv file (``'PanTissue_group_HELP.csv'``) and print their summary:
 
 .. parsed-literal::
 
-      0%|          | 0/34 [00:00<?, ?it/s]
-
-.. parsed-literal::
-
-    100%|██████████| 34/34 [00:00<00:00, 609.85it/s]
-    100%|██████████| 32/32 [00:00<00:00, 694.73it/s]
-    100%|██████████| 37/37 [00:00<00:00, 737.01it/s]
-    100%|██████████| 59/59 [00:00<00:00, 739.17it/s]
-    100%|██████████| 48/48 [00:00<00:00, 708.80it/s]
-    100%|██████████| 86/86 [00:00<00:00, 721.52it/s]
-    100%|██████████| 18/18 [00:00<00:00, 707.24it/s]
-    100%|██████████| 65/65 [00:00<00:00, 719.63it/s]
-    100%|██████████| 15/15 [00:00<00:00, 726.04it/s]
-    100%|██████████| 72/72 [00:00<00:00, 748.21it/s]
-    100%|██████████| 37/37 [00:00<00:00, 685.16it/s]
-    100%|██████████| 24/24 [00:00<00:00, 722.50it/s]
-    100%|██████████| 119/119 [00:00<00:00, 742.11it/s]
-    100%|██████████| 81/81 [00:00<00:00, 721.42it/s]
-    100%|██████████| 37/37 [00:00<00:00, 717.46it/s]
-    100%|██████████| 59/59 [00:00<00:00, 748.28it/s]
-    100%|██████████| 47/47 [00:00<00:00, 721.70it/s]
-    100%|██████████| 41/41 [00:00<00:00, 718.57it/s]
-    100%|██████████| 19/19 [00:00<00:00, 710.78it/s]
-    100%|██████████| 10/10 [00:00<00:00, 702.00it/s]
-    100%|██████████| 71/71 [00:00<00:00, 748.16it/s]
-    100%|██████████| 36/36 [00:00<00:00, 721.75it/s]
-    100%|██████████| 11/11 [00:00<00:00, 680.57it/s]
-    100%|██████████| 33/33 [00:00<00:00, 702.29it/s]
+      0%|          | 0/34 [00:00<?, ?it/s]100%|██████████| 34/34 [00:00<00:00, 178.99it/s]
+    100%|██████████| 32/32 [00:00<00:00, 238.07it/s]
+    100%|██████████| 37/37 [00:00<00:00, 255.69it/s]
+    100%|██████████| 59/59 [00:00<00:00, 272.13it/s]
+    100%|██████████| 48/48 [00:00<00:00, 264.54it/s]
+    100%|██████████| 86/86 [00:00<00:00, 273.47it/s]
+    100%|██████████| 18/18 [00:00<00:00, 258.70it/s]
+    100%|██████████| 65/65 [00:00<00:00, 266.60it/s]
+    100%|██████████| 15/15 [00:00<00:00, 252.15it/s]
+    100%|██████████| 72/72 [00:00<00:00, 264.46it/s]
+    100%|██████████| 37/37 [00:00<00:00, 253.59it/s]
+    100%|██████████| 24/24 [00:00<00:00, 261.51it/s]
+    100%|██████████| 119/119 [00:00<00:00, 267.34it/s]
+    100%|██████████| 81/81 [00:00<00:00, 254.14it/s]
+    100%|██████████| 37/37 [00:00<00:00, 258.04it/s]
+    100%|██████████| 59/59 [00:00<00:00, 267.07it/s]
+    100%|██████████| 47/47 [00:00<00:00, 260.78it/s]
+    100%|██████████| 41/41 [00:00<00:00, 262.79it/s]
+    100%|██████████| 19/19 [00:00<00:00, 252.58it/s]
+    100%|██████████| 10/10 [00:00<00:00, 261.15it/s]
+    100%|██████████| 71/71 [00:00<00:00, 266.98it/s]
+    100%|██████████| 36/36 [00:00<00:00, 257.51it/s]
+    100%|██████████| 11/11 [00:00<00:00, 247.36it/s]
+    100%|██████████| 33/33 [00:00<00:00, 245.02it/s]
 
 
 
@@ -1106,9 +1106,9 @@ a csv file (``'PanTissue_group_HELP.csv'``) and print their summary:
 .. parsed-literal::
 
     label
-    NE       16681
-    E         1250
-    Name: count, dtype: int64
+    NE       16677
+    E         1254
+    dtype: int64
 
 
 
@@ -1118,7 +1118,7 @@ disregarding their mapping to tissues, and compute the EG labeling:
 
 .. code:: ipython3
 
-    from help.utility.selection import select_cell_lines
+    from HELPpy.utility.selection import select_cell_lines
     cell_lines_un = select_cell_lines(df_nonan, df_map, tissue_list='all', nested=False)
     print(f"Selecting {len(cell_lines)} tissues for a total of {sum([len(x) for x in cell_lines_un])} cell-lines")
     df_common_flat = labelling(df_nonan, columns=cell_lines_un, n_classes=2, labelnames={0:'E', 1: 'NE'}, mode='flat-multi', algorithm='otsu')
@@ -1133,7 +1133,7 @@ disregarding their mapping to tissues, and compute the EG labeling:
 
 .. parsed-literal::
 
-    100%|██████████| 1091/1091 [00:01<00:00, 683.34it/s]
+    100%|██████████| 1091/1091 [00:05<00:00, 201.39it/s]
 
 
 
@@ -1141,9 +1141,9 @@ disregarding their mapping to tissues, and compute the EG labeling:
 .. parsed-literal::
 
     label
-    NE       16668
-    E         1263
-    Name: count, dtype: int64
+    NE       16664
+    E         1267
+    dtype: int64
 
 
 
@@ -1165,8 +1165,8 @@ the chosen tissue.
     
     #Identification of EGs in Kidney tissue (as in Example 1)
     tissueK = 'Kidney'
-    from help.utility.selection import select_cell_lines
-    from help.models.labelling import labelling
+    from HELPpy.utility.selection import select_cell_lines
+    from HELPpy.models.labelling import labelling
     cell_linesK = select_cell_lines(df_nonan, df_map, [tissueK])
     print(f"Selecting {len(cell_linesK)} cell-lines")
     df_labelK = labelling(df_nonan, columns = cell_linesK, n_classes=2,
@@ -1195,18 +1195,19 @@ the chosen tissue.
 
 .. parsed-literal::
 
-    100%|██████████| 37/37 [00:00<00:00, 586.83it/s]
+      0%|          | 0/37 [00:00<?, ?it/s]100%|██████████| 37/37 [00:00<00:00, 181.34it/s]
 
 
 .. parsed-literal::
 
-    ['ACTG1' 'ACTR6' 'ARF4' 'ARFRP1' 'ARPC4' 'CDK6' 'CFLAR' 'CHMP7' 'COPS3'
-     'DCTN3' 'DDX11' 'DDX52' 'EMC3' 'EXOSC1' 'FERMT2' 'GEMIN7' 'GET3' 'HGS'
-     'HNF1B' 'HTATSF1' 'ITGAV' 'KIF4A' 'MCM10' 'MDM2' 'METAP2' 'MLST8'
-     'NCAPH2' 'NDOR1' 'NHLRC2' 'OXA1L' 'PAX8' 'PFN1' 'PIK3C3' 'PPIE' 'PPP1CA'
-     'PPP4R2' 'PTK2' 'RAB7A' 'RAD1' 'RBM42' 'RBMX2' 'RTEL1' 'SEPHS2' 'SNAP23'
-     'SNRPB2' 'SPTLC1' 'SRSF10' 'TAF1D' 'TMED10' 'TMED2' 'TRIM37' 'UBA5' 'UBC'
-     'UBE2D3' 'USP10' 'VPS33A' 'VPS52' 'WDR25' 'YWHAZ' 'ZNG1B']
+    ['ACTB' 'ACTG1' 'ACTR6' 'ARF4' 'ARFRP1' 'ARPC4' 'CDK6' 'CFLAR' 'CHMP7'
+     'COG1' 'COPS3' 'CTU2' 'DCTN3' 'DDX11' 'DDX52' 'EMC3' 'EXOSC1' 'FERMT2'
+     'GEMIN7' 'GET3' 'HGS' 'HNF1B' 'ITGAV' 'KIF4A' 'MCM10' 'MDM2' 'METAP2'
+     'MLST8' 'NCAPH2' 'NDOR1' 'NHLRC2' 'OXA1L' 'PAX8' 'PFN1' 'PIK3C3' 'PPIE'
+     'PPP1CA' 'PPP4R2' 'PTK2' 'RAB7A' 'RAD1' 'RBM42' 'RBMX2' 'RTEL1' 'SEPHS2'
+     'SNAP23' 'SNRPB2' 'SPTLC1' 'SRSF10' 'TAF1D' 'TMED10' 'TMED2' 'TRIM37'
+     'TTF2' 'UBA5' 'UBC' 'UBE2D3' 'URM1' 'USP10' 'VPS33A' 'VPS52' 'WDR25'
+     'YWHAZ' 'ZNF335' 'ZNG1B']
 
 
 Visualizing the obtained results
@@ -1216,7 +1217,7 @@ Show the supervenn plot of pan-tissue EGs, Kidney EGs and Kidney csEGs.
 
 .. code:: ipython3
 
-    from help.visualization.plot import svenn_intesect
+    from HELPpy.visualization.plot import svenn_intesect
     svenn_intesect([set(cs_EG_kidney),set(EG_kidney), set(cEG)], labels=['kidney csEGs', 'kidney EGs', 'common EGs'], ylabel='EGs', figsize=(8,4))
 
 
@@ -1231,9 +1232,9 @@ Show the supervenn plot of Kidney csEGs against Lung csEGs.
 
 .. code:: ipython3
 
-    from help.visualization.plot import svenn_intesect
-    from help.utility.selection import select_cell_lines
-    from help.models.labelling import labelling
+    from HELPpy.visualization.plot import svenn_intesect
+    from HELPpy.utility.selection import select_cell_lines
+    from HELPpy.models.labelling import labelling
     tissueL = 'Lung'
     #a) Identify Lung EGs (as in Example 1)
     cell_linesL = select_cell_lines(df_nonan, df_map, [tissueL])
@@ -1247,8 +1248,8 @@ Show the supervenn plot of Kidney csEGs against Lung csEGs.
     EG_lung = df_labelL[df_labelL['label'] == 'E'].index.values
     cs_EG_lung = np.setdiff1d(EG_lung, cEG)
     print(cs_EG_lung)
-    #with open("csEG_Lung.txt", 'w', encoding='utf-8') as f:
-    #    f.write('\n'.join(list(cs_EG_lung)))
+    with open("csEG_Lung.txt", 'w', encoding='utf-8') as f:
+        f.write('\n'.join(list(cs_EG_lung)))
     
     #Show the supervenn plot
     svenn_intesect([set(cs_EG_kidney), set(cs_EG_lung)], labels=['kidney', 'lung'], ylabel='csEGs', figsize=(8,4))
@@ -1261,15 +1262,15 @@ Show the supervenn plot of Kidney csEGs against Lung csEGs.
 
 .. parsed-literal::
 
-    100%|██████████| 119/119 [00:00<00:00, 680.54it/s]
+      0%|          | 0/119 [00:00<?, ?it/s]100%|██████████| 119/119 [00:00<00:00, 224.46it/s]
 
 
 .. parsed-literal::
 
-    ['ACO2' 'AP2M1' 'ATP5F1D' 'BORA' 'CCDC86' 'CDK2' 'CKS1B' 'DCTN3' 'DDX11'
-     'DDX39B' 'DGCR8' 'GEMIN7' 'NCAPH2' 'NFYB' 'NUMA1' 'NUP153' 'OXA1L'
-     'PI4KA' 'PPAT' 'PTCD3' 'SCD' 'SLBP' 'SLC25A3' 'TFRC' 'TRPM7' 'YPEL5'
-     'YTHDC1' 'ZNF407']
+    ['ACO2' 'AP2M1' 'ATP5F1D' 'BORA' 'CCDC86' 'CDK2' 'CKS1B' 'COPS3' 'CYCS'
+     'DCTN3' 'DDX11' 'DDX39B' 'DGCR8' 'GEMIN7' 'NCAPH2' 'NFYB' 'NUMA1'
+     'NUP153' 'OXA1L' 'PI4KA' 'PPAT' 'PTCD3' 'SCD' 'SLBP' 'SLC25A3' 'TFRC'
+     'TRPM7' 'YPEL5' 'YTHDC1' 'ZNF335' 'ZNF407']
 
 
 

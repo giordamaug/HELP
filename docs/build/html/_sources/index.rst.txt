@@ -30,7 +30,7 @@ This is the Big Picture to understand the HELPpy approach.
    :maxdepth: 4
    :caption: PACKAGE REFERENCE:
 
-   help
+   HELPpy
 
 .. toctree::
    :maxdepth: 4
