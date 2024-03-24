@@ -6,32 +6,19 @@ Requirements
 
 HELP depends on the following packages:
 
-* numpy
-
-* pandas
-
-* typing
-
-* matplotlib
-
-* skimage
-
-* sklearn
-
-* tqdm
-
-* lightgbm
-
-* tabulate
-
-* networkx
-
-* karateclub
-
-* ipywidgets
-
-* supervenn
-
+- numpy
+- pandas
+- typing
+- matplotlib
+- skimage
+- sklearn
+- tqdm
+- lightgbm
+- tabulate
+- networkx
+- karateclub
+- ipywidgets
+- supervenn
 
 Pip
 ~~~
