@@ -11,8 +11,73 @@ from sklearn.ensemble import RandomForestClassifier
 from tqdm import tqdm
 from tabulate import tabulate
 from typing import List,Dict,Union,Tuple
+from sklearn.base import is_classifier, clone
+from sklearn.utils._param_validation import HasMethods
 
+from sklearn.base import clone, BaseEstimator, ClassifierMixin, RegressorMixin
+from joblib import Parallel, delayed
+from lightgbm import LGBMClassifier 
+import numpy as np
+from tqdm import tqdm
 
+class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
+
+    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
+        self.kwargs = kwargs
+        # intialize ensemble ov voters
+        self.seed = random_state
+        self.verbose = verbose
+        self.n_jobs = n_jobs
+        self.n_voters = n_voters
+        self.estimators_ = [LGBMClassifier(**kwargs) for i in range(n_voters)]
+        pass
+    
+    def __sklearn_clone__(self):
+        return self
+
+    def _fit_single_estimator(self, i, X, y, index_ne, index_e):
+        """Private function used to fit an estimator within a job."""
+        df_X = np.append(X[index_ne], X[index_e], axis=0)
+        df_y = np.append(y[index_ne], y[index_e], axis=0)
+        clf = clone(self.estimators_[i])
+        clf.fit(df_X, df_y)
+        return clf
+    
+    def fit(self, X, y):
+        # Find the majority and minority class
+        assert isinstance(X, np.ndarray) and isinstance(y, np.ndarray), "Only array input!"
+        unique, counts = np.unique(y, return_counts=True)
+        minlab = unique[np.argmin(counts)]
+        maxlab = unique[np.argmax(counts)]
+
+        if self.verbose:
+            print(f"Majority {maxlab} {max(counts)}, minority {minlab} {min(counts)}")
+
+        # Separate majority and minority class
+        all_index_ne = np.where(y == maxlab)[0]
+        index_e = np.where(y == minlab)[0]
+
+        # Split majority class among voters
+        if self.seed >= 0:
+            np.random.seed(self.seed)
+            np.random.shuffle(all_index_ne)
+            np.random.shuffle(index_e)
+        splits = np.array_split(all_index_ne, self.n_voters)
+
+        self.estimators_ = Parallel(n_jobs=self.n_jobs)(delayed(self._fit_single_estimator)(i,X, y, index_ne, index_e) for i,index_ne in enumerate(tqdm(splits, desc=f"{self.n_voters}-voter", disable = not self.verbose)))
+        return self
+    
+    def predict_proba(self, X, y=None):
+        # Find the majority and minority class
+        assert isinstance(X, np.ndarray), "Only array input!"
+        probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
+        return np.sum(probabilities, axis=0)/self.n_voters
+    
+    def predict(self, X, y=None):
+        assert isinstance(X, np.ndarray), "Only array input!"
+        probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
+        return np.argmax(np.sum(probabilities, axis=0)/self.n_voters, axis=1)
+    
 def set_seed(seed=1):
     """
     Set random and numpy random seed for reproducibility
@@ -23,6 +88,116 @@ def set_seed(seed=1):
     """
     random.seed(seed)
     np.random.seed(seed)
+
+def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+    """
+    Perform cross-validated predictions using a classifier.
+
+    :param DataFrame X: Features DataFrame.
+    :param DataFrame Y: Target variable DataFrame.
+    :param int n_splits: Number of folds for cross-validation.
+    :param estimator object: Classifier method (must have fit, predict, predict_proba methods)
+    :param bool balanced: Whether to use class weights to balance the classes.
+    :param bool saveflag: Whether to save the predictions to a CSV file.
+    :param str or None outfile: File name for saving predictions.
+    :param bool verbose: Whether to print verbose information.
+    :param bool display: Whether to display a confusion matrix plot.
+    :param int or None seed: Random seed for reproducibility.
+
+    :returns: Summary statistics of the cross-validated predictions, single measures and label predictions
+    :rtype: Tuple(pd.DataFrame,pd.DataFrame,pd.DataFrame)
+
+    :example:
+ 
+    .. code-block:: python
+
+        # Example usage
+        from lightgbm import LGBMClassifier
+        X_data = pd.DataFrame(...)
+        Y_data = pd.DataFrame(...)
+        clf = LGBMClassifier(random_state=0)
+        df_scores, scores, predictions = k_fold_cv(df_X, df_y, clf, n_splits=5, verbose=True, display=True, seed=42)
+    """
+    assert is_classifier(estimator) and hasattr(estimator, 'fit') and callable(estimator.fit) and hasattr(estimator, 'predict_proba') and callable(estimator.predict_proba), "Bad estimator imput!"
+
+    # get list of genes
+    genes = Y.index
+
+    # Encode target variable labels
+    encoder = LabelEncoder()
+    X = X.values
+    y = encoder.fit_transform(Y.values.ravel())
+
+    # Display class information
+    classes_mapping = dict(zip(encoder.classes_, encoder.transform(encoder.classes_)))
+    if verbose: print(f'{classes_mapping}\n{Y.value_counts()}')
+
+    # Set random seed
+    set_seed(seed)
+
+    # Initialize StratifiedKFold
+    kf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
+
+    nclasses = len(np.unique(y))
+    mm = np.array([], dtype=np.int64)
+    gg = np.array([])
+    yy = np.array([], dtype=np.int64)
+    predictions = np.array([], dtype=np.int64)
+    probabilities = np.array([])
+
+    # Columns for result summary
+    columns_names = ["ROC-AUC", "Accuracy", "BA", "Sensitivity", "Specificity", "MCC", 'CM']
+    scores = pd.DataFrame()
+
+    if verbose:
+        print(f'Classification with {estimator.__class__.__name__}...')
+
+    # Iterate over each fold
+    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not verbose)):
+        train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
+        mm = np.concatenate((mm, test_idx))
+        # Initialize classifier
+        clf = clone(estimator)
+        probs = clf.fit(train_x, train_y).predict_proba(test_x)
+        preds = np.argmax(probs, axis=1)
+        gg = np.concatenate((gg, genes[test_idx]))
+        yy = np.concatenate((yy, test_y))
+        cm = confusion_matrix(test_y, preds)
+        predictions = np.concatenate((predictions, preds))
+        probabilities = np.concatenate((probabilities, probs[:, 0]))
+
+        # Calculate and store evaluation metrics for each fold
+        roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="macro")
+        scores = pd.concat([scores, pd.DataFrame([[roc_auc,
+                                                    accuracy_score(test_y, preds),
+                                                    balanced_accuracy_score(test_y, preds),
+                                                    cm[0, 0] / (cm[0, 0] + cm[0, 1]),
+                                                    cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                                                    matthews_corrcoef(test_y, preds),
+                                                    cm]],
+                                                  columns=columns_names, index=[fold])],
+                           axis=0)
+
+    # Calculate mean and standard deviation of evaluation metrics
+    df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
+                                                                     scores.loc[:, scores.columns != "CM"].std(axis=0))] +
+                             [(scores[['CM']].sum()).values[0].tolist()],
+                             columns=['measure'], index=scores.columns)
+
+    # Display confusion matrix if requested
+    if display:
+        ConfusionMatrixDisplay(confusion_matrix=np.array(df_scores.loc['CM']['measure']), display_labels=encoder.inverse_transform(clf.classes_)).plot()
+
+    # Create DataFrame for storing detailed predictions
+    df_results = pd.DataFrame({'gene': gg, 'label': yy, 'prediction': predictions, 'probabilities': probabilities})
+    df_results = df_results.set_index(['gene'])
+
+    # Save detailed predictions to a CSV file if requested
+    if saveflag:
+        df_results.to_csv(outfile)
+
+    # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
+    return df_scores, scores, df_results
 
 def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
     """
@@ -53,11 +228,7 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
     """
     methods = {'RF': RandomForestClassifier, 'LGBM': LGBMClassifier}
 
-    # silent twdm if no verbosity
-    #if not verbose: 
-    #    def notqdm(iterable, *args, **kwargs): return iterable
-    #    tqdm = notqdm
-    # get the list of genes
+    # get list of genes
     genes = Y.index
 
     # Encode target variable labels
