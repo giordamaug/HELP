@@ -12,8 +12,6 @@ from tqdm import tqdm
 from tabulate import tabulate
 from typing import List,Dict,Union,Tuple
 from sklearn.base import is_classifier, clone
-from sklearn.utils._param_validation import HasMethods
-
 from sklearn.base import clone, BaseEstimator, ClassifierMixin, RegressorMixin
 from joblib import Parallel, delayed
 from lightgbm import LGBMClassifier 
