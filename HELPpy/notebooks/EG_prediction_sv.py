@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 import random
-from help.preprocess.loaders import feature_assemble_df
+from HELPpy.preprocess.loaders import feature_assemble_df
 import os,sys
 import argparse
 from joblib import Parallel, delayed
-from help.models.prediction import predict_cv
+from HELPpy.models.prediction import predict_cv
 import tabulate
 from ast import literal_eval
 from tabulate import tabulate
