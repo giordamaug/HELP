@@ -129,6 +129,5 @@ ofile.write(f'METHOD: LGBM\tVOTERS: {args.voters}\tBALANCE: {"yes" if args.balan
 ofile.write(f'PROBL: {" vs ".join(list(np.unique(df_y.values)))}\n')
 ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
 ofile.write(f'LABEL: {os.path.basename(args.labelfile)} DISTRIB: {distrib[0][0]} : {distrib[1][0]}, {distrib[0][1]}: {distrib[1][1]}\n')
-ofile.write(f'SUBSAMPLE: 1:{args.subfolds}\n' if args.subfolds>0 else 'SUBSAMPLE: NONE\n')
 ofile.write(tabulate(df_scores, headers='keys', tablefmt='psql') + '\n')
 ofile.close()
