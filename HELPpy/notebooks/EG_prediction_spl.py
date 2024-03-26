@@ -105,6 +105,7 @@ def classify(nfolds, repeat, jobs, verbose):
 
 columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM']
 scores = pd.DataFrame()
+preds = pd.DataFrame()
 out = classify(args.folds, args.repeat, args.jobs, verbose)
 for iter,res in enumerate(out):
    scores = pd.concat([scores,res[1]])
