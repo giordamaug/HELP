@@ -12,8 +12,6 @@ from tqdm import tqdm
 from tabulate import tabulate
 from typing import List,Dict,Union,Tuple
 from sklearn.base import is_classifier, clone
-from sklearn.utils._param_validation import HasMethods
-
 from sklearn.base import clone, BaseEstimator, ClassifierMixin, RegressorMixin
 from joblib import Parallel, delayed
 from lightgbm import LGBMClassifier 
@@ -25,7 +23,8 @@ class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
     def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
         self.kwargs = kwargs
         # intialize ensemble ov voters
-        self.seed = random_state
+        self.voting = voting
+        self.random_state = random_state
         self.verbose = verbose
         self.n_jobs = n_jobs
         self.n_voters = n_voters
@@ -58,8 +57,8 @@ class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
         index_e = np.where(y == minlab)[0]
 
         # Split majority class among voters
-        if self.seed >= 0:
-            np.random.seed(self.seed)
+        if self.random_state >= 0:
+            np.random.seed(self.random_state)
             np.random.shuffle(all_index_ne)
             np.random.shuffle(index_e)
         splits = np.array_split(all_index_ne, self.n_voters)
