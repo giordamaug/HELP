@@ -22,8 +22,8 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
 
    examples/labelling
 
-Example 2: Identification of common context-specific EGs
-========================================================
+Example 2: Identification of uncommon context-specific EGs
+==========================================================
 
 This example shows how to use HELP for identifying uncommon tissue-specific EGs. 
 The workflow involves the following steps
@@ -42,8 +42,8 @@ Finally, the example shows various ways of visualizing the obtained results.
 
    examples/csegs
 
-Example 3: Prediction EGs for a tissue
-======================================
+Example 3: Prediction of EGs for a tissue
+=========================================
 
 This example shows how to use HELP to estimate the performance of EG prediction for a tissue.  
 The workflow involves the following steps 
