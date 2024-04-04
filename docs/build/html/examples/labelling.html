@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. Install HELP from GitHub" href="csegs.html" />
-    <link rel="prev" title="Example 1: Identification of EGs" href="../examples.html" /> 
+    <link rel="prev" title="Example 1: Identification of context-specific EGs" href="../examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,11 +56,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Example 1: Identification of EGs</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Example 1: Identification of context-specific EGs</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1. Install HELP from GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-input-files">3. Load the input files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information">Example 1.1 two-class labeling of EGs based on tissue information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information">Example 1.1 two-class labeling of EGs based on tissue information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filter-the-information-to-be-exploited">Filter the information to be exploited</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apply-two-class-help-labelling">Apply two-class HELP labelling</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#example-1-2-three-class-labeling-of-egs-based-on-tissue-information">Example 1.2 three-class labeling of EGs based on tissue information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">Example 1.3 two-class labeling of EGs based on disease-related information</a></li>
 </ul>
@@ -83,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../examples.html">Example 1: Identification of EGs</a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Example 1: Identification of context-specific EGs</a></li>
       <li class="breadcrumb-item active">1. Install HELP from GitHub</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/examples/labelling.rst.txt" rel="nofollow"> View page source</a>
@@ -751,10 +757,8 @@ locally.</p>
 </div></section>
 <section id="example-1-1-two-class-labeling-of-egs-based-on-tissue-information">
 <h1>Example 1.1 two-class labeling of EGs based on tissue information<a class="headerlink" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information" title="Link to this heading"></a></h1>
-<ul class="simple">
-<li><p>Filter the information to be exploited</p></li>
-</ul>
-<hr class="docutils" />
+<section id="filter-the-information-to-be-exploited">
+<h2>Filter the information to be exploited<a class="headerlink" href="#filter-the-information-to-be-exploited" title="Link to this heading"></a></h2>
 <p>Filter the genes mapped to tissues (<code class="docutils literal notranslate"><span class="pre">OncotreeLineage</span></code> column in the
 mapping file) having less than <code class="docutils literal notranslate"><span class="pre">minlines</span></code> cell-lines.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">HELPpy.utility.selection</span> <span class="kn">import</span> <span class="n">filter_crispr_by_model</span>
@@ -1129,10 +1133,8 @@ cell-lines having more than a certain percentage of NaN values (here
 <span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Apply two-class HELP labelling</p></li>
-</ul>
-<hr class="docutils" />
+<section id="apply-two-class-help-labelling">
+<h3>Apply two-class HELP labelling<a class="headerlink" href="#apply-two-class-help-labelling" title="Link to this heading"></a></h3>
 <p>Compute the two-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='flat-multi'</span></code>) using the Otsu
 algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>) and save the results in a csv file
 (<code class="docutils literal notranslate"><span class="pre">Kidney_HELP_twoClasses.csv</span></code>):</p>
@@ -1156,6 +1158,8 @@ algorithm (<code class="docutils literal notranslate"><span class="pre">algorith
 <span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </pre></div>
 </div>
+</section>
+</section>
 </section>
 <section id="example-1-2-three-class-labeling-of-egs-based-on-tissue-information">
 <h1>Example 1.2 three-class labeling of EGs based on tissue information<a class="headerlink" href="#example-1-2-three-class-labeling-of-egs-based-on-tissue-information" title="Link to this heading"></a></h1>
@@ -1196,10 +1200,6 @@ file (<code class="docutils literal notranslate"><span class="pre">'Kidney_HELP_
 </section>
 <section id="example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">
 <h1>Example 1.3 two-class labeling of EGs based on disease-related information<a class="headerlink" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information" title="Link to this heading"></a></h1>
-<ul class="simple">
-<li><p>Filter the information to be exploited</p></li>
-</ul>
-<hr class="docutils" />
 <p>Show which are the diseases available from the mapping file
 (<code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code> column):</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreePrimaryDisease&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1238,10 +1238,6 @@ certain percentage of NaN values (here 95%):</p>
 <span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Apply two-class HELP labelling</p></li>
-</ul>
-<hr class="docutils" />
 <p>Compute the two-class labeling (mode=‘flat-multi’) using the Otsu
 algorithm (algorithm=‘otsu’), save the results in a csv file (‘Acute
 Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:</p>
@@ -1279,7 +1275,7 @@ Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../examples.html" class="btn btn-neutral float-left" title="Example 1: Identification of EGs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Example 1: Identification of context-specific EGs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="csegs.html" class="btn btn-neutral float-right" title="1. Install HELP from GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

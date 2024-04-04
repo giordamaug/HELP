@@ -684,8 +684,8 @@ Then load the mapping information and show the content.
 Example 1.1 two-class labeling of EGs based on tissue information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Filter the information to be exploited
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Filter the information to be exploited
+''''''''''''''''''''''''''''''''''''''
 
 Filter the genes mapped to tissues (``OncotreeLineage`` column in the
 mapping file) having less than ``minlines`` cell-lines.
@@ -1082,8 +1082,8 @@ cell-lines having more than a certain percentage of NaN values (here
     Removed 512 rows from 18443 with at least 95% NaN
 
 
-- Apply two-class HELP labelling
-''''''''''''''''''''''''''''''''
+Apply two-class HELP labelling
+''''''''''''''''''''''''''''''
 
 Compute the two-class labeling (``mode='flat-multi'``) using the Otsu
 algorithm (``algorithm='otsu'``) and save the results in a csv file
@@ -1121,8 +1121,12 @@ Example 1.2 three-class labeling of EGs based on tissue information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Genes have already been filtered according to tissue information for
-Example 1.1, so we only need to: ##### - Apply three-class HELP
-labelling Compute the three-class labeling (``mode='two-by-two'``) using
+Example 1.1, so we only need to: 
+
+Apply three-class HELP labelling 
+''''''''''''''''''''''''''''''''
+
+Compute the three-class labeling (``mode='two-by-two'``) using
 the Otsu algorithm (``algorithm='otsu'``) and save the results in a csv
 file (``'Kidney_HELP_threeClasses.csv'``):
 
@@ -1170,8 +1174,8 @@ file (``'Kidney_HELP_threeClasses.csv'``):
 Example 1.3 two-class labeling of EGs based on disease-related information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Filter the information to be exploited
-''''''''''''''''''''''''''''''''''''''''
+Filter the information to be exploited
+''''''''''''''''''''''''''''''''''''''
 
 Show which are the diseases available from the mapping file
 (``OncotreePrimaryDisease`` column):
@@ -1221,8 +1225,8 @@ certain percentage of NaN values (here 95%):
     Removed 512 rows from 18443 with at least 95% NaN
 
 
-- Apply two-class HELP labelling
-''''''''''''''''''''''''''''''''
+Apply two-class HELP labelling
+''''''''''''''''''''''''''''''
 
 Compute the two-class labeling (mode=‘flat-multi’) using the Otsu
 algorithm (algorithm=‘otsu’), save the results in a csv file (‘Acute
