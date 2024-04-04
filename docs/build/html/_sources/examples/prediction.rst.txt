@@ -10,9 +10,13 @@ Skip this cell if you already have installed HELP.
 2. Download the input files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this cell we download from GitHub repository the label file and the
-attribute files. Skip this step if you already have these input files
-locally.
+For a chosen tissue (here ``Kidney``), download from GitHub the label
+file (here ``Kidney_HELP.csv``, computed as in Example 1) and the
+attribute files (here BIO ``Kidney_BIO.csv``, CCcfs
+``Kidney_CCcfs_1.csv``, …, ``Kidney_CCcfs_5.csv``, and N2V
+``Kidney_EmbN2V_128.csv``).
+
+Skip this step if you already have these input files locally.
 
 .. code:: ipython3
 
@@ -23,36 +27,35 @@ locally.
       !wget https://raw.githubusercontent.com/giordamaug/HELP/main/data/{tissue}_CCcfs_{i}.csv
     !wget https://raw.githubusercontent.com/giordamaug/HELP/main/data/{tissue}_EmbN2V_128.csv
 
-3. Process the tissue attributes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Observe that the CCcfs file has been subdivided into 5 separate files
+for storage limitations on GitHub.
 
-In this code we load tissue gene attributes by several datafiles. We
-apply missing values fixing and data scaling with
-``sklearn.preprocessing.StandardScaler`` on the ``BIO`` and ``CCcfs``
-attributes, while no normalization and fixing on embedding attributes
-(``EmbN2V_128``). The attributes are all merged in one matrix by the
-``feature_assemble`` function as input for the prediction model
-building.
+3. Load the input files and process the tissue attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  The label file (``Kidney_HELP.csv``) can be loaded via ``read_csv``;
+   its three-class labels (``E``, ``aE``, ``sNE``) are converted to
+   two-class labels (``E``, ``NE``);
+
+-  The tissue gene attributes are loaded and assembled via
+   ``feature_assemble_df`` using the downloaded datafiles BIO, CCcfs
+   subdivided into 5 subfiles (``'nchunks': 5``) and embedding. We do
+   not apply missing values fixing (``'fixna': False``), while we do
+   apply data scaling (``'normalize': 'std'``) to the BIO and CCcfs
+   attributes.
 
 .. code:: ipython3
 
     tissue='Kidney'
     import pandas as pd
     from HELPpy.preprocess.loaders import feature_assemble_df
-    import os
     df_y = pd.read_csv(f"{tissue}_HELP.csv", index_col=0)
-    df_y = df_y.replace({'aE': 'NE', 'sNE': 'NE'})    # E vs NE problem
-    #df_y = df_y[df_y['label'].isin(['aE']) == False]   # E vs sNE problem
-    #df_y = df_y[df_y['label'].isin(['E']) == False]    # aE vs sNE problem
-    #df_y = df_y[df_y['label'].isin(['sNE']) == False]  # E vs aE problem
+    df_y = df_y.replace({'aE': 'NE', 'sNE': 'NE'})
     print(df_y.value_counts(normalize=False))
     features = [{'fname': f'{tissue}_BIO.csv', 'fixna' : False, 'normalize': 'std'},
                 {'fname': f'{tissue}_CCcfs.csv', 'fixna' : False, 'normalize': 'std', 'nchunks' : 5},
-                {'fname': f'{tissue}_EmbN2V_128.csv', 'fixna' : False, 'normalize': None}
-                ]
-    df_X, df_y = feature_assemble_df(df_y, features=features, verbose=True)
-    print(df_y.value_counts(normalize=False))
-    pd.merge(df_X, df_y, left_index=True, right_index=True, how='outer')
+                {'fname': f'{tissue}_EmbN2V_128.csv', 'fixna' : False, 'normalize': None}]
+    df_X, df_y = feature_assemble_df(df_y, features=features, saveflag=False, verbose=True)
 
 
 .. parsed-literal::
@@ -60,7 +63,7 @@ building.
     label
     NE       16678
     E         1253
-    dtype: int64
+    Name: count, dtype: int64
     Majority NE 16678 minority E 1253
     [Kidney_BIO.csv] found 52532 Nan...
     [Kidney_BIO.csv] Normalization with std ...
@@ -68,7 +71,7 @@ building.
 
 .. parsed-literal::
 
-    Loading file in chunks: 100%|██████████| 5/5 [00:08<00:00,  1.77s/it]
+    Loading file in chunks: 100%|██████████| 5/5 [00:02<00:00,  2.05it/s]
 
 
 .. parsed-literal::
@@ -79,10 +82,38 @@ building.
     [Kidney_EmbN2V_128.csv] No normalization...
     17236 labeled genes over a total of 17931
     (17236, 3456) data input
+
+
+4. Estimate the performance of EGs prediction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Instantiate the prediction model described in the HELP paper
+(soft-voting ensemble ``VotingSplitClassifier`` of ``n_voters=10``
+classifiers) and estimate its performance via 5-fold cross-validation
+(``k_fold_cv`` with ``n_splits=5``). Then, print the obtained average
+performances (``df_scores``)…
+
+.. code:: ipython3
+
+    from HELPpy.models.prediction import VotingSplitClassifier, k_fold_cv
+    clf = VotingSplitClassifier(n_voters=10, n_jobs=-1, random_state=-1)
+    df_scores, scores, predictions = k_fold_cv(df_X, df_y, clf, n_splits=5, seed=0, verbose=True)
+    df_scores
+
+
+.. parsed-literal::
+
+    {'E': 0, 'NE': 1}
     label
-    NE       15994
-    E         1242
-    dtype: int64
+    NE       16010
+    E         1224
+    Name: count, dtype: int64
+    Classification with VotingSplitClassifier...
+
+
+.. parsed-literal::
+
+    5-fold: 100%|██████████| 5/5 [01:15<00:00, 15.08s/it]
 
 
 
@@ -107,463 +138,49 @@ building.
       <thead>
         <tr style="text-align: right;">
           <th></th>
-          <th>Gene length</th>
-          <th>Transcripts count</th>
-          <th>GC content</th>
-          <th>GTEX_kidney</th>
-          <th>Gene-Disease association</th>
-          <th>OncoDB_expression</th>
-          <th>HPA_kidney</th>
-          <th>GO-MF</th>
-          <th>GO-BP</th>
-          <th>GO-CC</th>
-          <th>...</th>
-          <th>Node2Vec_119</th>
-          <th>Node2Vec_120</th>
-          <th>Node2Vec_121</th>
-          <th>Node2Vec_122</th>
-          <th>Node2Vec_123</th>
-          <th>Node2Vec_124</th>
-          <th>Node2Vec_125</th>
-          <th>Node2Vec_126</th>
-          <th>Node2Vec_127</th>
-          <th>label</th>
+          <th>measure</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>A1BG</th>
-          <td>0.003351</td>
-          <td>0.020942</td>
-          <td>0.501832</td>
-          <td>2.044542e-05</td>
-          <td>0.002950</td>
-          <td>NaN</td>
-          <td>0.000002</td>
-          <td>NaN</td>
-          <td>NaN</td>
-          <td>0.115385</td>
-          <td>...</td>
-          <td>0.120922</td>
-          <td>-0.352630</td>
-          <td>0.580697</td>
-          <td>-0.659300</td>
-          <td>-1.320486</td>
-          <td>1.019308</td>
-          <td>-0.469064</td>
-          <td>0.123211</td>
-          <td>0.557266</td>
-          <td>NE</td>
+          <th>ROC-AUC</th>
+          <td>0.9584±0.0043</td>
         </tr>
         <tr>
-          <th>A1CF</th>
-          <td>0.034865</td>
-          <td>0.047120</td>
-          <td>0.160530</td>
-          <td>1.980884e-05</td>
-          <td>NaN</td>
-          <td>0.556939</td>
-          <td>0.000232</td>
-          <td>0.069767</td>
-          <td>0.041026</td>
-          <td>0.096154</td>
-          <td>...</td>
-          <td>-1.162494</td>
-          <td>0.155702</td>
-          <td>-1.162071</td>
-          <td>0.534082</td>
-          <td>0.798872</td>
-          <td>0.149595</td>
-          <td>-0.360515</td>
-          <td>-1.060540</td>
-          <td>-0.408493</td>
-          <td>NE</td>
+          <th>Accuracy</th>
+          <td>0.8848±0.0025</td>
         </tr>
         <tr>
-          <th>A2M</th>
-          <td>0.019624</td>
-          <td>0.062827</td>
-          <td>0.176932</td>
-          <td>3.377232e-03</td>
-          <td>0.073746</td>
-          <td>0.584540</td>
-          <td>0.005382</td>
-          <td>0.302326</td>
-          <td>0.056410</td>
-          <td>0.076923</td>
-          <td>...</td>
-          <td>0.150766</td>
-          <td>1.492019</td>
-          <td>0.209449</td>
-          <td>-1.034729</td>
-          <td>-0.064318</td>
-          <td>0.029690</td>
-          <td>0.138344</td>
-          <td>0.806095</td>
-          <td>-0.496128</td>
-          <td>NE</td>
+          <th>BA</th>
+          <td>0.8939±0.0070</td>
         </tr>
         <tr>
-          <th>A2ML1</th>
-          <td>0.026017</td>
-          <td>0.041885</td>
-          <td>0.299948</td>
-          <td>5.123403e-07</td>
-          <td>0.017699</td>
-          <td>NaN</td>
-          <td>0.000000</td>
-          <td>0.069767</td>
-          <td>0.005128</td>
-          <td>0.038462</td>
-          <td>...</td>
-          <td>0.191344</td>
-          <td>-0.542462</td>
-          <td>0.746510</td>
-          <td>0.082089</td>
-          <td>-1.109212</td>
-          <td>0.406936</td>
-          <td>-1.332319</td>
-          <td>-0.363864</td>
-          <td>0.443284</td>
-          <td>NE</td>
+          <th>Sensitivity</th>
+          <td>0.9044±0.0156</td>
         </tr>
         <tr>
-          <th>A3GALT2</th>
-          <td>0.005784</td>
-          <td>0.000000</td>
-          <td>0.473739</td>
-          <td>1.421472e-06</td>
-          <td>NaN</td>
-          <td>0.663540</td>
-          <td>0.000000</td>
-          <td>0.069767</td>
-          <td>0.015385</td>
-          <td>0.057692</td>
-          <td>...</td>
-          <td>0.483003</td>
-          <td>-0.197605</td>
-          <td>0.164332</td>
-          <td>0.040729</td>
-          <td>-0.552362</td>
-          <td>0.242761</td>
-          <td>0.223486</td>
-          <td>0.017539</td>
-          <td>-0.526580</td>
-          <td>NE</td>
+          <th>Specificity</th>
+          <td>0.8833±0.0031</td>
         </tr>
         <tr>
-          <th>...</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
+          <th>MCC</th>
+          <td>0.5354±0.0079</td>
         </tr>
         <tr>
-          <th>ZYG11A</th>
-          <td>0.021209</td>
-          <td>0.010471</td>
-          <td>0.288257</td>
-          <td>7.073108e-06</td>
-          <td>NaN</td>
-          <td>0.634761</td>
-          <td>0.000055</td>
-          <td>NaN</td>
-          <td>NaN</td>
-          <td>0.000000</td>
-          <td>...</td>
-          <td>-0.717935</td>
-          <td>-0.072597</td>
-          <td>0.585837</td>
-          <td>0.172081</td>
-          <td>-0.278010</td>
-          <td>0.170799</td>
-          <td>0.267462</td>
-          <td>-0.211294</td>
-          <td>-0.940943</td>
-          <td>NE</td>
-        </tr>
-        <tr>
-          <th>ZYG11B</th>
-          <td>0.040775</td>
-          <td>0.005236</td>
-          <td>0.248648</td>
-          <td>7.271294e-05</td>
-          <td>NaN</td>
-          <td>0.646090</td>
-          <td>0.000238</td>
-          <td>0.000000</td>
-          <td>0.005128</td>
-          <td>0.000000</td>
-          <td>...</td>
-          <td>0.372134</td>
-          <td>0.007040</td>
-          <td>-0.278071</td>
-          <td>-1.309595</td>
-          <td>-0.352476</td>
-          <td>0.732887</td>
-          <td>0.156505</td>
-          <td>0.516706</td>
-          <td>-0.412953</td>
-          <td>NE</td>
-        </tr>
-        <tr>
-          <th>ZYX</th>
-          <td>0.003958</td>
-          <td>0.047120</td>
-          <td>0.539522</td>
-          <td>8.282866e-04</td>
-          <td>NaN</td>
-          <td>0.672638</td>
-          <td>0.000177</td>
-          <td>0.046512</td>
-          <td>0.035897</td>
-          <td>0.153846</td>
-          <td>...</td>
-          <td>-0.316321</td>
-          <td>-0.382132</td>
-          <td>0.400354</td>
-          <td>0.322564</td>
-          <td>0.400369</td>
-          <td>0.188850</td>
-          <td>0.593201</td>
-          <td>-0.093008</td>
-          <td>-0.508902</td>
-          <td>NE</td>
-        </tr>
-        <tr>
-          <th>ZZEF1</th>
-          <td>0.056017</td>
-          <td>0.052356</td>
-          <td>0.304484</td>
-          <td>9.626291e-05</td>
-          <td>NaN</td>
-          <td>NaN</td>
-          <td>0.000121</td>
-          <td>0.093023</td>
-          <td>NaN</td>
-          <td>NaN</td>
-          <td>...</td>
-          <td>-0.520060</td>
-          <td>-0.000595</td>
-          <td>-0.101278</td>
-          <td>-0.468345</td>
-          <td>0.240905</td>
-          <td>-0.124018</td>
-          <td>0.568793</td>
-          <td>-0.422793</td>
-          <td>-0.701705</td>
-          <td>NE</td>
-        </tr>
-        <tr>
-          <th>ZZZ3</th>
-          <td>0.048909</td>
-          <td>0.052356</td>
-          <td>0.176758</td>
-          <td>7.179946e-05</td>
-          <td>0.000000</td>
-          <td>NaN</td>
-          <td>0.000267</td>
-          <td>0.093023</td>
-          <td>0.051282</td>
-          <td>0.057692</td>
-          <td>...</td>
-          <td>-0.348640</td>
-          <td>-0.423926</td>
-          <td>-0.078769</td>
-          <td>0.163239</td>
-          <td>-0.302664</td>
-          <td>0.505735</td>
-          <td>0.001912</td>
-          <td>0.406448</td>
-          <td>-0.296505</td>
-          <td>NE</td>
+          <th>CM</th>
+          <td>[[1107, 117], [1868, 14142]]</td>
         </tr>
       </tbody>
     </table>
-    <p>17236 rows × 3457 columns</p>
     </div>
 
 
 
-4. Prediction
-~~~~~~~~~~~~~
-
-We process k-fold cross validation of a LightGBM classifier
-(``n_splits=5``), and then we store predictions and print metrics.
+… and those in each fold (``scores``)
 
 .. code:: ipython3
 
-    from HELPpy.models.prediction import predict_cv_sv
-    df_scores, predictions = predict_cv_sv(df_X, df_y, n_voters=10, n_splits=5, balanced=True, verbose=True)
-    df_scores
-
-
-.. parsed-literal::
-
-    Majority NE 15994, minority E 1242
-    {'E': 0, 'NE': 1}
-    label
-    NE       1600
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:50<00:00, 10.05s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1600
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:51<00:00, 10.31s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1600
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:52<00:00, 10.60s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1600
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:51<00:00, 10.29s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:47<00:00,  9.44s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:49<00:00,  9.82s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:52<00:00, 10.57s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:49<00:00,  9.89s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:47<00:00,  9.55s/it]
-
-
-.. parsed-literal::
-
-    {'E': 0, 'NE': 1}
-    label
-    NE       1599
-    E        1242
-    dtype: int64
-    Classification with LGBM...
-
-
-.. parsed-literal::
-
-    5-fold: 100%|██████████| 5/5 [00:41<00:00,  8.38s/it]
+    scores
 
 
 
@@ -599,14 +216,54 @@ We process k-fold cross validation of a LightGBM classifier
       </thead>
       <tbody>
         <tr>
-          <th>42</th>
-          <td>0.963653</td>
-          <td>0.906707</td>
-          <td>0.905173</td>
-          <td>0.903382</td>
-          <td>0.906965</td>
-          <td>0.584557</td>
-          <td>[[1122, 120], [1488, 14506]]</td>
+          <th>0</th>
+          <td>0.954258</td>
+          <td>0.878735</td>
+          <td>0.889496</td>
+          <td>0.902041</td>
+          <td>0.876952</td>
+          <td>0.522809</td>
+          <td>[[221, 24], [394, 2808]]</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>0.953289</td>
+          <td>0.873223</td>
+          <td>0.894068</td>
+          <td>0.918367</td>
+          <td>0.869769</td>
+          <td>0.520189</td>
+          <td>[[225, 20], [417, 2785]]</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>0.955901</td>
+          <td>0.884827</td>
+          <td>0.890891</td>
+          <td>0.897959</td>
+          <td>0.883823</td>
+          <td>0.532617</td>
+          <td>[[220, 25], [372, 2830]]</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>0.960578</td>
+          <td>0.882507</td>
+          <td>0.895296</td>
+          <td>0.910204</td>
+          <td>0.880387</td>
+          <td>0.533671</td>
+          <td>[[223, 22], [383, 2819]]</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>0.965238</td>
+          <td>0.880731</td>
+          <td>0.901747</td>
+          <td>0.926230</td>
+          <td>0.877264</td>
+          <td>0.536883</td>
+          <td>[[226, 18], [393, 2809]]</td>
         </tr>
       </tbody>
     </table>
@@ -614,21 +271,202 @@ We process k-fold cross validation of a LightGBM classifier
 
 
 
-5. True Positive rates of context-specific EGs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Show labels, predictions and their probabilities (``predictions``) and
+save them in a csv file
 
 .. code:: ipython3
 
+    predictions
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>label</th>
+          <th>prediction</th>
+          <th>probabilities</th>
+        </tr>
+        <tr>
+          <th>gene</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A2M</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.016435</td>
+        </tr>
+        <tr>
+          <th>A2ML1</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.001649</td>
+        </tr>
+        <tr>
+          <th>AAGAB</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.230005</td>
+        </tr>
+        <tr>
+          <th>AANAT</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.002823</td>
+        </tr>
+        <tr>
+          <th>AARS2</th>
+          <td>1</td>
+          <td>0</td>
+          <td>0.529173</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>ZSCAN9</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.004752</td>
+        </tr>
+        <tr>
+          <th>ZSWIM6</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.007049</td>
+        </tr>
+        <tr>
+          <th>ZUP1</th>
+          <td>1</td>
+          <td>0</td>
+          <td>0.532555</td>
+        </tr>
+        <tr>
+          <th>ZYG11A</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.005995</td>
+        </tr>
+        <tr>
+          <th>ZZEF1</th>
+          <td>1</td>
+          <td>1</td>
+          <td>0.075781</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>17234 rows × 3 columns</p>
+    </div>
+
+
+
+.. code:: ipython3
+
+    predictions.to_csv(f"csEGs_{tissue}_EvsNE.csv", index=True)
+
+5. Compute TPR for ucsEGs and csEGs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Read the result files for ucsEGs (``ucsEG_Kidney.txt``) and csEGs
+(``csEGs_Kidney_EvsNE.csv``) already computed for the tissue, compute
+the TPRs (tpr) and show their bar plot.
+
+.. code:: ipython3
+
+    import seaborn as sns
+    import matplotlib.pyplot as plt
     import numpy as np
-    csEGs = pd.read_csv("csEG_Kidney.txt", index_col=0, header=None).index.values
-    indices = np.intersect1d(csEGs, predictions.index.values)
-    predictions = predictions.loc[indices]
-    num = len(predictions[predictions['label'] == predictions['prediction']])
-    den = len(predictions)
-    print(f"csEG Kidney TPR = {num /den:.3f} ({num}/{den})")
+    labels = []
+    data = []
+    tpr = []
+    genes = {}
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/data/ucsEG_{tissue}.txt
+    ucsEGs = pd.read_csv(f"ucsEG_{tissue}.txt", index_col=0, header=None).index.values
+    !wget https://raw.githubusercontent.com/giordamaug/HELP/main/data/csEGs_{tissue}_EvsNE.csv
+    predictions = pd.read_csv(f"csEGs_{tissue}_EvsNE.csv", index_col=0)
+    indices = np.intersect1d(ucsEGs, predictions.index.values)
+    preds = predictions.loc[indices]
+    num1 = len(preds[preds['label'] == preds['prediction']])
+    den1 = len(preds[preds['label'] == 0])
+    den2 = len(predictions[predictions['label'] == 0])
+    num2 = len(predictions[(predictions['label'] == 0) & (predictions['label'] == predictions['prediction'])])
+    labels += [f"ucsEGs\n{tissue}", f"csEGs\n{tissue}"]
+    data += [float(f"{num1 /den1:.3f}"), float(f"{num2 /den2:.3f}")]
+    tpr += [f"{num1}/{den1}", f"{num2}/{den2}"]
+    genes[f'ucsEGs_{tissue}_y'] = preds[preds['label'] == preds['prediction']].index.values
+    genes[f'ucsEGs_{tissue}_n'] = preds[preds['label'] != preds['prediction']].index.values
+    genes[f'csEGs_{tissue}_y'] = predictions[(predictions['label'] == 0) & (predictions['label'] == predictions['prediction'])].index.values
+    genes[f'csEGs_{tissue}_n'] = predictions[(predictions['label'] == 0) & (predictions['label'] != predictions['prediction'])].index.values
+    print(f"ucsEG {tissue} TPR = {num1 /den1:.3f} ({num1}/{den1}) ucsEG {tissue} TPR =  {num2/den2:.3f} ({num2}/{den2})")
+    
+    f, ax = plt.subplots(figsize=(4, 4))
+    palette = sns.color_palette("pastel", n_colors=2)
+    sns.barplot(y = data, x = labels, ax=ax, hue= data, palette = palette, orient='v', legend=False)
+    ax.set_ylabel('TPR')
+    ax.set(yticklabels=[])
+    for i,l,t in zip(range(4),labels,tpr):
+        ax.text(-0.15 + (i * 1.03), 0.2, f"({t})", rotation='vertical')
+    for i in ax.containers:
+        ax.bar_label(i,)
 
 
 .. parsed-literal::
 
-    csEG Kidney TPR = 0.780 (46/59)
+    zsh:1: command not found: wget
+    zsh:1: command not found: wget
+    ucsEG Kidney TPR = 0.780 (46/59) ucsEG Kidney TPR =  0.897 (1114/1242)
+
+
+
+.. image:: output_17_1.png
+
+
+This code can be used to produce Fig 5(B) of the HELP paper by executing
+an iteration cycle for both ``kidney`` and ``lung`` tissues.
+
+At the end, we print the list of ucs_EGs for the tissue.
+
+.. code:: ipython3
+
+    genes[f'ucsEGs_{tissue}_y']
+
+
+
+
+.. parsed-literal::
+
+    array(['ACTG1', 'ACTR6', 'ARF4', 'ARPC4', 'CDK6', 'CHMP7', 'COPS3',
+           'DCTN3', 'DDX11', 'DDX52', 'EMC3', 'EXOSC1', 'GEMIN7', 'GET3',
+           'HGS', 'HTATSF1', 'KIF4A', 'MCM10', 'MDM2', 'METAP2', 'MLST8',
+           'NCAPH2', 'NDOR1', 'OXA1L', 'PFN1', 'PIK3C3', 'PPIE', 'PPP1CA',
+           'PPP4R2', 'RAB7A', 'RAD1', 'RBM42', 'RBMX2', 'RTEL1', 'SNRPB2',
+           'SPTLC1', 'SRSF10', 'TAF1D', 'TMED10', 'TMED2', 'UBA5', 'UBC',
+           'UBE2D3', 'USP10', 'VPS52', 'YWHAZ'], dtype=object)
+
 

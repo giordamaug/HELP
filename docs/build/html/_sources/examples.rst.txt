@@ -42,19 +42,18 @@ Finally, the example shows various ways of visualizing the obtained results.
 
    examples/csegs
 
-Example 3: Prediction of tissue-specific EGs
-============================================
+Example 3: Prediction EGs for a tissue
+======================================
 
-This example shows how to use HELP for identifying tissue-specific EGs. 
-The workflow involves the following steps
+This example shows how to use HELP to estimate the performance of EG prediction for a tissue.  
+The workflow involves the following steps 
 
 #. Install HELP from GitHub
 #. Download the input files
-#. Processing tissue-specific attributes
-#. Prediction
-#. True Positive rates of context-specific EGs
+#. Load the input files and process the tissue attributes 
+#. Estimate the performance of EGs prediction
 
-Finally, the example shows various ways of visualizing the obtained results.
+As a further step, this example shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs and show their bar plot. 
 
 .. toctree::
    :maxdepth: 1
