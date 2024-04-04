@@ -23,7 +23,7 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
    examples/labelling
 
 Example 2: Identification of common context-specific EGs
-================================================
+========================================================
 
 This example shows how to use HELP for identifying uncommon tissue-specific EGs. 
 The workflow involves the following steps

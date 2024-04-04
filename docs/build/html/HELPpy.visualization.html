@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HELPpy.visualization package &mdash; HELPpy 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example 1: Identification of EGs" href="examples.html" />
+    <link rel="prev" title="HELPpy.utility package" href="HELPpy.utility.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HELP_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="HELPpy.html">HELPpy package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="HELPpy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="HELPpy.models.html">HELPpy.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HELPpy.preprocess.html">HELPpy.preprocess package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HELPpy.utility.html">HELPpy.utility package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">HELPpy.visualization package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-HELPpy.visualization.plot">HELPpy.visualization.plot module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-HELPpy.visualization.ui">HELPpy.visualization.ui module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-HELPpy.visualization">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="HELPpy.html#module-HELPpy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example 1: Identification of EGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#example-2-identification-of-common-context-specific-egs">Example 2: Identification of common context-specific EGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#example-3-prediction-of-tissue-specific-egs">Example 3: Prediction of tissue-specific EGs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HELPpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="HELPpy.html">HELPpy package</a></li>
+      <li class="breadcrumb-item active">HELPpy.visualization package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/HELPpy.visualization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="helppy-visualization-package">
+<h1>HELPpy.visualization package<a class="headerlink" href="#helppy-visualization-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-HELPpy.visualization.plot">
+<span id="helppy-visualization-plot-module"></span><h2>HELPpy.visualization.plot module<a class="headerlink" href="#module-HELPpy.visualization.plot" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="HELPpy.visualization.plot.svenn_intesect">
+<span class="sig-prename descclassname"><span class="pre">HELPpy.visualization.plot.</span></span><span class="sig-name descname"><span class="pre">svenn_intesect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">set</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">20)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'no.</span> <span class="pre">Genes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveflag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/HELPpy/visualization/plot.html#svenn_intesect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HELPpy.visualization.plot.svenn_intesect" title="Link to this definition"></a></dt>
+<dd><p>Generate a Supervenn diagram to visualize the intersection of multiple sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sets</strong> (<em>List</em><em>[</em><em>set</em><em>]</em>) – List of sets to be visualized.</p></li>
+<li><p><strong>labels</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of labels corresponding to each set.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) – Figure size in inches, as a tuple (width, height) (default is (10, 20)).</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em>) – Font size for labels (default is 10).</p></li>
+<li><p><strong>xlabel</strong> (<em>str</em>) – label for x axis (default is ‘no. Genes’)</p></li>
+<li><p><strong>ylabel</strong> (<em>str</em>) – label for y axis (default is ‘EG’)</p></li>
+<li><p><strong>saveflag</strong> (<em>bool</em>) – Whether to save the generated diagram as an image (default is False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>The function generates a Supervenn diagram using the ‘supervenn’ library and Matplotlib.
+The diagram visualizes the intersection of multiple sets with labeled areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage example:</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">svenn_intesect</span><span class="p">([</span><span class="n">set1</span><span class="p">,</span> <span class="n">set2</span><span class="p">,</span> <span class="n">set3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Set A&quot;</span><span class="p">,</span> <span class="s2">&quot;Set B&quot;</span><span class="p">,</span> <span class="s2">&quot;Set C&quot;</span><span class="p">],</span> <span class="n">saveflag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-HELPpy.visualization.ui">
+<span id="helppy-visualization-ui-module"></span><h2>HELPpy.visualization.ui module<a class="headerlink" href="#module-HELPpy.visualization.ui" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="HELPpy.visualization.ui.Help_Dashboard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HELPpy.visualization.ui.</span></span><span class="sig-name descname"><span class="pre">Help_Dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HELPpy/visualization/ui.html#Help_Dashboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HELPpy.visualization.ui.Help_Dashboard" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="HELPpy.visualization.ui.Help_Dashboard.labelling">
+<span class="sig-name descname"><span class="pre">labelling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ModelID'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HELPpy/visualization/ui.html#Help_Dashboard.labelling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HELPpy.visualization.ui.Help_Dashboard.labelling" title="Link to this definition"></a></dt>
+<dd><p>Generate an interactive widget for labeling cell lines based on specified criteria.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
+<li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Widget containing the labeled cell lines.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HELPpy.visualization.ui.Help_Dashboard.process_features">
+<span class="sig-name descname"><span class="pre">process_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HELPpy/visualization/ui.html#Help_Dashboard.process_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HELPpy.visualization.ui.Help_Dashboard.process_features" title="Link to this definition"></a></dt>
+<dd><p>Create an interactive widget for processing features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the label file (default is “.”).</p></li>
+<li><p><strong>feature_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the feature files (default is “.”).</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to display in the widget (default is 5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Widget containing the assembled features and labels DataFrames.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HELPpy.visualization.ui.Help_Dashboard.select_cell_lines">
+<span class="sig-name descname"><span class="pre">select_cell_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ModelID'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HELPpy/visualization/ui.html#Help_Dashboard.select_cell_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HELPpy.visualization.ui.Help_Dashboard.select_cell_lines" title="Link to this definition"></a></dt>
+<dd><p>Generate an interactive widget for labeling cell lines based on specified criteria.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
+<li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Widget containing the labeled cell lines.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-HELPpy.visualization">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-HELPpy.visualization" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="HELPpy.utility.html" class="btn btn-neutral float-left" title="HELPpy.utility package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Example 1: Identification of EGs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, National Research Council of Italy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
