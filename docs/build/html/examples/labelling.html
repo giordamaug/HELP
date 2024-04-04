@@ -61,14 +61,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-the-input-files">3. Load the input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-1-1-two-class-labeling-of-egs-based-on-tissue-information">Example 1.1 two-class labeling of EGs based on tissue information</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#filter-the-information-to-be-exploited">Filter the information to be exploited</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#apply-two-class-help-labelling">Apply two-class HELP labelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-the-information-to-be-exploited">Filter the information to be exploited</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-two-class-help-labelling">Apply two-class HELP labelling</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-2-three-class-labeling-of-egs-based-on-tissue-information">Example 1.2 three-class labeling of EGs based on tissue information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apply-three-class-help-labelling">Apply three-class HELP labelling</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#example-1-2-three-class-labeling-of-egs-based-on-tissue-information">Example 1.2 three-class labeling of EGs based on tissue information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">Example 1.3 two-class labeling of EGs based on disease-related information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">Example 1.3 two-class labeling of EGs based on disease-related information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Filter the information to be exploited</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Apply two-class HELP labelling</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-2-identification-of-common-context-specific-egs">Example 2: Identification of common context-specific EGs</a></li>
@@ -1133,8 +1138,9 @@ cell-lines having more than a certain percentage of NaN values (here
 <span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
+</section>
 <section id="apply-two-class-help-labelling">
-<h3>Apply two-class HELP labelling<a class="headerlink" href="#apply-two-class-help-labelling" title="Link to this heading"></a></h3>
+<h2>Apply two-class HELP labelling<a class="headerlink" href="#apply-two-class-help-labelling" title="Link to this heading"></a></h2>
 <p>Compute the two-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='flat-multi'</span></code>) using the Otsu
 algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>) and save the results in a csv file
 (<code class="docutils literal notranslate"><span class="pre">Kidney_HELP_twoClasses.csv</span></code>):</p>
@@ -1160,12 +1166,13 @@ algorithm (<code class="docutils literal notranslate"><span class="pre">algorith
 </div>
 </section>
 </section>
-</section>
 <section id="example-1-2-three-class-labeling-of-egs-based-on-tissue-information">
 <h1>Example 1.2 three-class labeling of EGs based on tissue information<a class="headerlink" href="#example-1-2-three-class-labeling-of-egs-based-on-tissue-information" title="Link to this heading"></a></h1>
 <p>Genes have already been filtered according to tissue information for
-Example 1.1, so we only need to: ##### - Apply three-class HELP
-labelling Compute the three-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='two-by-two'</span></code>) using
+Example 1.1, so we only need to:</p>
+<section id="apply-three-class-help-labelling">
+<h2>Apply three-class HELP labelling<a class="headerlink" href="#apply-three-class-help-labelling" title="Link to this heading"></a></h2>
+<p>Compute the three-class labeling (<code class="docutils literal notranslate"><span class="pre">mode='two-by-two'</span></code>) using
 the Otsu algorithm (<code class="docutils literal notranslate"><span class="pre">algorithm='otsu'</span></code>) and save the results in a csv
 file (<code class="docutils literal notranslate"><span class="pre">'Kidney_HELP_threeClasses.csv'</span></code>):</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label3</span> <span class="o">=</span> <span class="n">labelling</span><span class="p">(</span><span class="n">df_nonan</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cell_lines</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -1198,8 +1205,11 @@ file (<code class="docutils literal notranslate"><span class="pre">'Kidney_HELP_
 </pre></div>
 </div>
 </section>
+</section>
 <section id="example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">
 <h1>Example 1.3 two-class labeling of EGs based on disease-related information<a class="headerlink" href="#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>Filter the information to be exploited<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>Show which are the diseases available from the mapping file
 (<code class="docutils literal notranslate"><span class="pre">OncotreePrimaryDisease</span></code> column):</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_map</span><span class="p">[[</span><span class="s1">&#39;OncotreePrimaryDisease&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1238,6 +1248,9 @@ certain percentage of NaN values (here 95%):</p>
 <span class="n">Removed</span> <span class="mi">512</span> <span class="n">rows</span> <span class="kn">from</span> <span class="mi">18443</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">95</span><span class="o">%</span> <span class="n">NaN</span>
 </pre></div>
 </div>
+</section>
+<section id="id2">
+<h2>Apply two-class HELP labelling<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>Compute the two-class labeling (mode=‘flat-multi’) using the Otsu
 algorithm (algorithm=‘otsu’), save the results in a csv file (‘Acute
 Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:</p>
@@ -1269,6 +1282,7 @@ Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:</p>
 <span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </pre></div>
 </div>
+</section>
 </section>
 
 
