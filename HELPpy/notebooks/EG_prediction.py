@@ -53,9 +53,9 @@ def set_seed(seed=1):
     np.random.seed(seed)
 
 if args.balanced:
-   clf = VotingSplitClassifier(n_voters=args.voters, n_jobs=args.jobs, random_state=-1, class_weight='balanced', verbose=-1)
+   clf = VotingSplitClassifier(n_voters=args.voters, n_jobs=args.jobs, random_state=-1, class_weight='balanced', verbose=verbose)
 else:
-   clf = VotingSplitClassifier(n_voters=args.voters, n_jobs=args.jobs, random_state=-1, verbose=-1)
+   clf = VotingSplitClassifier(n_voters=args.voters, n_jobs=args.jobs, random_state=-1, verbose=verbose)
 
 set_seed(1)
 label_file = args.labelfile

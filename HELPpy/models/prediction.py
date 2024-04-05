@@ -28,7 +28,7 @@ class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
         self.verbose = verbose
         self.n_jobs = n_jobs
         self.n_voters = n_voters
-        self.estimators_ = [LGBMClassifier(**kwargs) for i in range(n_voters)]
+        self.estimators_ = [LGBMClassifier(**kwargs, verbose=-1) for i in range(n_voters)]
         pass
     
     def __sklearn_clone__(self):
