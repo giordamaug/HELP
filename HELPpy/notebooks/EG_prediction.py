@@ -100,7 +100,7 @@ def classify(nfolds, repeat, jobs, verbose):
         print(f'Running par on {os.cpu_count()} cpus...')
     else:
         print(f'Running par on {jobs} cpus...')
-    result = Parallel(n_jobs=jobs)(delayed(k_fold_cv)(df_X, df_y, clf, n_splits=nfolds, seed=rseed, verbose=verbose) for rseed in range(repeat))
+    result = Parallel(n_jobs=jobs, prefer='threads')(delayed(k_fold_cv)(df_X, df_y, clf, n_splits=nfolds, seed=rseed, verbose=verbose) for rseed in range(repeat))
   return result
 
 columns_names = ["ROC-AUC", "Accuracy","BA", "Sensitivity", "Specificity","MCC", 'CM']
