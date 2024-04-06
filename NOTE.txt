@@ -1,0 +1,8 @@
+le cartelle 
+
+- scores_no
+- logs_no
+- results_no
+
+includono i risultati ottenuti con SoftVoting ma prima chh emi accorgessi del problema delcomando Parallel(..., prefer='threads')
+che introduce indeterminismo nel paralleismo e valori  di devianza maggiorni per la sensitivity.
