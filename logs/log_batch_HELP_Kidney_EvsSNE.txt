@@ -1,0 +1,90 @@
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_BIO.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9379±0.0067                    |
+| Accuracy    | 0.8526±0.0060                    |
+| BA          | 0.8605±0.0116                    |
+| Sensitivity | 0.8700±0.0236                    |
+| Specificity | 0.8509±0.0066                    |
+| MCC         | 0.4991±0.0160                    |
+| CM          | [[10806, 1614], [19217, 109643]] |
++-------------+----------------------------------+
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9444±0.0068                    |
+| Accuracy    | 0.8894±0.0055                    |
+| BA          | 0.8721±0.0105                    |
+| Sensitivity | 0.8511±0.0209                    |
+| Specificity | 0.8931±0.0059                    |
+| MCC         | 0.5582±0.0164                    |
+| CM          | [[10571, 1849], [13778, 115082]] |
++-------------+----------------------------------+
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9719±0.0038                    |
+| Accuracy    | 0.9201±0.0043                    |
+| BA          | 0.9129±0.0084                    |
+| Sensitivity | 0.9042±0.0175                    |
+| Specificity | 0.9217±0.0050                    |
+| MCC         | 0.6535±0.0138                    |
+| CM          | [[11230, 1190], [10092, 118768]] |
++-------------+----------------------------------+
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_BIO.csv Kidney_CCBeder.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9639±0.0053                    |
+| Accuracy    | 0.9022±0.0056                    |
+| BA          | 0.8983±0.0107                    |
+| Sensitivity | 0.8936±0.0209                    |
+| Specificity | 0.9030±0.0059                    |
+| MCC         | 0.6051±0.0175                    |
+| CM          | [[11099, 1321], [12494, 116366]] |
++-------------+----------------------------------+
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_BIO.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9658±0.0049                    |
+| Accuracy    | 0.9024±0.0049                    |
+| BA          | 0.9033±0.0099                    |
+| Sensitivity | 0.9043±0.0205                    |
+| Specificity | 0.9022±0.0056                    |
+| MCC         | 0.6100±0.0151                    |
+| CM          | [[11232, 1188], [12603, 116257]] |
++-------------+----------------------------------+
+METHOD: LGBM	VOTERS: 8	BALANCE: yes
+PROBL: E vs sNE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
++-------------+---------------------------------+
+|             | measure                         |
+|-------------+---------------------------------|
+| ROC-AUC     | 0.9724±0.0039                   |
+| Accuracy    | 0.9221±0.0044                   |
+| BA          | 0.9129±0.0085                   |
+| Sensitivity | 0.9018±0.0186                   |
+| Specificity | 0.9241±0.0053                   |
+| MCC         | 0.6579±0.0135                   |
+| CM          | [[11200, 1220], [9779, 119081]] |
++-------------+---------------------------------+
