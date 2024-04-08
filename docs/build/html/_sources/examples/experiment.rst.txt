@@ -126,9 +126,9 @@ This cell’s code reproduces the results for Kidney reported in Table 3
     PROBL: E vs NE
     INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
     LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 15994
-    +------------------------------------------------+
+    +-------------+----------------------------------+
     |             | measure                          |
-    |------------------------------------------------|
+    |-------------+----------------------------------|
     | ROC-AUC     | 0.9572±0.0057                    |
     | Accuracy    | 0.8939±0.0037                    |
     | BA          | 0.8904±0.0089                    |
@@ -136,7 +136,7 @@ This cell’s code reproduces the results for Kidney reported in Table 3
     | Specificity | 0.8945±0.0044                    |
     | MCC         | 0.5483±0.0114                    |
     | CM          | [[11007, 1413], [16876, 143064]] |
-    +------------------------------------------------+
+    +-------------+----------------------------------+
 
 
 5. Run the E vs sNE experiments
@@ -174,9 +174,9 @@ This cell’s code reproduces the results for Kidney reported in Table 4
     PROBL: E vs sNE
     INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
     LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
-    +-----------------------------------------------+
+    +-------------+---------------------------------+
     |             | measure                         |
-    |-----------------------------------------------|
+    |-------------+---------------------------------|
     | ROC-AUC     | 0.9724±0.0039                   |
     | Accuracy    | 0.9221±0.0044                   |
     | BA          | 0.9129±0.0085                   |
@@ -184,7 +184,7 @@ This cell’s code reproduces the results for Kidney reported in Table 4
     | Specificity | 0.9241±0.0053                   |
     | MCC         | 0.6579±0.0135                   |
     | CM          | [[11200, 1220], [9779, 119081]] |
-    +-----------------------------------------------+
+    +-------------+---------------------------------+
 
 
 Please be aware that this will take a while in sequential execution.

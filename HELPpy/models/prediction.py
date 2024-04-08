@@ -83,7 +83,7 @@ def set_seed(seed=1):
 
     :param int seed: inistalization seed
 
-    :returns None.
+    :returns: None.
     """
     random.seed(seed)
     np.random.seed(seed)
