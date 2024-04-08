@@ -56,6 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Example 1: Identification of context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html#example-2-identification-of-uncommon-context-specific-egs">Example 2: Identification of uncommon context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html#example-3-prediction-of-egs-for-a-tissue">Example 3: Prediction of EGs for a tissue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html#example-5-reproduce-the-experiments-reported-in-the-help-paper">Example 5: Reproduce the experiments reported in the HELP paper</a></li>
 </ul>
 
         </div>
@@ -115,7 +116,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_voters</span> <span class="o">=</span> <span class="n">n_voters</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span> <span class="o">=</span> <span class="p">[</span><span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_voters</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span> <span class="o">=</span> <span class="p">[</span><span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_voters</span><span class="p">)]</span>
         <span class="k">pass</span>
     
     <span class="k">def</span> <span class="nf">__sklearn_clone__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

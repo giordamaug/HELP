@@ -59,3 +59,20 @@ As a further step, this example shows how to compute the True Positive Rate (TPR
    :maxdepth: 1
 
    examples/prediction
+
+Example 5: Reproduce the experiments reported in the HELP paper
+===============================================================
+
+This example shows how to use HELP to reproduce the experiments reported in the HELP paper.
+The workflow involves the following steps
+
+#. Install HELP from GitHub
+#. Download the input files
+#. Download the script for the experiments and show its man page 
+#. Run the E vs NE experiments
+#. Run the E vs sNE experiments
+
+.. toctree::
+   :maxdepth: 1
+
+   examples/experiment
