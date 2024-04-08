@@ -19,9 +19,10 @@ The workflow involves the following steps
 
 Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and executed three times to compute:
 
-* Example 1.1 two-class labelling of EGs based on tissue information
-* Example 1.2 three-class labelling of EGs based on tissue information
-* Example 1.3 two-class labelling of EGs based on disease-related information
+.. 
+   * Example 1.1 two-class labelling of EGs based on tissue information
+   * Example 1.2 three-class labelling of EGs based on tissue information
+   * Example 1.3 two-class labelling of EGs based on disease-related information
 
 
 Example 2: Identification of uncommon context-specific EGs

@@ -127,19 +127,6 @@
 <h1>Example 1: Identification of context-specific EGs<a class="headerlink" href="#example-1-identification-of-context-specific-egs" title="Link to this heading"></a></h1>
 <p>This example shows how to use HELP for computing two-class and three-class labelling of EGs based on tissue or disease-related information.
 The workflow involves the following steps</p>
-<ol class="arabic simple">
-<li><p>Install HELP from GitHub</p></li>
-<li><p>Download the input files</p></li>
-<li><p>Load the input files</p></li>
-<li><p>Filter the information to be exploited</p></li>
-<li><p>Apply two-class or three-class labelling</p></li>
-</ol>
-<p>Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and executed three times to compute:</p>
-<ul class="simple">
-<li><p>Example 1.1 two-class labelling of EGs based on tissue information</p></li>
-<li><p>Example 1.2 three-class labelling of EGs based on tissue information</p></li>
-<li><p>Example 1.3 two-class labelling of EGs based on disease-related information</p></li>
-</ul>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/labelling.html">1. Install HELP from GitHub</a></li>
@@ -150,20 +137,12 @@ The workflow involves the following steps</p>
 <li class="toctree-l1"><a class="reference internal" href="examples/labelling.html#example-1-3-two-class-labeling-of-egs-based-on-disease-related-information">Example 1.3 two-class labeling of EGs based on disease-related information</a></li>
 </ul>
 </div>
+<p>Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and executed three times to compute:</p>
 </section>
 <section id="example-2-identification-of-uncommon-context-specific-egs">
 <h1>Example 2: Identification of uncommon context-specific EGs<a class="headerlink" href="#example-2-identification-of-uncommon-context-specific-egs" title="Link to this heading"></a></h1>
 <p>This example shows how to use HELP for identifying uncommon tissue-specific EGs.
 The workflow involves the following steps</p>
-<ol class="arabic simple">
-<li><p>Install HELP from GitHub</p></li>
-<li><p>Download the input files</p></li>
-<li><p>Load the input files</p></li>
-<li><p>Filter the information to be exploited</p></li>
-<li><p>Compute EGs common to all tissues (pan-tissue EGs)</p></li>
-<li><p>Subtract pan-tissue EGs from those of the chosen tissue</p></li>
-</ol>
-<p>Finally, the example shows various ways of visualizing the obtained results.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/csegs.html">1. Install HELP from GitHub</a></li>
@@ -174,18 +153,12 @@ The workflow involves the following steps</p>
 <li class="toctree-l1"><a class="reference internal" href="examples/csegs.html#subtract-pan-tissue-egs-from-those-of-the-chosen-tissue">6. Subtract pan-tissue EGs from those of the chosen tissue</a></li>
 </ul>
 </div>
+<p>Finally, the example shows various ways of visualizing the obtained results.</p>
 </section>
 <section id="example-3-prediction-of-egs-for-a-tissue">
 <h1>Example 3: Prediction of EGs for a tissue<a class="headerlink" href="#example-3-prediction-of-egs-for-a-tissue" title="Link to this heading"></a></h1>
 <p>This example shows how to use HELP to estimate the performance of EG prediction for a tissue.
 The workflow involves the following steps</p>
-<ol class="arabic simple">
-<li><p>Install HELP from GitHub</p></li>
-<li><p>Download the input files</p></li>
-<li><p>Load the input files and process the tissue attributes</p></li>
-<li><p>Estimate the performance of EGs prediction</p></li>
-</ol>
-<p>As a further step, this example shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs and show their bar plot.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/prediction.html">1. Install HELP from GitHub</a></li>
@@ -195,18 +168,13 @@ The workflow involves the following steps</p>
 <li class="toctree-l1"><a class="reference internal" href="examples/prediction.html#compute-tpr-for-ucsegs-and-csegs">5. Compute TPR for ucsEGs and csEGs</a></li>
 </ul>
 </div>
+<p>Step 5. shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs and show their bar plot.</p>
 </section>
 <section id="example-4-ppi-embedding-features-extraction">
 <h1>Example 4: PPI embedding features extraction<a class="headerlink" href="#example-4-ppi-embedding-features-extraction" title="Link to this heading"></a></h1>
 <p>This example shows how to use in the HELP framework the graph embedding functions of the <cite>Karateclub &lt;https://karateclub.readthedocs.io/&gt;</cite>
 python package to accomplish node embedding on the Protein-Protein Interaction (PPI) network of a tissue.
 The workflow involves the following steps</p>
-<ol class="arabic simple">
-<li><p>Install HELP from GitHub</p></li>
-<li><p>Download the input files</p></li>
-<li><p>Load the PPI network and apply embedding</p></li>
-<li><p>Save the embedding and print it</p></li>
-</ol>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/embedding.html">1. Install HELP from GitHub (and Karateclub)</a></li>
@@ -220,13 +188,6 @@ The workflow involves the following steps</p>
 <h1>Example 5: Reproduce the experiments reported in the HELP paper<a class="headerlink" href="#example-5-reproduce-the-experiments-reported-in-the-help-paper" title="Link to this heading"></a></h1>
 <p>This example shows how to use HELP to reproduce the experiments reported in the HELP paper.
 The workflow involves the following steps</p>
-<ol class="arabic simple">
-<li><p>Install HELP from GitHub</p></li>
-<li><p>Download the input files</p></li>
-<li><p>Download the script for the experiments and show its man page</p></li>
-<li><p>Run the E vs NE experiments</p></li>
-<li><p>Run the E vs sNE experiments</p></li>
-</ol>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/experiment.html">1. Install HELP from GitHub</a></li>
