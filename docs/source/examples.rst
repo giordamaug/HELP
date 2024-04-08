@@ -24,6 +24,11 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
    * Example 1.2 three-class labelling of EGs based on tissue information
    * Example 1.3 two-class labelling of EGs based on disease-related information
 
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
+   
 
 Example 2: Identification of uncommon context-specific EGs
 ==========================================================
@@ -47,6 +52,12 @@ The workflow involves the following steps
 
 Finally, the example shows various ways of visualizing the obtained results.
 
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/csegs.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/csegs.ipynb
+
+
 Example 3: Prediction of EGs for a tissue
 =========================================
 
@@ -65,6 +76,11 @@ The workflow involves the following steps
    examples/prediction
 
 Step 5. shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs and show their bar plot. 
+
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb
 
 
 Example 4: PPI embedding features extraction
@@ -85,6 +101,10 @@ The workflow involves the following steps
 
    examples/embedding
 
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/embedding.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/embedding.ipynb
 
 Example 5: Reproduce the experiments reported in the HELP paper
 ===============================================================
@@ -103,3 +123,8 @@ The workflow involves the following steps
    :maxdepth: 1
 
    examples/experiment
+
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/experiment.ipynb
+.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
+   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/experiment.ipynb
