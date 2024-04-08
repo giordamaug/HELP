@@ -100,14 +100,14 @@ This cell’s code reproduces the results for Kidney reported in Table 3
 
 .. code:: ipython3
 
-    datapath = "../../data"
+    datapath = "."
     tissue = "Kidney"                               # or 'Lung'
     labelfile = f"{tissue}_HELP.csv"                # label filename
     aliases = "-A \"{'aE': 'NE', 'sNE':'NE'}\""     # dictionary for renaming labels before prediction: es. {'oldlabel': 'newlabel'}
     excludeflags = ""                               # label to remove (none for E vs NE problem)
     njobs = "-1"                                    # parallelism level: -1 = all cpus, 1 = sequential
     nchunks = "-c 1 5 1"                            # no. of chunks for each input attribute file: es. 1 5 (Bio is one chunk, CCcfs split in 5 chunks)
-    voters = "-v 10"                                 # no. of voters on classifier ensemble
+    voters = "-v 10"                                # no. of voters on classifier ensemble
     repeats = "-r 10"                               # no. of iterations for experiments 
     !python EG_prediction.py -i {datapath}/{tissue}_BIO.csv \
                                 {datapath}/{tissue}_CCcfs.csv \
@@ -148,7 +148,7 @@ This cell’s code reproduces the results for Kidney reported in Table 4
 
 .. code:: ipython3
 
-    datapath = "../../data"
+    datapath = "."
     tissue = "Kidney"                               # or 'Lung'
     labelfile = f"{tissue}_HELP.csv"                # label filename
     aliases = ""                                    # dictionary for renaming labels before prediction: es. {'oldlabel': 'newlabel'}

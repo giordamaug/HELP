@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="1. Install HELP from GitHub" href="prediction.html" /> 
+    <link rel="prev" title="1. Install HELP from GitHub (and Karateclub)" href="embedding.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,6 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Example 1: Identification of context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-2-identification-of-uncommon-context-specific-egs">Example 2: Identification of uncommon context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-3-prediction-of-egs-for-a-tissue">Example 3: Prediction of EGs for a tissue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html#example-5-ppi-embedding-features-extraction">Example 5: PPI embedding features extraction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html#example-5-reproduce-the-experiments-reported-in-the-help-paper">Example 5: Reproduce the experiments reported in the HELP paper</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1. Install HELP from GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-the-input-files">2. Download the input files</a></li>
@@ -181,14 +182,14 @@ show its manual page:</p>
 <h1>4. Run the E vs NE experiments<a class="headerlink" href="#run-the-e-vs-ne-experiments" title="Link to this heading"></a></h1>
 <p>This cell’s code reproduces the results for Kidney reported in Table 3
 (A) of the HELP paper.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;../../data&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 <span class="n">tissue</span> <span class="o">=</span> <span class="s2">&quot;Kidney&quot;</span>                               <span class="c1"># or &#39;Lung&#39;</span>
 <span class="n">labelfile</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP.csv&quot;</span>                <span class="c1"># label filename</span>
 <span class="n">aliases</span> <span class="o">=</span> <span class="s2">&quot;-A </span><span class="se">\&quot;</span><span class="s2">{&#39;aE&#39;: &#39;NE&#39;, &#39;sNE&#39;:&#39;NE&#39;}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>     <span class="c1"># dictionary for renaming labels before prediction: es. {&#39;oldlabel&#39;: &#39;newlabel&#39;}</span>
 <span class="n">excludeflags</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>                               <span class="c1"># label to remove (none for E vs NE problem)</span>
 <span class="n">njobs</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>                                    <span class="c1"># parallelism level: -1 = all cpus, 1 = sequential</span>
 <span class="n">nchunks</span> <span class="o">=</span> <span class="s2">&quot;-c 1 5 1&quot;</span>                            <span class="c1"># no. of chunks for each input attribute file: es. 1 5 (Bio is one chunk, CCcfs split in 5 chunks)</span>
-<span class="n">voters</span> <span class="o">=</span> <span class="s2">&quot;-v 10&quot;</span>                                 <span class="c1"># no. of voters on classifier ensemble</span>
+<span class="n">voters</span> <span class="o">=</span> <span class="s2">&quot;-v 10&quot;</span>                                <span class="c1"># no. of voters on classifier ensemble</span>
 <span class="n">repeats</span> <span class="o">=</span> <span class="s2">&quot;-r 10&quot;</span>                               <span class="c1"># no. of iterations for experiments</span>
 <span class="o">!</span>python<span class="w"> </span>EG_prediction.py<span class="w"> </span>-i<span class="w"> </span><span class="o">{</span>datapath<span class="o">}</span>/<span class="o">{</span>tissue<span class="o">}</span>_BIO.csv<span class="w"> </span><span class="err">\</span>
                             <span class="p">{</span><span class="n">datapath</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">tissue</span><span class="p">}</span><span class="n">_CCcfs</span><span class="o">.</span><span class="n">csv</span> \
@@ -224,7 +225,7 @@ LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 15994
 <p>This cell’s code reproduces the results for Kidney reported in Table 4
 (A) of the HELP paper, removing the <code class="docutils literal notranslate"><span class="pre">aE</span></code> flags
 (<code class="docutils literal notranslate"><span class="pre">excludeflags</span> <span class="pre">=</span> <span class="pre">&quot;-X</span> <span class="pre">aE&quot;</span></code>).</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;../../data&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 <span class="n">tissue</span> <span class="o">=</span> <span class="s2">&quot;Kidney&quot;</span>                               <span class="c1"># or &#39;Lung&#39;</span>
 <span class="n">labelfile</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2">_HELP.csv&quot;</span>                <span class="c1"># label filename</span>
 <span class="n">aliases</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>                                    <span class="c1"># dictionary for renaming labels before prediction: es. {&#39;oldlabel&#39;: &#39;newlabel&#39;}</span>
@@ -268,7 +269,7 @@ LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="prediction.html" class="btn btn-neutral float-left" title="1. Install HELP from GitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="embedding.html" class="btn btn-neutral float-left" title="1. Install HELP from GitHub (and Karateclub)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

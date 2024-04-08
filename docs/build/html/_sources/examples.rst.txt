@@ -60,6 +60,23 @@ As a further step, this example shows how to compute the True Positive Rate (TPR
 
    examples/prediction
 
+Example 5: PPI embedding features extraction
+============================================
+
+This example shows how to use in the HELP framework the graph embedding functions of the `Karateclub <https://karateclub.readthedocs.io/>`
+python package to accomplish node embedding on the Protein-Protein Interaction (PPI) network of a tissue.
+The workflow involves the following steps
+
+#. Install HELP from GitHub
+#. Download the input files
+#. Load the PPI network and apply embedding 
+#. Save the embedding and print it
+
+.. toctree::
+   :maxdepth: 1
+
+   examples/embedding
+
 Example 5: Reproduce the experiments reported in the HELP paper
 ===============================================================
 
