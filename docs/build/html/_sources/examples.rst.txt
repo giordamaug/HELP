@@ -28,7 +28,7 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
    :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
-   
+
 
 Example 2: Identification of uncommon context-specific EGs
 ==========================================================
@@ -83,12 +83,12 @@ Step 5. shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs a
    :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb
 
 
-Example 4: PPI embedding features extraction
-============================================
+Example 4: Extraction of network embedding from tissue PPI
+==========================================================
 
 This example shows how to use in the HELP framework the graph embedding functions of the `Karateclub <https://karateclub.readthedocs.io/>`
 python package to accomplish node embedding on the Protein-Protein Interaction (PPI) network of a tissue.
-The workflow involves the following steps
+The results can be used as features for EG prediction with HELP. The workflow involves the following steps
 
 .. 
    #. Install HELP from GitHub

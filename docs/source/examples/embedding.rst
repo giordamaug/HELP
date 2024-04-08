@@ -1,45 +1,60 @@
 1. Install HELP from GitHub (and Karateclub)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Skip this cell if you already have installed HELP.
+Skip this cell if you already have installed HELP and Karateclub.
 
 .. code:: ipython3
 
     !pip install git+https://github.com/giordamaug/HELP.git
     !pip install -q karateclub 
 
-2. Load the input files
-~~~~~~~~~~~~~~~~~~~~~~~
+2. Download the PPI input file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this cell we download from GitHub repository the label file and the
-attribute files. Skip this step if you already have these input files
-locally.
+The file describing the PPI network for the Kidney tissue can be found
+on GitHub.
 
 .. code:: ipython3
 
     !wget https://raw.githubusercontent.com/giordamaug/HELP/main/data/Kidney_PPI.csv
 
-3. Load the PPI network and apply embedding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Load the PPI input file
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The tissue PPI is represented by a csv file with thre columns: + ``A``
-is the gene name of a edge source + ``B`` is the gene name of a edge
-traget + ``combined_score`` is an attribute describeing the type of edge
+The PPI network is given as a csv file based on the data downloaded from
+the Integrated Interaction Database (IID), where each row represents one
+of the edges, and the three columns represent: + Column ``A``: gene name
+of the edge source; + Column ``B``: gene name of the edge target; +
+Column ``combined_score``: attribute providing the edge weight, which
+can be 1 if supported by one piece of evidence, 2 if supported by two or
+3 if supported by three.
 
 .. code:: ipython3
 
     import pandas as pd
     from HELPpy.preprocess.embedding import PPI_embed
     df_net = pd.read_csv('Kidney_PPI.csv')
+
+4. Compute the embedding
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Compute the result using a graph embedding method (here
+``method="Node2Vec"``) to produce embedding vectors of default length
+(128).
+
+.. code:: ipython3
+
     df_embed = PPI_embed(df_net, method="Node2Vec", verbose=True)
 
-4. Save the embedding and print it
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please be aware that this will take almost 2 hours in sequential
+execution.
 
-After almost 2 hour in sequential execution, the PPI network embedding
-is extracted and saved in a csv file as new attributes for the
-prediction model buling, which will be described in the last notebook of
-the examples.
+5. Save and show the embedding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The embedding result is a DataFrame with rows the gene names and columns
+the components of the 128-sized vector representing each node/gene in
+the PPI.
 
 .. code:: ipython3
 

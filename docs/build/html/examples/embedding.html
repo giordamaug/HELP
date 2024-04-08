@@ -59,11 +59,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Example 1: Identification of context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-2-identification-of-uncommon-context-specific-egs">Example 2: Identification of uncommon context-specific EGs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-3-prediction-of-egs-for-a-tissue">Example 3: Prediction of EGs for a tissue</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../examples.html#example-4-ppi-embedding-features-extraction">Example 4: PPI embedding features extraction</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html#example-4-extraction-of-network-embedding-from-tissue-ppi">Example 4: Extraction of network embedding from tissue PPI</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1. Install HELP from GitHub (and Karateclub)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-the-input-files">2. Load the input files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-the-ppi-network-and-apply-embedding">3. Load the PPI network and apply embedding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#save-the-embedding-and-print-it">4. Save the embedding and print it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-ppi-input-file">2. Download the PPI input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-ppi-input-file">3. Load the PPI input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compute-the-embedding">4. Compute the embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save-and-show-the-embedding">5. Save and show the embedding</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html#example-5-reproduce-the-experiments-reported-in-the-help-paper">Example 5: Reproduce the experiments reported in the HELP paper</a></li>
@@ -96,39 +97,51 @@
              
   <section id="install-help-from-github-and-karateclub">
 <h1>1. Install HELP from GitHub (and Karateclub)<a class="headerlink" href="#install-help-from-github-and-karateclub" title="Link to this heading"></a></h1>
-<p>Skip this cell if you already have installed HELP.</p>
+<p>Skip this cell if you already have installed HELP and Karateclub.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>karateclub
 </pre></div>
 </div>
 </section>
-<section id="load-the-input-files">
-<h1>2. Load the input files<a class="headerlink" href="#load-the-input-files" title="Link to this heading"></a></h1>
-<p>In this cell we download from GitHub repository the label file and the
-attribute files. Skip this step if you already have these input files
-locally.</p>
+<section id="download-the-ppi-input-file">
+<h1>2. Download the PPI input file<a class="headerlink" href="#download-the-ppi-input-file" title="Link to this heading"></a></h1>
+<p>The file describing the PPI network for the Kidney tissue can be found
+on GitHub.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/giordamaug/HELP/main/data/Kidney_PPI.csv
 </pre></div>
 </div>
 </section>
-<section id="load-the-ppi-network-and-apply-embedding">
-<h1>3. Load the PPI network and apply embedding<a class="headerlink" href="#load-the-ppi-network-and-apply-embedding" title="Link to this heading"></a></h1>
-<p>The tissue PPI is represented by a csv file with thre columns: + <code class="docutils literal notranslate"><span class="pre">A</span></code>
-is the gene name of a edge source + <code class="docutils literal notranslate"><span class="pre">B</span></code> is the gene name of a edge
-traget + <code class="docutils literal notranslate"><span class="pre">combined_score</span></code> is an attribute describeing the type of edge</p>
+<section id="load-the-ppi-input-file">
+<h1>3. Load the PPI input file<a class="headerlink" href="#load-the-ppi-input-file" title="Link to this heading"></a></h1>
+<p>The PPI network is given as a csv file based on the data downloaded from
+the Integrated Interaction Database (IID), where each row represents one
+of the edges, and the three columns represent: + Column <code class="docutils literal notranslate"><span class="pre">A</span></code>: gene name
+of the edge source; + Column <code class="docutils literal notranslate"><span class="pre">B</span></code>: gene name of the edge target; +
+Column <code class="docutils literal notranslate"><span class="pre">combined_score</span></code>: attribute providing the edge weight, which
+can be 1 if supported by one piece of evidence, 2 if supported by two or
+3 if supported by three.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">HELPpy.preprocess.embedding</span> <span class="kn">import</span> <span class="n">PPI_embed</span>
 <span class="n">df_net</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Kidney_PPI.csv&#39;</span><span class="p">)</span>
-<span class="n">df_embed</span> <span class="o">=</span> <span class="n">PPI_embed</span><span class="p">(</span><span class="n">df_net</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;Node2Vec&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="save-the-embedding-and-print-it">
-<h1>4. Save the embedding and print it<a class="headerlink" href="#save-the-embedding-and-print-it" title="Link to this heading"></a></h1>
-<p>After almost 2 hour in sequential execution, the PPI network embedding
-is extracted and saved in a csv file as new attributes for the
-prediction model buling, which will be described in the last notebook of
-the examples.</p>
+<section id="compute-the-embedding">
+<h1>4. Compute the embedding<a class="headerlink" href="#compute-the-embedding" title="Link to this heading"></a></h1>
+<p>Compute the result using a graph embedding method (here
+<code class="docutils literal notranslate"><span class="pre">method=&quot;Node2Vec&quot;</span></code>) to produce embedding vectors of default length
+(128).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span> <span class="o">=</span> <span class="n">PPI_embed</span><span class="p">(</span><span class="n">df_net</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;Node2Vec&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Please be aware that this will take almost 2 hours in sequential
+execution.</p>
+</section>
+<section id="save-and-show-the-embedding">
+<h1>5. Save and show the embedding<a class="headerlink" href="#save-and-show-the-embedding" title="Link to this heading"></a></h1>
+<p>The embedding result is a DataFrame with rows the gene names and columns
+the components of the 128-sized vector representing each node/gene in
+the PPI.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Kidney_EmbN2V_128.csv&#39;</span><span class="p">)</span>
 <span class="n">df_embed</span>
 </pre></div>

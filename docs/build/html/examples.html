@@ -82,11 +82,12 @@
 <li class="toctree-l2"><a class="reference internal" href="examples/prediction.html#compute-tpr-for-ucsegs-and-csegs">5. Compute TPR for ucsEGs and csEGs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#example-4-ppi-embedding-features-extraction">Example 4: PPI embedding features extraction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#example-4-extraction-of-network-embedding-from-tissue-ppi">Example 4: Extraction of network embedding from tissue PPI</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/embedding.html">1. Install HELP from GitHub (and Karateclub)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#load-the-input-files">2. Load the input files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#load-the-ppi-network-and-apply-embedding">3. Load the PPI network and apply embedding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#save-the-embedding-and-print-it">4. Save the embedding and print it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#download-the-ppi-input-file">2. Download the PPI input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#load-the-ppi-input-file">3. Load the PPI input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#compute-the-embedding">4. Compute the embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/embedding.html#save-and-show-the-embedding">5. Save and show the embedding</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#example-5-reproduce-the-experiments-reported-in-the-help-paper">Example 5: Reproduce the experiments reported in the HELP paper</a><ul>
@@ -176,17 +177,18 @@ The workflow involves the following steps</p>
 <a class="reference external image-reference" href="https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb"><img alt="https://colab.research.google.com/assets/colab-badge.svg" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
 <a class="reference external image-reference" href="https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb"><img alt="https://kaggle.com/static/images/open-in-kaggle.svg" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
 </section>
-<section id="example-4-ppi-embedding-features-extraction">
-<h1>Example 4: PPI embedding features extraction<a class="headerlink" href="#example-4-ppi-embedding-features-extraction" title="Link to this heading"></a></h1>
+<section id="example-4-extraction-of-network-embedding-from-tissue-ppi">
+<h1>Example 4: Extraction of network embedding from tissue PPI<a class="headerlink" href="#example-4-extraction-of-network-embedding-from-tissue-ppi" title="Link to this heading"></a></h1>
 <p>This example shows how to use in the HELP framework the graph embedding functions of the <cite>Karateclub &lt;https://karateclub.readthedocs.io/&gt;</cite>
 python package to accomplish node embedding on the Protein-Protein Interaction (PPI) network of a tissue.
-The workflow involves the following steps</p>
+The results can be used as features for EG prediction with HELP. The workflow involves the following steps</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/embedding.html">1. Install HELP from GitHub (and Karateclub)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#load-the-input-files">2. Load the input files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#load-the-ppi-network-and-apply-embedding">3. Load the PPI network and apply embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#save-the-embedding-and-print-it">4. Save the embedding and print it</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#download-the-ppi-input-file">2. Download the PPI input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#load-the-ppi-input-file">3. Load the PPI input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#compute-the-embedding">4. Compute the embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/embedding.html#save-and-show-the-embedding">5. Save and show the embedding</a></li>
 </ul>
 </div>
 <a class="reference external image-reference" href="https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/embedding.ipynb"><img alt="https://colab.research.google.com/assets/colab-badge.svg" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
