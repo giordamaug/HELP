@@ -1,5 +1,7 @@
-\documentclass[convert]{standalone} 
+% latex main.tex; dvipng -D 300 -bg Transparent -T tight -o main.png main.dvi
+\documentclass[preview,border=2pt,convert={density=300,outext=.png}]{standalone}
 \input{heattable.tex}
 \begin{document}
-\heattable{../results/EvsNElung.csv}{greenyellow} 
+\hspace{-1.1\textwidth}
+\heattable{../results/EvsNEKidney.csv}{greenyellow} \\
 \end{document}
