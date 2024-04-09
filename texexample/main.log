@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  9 APR 2024 15:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  9 APR 2024 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,13 +579,13 @@ e
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.8).
 
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
-PGFPlots: reading {../results/AEvsSNELung.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
+PGFPlots: reading {../results/AEvsSNEKidney.csv}
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -603,7 +603,7 @@ Preview: Tightpage -131072 -131072 131072 131072
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.aux) ) 
 Here is how much of TeX's memory you used:
  23783 strings out of 480171
- 632574 string characters out of 5894489
+ 632559 string characters out of 5894489
  1016120 words of memory out of 5000000
  41358 multiletter control sequences out of 15000+600000
  471727 words of font info for 36 fonts, out of 8000000 for 9000
@@ -613,7 +613,7 @@ Here is how much of TeX's memory you used:
 urizio/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on main.pdf (1 page, 28102 bytes).
+Output written on main.pdf (1 page, 28099 bytes).
 PDF statistics:
  26 PDF objects out of 1000 (max. 8388607)
  17 compressed objects within 1 object stream
