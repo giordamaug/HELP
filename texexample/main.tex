@@ -2,6 +2,9 @@
 \documentclass[preview,border=2pt,convert={density=300,outext=.png}]{standalone}
 \input{heattable.tex}
 \begin{document}
-\hspace{-\textwidth}
-\heattable{../results/EvsNEKidney.csv}{greenyellow} \\
+\begin{minipage}{1.15\textwidth}
+    \begin{center}
+        \heattable{../results/EvsNEKidney.csv}{greenyellow} \\
+    \end{center}
+\end{minipage}
 \end{document}
