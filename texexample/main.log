@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2024.3.16)  9 APR 2024 14:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2024.3.16)  9 APR 2024 14:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,13 +563,13 @@ Preview: Fontsize 10pt
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.8).
 
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
-PGFPlots: reading {../results/EvsSNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
+PGFPlots: reading {../results/EvsNELung.csv}
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -586,12 +586,12 @@ Overfull \hbox (51.7479pt too wide) in paragraph at lines 5--10
 Preview: Tightpage -131072 -131072 131072 131072
 [1] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 23373 strings out of 480172
- 626639 string characters out of 5894515
+ 23363 strings out of 480172
+ 626424 string characters out of 5894515
  1031809 words of memory out of 5000000
- 40962 multiletter control sequences out of 15000+600000
+ 40952 multiletter control sequences out of 15000+600000
  471727 words of font info for 36 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  104i,10n,106p,756b,1220s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (1 page, 14800 bytes).
+Output written on main.dvi (1 page, 14828 bytes).
