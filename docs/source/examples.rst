@@ -25,7 +25,7 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
    * Example 1.3 two-class labelling of EGs based on disease-related information
 
 .. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
-   :target: https://github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
+   :target: https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
@@ -54,6 +54,8 @@ The workflow involves the following steps
 
 Finally, the example shows various ways of visualizing the obtained results.
 
+.. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
+   :target: https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/csegs.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/csegs.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
@@ -79,6 +81,8 @@ The workflow involves the following steps
 
 Step 5. shows how to compute the True Positive Rate (TPR) for ucsEGs and csEGs and show their bar plot. 
 
+.. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
+   :target: https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/prediction.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
@@ -103,6 +107,8 @@ The results can be used as features for EG prediction with HELP. The workflow in
 
    examples/embedding
 
+.. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
+   :target: https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/embedding.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/embedding.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
@@ -126,6 +132,8 @@ The workflow involves the following steps
 
    examples/experiment
 
+.. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
+   :target: https://github.com/giordamaug/HELP/blob/main/HELPpy/notebooks/experiment.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/experiment.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
