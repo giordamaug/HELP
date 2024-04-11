@@ -4,7 +4,7 @@ The Help Framework for Essetial Gene detection and Prediction
 ![Alt text of the image](https://github.com/giordamaug/HELP/blob/main/docs/images/GraphicAbstract_IG.jpg)
 
 # Documentation
-The HELP software documentation is available at: https://giordamaug.github.io/myprojects
+The HELP software documentation is available at: https://giordamaug.github.io/myprojects/HELP/
 # Credits
 The HELP Framework was developed by the Computational Data Science group of High Performance Computing and Networking Institute of National Research Council of Italy (ICAR-CNR).
 
