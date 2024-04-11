@@ -24,6 +24,9 @@ Steps 1.-3. are needed only once, while steps 4.-5. are differentiated and execu
    * Example 1.2 three-class labelling of EGs based on tissue information
    * Example 1.3 two-class labelling of EGs based on disease-related information
 
+[![View on Github](https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey)](https://github.com/phlippe/uvadlc_notebooks/blob/master/docs/tutorial_notebooks/tutorial7/GNN_overview.ipynb)\n
+.. image:: https://img.shields.io/static/v1.svg?logo=github&label=Repo&message=View%20On%20Github&color=lightgrey
+   :target: https://github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
 .. image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/HELPpy/notebooks/labelling.ipynb
 .. image:: https://kaggle.com/static/images/open-in-kaggle.svg
