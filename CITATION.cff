@@ -1,0 +1,15 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Maurizio
+  given-names: Giordano
+orcid: https://orcid.org/0000-0001-9917-7591
+- family-names: Ilaria
+  given-names: Granata
+orcid: https://orcid.org/0000-0002-3450-4667
+- family-names: Lucia
+  given-names: Maddalena
+orcid: https://orcid.org/0000-0002-0567-4624
+title:giordamaug/HELP: Human Gene Essentiality Labelling & Prediction
+version: HELPv1.0
+date-released: 2024-04-12
