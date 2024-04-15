@@ -108,7 +108,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def select_cell_lines(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
+    def select_cell_lines(self, df: pd.DataFrame, df_map: pd.DataFrame, outvar: object, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -153,7 +153,7 @@ class Help_Dashboard():
         seltissue.observe(seltissue_changed, names='value')
         minline_set = wid.SelectionSlider(
             options=range(1, 100),
-            value=1,
+            value=minlines,
             description='Min lines:',
             disabled=False,
             continuous_update=False,
@@ -193,6 +193,7 @@ class Help_Dashboard():
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
                 val.value = df[cell_lines]
+                globals()[outvar] = val.value   # set output variable
                 if save_textbox.layout == layout_visible and save_textbox.value != '':
                     val.value.to_csv(save_textbox.value, index=True)
                     display(f'Saved cell lines to file: {save_textbox.value}.')
