@@ -263,7 +263,7 @@ class Help_Dashboard():
                 save_textbox.layout = layout_hidden
         saveto_but.observe(saveto_but_change)
         mode_buttons = wid.ToggleButtons(
-            options=[("Two classes", False), ("Three classes", True)],
+            options=[("2 classes", True), ("3 classes", False), ("2-then-2 classes", False)],
             description='',
         )
         save_textbox = wid.Text(
@@ -279,7 +279,16 @@ class Help_Dashboard():
             with out2:
                 out2.clear_output()
                 cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
-                val.value = labelling(df, columns=cell_lines) #, three_class=mode_buttons.value)
+                if mode_buttons.value == "2-then-2 classes":
+                    mode = 'two-by-two' 
+                    nclasses = 3
+                else:
+                    mode = 'flat-multi' 
+                    if mode_buttons.value == "2 classes":
+                        nclasses = 2
+                    else:
+                        nclasses = 3
+                val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses)
                 if save_textbox.layout == layout_visible and save_textbox.value != "":
                     val.value.to_csv(save_textbox.value, index=True)
                     display(f'Saved cell lines to file: {save_textbox.value}.')
