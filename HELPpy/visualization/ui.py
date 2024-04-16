@@ -8,6 +8,14 @@ import pandas as pd
 import numpy as np
 import os
 from ipyfilechooser import FileChooser
+from IPython.display import HTML as html_print
+from IPython.display import display
+
+def cstr(s, color='black'):
+    return "<text style=color:{}>{}</text>".format(color, s)
+
+def print_color(t):
+    display(html_print(' '.join([cstr(ti, color=ci) for ti,ci in t])))
 
 class Help_Dashboard():
     def __init__(self, verbose: bool = False):
@@ -69,8 +77,7 @@ class Help_Dashboard():
         saveto_but = wid.ToggleButton(value=True,
                 description='Save to:',
                 disabled=False,
-                button_style='', # 'success', 'info', 'warning', 'danger' or ''
-                icon='check' # (FontAwesome names without the `fa-` prefix)
+                button_style='success', # 'success', 'info', 'warning', 'danger' or ''
         )
         def saveto_but_change(b):
             out2.clear_output()
@@ -236,6 +243,8 @@ class Help_Dashboard():
         df_map = None
         df = None
         df_orig = None
+        val = wid.ValueWidget()
+        val.value = pd.DataFrame(), df, df_orig, df_map 
         tissue_list = []
         #tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
         layout_hidden  = wid.Layout(visibility = 'hidden')
@@ -254,11 +263,12 @@ class Help_Dashboard():
         def nanrem_set_changed(b):
             #global df, df_orig
             try:
-                df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
-                df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                df = delrows_with_nan_percentage(val.value[2], perc=float(nanrem_set.value))
+                df_orig = val.value[2]
+                val.value = val.value[0], df, val.value[2]
                 with out3:
                     out3.clear_output()
-                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
+                    print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
             except:
                 pass 
         nanrem_set.observe(nanrem_set_changed, names='value')
@@ -274,9 +284,14 @@ class Help_Dashboard():
             tooltip='set minimum number of lines for the tissue',
         )
         def minline_set_changed(b):
-            tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= minline_set.value]
-            seltissue.options = ['__all__'] +  tissue_list
-            seltissue.value=['__all__']
+            df = val.value[1]
+            df_map = val.value[3]
+            try:
+                tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= minline_set.value]
+                seltissue.options = ['__all__'] +  tissue_list
+                seltissue.value=['__all__']
+            except:
+                pass
         minline_set.observe(minline_set_changed, names='value')
         seltissue = wid.SelectMultiple(
             options=['__all__'] + tissue_list if tissue_list != [] else [],
@@ -295,19 +310,24 @@ class Help_Dashboard():
                     out1.clear_output()
                     display(seltissue.value)
         seltissue.observe(seltissue_changed, names='value')
-        saveto_but = wid.ToggleButton(value=False,
-                description='Save to:',
-                disabled=False,
-                button_style='', # 'success', 'info', 'warning', 'danger' or ''
-                icon='check' # (FontAwesome names without the `fa-` prefix)
-        )
-        def saveto_but_change(b):
-            out2.clear_output()
-            if save_textbox.layout == layout_hidden:
-                save_textbox.layout = layout_visible
+        saveto_but = wid.Button(description="Save ...", button_style='primary')
+        def on_savebutton_clicked(b):
+            if save_textbox.value != '':
+                try:
+                    val.value[0].to_csv(save_textbox.value, index=True)
+                    with out4:
+                        out4.clear_output()
+                        print_color(((f'Saved dataset to file: {save_textbox.value}.', 'green'),))
+                except:
+                    with out4:
+                        out4.clear_output()
+                        print_color(((f'Problem saving label file (maybe empty)!', 'red'),))
             else:
-                save_textbox.layout = layout_hidden
-        saveto_but.observe(saveto_but_change)
+                with out4:
+                    out4.clear_output()
+                    print_color(((f'Set a non empty filename!', 'red'),))
+        saveto_but.on_click(on_savebutton_clicked)
+
         mode_buttons = wid.ToggleButtons(
             options=["E|NE", "E|aE|sNE", "E|(aE|sNE)"],
             button_style='success',
@@ -327,16 +347,18 @@ class Help_Dashboard():
         save_textbox.layout = layout_visible
         button = wid.Button(description="Apply ...", button_style='primary')
         def on_button_clicked(b):
+            df = val.value[1]
+            df_map = val.value[3]
             with out1:
                 out1.clear_output()
-                display(f'Labelling {len(df)} genes of {seltissue.value} ... wait until DONE...')
+                print_color(((f'Labelling {len(df)} genes of {seltissue.value} ...', 'orange'),))
             with out2:
                 out2.clear_output()
                 if seltissue.value == ('__all__',):
                     selector = [x for x in seltissue.options if x != '__all__']
                 else:
                     selector = [x for x in seltissue.value if x != '__all__']
-                display(selector)
+                #display(selector)
                 cell_lines = select_cell_lines(df, df_map, selector, line_group=line_group, line_col=line_col, 
                                                nested = selmode_button.value, verbose=verbose)
                 if mode_buttons.value == "E|(aE|sNE)":
@@ -351,75 +373,106 @@ class Help_Dashboard():
                     else:
                         nclasses = 3
                         labelnames = {0: 'E', 1: 'aE', 2: 'sNE'}
-                val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose)
-                if save_textbox.layout == layout_visible and save_textbox.value != "":
-                    val.value.to_csv(save_textbox.value, index=True)
-                    display(f'Saved cell lines to file: {save_textbox.value}.')
-                display("DONE!")
+                val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose), df, val.value[2], val.value[3]
+            with out1:
+                out1.clear_output()
+                print_color(((f'DONE', 'green'),))
         button.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
         out3 = wid.Output()
-        val = wid.ValueWidget()
+        out4 = wid.Output()
 
         # Create and display a FileChooser widget
         if filename != '':
-            fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv', filename=filename, select_default=True)
+            fc1 = FileChooser(path, title='Choose CRISPR effect file', filter='*.csv', filename=filename, select_default=True)
             try:
                 df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
                 df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                val.value = val.value[0],df, df_orig, val.value[3]
                 with out3:
                     out3.clear_output()
-                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
+                    print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
+                try:
+                    if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                        seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                        seltissue.value=['__all__']
+                except:
+                    pass
+                fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
             except:
                 fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
-            try:
-                if len(np.unique(df_map[line_group].dropna().values)) > 0:
-                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
-                    seltissue.value=['__all__']
-            except:
-                pass
         else:
-            fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv')
+            fc1 = FileChooser(path, title='Choose CRISPR effect file', filter='*.csv')
         def fc1_change_title(fc1):
             #global df_map, df, df_orig
             try:
                 df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
                 df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                val.value = val.value[0],df ,df_orig, val.value[3]
                 with out3:
                     out3.clear_output()
-                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
+                    print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
+                try:
+                    if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                        seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                        seltissue.value=['__all__']
+                except:
+                    pass 
+                fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
             except:
                 fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
-            try:
-                if len(np.unique(df_map[line_group].dropna().values)) > 0:
-                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
-                    seltissue.value=['__all__']
-            except:
-                pass
+
         fc1.register_callback(fc1_change_title)
         if modelname != '':
-            fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv', filename=modelname, select_default=True)
-            df_map = pd.read_csv(fc2.selected)
+            fc2 = FileChooser(path, title='Choose Model file', filter='*.csv', filename=modelname, select_default=True)
             try:
-                if len(np.unique(df_map[line_group].dropna().values)) > 0:
-                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
-                    seltissue.value=['__all__']
+                df_map = pd.read_csv(fc2.selected)
+                df = val.value[1]
+                val.value = val.value[0], val.value[1] ,val.value[2], df_map
+                try:
+                    if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                        seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                        seltissue.value=['__all__']
+                except:
+                    pass 
+                fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
             except:
-                pass
+                fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
         else:
-            fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv')
+            fc2 = FileChooser(path, title='Choose Model file', filter='*.csv')
         def fc2_change_title(fc2):
             #global df_map, df
-            df_map = pd.read_csv(fc2.selected)
             try:
-                if len(np.unique(df_map[line_group].dropna().values)) > 0:
-                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
-                    seltissue.value=['__all__']
+                df_map = pd.read_csv(fc2.selected)
+                df = val.value[1]
+                val.value = val.value[0], val.value[1] ,val.value[2], df_map
+                try:
+                    if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                        seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                        seltissue.value=['__all__']
+                except:
+                    pass
+                fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
             except:
-                pass
-            #fc1.title = '<b>Loaded Model file...</b>'
+                fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
         fc2.register_callback(fc2_change_title)
-        cnt = wid.VBox([wid.VBox([wid.HTML(value = f"<b>NaN removal:</b>"),nanrem_set, out3]), fc1, fc2, wid.VBox([wid.HTML(value = f"<b>Line filtering:</b>"), minline_set, wid.HBox([seltissue, selmode_button])]), wid.VBox([wid.VBox([wid.HTML(value = f"<b>Labelling:</b>"), wid.HBox([button, out1])]), mode_buttons]),  wid.VBox([wid.HTML(value = f"<b>Saving:</b>"), wid.HBox([saveto_but, save_textbox])]), out2])
-        display(cnt)
+        Vb1 = wid.VBox([#wid.HTML(value = f"<b>NaN removal:</b>"), 
+            nanrem_set, out3])
+        #Vb1.box_style()
+        Vb2 = wid.VBox([fc1, fc2])
+        Vb3 = wid.VBox([#wid.HTML(value = f"<b>Line filtering:</b>"), 
+            minline_set, wid.HBox([seltissue, selmode_button])])
+        Vb4 = wid.VBox([wid.VBox([mode_buttons, #wid.HTML(value = f"<b>Labelling:</b>"), 
+                        wid.HBox([button, out1])]),  out2])
+        Vb5 = wid.VBox([#wid.HTML(value = f"<b>Saving:</b>"), 
+                        wid.HBox([saveto_but, save_textbox, out4])])
+        tabs = wid.Tab((Vb1,Vb2, Vb3 ,Vb4, Vb5))
+        tabs.set_title(0, 'NaN removal')
+        tabs.set_title(1, 'File input')
+        tabs.set_title(2, 'Line filtering')
+        tabs.set_title(3, 'Labelling')
+        tabs.set_title(4, 'Saving')
+        #cnt = wid.VBox([Vb1, fc1, fc2, Vb2, Vb3 ,Vb4, Vb5, out2])
+        display(tabs) #display(cnt)
         return val
