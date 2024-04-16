@@ -10,7 +10,7 @@ from ..models.labelling import labelling
 from ..visualization.plot import svenn_intesect
 import random
 
-def delrows_with_nan_percentage(df: pd.DataFrame, perc: float=100.):    
+def delrows_with_nan_percentage(df: pd.DataFrame, perc: float=100., verbose=False):    
     """
     Filter rows in a DataFrame based on the percentage of NaN values.
 
@@ -23,7 +23,8 @@ def delrows_with_nan_percentage(df: pd.DataFrame, perc: float=100.):
     """
     min_count =  int(((100-perc)/100)*df.shape[1] + 1)  
     df_filtered = df.dropna(axis=0, thresh=min_count)
-    print(f"Removed {len(df)-len(df_filtered)} rows from {len(df)} with at least {perc}% NaN")
+    if verbose:
+        print(f"Removed {len(df)-len(df_filtered)} rows from {len(df)} with at least {perc}% NaN")
     return df_filtered
 
 def filter_crispr_by_model(df: pd.DataFrame, df_map: pd.DataFrame, minlines: int=1, 

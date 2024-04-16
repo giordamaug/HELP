@@ -2,7 +2,7 @@ import ipywidgets as wid
 from typing import List
 import matplotlib.pyplot as plt
 from ..models.labelling import labelling
-from ..utility.selection import select_cell_lines
+from ..utility.selection import select_cell_lines, delrows_with_nan_percentage
 from ..preprocess.loaders import feature_assemble
 import pandas as pd
 import numpy as np
@@ -207,16 +207,18 @@ class Help_Dashboard():
         display(cnt)
         return val
     
-    def labelling(self, path: str=os.getcwd(), filename: str='', modelname:str='', rows: int=5, minlines=10, line_group='OncotreeLineage', line_col='ModelID', verbose=False):
+    def labelling(self, path: str=os.getcwd(), filename: str='', modelname:str='', rows: int=5, minlines=10, percent = 100.0, line_group='OncotreeLineage', line_col='ModelID', verbose=False):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
         Parameters
         ----------
-        df : pd.DataFrame
-            The main DataFrame containing the data.
-        df_map : pd.DataFrame
-            A DataFrame used for mapping data.
+        path : str
+            path for input file loading.
+        filename : str
+            name of CRISPR effect input file.
+        modelname : str
+            name of Model input file.
         rows : int, optional
             The number of rows to display in the widget for selecting tissues (default is 5).
         minlines : int, optional
@@ -233,10 +235,34 @@ class Help_Dashboard():
         """
         df_map = None
         df = None
+        df_orig = None
         tissue_list = []
         #tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
+
+        nanrem_set = wid.SelectionSlider(
+            options=range(0, 101),
+            value=int(percent),
+            description='Nan %:',
+            disabled=False,
+            continuous_update=False,
+            orientation='horizontal',
+            readout=True,
+            tooltip='set percentage of nan allowed in genes',
+        )
+        def nanrem_set_changed(b):
+            #global df, df_orig
+            try:
+                df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+                df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                with out3:
+                    out3.clear_output()
+                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
+            except:
+                pass 
+        nanrem_set.observe(nanrem_set_changed, names='value')
+
         minline_set = wid.SelectionSlider(
             options=range(1, 100),
             value=minlines,
@@ -249,8 +275,6 @@ class Help_Dashboard():
         )
         def minline_set_changed(b):
             tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= minline_set.value]
-            #tl = df_map[line_group].dropna().value_counts()
-            #tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minline_set.value, zip(tl.index.values.astype(str), tl.values)))]
             seltissue.options = ['__all__'] +  tissue_list
             seltissue.value=['__all__']
         minline_set.observe(minline_set_changed, names='value')
@@ -296,13 +320,6 @@ class Help_Dashboard():
             disabled=False,
             indent=False
         )
-        #selmode_button = wid.ToggleButtons(
-        #    options=["Nested", "Flatten"],
-        #    description='',    
-        #    button_style='info', # 'success', 'info', 'warning', 'danger' or ''
-        #    layout=wid.Layout(width='100px'),
-        #    tooltips=['mode of mode on tissue list', 'simple mode across all tissue'],
-        #)
         save_textbox = wid.Text(
             value="",
             description='',
@@ -312,7 +329,7 @@ class Help_Dashboard():
         def on_button_clicked(b):
             with out1:
                 out1.clear_output()
-                display(f'Labelling cell lines {seltissue.value} ... wait until DONE...')
+                display(f'Labelling {len(df)} genes of {seltissue.value} ... wait until DONE...')
             with out2:
                 out2.clear_output()
                 if seltissue.value == ('__all__',):
@@ -342,13 +359,18 @@ class Help_Dashboard():
         button.on_click(on_button_clicked)
         out1 = wid.Output()
         out2 = wid.Output()
+        out3 = wid.Output()
         val = wid.ValueWidget()
 
         # Create and display a FileChooser widget
         if filename != '':
             fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv', filename=filename, select_default=True)
             try:
-                df = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+                df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+                df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                with out3:
+                    out3.clear_output()
+                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
             except:
                 fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
             try:
@@ -359,23 +381,22 @@ class Help_Dashboard():
                 pass
         else:
             fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv')
-            # Sample callback function
         def fc1_change_title(fc1):
-            global df_map, df
+            #global df_map, df, df_orig
             try:
-                df = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+                df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+                df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
+                with out3:
+                    out3.clear_output()
+                    display(f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)')
             except:
                 fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
-
-#print(df is not None and df_map is not None)
             try:
                 if len(np.unique(df_map[line_group].dropna().values)) > 0:
                     seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
                     seltissue.value=['__all__']
             except:
                 pass
-            
-            #fc1.title = '<b>Loaded CRISPR file...</b>'
         fc1.register_callback(fc1_change_title)
         if modelname != '':
             fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv', filename=modelname, select_default=True)
@@ -389,7 +410,7 @@ class Help_Dashboard():
         else:
             fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv')
         def fc2_change_title(fc2):
-            global df_map, df
+            #global df_map, df
             df_map = pd.read_csv(fc2.selected)
             try:
                 if len(np.unique(df_map[line_group].dropna().values)) > 0:
@@ -399,6 +420,6 @@ class Help_Dashboard():
                 pass
             #fc1.title = '<b>Loaded Model file...</b>'
         fc2.register_callback(fc2_change_title)
-        cnt = wid.VBox([fc1, fc2, wid.VBox([wid.HTML(value = f"<b>Line filtering</b>"), minline_set, wid.HBox([seltissue, selmode_button])]), wid.VBox([wid.HBox([wid.HTML(value = f"<b>Labelling</b>"), button, out1]), mode_buttons]), wid.HBox([saveto_but, save_textbox]), out2])
+        cnt = wid.VBox([wid.VBox([wid.HTML(value = f"<b>NaN removal:</b>"),nanrem_set, out3]), fc1, fc2, wid.VBox([wid.HTML(value = f"<b>Line filtering:</b>"), minline_set, wid.HBox([seltissue, selmode_button])]), wid.VBox([wid.VBox([wid.HTML(value = f"<b>Labelling:</b>"), wid.HBox([button, out1])]), mode_buttons]),  wid.VBox([wid.HTML(value = f"<b>Saving:</b>"), wid.HBox([saveto_but, save_textbox])]), out2])
         display(cnt)
         return val
