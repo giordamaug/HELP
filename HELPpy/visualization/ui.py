@@ -7,6 +7,7 @@ from ..preprocess.loaders import feature_assemble
 import pandas as pd
 import numpy as np
 import os
+from ipyfilechooser import FileChooser
 
 class Help_Dashboard():
     def __init__(self, verbose: bool = False):
@@ -65,7 +66,7 @@ class Help_Dashboard():
                 out3.clear_output()
                 display(sellabel.value)
         sellabel.observe(sellabel_changed, names='value')
-        saveto_but = wid.ToggleButton(value=False,
+        saveto_but = wid.ToggleButton(value=True,
                 description='Save to:',
                 disabled=False,
                 button_style='', # 'success', 'info', 'warning', 'danger' or ''
@@ -108,7 +109,7 @@ class Help_Dashboard():
         display(cnt)
         return val
         
-    def select_cell_lines(self, df: pd.DataFrame, df_map: pd.DataFrame, outvar: object, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
+    def select_cell_lines(self, df: pd.DataFrame, df_map: pd.DataFrame, outvar: object, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID', verbose=False):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -191,7 +192,7 @@ class Help_Dashboard():
                 display(f'Saving cell lines {seltissue.value} in file {save_textbox.value}... wait until DONE...')
             with out2:
                 out2.clear_output()
-                cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
+                cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False, verbose=verbose)
                 val.value = df[cell_lines]
                 globals()[outvar] = val.value   # set output variable
                 if save_textbox.layout == layout_visible and save_textbox.value != '':
@@ -206,7 +207,7 @@ class Help_Dashboard():
         display(cnt)
         return val
     
-    def labelling(self, df: pd.DataFrame, df_map: pd.DataFrame, rows: int=5, minlines=1, line_group='OncotreeLineage', line_col='ModelID'):
+    def labelling(self, path: str=os.getcwd(), filename: str='', modelname:str='', rows: int=5, minlines=10, line_group='OncotreeLineage', line_col='ModelID', verbose=False):
         """
         Generate an interactive widget for labeling cell lines based on specified criteria.
 
@@ -230,24 +231,45 @@ class Help_Dashboard():
         ipywidgets.ValueWidget
             Widget containing the labeled cell lines.
         """
-
-        tl = df_map[line_group].dropna().value_counts()
-        tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minlines, zip(tl.index.values.astype(str) , tl.values)))]
-        # tissue_list = (np.unique(df_map[line_col].dropna().values.astype(str)))
+        df_map = None
+        df = None
+        tissue_list = []
+        #tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
         layout_hidden  = wid.Layout(visibility = 'hidden')
         layout_visible = wid.Layout(visibility = 'visible')
+        minline_set = wid.SelectionSlider(
+            options=range(1, 100),
+            value=minlines,
+            description='Min lines:',
+            disabled=False,
+            continuous_update=False,
+            orientation='horizontal',
+            readout=True,
+            tooltip='set minimum number of lines for the tissue',
+        )
+        def minline_set_changed(b):
+            tissue_list = [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= minline_set.value]
+            #tl = df_map[line_group].dropna().value_counts()
+            #tissue_list = [x[0] for x in list(filter(lambda x: x[1] >= minline_set.value, zip(tl.index.values.astype(str), tl.values)))]
+            seltissue.options = ['__all__'] +  tissue_list
+            seltissue.value=['__all__']
+        minline_set.observe(minline_set_changed, names='value')
         seltissue = wid.SelectMultiple(
-            options=tissue_list,
-            value=[],
+            options=['__all__'] + tissue_list if tissue_list != [] else [],
+            value=['__all__'] if tissue_list != [] else [],
             rows=rows,
             description='Tissues',
             disabled=False
         )
         def seltissue_changed(b):
-            save_textbox.value = f"{'_'.join([s.replace(' ','-').replace('/','-') for s in seltissue.value])}.csv"
-            with out1:
-                out1.clear_output()
-                display(seltissue.value)
+            if seltissue.value != ():
+                if seltissue.value == ('__all__',):
+                    save_textbox.value = f"PanTissue.csv"
+                else:
+                    save_textbox.value = f"{'_'.join([s.replace(' ','-').replace('/','-') for s in seltissue.value if s != '__all__'])}.csv"
+                with out1:
+                    out1.clear_output()
+                    display(seltissue.value)
         seltissue.observe(seltissue_changed, names='value')
         saveto_but = wid.ToggleButton(value=False,
                 description='Save to:',
@@ -263,32 +285,56 @@ class Help_Dashboard():
                 save_textbox.layout = layout_hidden
         saveto_but.observe(saveto_but_change)
         mode_buttons = wid.ToggleButtons(
-            options=[("2 classes", True), ("3 classes", False), ("2-then-2 classes", False)],
+            options=["E|NE", "E|aE|sNE", "E|(aE|sNE)"],
+            button_style='success',
             description='',
+            tooltips=['2 classes (one division)', '3 classes (one division)', '3 classes (two-times subdivision)'],
         )
+        selmode_button = wid.Checkbox(
+            value=False,
+            description='Nested',
+            disabled=False,
+            indent=False
+        )
+        #selmode_button = wid.ToggleButtons(
+        #    options=["Nested", "Flatten"],
+        #    description='',    
+        #    button_style='info', # 'success', 'info', 'warning', 'danger' or ''
+        #    layout=wid.Layout(width='100px'),
+        #    tooltips=['mode of mode on tissue list', 'simple mode across all tissue'],
+        #)
         save_textbox = wid.Text(
             value="",
             description='',
         )
         save_textbox.layout = layout_visible
-        button = wid.Button(description="Labelling ...")
+        button = wid.Button(description="Apply ...", button_style='primary')
         def on_button_clicked(b):
             with out1:
                 out1.clear_output()
                 display(f'Labelling cell lines {seltissue.value} ... wait until DONE...')
             with out2:
                 out2.clear_output()
-                cell_lines = select_cell_lines(df, df_map, seltissue.value, line_group=line_group, line_col=line_col, nested = False)
-                if mode_buttons.value == "2-then-2 classes":
+                if seltissue.value == ('__all__',):
+                    selector = [x for x in seltissue.options if x != '__all__']
+                else:
+                    selector = [x for x in seltissue.value if x != '__all__']
+                display(selector)
+                cell_lines = select_cell_lines(df, df_map, selector, line_group=line_group, line_col=line_col, 
+                                               nested = selmode_button.value, verbose=verbose)
+                if mode_buttons.value == "E|(aE|sNE)":
                     mode = 'two-by-two' 
                     nclasses = 3
+                    labelnames = {0: 'E', 1: 'aE', 2: 'sNE'}
                 else:
                     mode = 'flat-multi' 
-                    if mode_buttons.value == "2 classes":
+                    if mode_buttons.value == "E|NE":
                         nclasses = 2
+                        labelnames = {0: 'E', 1: 'NE'}
                     else:
                         nclasses = 3
-                val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses)
+                        labelnames = {0: 'E', 1: 'aE', 2: 'sNE'}
+                val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose)
                 if save_textbox.layout == layout_visible and save_textbox.value != "":
                     val.value.to_csv(save_textbox.value, index=True)
                     display(f'Saved cell lines to file: {save_textbox.value}.')
@@ -297,6 +343,62 @@ class Help_Dashboard():
         out1 = wid.Output()
         out2 = wid.Output()
         val = wid.ValueWidget()
-        cnt = wid.VBox([wid.HBox([button, out1]), mode_buttons, seltissue, wid.HBox([saveto_but, save_textbox]), out2])
+
+        # Create and display a FileChooser widget
+        if filename != '':
+            fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv', filename=filename, select_default=True)
+            try:
+                df = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+            except:
+                fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+            try:
+                if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                    seltissue.value=['__all__']
+            except:
+                pass
+        else:
+            fc1 = FileChooser(path, title='<b>Choose CRISPR effect file</b>', filter='*.csv')
+            # Sample callback function
+        def fc1_change_title(fc1):
+            global df_map, df
+            try:
+                df = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+            except:
+                fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+
+#print(df is not None and df_map is not None)
+            try:
+                if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                    seltissue.value=['__all__']
+            except:
+                pass
+            
+            #fc1.title = '<b>Loaded CRISPR file...</b>'
+        fc1.register_callback(fc1_change_title)
+        if modelname != '':
+            fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv', filename=modelname, select_default=True)
+            df_map = pd.read_csv(fc2.selected)
+            try:
+                if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                    seltissue.value=['__all__']
+            except:
+                pass
+        else:
+            fc2 = FileChooser(path, title='<b>Choose Model file</b>', filter='*.csv')
+        def fc2_change_title(fc2):
+            global df_map, df
+            df_map = pd.read_csv(fc2.selected)
+            try:
+                if len(np.unique(df_map[line_group].dropna().values)) > 0:
+                    seltissue.options = ['__all__'] + [tissue for tissue in np.unique(df_map[line_group].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[line_group] == tissue][line_col].values)) >= 1]
+                    seltissue.value=['__all__']
+            except:
+                pass
+            #fc1.title = '<b>Loaded Model file...</b>'
+        fc2.register_callback(fc2_change_title)
+        cnt = wid.VBox([fc1, fc2, wid.VBox([wid.HTML(value = f"<b>Line filtering</b>"), minline_set, wid.HBox([seltissue, selmode_button])]), wid.VBox([wid.HBox([wid.HTML(value = f"<b>Labelling</b>"), button, out1]), mode_buttons]), wid.HBox([saveto_but, save_textbox]), out2])
         display(cnt)
         return val
