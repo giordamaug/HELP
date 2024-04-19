@@ -107,6 +107,9 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: Union
     """
     lines = []
 
+    if isinstance(tissue_list, str) and tissue_list!='all':
+        raise Exception(f"tissue_list argument can be a string \"all\" or any list of strings!")
+
     # Threat the case that all tissues are selected for mode on tissue-specific labels
     if tissue_list=='all':
         # Get all cell lines from the mapping DataFrame 
