@@ -124,6 +124,10 @@ def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: Union
         # Intersect with cell lines in the main DataFrame
         dep_cell_lines = np.intersect1d(df.columns, map_cell_lines)
 
+        # check list of lines is not empyt (the tissue may not be in the Model)
+        if dep_cell_lines == []:
+            raise Exception(f"empty lits of line ... the tissue {tissue} may not be in the model.")
+        
         # Append cell lines to the result list (either nested or flattened)
         if nested:
             lines += [list(dep_cell_lines)]
