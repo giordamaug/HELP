@@ -81,7 +81,8 @@ def filter_cellmap(df_map: pd.DataFrame, minlines: int=1, line_group: str='Oncot
     return df_map[df_map[line_group].isin(tissue_list)]
     
 # select cell lines from depmap CRISPR file
-def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: Union[str,List[str]], line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
+def select_cell_lines(df: pd.DataFrame, df_map: pd.DataFrame, tissue_list: Union[str,List[str]], 
+                      line_group='OncotreeLineage', line_col='ModelID', nested=False, verbose=0):
     """
     Select cell lines based on tissue and mapping information.
 
