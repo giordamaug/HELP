@@ -47,6 +47,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">CITATION:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cite.html">Cite</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../HELPpy.html">HELPpy package</a></li>
@@ -99,7 +103,7 @@
 
 <div class="viewcode-block" id="delrows_with_nan_percentage">
 <a class="viewcode-back" href="../../../HELPpy.utility.html#HELPpy.utility.selection.delrows_with_nan_percentage">[docs]</a>
-<span class="k">def</span> <span class="nf">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">perc</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">100.</span><span class="p">):</span>    
+<span class="k">def</span> <span class="nf">delrows_with_nan_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">perc</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">100.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Filter rows in a DataFrame based on the percentage of NaN values.</span>
 
@@ -112,7 +116,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">min_count</span> <span class="o">=</span>  <span class="nb">int</span><span class="p">(((</span><span class="mi">100</span><span class="o">-</span><span class="n">perc</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  
     <span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="n">min_count</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows from </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> with at least </span><span class="si">{</span><span class="n">perc</span><span class="si">}</span><span class="s2">% NaN&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows from </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> with at least </span><span class="si">{</span><span class="n">perc</span><span class="si">}</span><span class="s2">% NaN&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df_filtered</span></div>
 
 
@@ -178,7 +183,8 @@
 <span class="c1"># select cell lines from depmap CRISPR file</span>
 <div class="viewcode-block" id="select_cell_lines">
 <a class="viewcode-back" href="../../../HELPpy.utility.html#HELPpy.utility.selection.select_cell_lines">[docs]</a>
-<span class="k">def</span> <span class="nf">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_map</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">tissue_list</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_map</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">tissue_list</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> 
+                      <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Select cell lines based on tissue and mapping information.</span>
 
@@ -204,6 +210,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
 
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tissue_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">tissue_list</span><span class="o">!=</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tissue_list argument can be the string </span><span class="se">\&quot;</span><span class="s2">all</span><span class="se">\&quot;</span><span class="s2"> or any list of strings!&quot;</span><span class="p">)</span>
+
     <span class="c1"># Threat the case that all tissues are selected for mode on tissue-specific labels</span>
     <span class="k">if</span> <span class="n">tissue_list</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
         <span class="c1"># Get all cell lines from the mapping DataFrame </span>
@@ -221,6 +230,10 @@
         <span class="c1"># Intersect with cell lines in the main DataFrame</span>
         <span class="n">dep_cell_lines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">map_cell_lines</span><span class="p">)</span>
 
+        <span class="c1"># check list of lines is not empyt (the tissue may not be in the Model)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dep_cell_lines</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;empty lits of line ... the tissue </span><span class="si">{</span><span class="n">tissue</span><span class="si">}</span><span class="s2"> may not be in the model.&quot;</span><span class="p">)</span>
+        
         <span class="c1"># Append cell lines to the result list (either nested or flattened)</span>
         <span class="k">if</span> <span class="n">nested</span><span class="p">:</span>
             <span class="n">lines</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">dep_cell_lines</span><span class="p">)]</span>

@@ -28,6 +28,12 @@ This is the Big Picture to understand the HELPpy approach.
 
 .. toctree::
    :maxdepth: 4
+   :caption: CITATION:
+
+   cite
+
+.. toctree::
+   :maxdepth: 4
    :caption: PACKAGE REFERENCE:
 
    HELPpy
