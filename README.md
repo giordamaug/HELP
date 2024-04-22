@@ -17,16 +17,15 @@ If you want to cite the work in which this software is first used and described,
 please cite the following article:
 
 ```
-@article{Granata2024,
-    doi       = {some DOI},
-    year      = {2024},
-    publisher = {},
-    volume    = {},
-    number    = {},
-    pages     = {},
-    author    = {},
-    title     = {HELP: A computational framework for labelling and
-predicting human context-specific essential genes},
-    journal   = {Journal}
+@article {Granata2024.04.16.589691,
+	author = {Ilaria Granata and Lucia Maddalena and Mario Manzo and Mario  Rosario Guarracino and Maurizio Giordano},
+	title = {HELP: A computational framework for labelling and predicting human context-specific essential genes},
+	elocation-id = {2024.04.16.589691},
+	year = {2024},
+	doi = {10.1101/2024.04.16.589691},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2024/04/20/2024.04.16.589691},
+	eprint = {https://www.biorxiv.org/content/early/2024/04/20/2024.04.16.589691.full.pdf},
+	journal = {bioRxiv}
 }
 ```
