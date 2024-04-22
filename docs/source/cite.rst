@@ -9,7 +9,8 @@ If you use want to reference this software, please use the DOI: doi/10.5281/zeno
 If you want to cite the work in which this software is first used and described, 
 please cite the following article:
 
-.. code:: shell
+.. ref::
+
     @article {Granata2024.04.16.589691,
         author = {Ilaria Granata and Lucia Maddalena and Mario Manzo and Mario  Rosario Guarracino and Maurizio Giordano},
         title = {HELP: A computational framework for labelling and predicting human context-specific essential genes},
