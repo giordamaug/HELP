@@ -41,7 +41,7 @@ If you use want to reference the HELP software, please cite the DOI: doi/10.5281
 If you want to cite the work in which the HELP software was first proposed and described, 
 please cite the following article:
 
-::
+.. code-block:: text
 
     @article {Granata2024.04.16.589691,
         author = {Ilaria Granata and Lucia Maddalena and Mario Manzo and Mario  Rosario Guarracino and Maurizio Giordano},
