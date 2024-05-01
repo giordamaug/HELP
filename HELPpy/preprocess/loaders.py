@@ -35,7 +35,7 @@ def scale_to_essentials(ge_fit, ess_genes, noness_genes):
 
 
 def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}], 
-                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
+                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
@@ -52,6 +52,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     :param int fold: Number of folds for subsampling. Default is 4.
     :param bool saveflag: Whether to save the assembled data to files. Default is False.
     :param bool verbose: Whether to print verbose messages during processing. Default is False.
+    :param bool show_progress: Whether to print progress bar while loading file. Default is False.
 
     :returns: Tuple containing the assembled features (X) and labels (Y) DataFrames.
     :rtype: Tuple[pd.DataFrame, pd.DataFrame]
@@ -103,7 +104,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         # check for chunk splits
         if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
             dfl = []
-            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not show_progress):
                filename, file_ext = os.path.splitext(feat['fname'])
                dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)
@@ -153,7 +154,7 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     return x, lab_df[[colname]].loc[idx_common]
 
 def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std', 'nchunks': 1}], 
-                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
+                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
@@ -170,6 +171,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     :param int fold: Number of folds for subsampling. Default is 4.
     :param bool saveflag: Whether to save the assembled data to files. Default is False.
     :param bool verbose: Whether to print verbose messages during processing. Default is False.
+    :param bool show_progress: Whether to print progress bar while loading file. Default is False.
 
     :returns: Tuple containing the assembled features (X) and labels (Y) DataFrames.
     :rtype: Tuple[pd.DataFrame, pd.DataFrame]
@@ -219,7 +221,7 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         # check for chunk splits
         if 'nchunks' in feat and type(feat['nchunks']) == int and feat['nchunks'] > 1:
             dfl = []
-            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not verbose):
+            for id in tqdm(range(feat['nchunks']), desc="Loading file in chunks", disable=not show_progress):
                filename, file_ext = os.path.splitext(feat['fname'])
                dfl += [pd.read_csv(f"{filename}_{id}{file_ext}", index_col=0)]
             feat_df = pd.concat(dfl)

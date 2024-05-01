@@ -8,12 +8,13 @@ from skimage.filters import threshold_multiotsu, threshold_yen
 import warnings
 from tqdm import tqdm
 
-def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu'):
+def multi_threshold_with_nan_by_column(matrix, num_thresholds, verbose:bool = False, algorithm='otsu'):
     # Apply thresholds and segmentation column-wise
     """
     The matrix quantization algorithm.
 
     :param np.ndarray matrix: Input matrix.
+    :param bool verbose: Verbosity level for printing progress bar (default: False).
     :param int num_thresholds: number of quantized levels.
     :param str algorithm: quantization algorithm type 'otsu|linspace|yen' (default: 'otsu').
 
@@ -38,7 +39,7 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, algorithm='otsu')
     segmented_matrix = np.empty_like(matrix, dtype=float)
     segmented_matrix.fill(0)
     thresholds = []
-    for col_idx in tqdm(range(matrix.shape[1])):
+    for col_idx in tqdm(range(matrix.shape[1]), disable=not verbose):
         col_digitize = np.empty_like(matrix[:,col_idx], dtype=int)
         col_digitize.fill(0)
         col = matrix[:, col_idx]
@@ -122,7 +123,7 @@ def modemax_nan(a: np.ndarray, reducefoo: Callable[[List[int]], int] = max) -> n
     return np.array(res)
 
 def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
-                  verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
+                  show_progress: bool = False, verbose: bool = False, labelnames: Dict[int, str] = {0: 'E', 1: 'NE'},
                   mode='flat-multi', algorithm='otsu', rowname: str = 'gene', colname: str = 'label', 
                   reducefoo: Callable[[List[int]], int]=max) -> Tuple[pd.DataFrame, np.ndarray]:
     """
@@ -133,6 +134,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     :param int n_classes: Number of classes for 'flat-multi' labelling mode, 
                           In 'two-by-two' mode the param is ignored: two binary labelling are computed
                           (default: 2).
+    :param bool show_progress: Verbosity level for printing progress bar (default: False).
     :param bool verbose: Verbosity level for printing information (default: False).
     :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {0: 'E', 1: 'NE'}).
     :param str mode: quantization modes: 'flat-multi' - the quantization applies to all matrix (the mode on all rows give the labels).
@@ -166,7 +168,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     if mode == 'two-by-two':
         if verbose: print("[two-by-two]: 1. Two-class labelling:") 
         # Perform quantization
-        Q, Thr = multi_threshold_with_nan_by_column(T, 2, algorithm=algorithm)
+        Q, Thr = multi_threshold_with_nan_by_column(T, 2, algorithm=algorithm, verbose=show_progress)
         Labels2 = modemax_nan(Q, reducefoo=reducefoo)
         if verbose: print(Labels2.shape)
         dfout =  pd.DataFrame(index=df.index)
@@ -179,7 +181,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
         else:
             TNE = df[columns].loc[NE_genes].to_numpy()
         NumberOfClasses = 2
-        QNE, ThrNE = multi_threshold_with_nan_by_column(TNE, 2, algorithm=algorithm)
+        QNE, ThrNE = multi_threshold_with_nan_by_column(TNE, 2, algorithm=algorithm, verbose=show_progress)
         Labels = modemax_nan(QNE, reducefoo=reducefoo)
         if verbose: print(Labels.shape)
         dfout2 =  pd.DataFrame(index=NE_genes)
@@ -191,7 +193,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     elif mode == 'flat-multi':
         if verbose: print("[flat-multi]: 1. multi-class labelling:") 
         # Perform quantization
-        Q, Thr = multi_threshold_with_nan_by_column(T, n_classes, algorithm=algorithm)
+        Q, Thr = multi_threshold_with_nan_by_column(T, n_classes, algorithm=algorithm, verbose=show_progress)
         Labels = modemax_nan(Q, reducefoo=reducefoo)
         dfout =  pd.DataFrame(index=df.index)
         dfout.index.name = rowname
@@ -201,7 +203,7 @@ def labelling_core(df: pd.DataFrame, columns: List[str] = [], n_classes: int=2,
     return dfout
     
 def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2, 
-             verbose: bool = False, labelnames: Dict[int, str] = {1 : 'NE', 0: 'E'},
+             show_progress: bool = False, verbose: bool = False, labelnames: Dict[int, str] = {1 : 'NE', 0: 'E'},
              mode='flat-multi', rowname: str = 'gene', colname: str = 'label', algorithm='otsu', reducefoo: Callable[[List[int]], int]=max) -> pd.DataFrame:
     """
     Main function for HELP labelling algorithm. Genes are labelled based on a selection of columns in the CRISPR DataFrame (columns=[line1, ..., lineN]). 
@@ -213,6 +215,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
     :param pd.DataFrame df: Input DataFrame.
     :param List[List[str]] columns: List of column names in DataFrame used for labelling (default: []).
     :param bool three_class: Flag for three-class labeling (default: False).
+    :param bool show_progress: Verbosity level for printing progress bar (default: False).
     :param bool verbose: Verbosity level for printing information (default: False).
     :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).
     :param str mode: quantization modes: 'flat-multi' - the quantization applies to all matrix (the mode on all rows give the labels).
@@ -247,7 +250,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
             nanrows = rows_with_all_nan(df[lines])
             if len(nanrows) and verbose:
                 warnings.warn("There are rows with all NaNs, please remove them using the function 'rows_with_all_nan()' and re-apply the labelling. Otherwise you will have NaN labels in your output.")
-            labels = labelling_core(df, columns=lines, verbose=verbose, mode=mode,  
+            labels = labelling_core(df, columns=lines, verbose=verbose, show_progress=show_progress, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
                                   n_classes=n_classes, algorithm=algorithm, reducefoo=reducefoo)
             labels = labels.replace(dict(map(reversed, labelnames.items()))).infer_objects()
@@ -265,7 +268,7 @@ def labelling(df: pd.DataFrame, columns: List[List[str]] = [], n_classes: int=2,
         nanrows = rows_with_all_nan(df[columns])
         if len(nanrows) > 0:
             warnings.warn("There are rows with all NaNs, please remove them using the function 'rows_with_all_nan()' and re-apply the labelling. Otherwise you will ha NaN labels in your output.")
-        dfout = labelling_core(df, columns=columns, verbose=verbose, mode=mode,  
+        dfout = labelling_core(df, columns=columns, verbose=verbose, show_progress=show_progress, mode=mode,  
                                   labelnames=labelnames, rowname=rowname, colname=colname, 
                                   n_classes=n_classes,algorithm=algorithm, reducefoo=reducefoo)
     dfout.index.name = rowname

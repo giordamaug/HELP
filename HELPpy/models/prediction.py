@@ -88,7 +88,7 @@ def set_seed(seed=1):
     random.seed(seed)
     np.random.seed(seed)
 
-def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, show_progress: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a classifier.
 
@@ -99,6 +99,7 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
     :param bool balanced: Whether to use class weights to balance the classes.
     :param bool saveflag: Whether to save the predictions to a CSV file.
     :param str or None outfile: File name for saving predictions.
+    :param bool show_progress: Verbosity level for printing progress bar (default: False).
     :param bool verbose: Whether to print verbose information.
     :param bool display: Whether to display a confusion matrix plot.
     :param int or None seed: Random seed for reproducibility.
@@ -152,7 +153,7 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
         print(f'Classification with {estimator.__class__.__name__}...')
 
     # Iterate over each fold
-    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not verbose)):
+    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not show_progress)):
         train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
         mm = np.concatenate((mm, test_idx))
         # Initialize classifier
@@ -198,7 +199,7 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
 
-def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, display: bool = False,  seed: int = 42):
+def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, show_progress: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a LightGBM classifier.
 
@@ -209,6 +210,7 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
     :param bool balanced: Whether to use class weights to balance the classes.
     :param bool saveflag: Whether to save the predictions to a CSV file.
     :param str or None outfile: File name for saving predictions.
+    :param bool show_progress: Verbosity level for printing progress bar (default: False).
     :param bool verbose: Whether to print verbose information.
     :param bool display: Whether to display a confusion matrix plot.
     :param int or None seed: Random seed for reproducibility.
@@ -265,7 +267,7 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
         print(f'Classification with {method}...')
 
     # Iterate over each fold
-    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not verbose)):
+    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not show_progress)):
         train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
         mm = np.concatenate((mm, test_idx))
         probs = clf.fit(train_x, train_y).predict_proba(test_x)
@@ -309,7 +311,7 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
 
-def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False, seed=42, verbose=False):
+def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False, seed=42, verbose=False, show_progress: bool = False):
     """
     Function to perform cross-validation with stratified sampling using LightGBM classifier 
     and a voting mechanism for binary classification. This function takes in features 
@@ -326,6 +328,7 @@ def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False,
     :param bool balanced: Whether to use class weights to balance the classes.
     :param int or None seed: Random seed for reproducibility.
     :param bool verbose: Whether to print verbose information.
+    :param bool show_progress: Verbosity level for printing progress bar (default: False).
 
     :returns: 
         DataFrame scores: containing evaluation scores. 
@@ -370,7 +373,7 @@ def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False,
         df_x = pd.concat([X.loc[df_index_ne.index], X.loc[df_y_e.index]])
         df_yy = pd.concat([Y.loc[df_index_ne.index], Y.loc[df_y_e.index]])
         
-        _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, seed=seed)
+        _, _, preds = predict_cv(df_x, df_yy, n_splits=n_splits, method='LGBM', balanced=balanced, verbose=verbose, show_progress=show_progress, seed=seed)
         
         # Concatenate predictions for the minority class
         predictions_ne = pd.concat([predictions_ne, preds.loc[df_index_ne.index]])
