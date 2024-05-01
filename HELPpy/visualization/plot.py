@@ -14,7 +14,8 @@ def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize
     :param str ylabel: label for y axis (default is 'EG')
     :param bool saveflag: Whether to save the generated diagram as an image (default is False).
 
-    :return: None
+    :returns: figure and axes of supervenn plot
+    :rtype: List[matplotlib.figure.Figure, dict[str, matplotlib.axes._axes.Axes]]
 
     The function generates a Supervenn diagram using the 'supervenn' library and Matplotlib.
     The diagram visualizes the intersection of multiple sets with labeled areas.
@@ -30,8 +31,10 @@ def svenn_intesect(sets: List[set], labels: List[str], figsize=(10,20), fontsize
         svenn_intesect([set1, set2, set3], ["Set A", "Set B", "Set C"], saveflag=True)
     """
     plt.figure(figsize=figsize)
-    supervenn(sets, labels, widths_minmax_ratio=0.05, side_plots='right')
+    s = supervenn(sets, labels, widths_minmax_ratio=0.05, side_plots='right')
     plt.xlabel(xlabel, fontsize = fontsize)
     plt.ylabel(ylabel, fontsize = fontsize)
     if saveflag: plt.savefig(f"{'_'.join(labels)}_svenn.jpg", dpi=600)
+    return s.figure, s.axes
+
 
