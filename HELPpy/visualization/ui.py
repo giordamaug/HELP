@@ -70,8 +70,11 @@ def cstr(s, color='black'):
 def print_color(t):
     display(html_print(' '.join([cstr(ti, color=ci) for ti,ci in t])))
     
-def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os.getcwd(), filename: str='', modelname:str='', labelname:str='', 
-             rows: int=5, minlines=10, percent = 100.0, line_group='OncotreeLineage', line_col='ModelID', verbose=False, show_progress=False):
+def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os.getcwd(), attributepath: str=os.getcwd(),
+               filename: str='', modelname:str='', labelname:str='', commonlabelname:str = '',
+               rows: int=5, minlines=10, percent = 100.0, 
+               line_group='OncotreeLineage', line_col='ModelID', 
+               verbose=False, show_progress=False):
     """
     Create a data processing pipeline.
 
@@ -83,7 +86,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     :param savepath: Path for saving files.
     :param labelpath: Path for label files.
     :param filename: Name of the CRISPR effect input file.
-    :param modelname: Name of the Model input file.
+    :param modelname: Pathname of the Model input file.
     :param labelname: Name of the label input file.
     :param rows: The number of rows to display in the widget for selecting tissues (default is 5).
     :param minlines: Minimum number of cell lines for tissue/lineage to be considered (default is 1).
@@ -109,7 +112,9 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     out4 = wid.Output()
     out6 = wid.Output()
     out7 = wid.Output()
-
+    acd2 = wid.Accordion()
+    acd6 = wid.Accordion()
+    acd7 = wid.Accordion()
     # PRE-PROCESSING TAB
     nanrem_set = wid.SelectionSlider(
         options=range(0, 101),
@@ -213,7 +218,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
             print_color(((f"{','.join(seltissue.value)}", "orange"),))
     seltissue.observe(seltissue_changed, names='value')
     # IDENTIFICATION TAB
-    fc3 = FileChooser(path, title='Choose file', filter='*.csv', layout=wid.Layout(width='auto'))
+    fc3 = FileChooser(savepath, title='Choose file', filter='*.csv', layout=wid.Layout(width='auto'))
     def fc3_change_title(fc3):
         if os.path.isfile(fc2.selected):
             fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'green')
@@ -288,8 +293,9 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
 
     button.on_click(on_button_clicked)
     # INPUT TAB
-    if filename != '':
-        fc1 = FileChooser(path, filter='*.csv', filename=filename, select_default=True, layout=wid.Layout(width='auto'))
+    if os.path.isfile(filename):
+        fc1 = FileChooser(os.path.dirname(os.path.abspath(filename)), filter='*.csv', filename=os.path.basename(filename), select_default=True, layout=wid.Layout(width='auto'))
+        acd2.children = (fc1,)
         try:
             df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
             df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
@@ -308,10 +314,17 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     val.value = val.value[0], df, val.value[2], val.value[3]
                     fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...', 'red') 
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
+            acd2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
         except:
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+            acd2.set_title(0, f"{_LB_SEL_FILE1}")
     else:
-        fc1 = FileChooser(path, filter='*.csv', layout=wid.Layout(width='auto'))
+        if os.path.isdir(path):
+            fc1 = FileChooser(path, filter='*.csv', layout=wid.Layout(width='auto'))
+        else:
+            fc1 = FileChooser(filter='*.csv', layout=wid.Layout(width='auto'))
+        acd2.children = (fc1,)
+        acd2.set_title(0, f"{_LB_SEL_FILE1}")
     
     def fc1_change_title(fc1):
         try:
@@ -332,14 +345,16 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     val.value = val.value[0], df, val.value[2], val.value[3]
                     fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...', 'red') 
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
-            Vb2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
+            acd2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
         except:
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+            acd2.set_title(0, f"{_LB_SEL_FILE1}")
+        acd2.set_title(0, f"{_LB_SEL_FILE1}")
 
     fc1.register_callback(fc1_change_title)
-    # PREPROCESSING TAB
-    if modelname != '':
-        fc2 = FileChooser(path, filter='*.csv', filename=modelname, select_default=True, layout=wid.Layout(width='auto'))
+    if os.path.isfile(modelname):
+        fc2 = FileChooser(os.path.dirname(os.path.abspath(modelname)), filter='*.csv', filename=os.path.basename(modelname), select_default=True, layout=wid.Layout(width='auto'))
+        acd2.children += (fc2,)
         try:
             df_map = pd.read_csv(fc2.selected)
             df = val.value[1]
@@ -356,10 +371,18 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     val.value = val.value[0], df, val.value[2], val.value[3]
                     fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...', 'red') 
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
+            acd2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
         except:
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
+            acd2.set_title(1, f"{_LB_SEL_FILE2}")
     else:
-        fc2 = FileChooser(path, filter='*.csv', layout=wid.Layout(width='auto'))
+        if os.path.isdir(path):
+            fc2 = FileChooser(path, filter='*.csv', layout=wid.Layout(width='auto'))
+        else:
+            fc2 = FileChooser(filter='*.csv', layout=wid.Layout(width='auto'))
+        acd2.children += (fc2,)
+        acd2.set_title(1, f"{_LB_SEL_FILE2}")
+        
     def fc2_change_title(fc2):
         try:
             df_map = pd.read_csv(fc2.selected)
@@ -377,11 +400,29 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     val.value = val.value[0], df, val.value[2], val.value[3]
                     fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...', 'red') 
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
-            Vb2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
+            acd2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
         except:
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
+            acd2.set_title(1, f"{_LB_SEL_FILE2}")
     fc2.register_callback(fc2_change_title)
     # INTERSECTION TAB
+    files = wid.SelectMultiple(
+        description='Label Files:',
+        options=[]
+    )
+    if os.path.isdir(labelpath):
+        fc4 = FileChooser(labelpath, filter='*.csv', default_path=labelpath, show_only_dirs = True, layout=wid.Layout(width='auto'))
+        fc4._filename.value = os.path.basename(labelpath)
+        fc4._apply_selection()
+        files.options = file_with_ext(fc4.selected, extension='.csv')
+        acd6.children = (wid.HBox([fc4, files]),)
+        acd6.set_title(0, f"{_LB_CNGGENE} ({os.path.basename(fc4.selected_path)})")
+    else:
+        fc4 = FileChooser(filter='*.csv', show_only_dirs = True, layout=wid.Layout(width='auto'))
+        files.options = []
+        acd6.children = (wid.HBox([fc4, files]),)
+        acd6.set_title(0, f"{_LB_SELGENE}")
+
     def fc4_change_title(fc4):
         if not os.path.isdir(fc4.selected):
             fc4._label.value = fc4._LBL_TEMPLATE.format(f'{fc4.selected}... not a directory!', 'red')
@@ -390,29 +431,33 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
             try:
                 files.options = file_with_ext(fc4.selected, extension='.csv')
                 fc4._label.value = fc4._LBL_TEMPLATE.format(f'{fc4.selected}', 'green')
-                acd6.set_title(0, f"{_LB_CNGGENE} ({os.path.basename(fc4.selected)})")
+                acd6.set_title(0, f"{_LB_CNGGENE} ({os.path.basename(fc4.selected_path)})")
             except:
-                fc4._path_label.value = fc4._LBL_TEMPLATE.format(f'{fc4.selected}', 'red') 
+                fc4._path_label.value = fc4._LBL_TEMPLATE.format(f'Proble opening dir {fc4.selected_path}', 'red') 
                 acd6.set_title(0, f"{_LB_SELGENE}")
-    fc4 = FileChooser(savepath, filter='*.csv', default_path=savepath, show_only_dirs = True, layout=wid.Layout(width='auto'))
     fc4.register_callback(fc4_change_title)
-    fc4._filename.value = os.path.basename(savepath)
-    fc4._apply_selection()
 
-    fc5 = FileChooser(filter='*.csv', default_path=savepath, layout=wid.Layout(width='auto'))
+    if os.path.isfile(commonlabelname):
+        fc5 = FileChooser(os.path.dirname(os.path.abspath(commonlabelname)), filter='*.csv', 
+                          filename=os.path.basename(commonlabelname), default_path=os.path.dirname(os.path.abspath(commonlabelname)), layout=wid.Layout(width='auto'))
+        fc5._filename.value = os.path.basename(commonlabelname)
+        fc5._apply_selection()
+        acd6.children += (fc5,)
+        acd6.set_title(1, f"{_LB_CNGGENE_SUB} ({os.path.basename(fc5.selected)})")
+    else:
+        fc5 = FileChooser(filter='*.csv', layout=wid.Layout(width='auto'))
+        acd6.children += (fc5,)
+        acd6.set_title(1, f"{_LB_SELGENE_SUB}")
+
     def fc5_change_title(fc5):
         if os.path.isfile(fc5.selected) and match_item(fc5.selected, '*.csv'):
             fc5._label.value = fc5._LBL_TEMPLATE.format(f'{fc5.selected}', 'green')
-            acd6.set_title(1, f"{_LB_CNGGENE_SUB} ({fc5.selected_filename})")
+            acd6.set_title(1, f"{_LB_CNGGENE_SUB} ({os.path.basename(fc5.selected)})")
         else:
             fc5._label.value = fc5._LBL_TEMPLATE.format(f'{fc5.selected}', 'red')
             acd6.set_title(1, f"{_LB_SELGENE_SUB}")
     fc5.register_callback(fc5_change_title)
 
-    files = wid.SelectMultiple(
-        description='Label Files:',
-        options=[f for f in file_with_ext(savepath, extension='.csv')]
-    )
     setbut = wid.Button(description="Intersect ...", button_style='primary')
     def on_setbut_clicked(b):
         try:
@@ -437,44 +482,63 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
 
     setbut.on_click(on_setbut_clicked)
     # PREDICTION TAB
-    fc6 = FileChooser(path, default_path=path, show_only_dirs = True, layout=wid.Layout(width='auto'))
+    attrfiles = wid.SelectMultiple(
+        description='Attribute Files:', style= {'description_width': 'initial'},
+        options=[],
+        disable=True
+    )
+    if os.path.isdir(attributepath):
+        fc6 = FileChooser(attributepath, default_path=attributepath, show_only_dirs = True, layout=wid.Layout(width='auto'))
+        fc6._filename.value = os.path.basename(attributepath)
+        fc6._apply_selection()
+        attrfiles.options = file_with_ext(fc6.selected, extension='.csv')
+        acd7.children += (wid.HBox([fc6,attrfiles], layout={'flex-flow': 'flex-wrap'}),)
+        acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
+    else:
+        fc6 = FileChooser(show_only_dirs = True, layout=wid.Layout(width='auto'))
+        attrfiles.options = []
+        acd7.children += (wid.HBox([fc6,attrfiles], layout={'flex-flow': 'flex-wrap'}),)
+        acd7.set_title(0, f"{_LB_SELATTR}")
+
     def fc6_change_title(fc6):
         if not os.path.isdir(fc6.selected):
             fc6._label.value = fc6._LBL_TEMPLATE.format(f'{fc6.selected}... not a directory!', 'red')
-            Vb7.set_title(0, f"{_LB_SELATTR}")
+            acd7.set_title(0, f"{_LB_SELATTR}")
         else:
             try:
                 attrfiles.options = file_with_ext(fc6.selected, extension='.csv')
                 fc6._label.value = fc6._LBL_TEMPLATE.format(f'{fc6.selected}', 'green')
-                Vb7.children[0].set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
+                acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
             except:
                 fc6._path_label.value = fc6._LBL_TEMPLATE.format(f'{fc6.selected_path}', 'red') 
-                Vb7.children[0].set_title(0, f"{_LB_SELATTR}")
+                acd7.set_title(0, f"{_LB_SELATTR}")
     fc6.register_callback(fc6_change_title)
-    fc6._filename.value = os.path.basename(path)
-    fc6._apply_selection()
-    if labelname != '':
-        fc7 = FileChooser(labelpath, filter='*.csv', filename=labelname, select_default=True, layout=wid.Layout(width='auto'))
+    if os.path.isfile(labelname):
+        fc7 = FileChooser(os.path.dirname(os.path.abspath(labelname)), filename=os.path.basename(labelname), select_default=True, layout=wid.Layout(width='auto'))
+        acd7.children += (fc7,)
         try:
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'green')
+            acd7.set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
         except:
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'Problem loading {fc7.selected} file ...', 'red') 
+            acd7.set_title(1, f"{_LB_SEL_LAB}")
     else:
-        fc7 = FileChooser(labelpath, filter='*.csv', layout=wid.Layout(width='auto'))
+        if os.path.isdir(labelpath):
+            fc7 = FileChooser(labelpath, filter='*.csv', layout=wid.Layout(width='auto'))
+        else:
+            fc7 = FileChooser(filter='*.csv', layout=wid.Layout(width='auto'))
+        acd7.children += (fc7,)
+        acd7.set_title(1, f"{_LB_SEL_LAB}")
 
     def fc7_change_title(fc7):
         if os.path.isfile(fc7.selected):
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'green')
-            Vb7.children[0].set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
+            acd7.set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
         else:
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'red')
-            Vb7.children[0].set_title(1, f"{_LB_SEL_LAB}")
+            acd7.set_title(1, f"{_LB_SEL_LAB}")
+
     fc7.register_callback(fc7_change_title)
-    attrfiles = wid.SelectMultiple(
-        description='Attribute Files:', style= {'description_width': 'initial'},
-        options=[f for f in file_with_ext(labelpath, extension='.csv')],
-        disable=True
-    )
     valbut = wid.Button(description="Validate ...", button_style='primary')
     def on_valbut_clicked(b):
         try:
@@ -512,9 +576,12 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     valbut.on_click(on_valbut_clicked)
 
     # MAIN WIDGET GUI    
-    Vb2 = wid.Accordion(children=[fc1, fc2])
-    Vb2.set_title(0, f"{_LB_SEL_FILE1}") if fc1.selected_filename == "" else Vb2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
-    Vb2.set_title(1, f"{_LB_SEL_FILE2}") if fc2.selected_filename == "" else Vb2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
+    txt2 = wid.HTMLMath(
+        value=r"In this section you select the CRIPR effect file and the mOdel file. Be sure after selection the file path appears in green text.",
+        placeholder='',
+        description='',
+    )
+    Vb2 = wid.VBox([txt2, acd2])
     Vb1 = wid.Accordion(children=[wid.VBox([nanrem_set, out3]), wid.VBox([minline_set, selselector, wid.HBox([seltissue, selmode_button])])])
     Vb1.set_title(0, f"{_LB_NANREM} ({percent}%)")
     Vb1.set_title(1, f"{_LB_FILTER} (Lines: {minline_set.value})")
@@ -522,13 +589,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     acd4.set_title(0, f"{_LB_LABEL} ({mode_buttons.value})")
     acd4.set_title(1, f"{_LB_SAVE}") if fc3.selected_filename == "" else acd4.set_title(1, f"{_LB_SAVE} ({fc3.selected_filename})")
     Vb4 = wid.HBox([acd4, wid.VBox([wid.HBox([button, out1]), out2])]) 
-    acd6 = wid.Accordion(children=[wid.HBox([fc4, files]), fc5])
-    acd6.set_title(0, f"{_LB_SELGENE}") if fc4.selected_path == "" else acd6.set_title(0, f"{_LB_CNGGENE} ({os.path.basename(fc4.selected_path)})")
-    acd6.set_title(1, f"{_LB_SELGENE_SUB}") if fc5.selected_filename is None else acd6.set_title(1, f"{_LB_CNGGENE_SUB} ({fc5.selected_filename})")
     Vb6 = wid.HBox([acd6, wid.VBox([setbut, out6])])
-    acd7 = wid.Accordion(children=[wid.HBox([fc6,attrfiles], layout={'flex-flow': 'flex-wrap'}), fc7])
-    acd7.set_title(0, f"{_LB_SEL_ATTR}") if fc6.selected_path == "" else acd7.set_title(0, f"{_LB_CNG_ATTR} ({os.path.basename(fc6.selected_path)})")
-    acd7.set_title(1, f"{_LB_SEL_LAB}") if fc7.selected_filename is None else acd7.set_title(1, f"{_LB_CNG_LAB} ({fc7.selected_filename})")
     Vb7 = wid.HBox([acd7,wid.VBox([valbut, out7])])
     tabs.children = [Vb2, Vb1, Vb4, Vb6, Vb7]
     tabs.set_title(0, f'{_LB_INPUT}')
