@@ -513,6 +513,8 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                 fc6._path_label.value = fc6._LBL_TEMPLATE.format(f'{fc6.selected_path}', 'red') 
                 acd7.set_title(0, f"{_LB_SELATTR}")
     fc6.register_callback(fc6_change_title)
+    #fc6._filename.value = os.path.basename(attributepath)
+    #fc6._apply_selection()
     if os.path.isfile(labelname):
         fc7 = FileChooser(os.path.dirname(os.path.abspath(labelname)), filename=os.path.basename(labelname), select_default=True, layout=wid.Layout(width='auto'))
         acd7.children += (fc7,)
@@ -576,20 +578,36 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     valbut.on_click(on_valbut_clicked)
 
     # MAIN WIDGET GUI    
+    txt1 = wid.HTMLMath(
+        value=r"""In this section you filter the CRIPR score lines by:
+                <ol>
+                  <li>removing genes with a certain percentage of missing cell line scores;</li>
+                  <li>select the type of cell lines grouping (by tissue, by disease, etc.) and</li>
+                  <li>filter the grous with a minimum amount of lines;</li>
+                  <li>select a specific set of groups from which to extract cell line score.</li>
+                </ol>""",
+    )
     txt2 = wid.HTMLMath(
-        value=r"In this section you select the CRIPR effect file and the mOdel file. Be sure after selection the file path appears in green text.",
-        placeholder='',
-        description='',
+        value=r"In this section you select the CRIPR effect file and the Model file. Be sure after selection the file path appears in green text.",
+    )
+    txt6 = wid.HTMLMath(
+        value=r"""In this section you can intersect contet specific EGs from different tissues/diseases:
+                <ol>
+                  <li>select the directory where are the label files of context-specific genes;</li>
+                  <li>select the an option label file representing EGs you want to exclude from intersection</li>
+                  <li>apply intersection an display the resulting Super Venn diagram.</li>
+                </ol>""",
     )
     Vb2 = wid.VBox([txt2, acd2])
-    Vb1 = wid.Accordion(children=[wid.VBox([nanrem_set, out3]), wid.VBox([minline_set, selselector, wid.HBox([seltissue, selmode_button])])])
-    Vb1.set_title(0, f"{_LB_NANREM} ({percent}%)")
-    Vb1.set_title(1, f"{_LB_FILTER} (Lines: {minline_set.value})")
+    acd1 = wid.Accordion(children=[wid.VBox([nanrem_set, out3]), wid.VBox([minline_set, selselector, wid.HBox([seltissue, selmode_button])])])
+    acd1.set_title(0, f"{_LB_NANREM} ({percent}%)")
+    acd1.set_title(1, f"{_LB_FILTER} (Lines: {minline_set.value})")
+    Vb1 = wid.VBox([txt1, acd1])
     acd4 = wid.Accordion(children=[mode_buttons, wid.HBox([fc3, saveto_but,out4])])
     acd4.set_title(0, f"{_LB_LABEL} ({mode_buttons.value})")
     acd4.set_title(1, f"{_LB_SAVE}") if fc3.selected_filename == "" else acd4.set_title(1, f"{_LB_SAVE} ({fc3.selected_filename})")
     Vb4 = wid.HBox([acd4, wid.VBox([wid.HBox([button, out1]), out2])]) 
-    Vb6 = wid.HBox([acd6, wid.VBox([setbut, out6])])
+    Vb6 = wid.VBox([txt6, wid.HBox([acd6, wid.VBox([setbut, out6])])])
     Vb7 = wid.HBox([acd7,wid.VBox([valbut, out7])])
     tabs.children = [Vb2, Vb1, Vb4, Vb6, Vb7]
     tabs.set_title(0, f'{_LB_INPUT}')
