@@ -34,7 +34,7 @@ class InvalidFileNameError(Exception):
     if os.altsep:
         invalid_str.append(os.altsep)
 
-    def __init__(self, filename: str, message: Optional[str] = None):
+    def __init__(self, filename: Tuple[str], message: Optional[str] = None):
         self.filename = filename
         self.message = message or f'{filename} cannot contain {self.invalid_str}'
         super().__init__(self.message)
@@ -357,7 +357,7 @@ class MyFileChooser(VBox, ValueWidget):
 
             self._pathlist.options = subpaths
             self._pathlist.value = restricted_path
-            self._filename.options = tuple([f for f in filename if os.path.isfile(f)])
+            self._filename.options = filename
 
             # file/folder real names
             dircontent_real_names = get_dir_contents(
@@ -400,10 +400,10 @@ class MyFileChooser(VBox, ValueWidget):
 
             # If the value in the filename Text box equals a value in the
             # Select box and the entry is a file then select the entry.
-            self._dircontent.value = ()
-            for f in filename:
-                if ((f in dircontent_real_names) and os.path.isfile(os.path.join(path, f))):
-                    self._dircontent.value += (self._map_name_to_disp[f],)
+            #self._dircontent.value = ()
+            #for f in filename:
+            #    if ((f in dircontent_real_names) and os.path.isfile(os.path.join(path, f))):
+            #        self._dircontent.value += (self._map_name_to_disp[f],)
 
             # Update the state of the select button
             if self._gb.layout.display is None:
@@ -443,7 +443,7 @@ class MyFileChooser(VBox, ValueWidget):
 
         except PermissionError:
             # Deselect the unreadable folder and generate a warning
-            self._dircontent.value = None
+            self._dircontent.value = ()
             warnings.warn(f'Permission denied for {path}', RuntimeWarning)
 
         # Reenable triggers
@@ -453,7 +453,7 @@ class MyFileChooser(VBox, ValueWidget):
 
     def _on_pathlist_select(self, change: Mapping[str, str]) -> None:
         """Handle selecting a path entry."""
-        self._set_form_values(self._expand_path(change['new']), self._filename.value)
+        self._set_form_values(self._expand_path(change['new']), self._filename.options)
 
     def _on_dircontent_select(self, change: Mapping[str, str]) -> None:
         """Handle selecting a folder entry."""
@@ -465,11 +465,11 @@ class MyFileChooser(VBox, ValueWidget):
         # Check if folder or file
         if os.path.isdir(new_path):
             path = new_path
-            filename = ()
+            filename = self._filename.options
         else:
             path = self._expand_path(self._pathlist.value)
-            ff = change['new']
-            filename = tuple([self._map_disp_to_name[f] for f in ff])
+            self._selected_filename = tuple([self._map_disp_to_name[f] for f in change['new']])
+            filename = self._selected_filename
 
         print(filename, self._selected_filename)
         self._set_form_values(path, filename)
@@ -526,7 +526,7 @@ class MyFileChooser(VBox, ValueWidget):
             self._select.disabled = False
 
             if all([os.path.isfile(f) for f in selected]):
-                self._label.value = self._LBL_TEMPLATE.format(f'{",".join([os.path.basename(f) for f in selected])} in path {self._selected_path}', 'green')
+                self._label.value = self._LBL_TEMPLATE.format(f'{"<br>".join([os.path.basename(f) for f in selected])} <br>in path {self._selected_path}', 'green')
             else:
                 self._label.value = self._LBL_TEMPLATE.format('some paths are not files', 'orange')
 
