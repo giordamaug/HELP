@@ -98,7 +98,6 @@ def match_item(item: str, filter_pattern: Sequence[str]) -> bool:
 def get_dir_contents(
         path: str,
         show_hidden: bool = False,
-        show_only_dirs: bool = False,
         dir_icon: Optional[str] = None,
         dir_icon_append: bool = False,
         filter_pattern: Optional[Sequence[str]] = None,
@@ -115,7 +114,7 @@ def get_dir_contents(
             full_item = os.path.join(path, item)
             if append and os.path.isdir(full_item):
                 dirs.append(item)
-            elif append and not show_only_dirs:
+            elif append:
                 if filter_pattern:
                     if match_item(item, filter_pattern):
                         files.append(item)
@@ -172,7 +171,7 @@ def normalize_path(path: str) -> str:
     return normalized_path
 
 """Main Class"""
-class MyFileChooser(VBox, ValueWidget):
+class FileCollector(VBox, ValueWidget):
     """FileChooser class."""
 
     _LBL_TEMPLATE = '<span style="color:{1};">{0}</span>'
@@ -189,7 +188,6 @@ class MyFileChooser(VBox, ValueWidget):
             select_default: bool = False,
             dir_icon: Optional[str] = '\U0001F4C1 ',
             dir_icon_append: bool = False,
-            show_only_dirs: bool = False,
             filter_pattern: Optional[Sequence[str]] = None,
             sandbox_path: Optional[str] = None,
             layout: Layout = Layout(width='500px'),
@@ -213,7 +211,6 @@ class MyFileChooser(VBox, ValueWidget):
         self._select_default = select_default
         self._dir_icon = dir_icon
         self._dir_icon_append = dir_icon_append
-        self._show_only_dirs = show_only_dirs
         self._filter_pattern = filter_pattern
         self._sandbox_path = normalize_path(sandbox_path) if sandbox_path is not None else None
         self._callback: Optional[Callable] = None
@@ -226,14 +223,12 @@ class MyFileChooser(VBox, ValueWidget):
                 grid_area='pathlist'
             )
         )
-        self._filename = Select(
-            options= [],
+        self._filename = SelectMultiple(
+            options= (),
             layout=Layout(
                 width='auto',
                 grid_area='filename',
-                display=(None, "none")[self._show_only_dirs]
             ),
-            disabled=True
         )
         self._dircontent = SelectMultiple(
             rows=8,
@@ -257,6 +252,22 @@ class MyFileChooser(VBox, ValueWidget):
                 width='6em'
             )
         )
+        self._add = Button(
+            description='>>',
+            layout=Layout(
+                min_width='3em',
+                width='3em',
+                display='none'
+            )
+        )
+        self._remove = Button(
+            description='<<',
+            layout=Layout(
+                min_width='3em',
+                width='3em',
+                display='none'
+            )
+        )
         self._title = HTML(
             value=title
         )
@@ -270,6 +281,8 @@ class MyFileChooser(VBox, ValueWidget):
         self._filename.observe(self._on_filename_change, names='value')
         self._select.on_click(self._on_select_click)
         self._cancel.on_click(self._on_cancel_click)
+        self._add.on_click(self._on_add_click)
+        self._remove.on_click(self._on_remove_click)
 
         # Selected file label
         self._label = HTML(
@@ -284,18 +297,21 @@ class MyFileChooser(VBox, ValueWidget):
             children=[
                 self._pathlist,
                 self._filename,
+                self._add,
+                self._remove,
                 self._dircontent
             ],
             layout=Layout(
                 display='none',
                 width='auto',
                 grid_gap='0px 0px',
-                grid_template_rows='auto auto',
-                grid_template_columns='60% 40%',
+                grid_template_rows='auto auto auto',
+                grid_template_columns='50% 4% 35%',
                 grid_template_areas='''
-                    'pathlist filename'
-                    'dircontent filename'
-                    '''.format(('filename', 'pathlist')[self._show_only_dirs])
+                    'pathlist pathlist pathlist'
+                    'dircontent add filename'
+                    'dircontent remove filename'
+                    '''
             )
         )
 
@@ -303,6 +319,7 @@ class MyFileChooser(VBox, ValueWidget):
             children=[
                 self._select,
                 self._cancel,
+                #self._add,
                 Box([self._label], layout=Layout(overflow='auto'))
             ],
             layout=Layout(width='auto')
@@ -342,10 +359,6 @@ class MyFileChooser(VBox, ValueWidget):
             # Fail early if the folder can not be read
             _ = os.listdir(path)
 
-            # In folder only mode zero out the filename
-            if self._show_only_dirs:
-                filename = []
-
             # Set form values
             restricted_path = self._restrict_path(path)
             subpaths = get_subpaths(restricted_path)
@@ -357,13 +370,12 @@ class MyFileChooser(VBox, ValueWidget):
 
             self._pathlist.options = subpaths
             self._pathlist.value = restricted_path
-            self._filename.options = filename
-
+            #self._filename.options = tuple(set.union(set(filename),set(self._filename.options)))
+            
             # file/folder real names
             dircontent_real_names = get_dir_contents(
                 path,
                 show_hidden=self._show_hidden,
-                show_only_dirs=self._show_only_dirs,
                 dir_icon=None,
                 filter_pattern=self._filter_pattern,
                 top_path=self._sandbox_path
@@ -373,7 +385,6 @@ class MyFileChooser(VBox, ValueWidget):
             dircontent_display_names = get_dir_contents(
                 path,
                 show_hidden=self._show_hidden,
-                show_only_dirs=self._show_only_dirs,
                 dir_icon=self._dir_icon,
                 dir_icon_append=self._dir_icon_append,
                 filter_pattern=self._filter_pattern,
@@ -405,42 +416,6 @@ class MyFileChooser(VBox, ValueWidget):
             #    if ((f in dircontent_real_names) and os.path.isfile(os.path.join(path, f))):
             #        self._dircontent.value += (self._map_name_to_disp[f],)
 
-            # Update the state of the select button
-            if self._gb.layout.display is None:
-                # Disable the select button if path and filename
-                # - equal an existing folder in the current view
-                # - contains an invalid character sequence
-                # - equal the already selected values
-                # - don't match the provided filter pattern(s)
-                check1 = []
-                check2 = []
-                check3 = []
-                check4 = []
-                check5 = []
-                for f in filename:
-                    check1 += [f in dircontent_real_names]
-                    check2 += [os.path.isdir(os.path.join(path, f))]
-                    check3 += [not is_valid_filename(f)]
-
-                    # Only check selected if selected is set
-                    if ((self._selected_path is not None) and (f in self._selected_filename)):
-                        selected = os.path.join(self._selected_path, f)
-                        check4 += [os.path.join(path, f) == selected]
-                    else:
-                        check4 += [False]
-
-                    # Ensure only allowed extensions are used
-                    if self._filter_pattern:
-                        check5 += [not match_item(filename, self._filter_pattern)]
-                    else:
-                        check5 += [False]
-
-
-                if (all(check1) and all(check2)) or all(check3) or all(check4) or all(check5):
-                    self._select.disabled = True
-                else:
-                    self._select.disabled = False
-
         except PermissionError:
             # Deselect the unreadable folder and generate a warning
             self._dircontent.value = ()
@@ -471,13 +446,12 @@ class MyFileChooser(VBox, ValueWidget):
             self._selected_filename = tuple([self._map_disp_to_name[f] for f in change['new']])
             filename = self._selected_filename
 
-        print(filename, self._selected_filename)
         self._set_form_values(path, filename)
 
     def _on_filename_change(self, change: Mapping[str, str]) -> None:
         """Handle filename field changes."""
-        print("C", change['new'])
-        self._set_form_values(self._expand_path(self._pathlist.value), change['new'])
+        #self._set_form_values(self._expand_path(self._pathlist.value), change['new'])
+        #self._set_form_values(self._expand_path(self._pathlist.value), self._filename.value)
 
     def _on_select_click(self, _b) -> None:
         """Handle select button clicks."""
@@ -496,11 +470,39 @@ class MyFileChooser(VBox, ValueWidget):
                     # Support previous behaviour of not passing self
                     self._callback()
 
+    def _on_add_click(self, _b) -> None:
+        """Handle add button clicks."""
+        # If shown, close the dialog and apply the selection
+        self._apply_add()
+
+        # Execute callback function
+        if self._callback is not None:
+            try:
+                self._callback(self)
+            except TypeError:
+                # Support previous behaviour of not passing self
+                self._callback()
+
+    def _on_remove_click(self, _b) -> None:
+        """Handle add button clicks."""
+        # If shown, close the dialog and apply the selection
+        self._apply_rm()
+
+        # Execute callback function
+        if self._callback is not None:
+            try:
+                self._callback(self)
+            except TypeError:
+                # Support previous behaviour of not passing self
+                self._callback()
+
     def _show_dialog(self) -> None:
         """Show the dialog."""
         # Show dialog and cancel button
         self._gb.layout.display = None
         self._cancel.layout.display = None
+        self._add.layout.display = None
+        self._remove.layout.display = None
 
         # Show the form with the correct path and filename
         if ((self._selected_path is not None) and (self._selected_filename != ())):
@@ -512,21 +514,35 @@ class MyFileChooser(VBox, ValueWidget):
 
         self._set_form_values(path, filename)
 
+    def _apply_add(self) -> None:
+        """Add element to the selection list."""
+        path = self._expand_path(self._pathlist.value)
+        if self._filter_pattern and isinstance(self._filter_pattern, str):
+            oldpaths = tuple([os.path.join(path, f) for f in self._selected_filename if match_item(f, self._filter_pattern)])
+        else:
+            oldpaths = tuple([os.path.join(path, f) for f in self._selected_filename])
+        self._filename.options = tuple(set.union(set(oldpaths),set(self._filename.options)))
+
+    def _apply_rm(self) -> None:
+        """Remove element to the selection list."""
+        self._filename.options = tuple(set(self._filename.options) - set(list(self._filename.value)))
+        self._set_form_values(self._expand_path(self._pathlist.value), self._filename.options)
+
     def _apply_selection(self) -> None:
         """Close the dialog and apply the selection."""
         self._selected_path = self._expand_path(self._pathlist.value)
-        print("D: ", self._filename.options)
         self._selected_filename = self._filename.options
 
         if ((self._selected_path is not None) and (self._selected_filename != ())):
             selected = tuple([os.path.join(self._selected_path, f) for f in self._selected_filename])
             self._gb.layout.display = 'none'
             self._cancel.layout.display = 'none'
+            self._add.layout.display = 'none'
             self._select.description = self._change_desc
             self._select.disabled = False
 
             if all([os.path.isfile(f) for f in selected]):
-                self._label.value = self._LBL_TEMPLATE.format(f'{"<br>".join([os.path.basename(f) for f in selected])} <br>in path {self._selected_path}', 'green')
+                self._label.value = self._LBL_TEMPLATE.format("<style>p{word-wrap: break-word}</style> " + f'{"<p>".join(selected)}', 'green')
             else:
                 self._label.value = self._LBL_TEMPLATE.format('some paths are not files', 'orange')
 
@@ -534,6 +550,8 @@ class MyFileChooser(VBox, ValueWidget):
         """Handle cancel button clicks."""
         self._gb.layout.display = 'none'
         self._cancel.layout.display = 'none'
+        self._add.layout.display = 'none'
+        self._remove.layout.display = 'none'
         self._select.disabled = False
 
     def _expand_path(self, path) -> str:
@@ -575,6 +593,8 @@ class MyFileChooser(VBox, ValueWidget):
         # Hide dialog and cancel button
         self._gb.layout.display = 'none'
         self._cancel.layout.display = 'none'
+        self._add.layout.display = 'none'
+        self._remove.layout.display = 'none'
 
         # Reset select button and label
         self._select.description = self._select_desc
@@ -708,35 +728,6 @@ class MyFileChooser(VBox, ValueWidget):
         self.reset()
 
     @property
-    def show_only_dirs(self) -> bool:
-        """Get show_only_dirs property value."""
-        return self._show_only_dirs
-
-    @show_only_dirs.setter
-    def show_only_dirs(self, show_only_dirs: bool) -> None:
-        """Set show_only_dirs property value."""
-        self._show_only_dirs = show_only_dirs
-
-        # Update widget layout
-        self._filename.disabled = self._show_only_dirs
-        self._filename.layout.display = (None, "none")[self._show_only_dirs]
-        self._gb.layout.children = [
-            self._pathlist,
-            self._dircontent
-        ]
-
-        if not self._show_only_dirs:
-            self._gb.layout.children.insert(1, self._filename)
-
-        self._gb.layout.grid_template_areas = '''
-            'pathlist {}'
-            'dircontent dircontent'
-            '''.format(('filename', 'pathlist')[self._show_only_dirs])
-
-        # Reset the dialog
-        self.reset()
-
-    @property
     def filter_pattern(self) -> Optional[Sequence[str]]:
         """Get file name filter pattern."""
         return self._filter_pattern
@@ -748,7 +739,7 @@ class MyFileChooser(VBox, ValueWidget):
         self.refresh()
 
     @property
-    def value(self) -> Optional[str]:
+    def value(self) -> Optional[Tuple[str]]:
         """Get selected value."""
         return self.selected
 
@@ -781,7 +772,6 @@ class MyFileChooser(VBox, ValueWidget):
         properties += f", select_desc='{self._select_desc}'"
         properties += f", change_desc='{self._change_desc}'"
         properties += f", select_default={self._select_default}"
-        properties += f", show_only_dirs={self._show_only_dirs}"
         properties += f", dir_icon_append={self._dir_icon_append}"
 
         if self._sandbox_path is not None:
@@ -802,6 +792,6 @@ class MyFileChooser(VBox, ValueWidget):
         """Register a callback function."""
         self._callback = callback
 
-    def get_interact_value(self) -> Optional[str]:
+    def get_interact_value(self) -> Optional[Tuple[str]]:
         """Return the value which should be passed to interactive functions."""
         return self.selected
