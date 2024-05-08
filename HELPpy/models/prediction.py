@@ -88,6 +88,33 @@ def set_seed(seed=1):
     random.seed(seed)
     np.random.seed(seed)
 
+def evaluate_fold(X, y, train_idx, test_idx, estimator, genes, gg, yy, predictions, probabilities, scores, columns_names, fold, nclasses=2):
+    train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx]
+    
+    # Initialize classifier
+    clf = clone(estimator)
+    probs = clf.fit(train_x, train_y).predict_proba(test_x)
+    preds = np.argmax(probs, axis=1)
+    gg = np.concatenate((gg, genes[test_idx]))
+    yy = np.concatenate((yy, test_y))
+    cm = confusion_matrix(test_y, preds)
+    predictions = np.concatenate((predictions, preds))
+    probabilities = np.concatenate((probabilities, probs[:, 0]))
+
+    # Calculate and store evaluation metrics for each fold
+    roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="macro")
+    scores = pd.concat([scores, pd.DataFrame([[roc_auc,
+                                                accuracy_score(test_y, preds),
+                                                balanced_accuracy_score(test_y, preds),
+                                                cm[0, 0] / (cm[0, 0] + cm[0, 1]),
+                                                cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                                                matthews_corrcoef(test_y, preds),
+                                                cm]],
+                                              columns=columns_names, index=[fold])],
+                       axis=0)
+    
+    return gg, yy, predictions, probabilities, scores
+
 def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, show_progress: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a classifier.
@@ -139,8 +166,7 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
     kf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
 
     nclasses = len(np.unique(y))
-    mm = np.array([], dtype=np.int64)
-    gg = np.array([])
+    gg = np.array([], dtype=str)
     yy = np.array([], dtype=np.int64)
     predictions = np.array([], dtype=np.int64)
     probabilities = np.array([])
@@ -154,29 +180,29 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
 
     # Iterate over each fold
     for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not show_progress)):
-        train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
-        mm = np.concatenate((mm, test_idx))
+        gg, yy, predictions, probabilities, scores = evaluate_fold(X, y, train_idx, test_idx, estimator, genes, gg, yy, predictions, probabilities, scores, columns_names, fold, nclasses)
+        #train_x, train_y, test_x, test_y = X[train_idx], y[train_idx], X[test_idx], y[test_idx],
         # Initialize classifier
-        clf = clone(estimator)
-        probs = clf.fit(train_x, train_y).predict_proba(test_x)
-        preds = np.argmax(probs, axis=1)
-        gg = np.concatenate((gg, genes[test_idx]))
-        yy = np.concatenate((yy, test_y))
-        cm = confusion_matrix(test_y, preds)
-        predictions = np.concatenate((predictions, preds))
-        probabilities = np.concatenate((probabilities, probs[:, 0]))
+        #clf = clone(estimator)
+        #probs = clf.fit(train_x, train_y).predict_proba(test_x)
+        #preds = np.argmax(probs, axis=1)
+        #gg = np.concatenate((gg, genes[test_idx]))
+        #yy = np.concatenate((yy, test_y))
+        #cm = confusion_matrix(test_y, preds)
+        #predictions = np.concatenate((predictions, preds))
+        #probabilities = np.concatenate((probabilities, probs[:, 0]))
 
         # Calculate and store evaluation metrics for each fold
-        roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="macro")
-        scores = pd.concat([scores, pd.DataFrame([[roc_auc,
-                                                    accuracy_score(test_y, preds),
-                                                    balanced_accuracy_score(test_y, preds),
-                                                    cm[0, 0] / (cm[0, 0] + cm[0, 1]),
-                                                    cm[1, 1] / (cm[1, 0] + cm[1, 1]),
-                                                    matthews_corrcoef(test_y, preds),
-                                                    cm]],
-                                                  columns=columns_names, index=[fold])],
-                           axis=0)
+        #roc_auc = roc_auc_score(test_y, probs[:, 1]) if nclasses == 2 else roc_auc_score(test_y, probs, multi_class="ovr", average="macro")
+        #scores = pd.concat([scores, pd.DataFrame([[roc_auc,
+        #                                            accuracy_score(test_y, preds),
+        #                                            balanced_accuracy_score(test_y, preds),
+        #                                            cm[0, 0] / (cm[0, 0] + cm[0, 1]),
+        #                                            cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+        #                                            matthews_corrcoef(test_y, preds),
+        #                                            cm]],
+        #                                          columns=columns_names, index=[fold])],
+        #                   axis=0)
 
     # Calculate mean and standard deviation of evaluation metrics
     df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
