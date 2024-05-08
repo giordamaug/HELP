@@ -224,6 +224,7 @@ class FileCollector(VBox, ValueWidget):
             )
         )
         self._filename = SelectMultiple(
+            rows=8,
             options= (),
             layout=Layout(
                 width='auto',
@@ -303,10 +304,11 @@ class FileCollector(VBox, ValueWidget):
             ],
             layout=Layout(
                 display='none',
+                min_width='450px',
                 width='auto',
-                grid_gap='0px 0px',
+                grid_gap='2px 2px 2px',
                 grid_template_rows='auto auto auto',
-                grid_template_columns='50% 4% 35%',
+                grid_template_columns='auto 5% auto',
                 grid_template_areas='''
                     'pathlist pathlist pathlist'
                     'dircontent add filename'
