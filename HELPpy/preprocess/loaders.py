@@ -35,7 +35,7 @@ def scale_to_essentials(ge_fit, ess_genes, noness_genes):
 
 
 def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'BIO.csv', 'fixna' : False, 'normalize': 'std', 'nchunks': 1}], 
-                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
+                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
@@ -50,7 +50,6 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
     :param bool subsample: Whether to subsample the data. Default is False.
     :param int seed: Random seed for reproducibility. Default is 1.
     :param int fold: Number of folds for subsampling. Default is 4.
-    :param bool saveflag: Whether to save the assembled data to files. Default is False.
     :param bool verbose: Whether to print verbose messages during processing. Default is False.
     :param bool show_progress: Whether to print progress bar while loading file. Default is False.
 
@@ -67,10 +66,9 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         subsample = False
         seed = 1
         fold = 4
-        saveflag = False
         verbose = False
 
-        X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, saveflag, verbose)
+        X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, verbose)
     """
 
     # Load labels from the specified file
@@ -145,16 +143,11 @@ def feature_assemble(label_file: str, features: List[Dict[str, Union[str, bool]]
         print(f'{len(idx_common)} labeled genes over a total of {len(lab_df)}')
         print(f'{x.shape} data input')
 
-    # Save the assembled data if required
-    if saveflag:
-        x.to_csv(os.path.join(work_dir, "X.csv"))
-        lab_df[[colname]].loc[idx_common].to_csv(os.path.join(work_dir, "Y.csv"))
-
     # Return the assembled features (X) and labels (Y)
     return x, lab_df[[colname]].loc[idx_common]
 
 def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str, bool]]] = [{'fname': 'bio+gtex.csv', 'fixna' : True, 'normalize': 'std', 'nchunks': 1}], 
-                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, saveflag: bool = False, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
+                     colname: str="label", subsample: bool = False, seed: int = 1, fold: int = 4, verbose: bool = False, show_progress: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Assemble features and labels for machine learning tasks.
 
@@ -169,7 +162,6 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     :param bool subsample: Whether to subsample the data. Default is False.
     :param int seed: Random seed for reproducibility. Default is 1.
     :param int fold: Number of folds for subsampling. Default is 4.
-    :param bool saveflag: Whether to save the assembled data to files. Default is False.
     :param bool verbose: Whether to print verbose messages during processing. Default is False.
     :param bool show_progress: Whether to print progress bar while loading file. Default is False.
 
@@ -186,11 +178,10 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
         subsample = False
         seed = 1
         fold = 4
-        saveflag = False
         verbose = False
 
         df_label = pd.read_csv("label_file.csv2, index_col=0)
-        X, Y = feature_assemble_df(df_label, colname='label', features, colname, subsample, seed, fold, saveflag, verbose)
+        X, Y = feature_assemble_df(df_label, colname='label', features, colname, subsample, seed, fold, verbose)
     """
 
     # Subsample the data if required (subsample majority class fild-times rispect the minority class)
@@ -261,11 +252,6 @@ def feature_assemble_df(lab_df: pd.DataFrame, features: List[Dict[str, Union[str
     if verbose:
         print(f'{len(idx_common)} labeled genes over a total of {len(lab_df)}')
         print(f'{x.shape} data input')
-
-    # Save the assembled data if required
-    if saveflag:
-        x.to_csv(os.path.join(work_dir, "X.csv"))
-        lab_df[[colname]].loc[idx_common].to_csv(os.path.join(work_dir, "Y.csv"))
 
     # Return the assembled features (X) and labels (Y)
     return x, lab_df[[colname]].loc[idx_common]
