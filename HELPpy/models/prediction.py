@@ -139,6 +139,7 @@ def ipy_k_fold_cv(X, Y, estimator, progressbar: IntProgress, n_splits=10, seed: 
     progressbar.value=0
     progressbar.min=0
     progressbar.max=kf.get_n_splits()
+    progressbar.layout.display = None
     # Iterate over each fold
     for fold, (train_idx, test_idx) in enumerate(kf.split(np.arange(len(X)), y)):
         genes, targets, predictions, probabilities, metrics = evaluate_fold(X[train_idx], y[train_idx], X[test_idx], y[test_idx], 
@@ -146,6 +147,7 @@ def ipy_k_fold_cv(X, Y, estimator, progressbar: IntProgress, n_splits=10, seed: 
                                                                             predictions, probabilities, fold, nclasses)
         scores = pd.concat([scores, pd.DataFrame.from_dict(metrics, orient='index').T.set_index('index')], axis=0)
         progressbar.value = (fold+1)
+    progressbar.layout.display = 'none'
 
     # Calculate mean and standard deviation of evaluation metrics
     df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,

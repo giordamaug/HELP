@@ -308,7 +308,7 @@ class FileCollector(VBox, ValueWidget):
                 width='auto',
                 grid_gap='2px 2px 2px',
                 grid_template_rows='auto auto auto',
-                grid_template_columns='auto 5% auto',
+                grid_template_columns='auto auto auto',
                 grid_template_areas='''
                     'pathlist pathlist pathlist'
                     'dircontent add filename'
@@ -452,6 +452,10 @@ class FileCollector(VBox, ValueWidget):
 
     def _on_filename_change(self, change: Mapping[str, str]) -> None:
         """Handle filename field changes."""
+        if self._filename.options != ():
+            self._select.disabled = False
+        else:
+            self._select.disabled = True
         #self._set_form_values(self._expand_path(self._pathlist.value), change['new'])
         #self._set_form_values(self._expand_path(self._pathlist.value), self._filename.value)
 
@@ -476,6 +480,8 @@ class FileCollector(VBox, ValueWidget):
         """Handle add button clicks."""
         # If shown, close the dialog and apply the selection
         self._apply_add()
+        if self._filename.options != ():
+            self._select.disabled = False
 
         # Execute callback function
         if self._callback is not None:
@@ -515,6 +521,8 @@ class FileCollector(VBox, ValueWidget):
             filename = self._default_filename
 
         self._set_form_values(path, filename)
+        if self._filename.options == ():
+            self._select.disabled = True
 
     def _apply_add(self) -> None:
         """Add element to the selection list."""
@@ -544,7 +552,7 @@ class FileCollector(VBox, ValueWidget):
             self._select.disabled = False
 
             if all([os.path.isfile(f) for f in selected]):
-                self._label.value = self._LBL_TEMPLATE.format("<style>p{word-wrap: break-word}</style> " + f'{"<p>".join(selected)}', 'green')
+                self._label.value = self._LBL_TEMPLATE.format("<style>p{line-height:10px;word-wrap: break-word}</style><p> " + f'{"<p>".join(selected)}', 'green')
             else:
                 self._label.value = self._LBL_TEMPLATE.format('some paths are not files', 'orange')
 
