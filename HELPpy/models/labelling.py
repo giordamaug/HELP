@@ -5,9 +5,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage import io, color
 from skimage.filters import threshold_multiotsu, threshold_yen
+from sklearn.cluster import AgglomerativeClustering
 import warnings
 from tqdm import tqdm
 
+def clustering_labelling(matrix, num_thresholds=2, verbose:bool = False, algorithm='ag'):
+    segmented_matrix = np.empty_like(matrix, dtype=float)
+    for col_idx in tqdm(range(matrix.shape[1]), disable=not verbose):
+        col = matrix[:, col_idx]
+        valid_idxs = np.where(~np.isnan(col))
+        nan_idxs = np.where(np.isnan(col))
+        # if all NaN in columns, left it as it is
+        if len(valid_idxs) == 0:
+            segmented_matrix[:,col_idx] = col
+            continue  # Skip if all values in the column are NaN
+        if algorithm == 'ag':
+            col_digitized = AgglomerativeClustering(n_clusters=num_thresholds).fit_predict(matrix[valid_idxs, col_idx].reshape(-1,1))
+        segmented_matrix[valid_idxs,col_idx] = col_digitized
+        segmented_matrix[nan_idxs,col_idx] = np.nan
+    return segmented_matrix
+    
 def multi_threshold_with_nan_by_column(matrix, num_thresholds, verbose:bool = False, algorithm='otsu'):
     # Apply thresholds and segmentation column-wise
     """
