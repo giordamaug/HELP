@@ -7,7 +7,11 @@ from skimage import io, color
 from skimage.filters import threshold_multiotsu, threshold_yen
 from sklearn.cluster import AgglomerativeClustering
 import warnings
-from tqdm.notebook import tqdm
+from ..utility.utils import in_notebook
+if in_notebook():
+    from tqdm.notebook import tqdm
+else:
+    from tqdm import tqdm
 
 def clustering_labelling(matrix, num_thresholds=2, verbose:bool = False, algorithm='ag'):
     segmented_matrix = np.empty_like(matrix, dtype=float)

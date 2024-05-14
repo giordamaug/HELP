@@ -16,7 +16,11 @@ from sklearn.base import clone, BaseEstimator, ClassifierMixin, RegressorMixin
 from joblib import Parallel, delayed
 from lightgbm import LGBMClassifier 
 import numpy as np
-from tqdm import tqdm
+from ..utility.utils import in_notebook
+if in_notebook():
+    from tqdm.notebook import tqdm
+else:
+    from tqdm import tqdm
 from ipywidgets import IntProgress
 class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
 

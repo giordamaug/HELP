@@ -1,12 +1,7 @@
 import pandas as pd
 import numpy as np
-import os
 from typing import List, Dict, Tuple, Union, Callable
 import matplotlib.pyplot as plt
-from ..models.labelling import labelling
-from ..visualization.plot import svenn_intesect
-import random
-from ..models.labelling import labelling
 from ..visualization.plot import svenn_intesect
 import random
 
@@ -225,82 +220,6 @@ def EG_tissues_intersect(tissues: Dict[str, pd.DataFrame], common_df: None or pd
             diffs[tl] = setsl[i]
         if verbose:
             print(f'{len(diffs[tl])} genes only in {tl}')
-
-    # Return the sets of EGs, intersection, and differences
-    return sets, inset, diffs
-                             
-# Compute intersection of essential genes by tissues
-def EG_tissues_intersect_dolabelling(df: pd.DataFrame, df_map: pd.DataFrame, tissues: List[str] = [], subtract_common: bool = False, three_class: bool = False,
-                              display: bool = False, verbose: bool = False, barheight: int = 2, barwidth: int = 10, fontsize: int = 17) -> pd.DataFrame:
-    """
-    Identify overlapping and unique Essential Genes (EGs) by tissues.
-
-    :param pd.DataFrame df: DataFrame containing cell line information.
-    :param pd.DataFrame df_map: DataFrame containing mapping information.
-    :param List[str] tissues: List of tissues for which EGs need to be identified.
-    :param bool subtract_common: Whether to subtract common EGs from pantissue labeling.
-    :param bool three_class: Whether to use a three-class labeling (E, NE, NC).
-    :param bool display: Whether to display a Venn diagram.
-    :param bool verbose: Verbosity level for printing information.
-    :param int barheight: Height of the Venn diagram.
-    :param int barwidth: Width of the Venn diagram.
-    :param int fontsize: Font size for the Venn diagram.
-
-    :return: Tuple containing sets of EGs, intersection of EGs, and differences in EGs.
-    :rtype: Tuple[List[set], set, Dict[str, set]] 
-    :example:
-
-    .. code-block:: python
-
-        df = pd.DataFrame(...)
-        df_map = pd.DataFrame(...)
-        tissues = ['Tissue1', 'Tissue2']
-        sets, inset, diffs = EG_tissues_intersect_dolabelling(df, df_map, tissues, subtract_common=True, three_class=False, display=True, verbose=True)
-    """
- 
-    sets = []
-
-    # If subtract_common is True, calculate the set of pan-tissue labels
-    if subtract_common:
-        if verbose:
-            print("Subtracting common EG of pan-tissue labeling")
-        pan_labels_df = labelling(df, verbose=verbose)
-        panset = set(pan_labels_df[pan_labels_df['label'] == 'E'].index.values)
-
-    # Iterate over each tissue in the provided list
-    for tissue in tissues:
-        # Select cell lines for the given tissue
-        cell_lines = select_cell_lines(df, df_map, [tissue])
-
-        # If there are cell lines, calculate the set of EGs for the tissue
-        if len(cell_lines) > 0:
-            labels_df = labelling(df, cell_lines, verbose=verbose)
-            newset = set(labels_df[labels_df['label'] == 'E'].index.values)
-
-            # If subtract_common is True, subtract the pan-tissue labels
-            if subtract_common:
-                newset = newset - panset
-
-            # Add the set of EGs for the tissue to the list
-            sets += [newset]
-
-    # If display is True, display a Venn diagram
-    if display:
-        svenn_intesect(sets, tissues, figsize=(barwidth, barheight * len(tissues)), fontsize=fontsize)
-
-    # Calculate the intersection of sets
-    inset = set.intersection(*sets)
-
-    # Print verbose information about the overlapping genes
-    if verbose:
-        print(f'Overlapping of {len(inset)} genes')
-
-    # Calculate differences in EGs for each tissue
-    diffs = {}
-    for i, tissue in enumerate(tissues):
-        diffs[tissue] = sets[i] - set.union(*(sets[:i] + sets[i + 1:]))
-        if verbose:
-            print(f'{len(diffs[tissue])} genes only in {tissue}')
 
     # Return the sets of EGs, intersection, and differences
     return sets, inset, diffs
