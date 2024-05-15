@@ -1,20 +1,22 @@
 import ipywidgets as wid
 from typing import List
 import matplotlib.pyplot as plt
-from ..models.labelling import labelling
-from ..utility.selection import select_cell_lines, delrows_with_nan_percentage
-from ..preprocess.loaders import feature_assemble_df
-from ..models.prediction import VotingSplitClassifier, k_fold_cv
+from HELPpy.models.labelling import labelling
+from HELPpy.utility.selection import select_cell_lines, delrows_with_nan_percentage
+from HELPpy.utility.utils import in_notebook, pandas_readcsv, pandas_writecsv
+from HELPpy.preprocess.loaders import load_features
+from HELPpy.models.prediction import VotingSplitClassifier, k_fold_cv
 import pandas as pd
 import numpy as np
 import os, glob
 from ipyfilechooser import FileChooser
-from .filecollector import FileCollector
+from HELPpy.visualization.filecollector import FileCollector
 from IPython.display import HTML as html_print
 from IPython.display import display
-from ..visualization.plot import svenn_intesect
+from HELPpy.visualization.plot import svenn_intesect
 from typing import List, Sequence, Iterable, Optional
 import fnmatch
+import traceback
 
 _LB_APPLY = 'Apply on'
 _LB_DONE = 'DONE'
@@ -69,7 +71,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                filename: str='', modelname:str='', labelname:str='', commonlabelname:str = '',
                rows: int=5, minlines=10, percent = 100.0, 
                line_group='OncotreeLineage', line_col='ModelID', 
-               verbose=False, show_progress=False):
+               verbose=False, show_progress=True):
     """
     Create a data processing pipeline.
 
@@ -94,19 +96,24 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     :return: Widget containing the labeled cell lines.
     """
     tabs = wid.Tab()
-    df_map = None
-    df = None
-    df_orig = None
     val = wid.ValueWidget()
-    val.value = None, df, df_orig, df_map 
+    val.value = {'df_label': None,  # result of labelling
+                 'df_crispr': None, 'df_crispr_orig': None, 'df_model': None, # input files for labelling
+                 'df_x': None, 'df_y': None, # input fileas for prediction
+                 'df_results': {'allscores': None, 'scores': None, 'predictions': None}, # prediction results
+                 } 
     tissue_list = []
     selector_list = []
+    out01 = wid.Output()
+    out02 = wid.Output()
     out1 = wid.Output()
     out2 = wid.Output()
     out3 = wid.Output()
     out4 = wid.Output()
     out6 = wid.Output()
-    out7 = wid.Output()
+    out70 = wid.Output()
+    out71 = wid.Output()
+    out72 = wid.Output()
     acd2 = wid.Accordion()
     acd6 = wid.Accordion()
     acd7 = wid.Accordion()
@@ -123,17 +130,17 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     )
     def nanrem_set_changed(b):
         try:
-            df_orig = val.value[2]
+            df_orig = val.value['df_crispr_orig']
             df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
             try:
-                df_map = val.value[3]
+                df_map = val.value['df_model']
                 tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) 
                                if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                 seltissue.options = ['__all__'] +  tissue_list
                 seltissue.value=['__all__']
-                val.value = val.value[0], df[np.intersect1d(df.columns,df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
+                val.value['df_crispr'] = df[np.intersect1d(df.columns,df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)], 
             except:
-                val.value = val.value[0], df, val.value[2], val.value[3]
+                val.value['df_crispr'] = df
             with out3:
                 out3.clear_output()
                 print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
@@ -153,14 +160,14 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
         tooltip='set minimum number of lines for the tissue',
     )
     def minline_set_changed(b):
+        df = val.value['df_crispr']
         try:
             tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
             seltissue.options = ['__all__'] +  tissue_list
             seltissue.value=['__all__']
-            val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
+            val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)] 
             Vb1.set_title(1, f"{_LB_FILTER} (Lines: {minline_set.value})")
         except:
-            val.value = val.value[0], df, val.value[2], val.value[3]
             with out1:
                 out1.clear_output()
                 print_color(((f'Problem processing map file ...', 'red'),)) 
@@ -173,19 +180,18 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
         disabled=False,
     )
     def selselector_changed(b):
-        df = val.value[1]
-        df_map = val.value[3]
+        df = val.value['df_crispr']
+        df_map = val.value['df_model']
         if selselector.value != ():
             try:
                 tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                 seltissue.options = ['__all__'] +  tissue_list
                 seltissue.value=['__all__']
-                val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
-            except:
-                val.value = val.value[0], df, val.value[2], val.value[3]
+                val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)] 
+            except Exception as e:
                 with out1:
                     out1.clear_output()
-                    print_color(((f'Problem processing map file ...', 'red'),)) 
+                    print_color(((f'Problem processing map file ...{e}', 'red'),)) 
             with out1:
                 out1.clear_output()
                 display(selselector.value)
@@ -215,7 +221,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     # IDENTIFICATION TAB
     fc3 = FileChooser(savepath, title='Choose file', filter_pattern='*.csv', layout=wid.Layout(width='auto'))
     def fc3_change_title(fc3):
-        if os.path.isfile(fc2.selected):
+        if os.path.isfile(fc3.selected):
             fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'green')
             acd4.set_title(1, f"{_LB_SAVE} ({fc3.selected_filename})")
         else:
@@ -224,18 +230,15 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     fc3.register_callback(fc3_change_title)
     saveto_but = wid.Button(description="Save ...", button_style='primary')
     def on_savebutton_clicked(b):
-        if isinstance(val.value[0], pd.DataFrame):
+        if isinstance(val.value['df_label'], pd.DataFrame):
             try:
                 fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'orange')
-                val.value[0].to_csv(fc3.selected, index=True)
-                fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'green')
-            except:
-                fc3._label.value = fc3._LBL_TEMPLATE.format(f'Problem saving {fc3.selected}!', 'green')
                 with out4:
                     out4.clear_output()
-                    print_color(((f'Problem saving label file (maybe empty)!', 'red'),))
-            with out4:
-                out4.clear_output()
+                    pandas_writecsv(fc3.selected, val.value['df_label'], index=True)
+                fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'green')
+            except Exception as e:
+                fc3._label.value = fc3._LBL_TEMPLATE.format(f'Problem saving {fc3.selected}... {e}!', 'green')
         else:
             with out4:
                 out4.clear_output()
@@ -256,8 +259,8 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     )
     button = wid.Button(description=_LB_APPLY, button_style='primary')
     def on_button_clicked(b):
-        df = val.value[1]
-        df_map = val.value[3]
+        df = val.value['df_crispr']
+        df_map = val.value['df_model']
         with out1:
             out1.clear_output()
             print_color(((f'Labelling {len(df)} genes of {",".join(seltissue.value)} ...', 'orange'),))
@@ -267,7 +270,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                 selector = [x for x in seltissue.options if x != '__all__']
             else:
                 selector = [x for x in seltissue.value if x != '__all__']
-            cell_lines = select_cell_lines(df, df_map, selector, line_group=line_group, line_col=line_col, 
+            cell_lines = select_cell_lines(df, df_map, selector, line_group=selselector.value, line_col=line_col, 
                                             nested = selmode_button.value, verbose=verbose)
             if mode_buttons.value == "E|(aE|sNE)":
                 mode = 'two-by-two' 
@@ -281,7 +284,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                 else:
                     nclasses = 3
                     labelnames = {0: 'E', 1: 'aE', 2: 'sNE'}
-            val.value = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose, show_progress=show_progress), df, val.value[2], val.value[3]
+            val.value['df_label'] = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose, show_progress=show_progress), df, val.value[2], val.value[3]
         with out1:
             out1.clear_output()
             print_color(((_LB_DONE, 'green'),))
@@ -290,70 +293,71 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     # INPUT TAB
     if os.path.isfile(filename):
         fc1 = FileChooser(os.path.dirname(os.path.abspath(filename)), filter_pattern='*.csv', filename=os.path.basename(filename), select_default=True, layout=wid.Layout(width='auto'))
-        acd2.children = (fc1,)
+        acd2.children = (wid.HBox([fc1,out01]),)
         try:
-            df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
-            df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
-            df_map = val.value[3]
-            val.value = val.value[0],df, df_orig, val.value[3]
+            val.value['df_crispr_orig'] = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+            val.value['df_crispr']  = delrows_with_nan_percentage(val.value['df_crispr_orig'], perc=float(nanrem_set.value))
+            df_map = val.value['df_model']
+            df = val.value['df_crispr']
             with out3:
                 out3.clear_output()
                 print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
-            if df_map is not None and len(np.unique(df_map[line_group].dropna().values)) > 0:
+            if df_map is not None and len(np.unique(df_map[selselector.value].dropna().values)) > 0:
                 try:
                     tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                     seltissue.options = ['__all__'] + tissue_list
                     seltissue.value=['__all__']
-                    val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
-                except:
-                    val.value = val.value[0], df, val.value[2], val.value[3]
-                    fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...', 'red') 
+                    val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)], 
+                except Exception as e:
+                    fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...{e}', 'red') 
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
             acd2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
-        except:
-            fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+        except Exception as e:
+            fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...{e}', 'red') 
             acd2.set_title(0, f"{_LB_SEL_FILE1}")
     else:
         if os.path.isdir(path):
             fc1 = FileChooser(path, filter_pattern='*.csv', layout=wid.Layout(width='auto'))
         else:
             fc1 = FileChooser(filter_pattern='*.csv', layout=wid.Layout(width='auto'))
-        acd2.children = (fc1,)
+        acd2.children = (wid.HBox([fc1,out01]),)
         acd2.set_title(0, f"{_LB_SEL_FILE1}")
     
     def fc1_change_title(fc1):
         try:
-            df_orig = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+            with out01:
+                out01.clear_output()
+                df_orig = pandas_readcsv(fc1.selected)
+            df_orig = df_orig.rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
             df = delrows_with_nan_percentage(df_orig, perc=float(nanrem_set.value))
-            df_map = val.value[3]
-            val.value = val.value[0],df ,df_orig, val.value[3]
+            val.value['df_crispr_orig'] = df_orig
+            val.value['df_crispr'] = df
+            df_map = val.value['df_model']
             with out3:
                 out3.clear_output()
                 print_color(((f'Removed {len(df_orig)-len(df)}/{len(df_orig)} rows (with at least {nanrem_set.value}% NaN)', 'green'),))
-            if df_map is not None and len(np.unique(df_map[line_group].dropna().values)) > 0:
+            if df_map is not None and len(np.unique(df_map[selselector.value].dropna().values)) > 0:
                 try:
                     tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                     seltissue.options = ['__all__'] + tissue_list
                     seltissue.value=['__all__']
-                    val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
-                except:
-                    val.value = val.value[0], df, val.value[2], val.value[3]
-                    fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...', 'red') 
+                    val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)] 
+                except Exception as e:
+                    fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem reading {fc1.selected} file ...{e}', 'red') 
             fc1._label.value = fc1._LBL_TEMPLATE.format(f'{fc1.selected}', 'green')
             acd2.set_title(0, f"{_LB_CNG_FILE1} ({fc1.selected_filename})")
-        except:
-            fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ...', 'red') 
+        except Exception as e:
+            fc1._label.value = fc1._LBL_TEMPLATE.format(f'Problem loading {fc1.selected} file ... {e}', 'red')
             acd2.set_title(0, f"{_LB_SEL_FILE1}")
-        acd2.set_title(0, f"{_LB_SEL_FILE1}")
 
     fc1.register_callback(fc1_change_title)
     if os.path.isfile(modelname):
         fc2 = FileChooser(os.path.dirname(os.path.abspath(modelname)), filter_pattern='*.csv', filename=os.path.basename(modelname), select_default=True, layout=wid.Layout(width='auto'))
-        acd2.children += (fc2,)
+        acd2.children += (wid.HBox([fc2,out02]),)
         try:
             df_map = pd.read_csv(fc2.selected)
-            df = val.value[1]
-            val.value = val.value[0], val.value[1] ,val.value[2], df_map
+            df = val.value['df_crispr']
+            val.value['df_model'] = df_map
             selselector.options = list(df_map.columns)
             selselector.value = line_group if line_group in selselector.options else selselector.options[0]
             if len(np.unique(df_map[selselector.value].dropna().values)) > 0:
@@ -361,28 +365,29 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                     seltissue.options = ['__all__'] + tissue_list
                     seltissue.value=['__all__']
-                    val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
-                except:
-                    val.value = val.value[0], df, val.value[2], val.value[3]
-                    fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...', 'red') 
+                    val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)]
+                except Exception as e:
+                    fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...{e}', 'red') 
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
             acd2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
-        except:
-            fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
+        except Exception as e:
+            fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...{e}', 'red') 
             acd2.set_title(1, f"{_LB_SEL_FILE2}")
     else:
         if os.path.isdir(path):
             fc2 = FileChooser(path, filter_pattern='*.csv', layout=wid.Layout(width='auto'))
         else:
             fc2 = FileChooser(filter_pattern='*.csv', layout=wid.Layout(width='auto'))
-        acd2.children += (fc2,)
+        acd2.children += (wid.HBox([fc2,out02]),)
         acd2.set_title(1, f"{_LB_SEL_FILE2}")
         
     def fc2_change_title(fc2):
         try:
-            df_map = pd.read_csv(fc2.selected)
-            df = val.value[1]
-            val.value = val.value[0], val.value[1] ,val.value[2], df_map
+            with out02:
+                out02.clear_output()
+                df_map = pandas_readcsv(fc2.selected)
+            df = val.value['df_crispr']
+            val.value['df_model'] = df_map
             selselector.options = list(df_map.columns)
             selselector.value = line_group if line_group in selselector.options else selselector.options[0]
             if len(np.unique(df_map[selselector.value].dropna().values)) > 0:
@@ -390,14 +395,13 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     tissue_list = [tissue for tissue in np.unique(df_map[selselector.value].dropna().values) if len(np.intersect1d(df.columns, df_map[df_map[selselector.value] == tissue][line_col].values)) >= minline_set.value]
                     seltissue.options = ['__all__'] + tissue_list
                     seltissue.value=['__all__']
-                    val.value = val.value[0], df[np.intersect1d(df.columns, df_map[df_map[line_group].isin(tissue_list)][line_col].values)], val.value[2], val.value[3]
-                except:
-                    val.value = val.value[0], df, val.value[2], val.value[3]
-                    fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...', 'red') 
+                    val.value['df_crispr'] = df[np.intersect1d(df.columns, df_map[df_map[selselector.value].isin(tissue_list)][line_col].values)]
+                except Exception as e:
+                    fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem reading {fc2.selected} file ...{e}', 'red') 
             fc2._label.value = fc2._LBL_TEMPLATE.format(f'{fc2.selected}', 'green')
             acd2.set_title(1, f"{_LB_CNG_FILE2} ({fc2.selected_filename})")
-        except:
-            fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...', 'red') 
+        except Exception as e:
+            fc2._label.value = fc2._LBL_TEMPLATE.format(f'Problem loading {fc2.selected} file ...{e}', 'red') 
             acd2.set_title(1, f"{_LB_SEL_FILE2}")
     fc2.register_callback(fc2_change_title)
     # INTERSECTION TAB
@@ -457,7 +461,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     csEGs += [set(csEG)]
                 with out6:
                     out6.clear_output()
-                    fig1, axes1 = svenn_intesect(csEGs, labels=[x.split('.')[0] for x in fc4.selected], ylabel='EGs', figsize=(10,4))
+                    fig1, axes1 = svenn_intesect(csEGs, labels=[os.path.basename(x).split('.')[0] for x in fc4.selected], ylabel='EGs', figsize=(10,4))
                     plt.show(fig1)
             except Exception as e:
                 with out6:
@@ -469,41 +473,65 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     # PREDICTION TAB
     if os.path.isdir(attributepath):
         fc6 = FileCollector(attributepath, default_path=attributepath, filter_pattern='*.csv', layout=wid.Layout(width='auto'))
-        acd7.children += (fc6,)
+        acd7.children += (wid.VBox([fc6,out72]),)
         acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(attributepath)})")
     else:
         fc6 = FileCollector(filter_pattern='*.csv', layout=wid.Layout(width='auto'))
-        acd7.children += (fc6,)
+        acd7.children += (wid.VBox([fc6,out72]),)
         acd7.set_title(0, f"{_LB_SELATTR}")
 
     def fc6_change_title(fc4):
         if fc6.selected != ():
-            acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
+            try:
+                with out72:
+                    out72.clear_output()
+                    val.value['df_x'] = load_features(list(fc6.selected), fixna=True, normalize='std', verbose=verbose, show_progress=show_progress)
+                acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
+            except Exception as e:
+                with out72:
+                    out72.clear_output()
+                    print_color(((f'Problem processing attributes files...{e}', 'red'),))
+                    print_color(((f'{e}', 'black'),))
+            acd7.set_title(0, f"{_LB_SELATTR}")
         else:
             acd7.set_title(0, f"{_LB_SELATTR}")
     fc6.register_callback(fc6_change_title)
 
     if os.path.isfile(labelname):
         fc7 = FileChooser(os.path.dirname(os.path.abspath(labelname)), filename=os.path.basename(labelname), select_default=True, layout=wid.Layout(width='auto'))
-        acd7.children += (fc7,)
+        acd7.children += (wid.VBox([fc7,out71]),)
         try:
+            with out71:
+                out71.clear_output()
+                df_lab = pandas_readcsv(fc7.selected, index_col=0, descr=os.path.basename(fc7.selected))
+                val.value['df_y'] = df_lab.replace({'aE': 'NE', 'sNE': 'NE'})  # migliorare
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'green')
             acd7.set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
-        except:
-            fc7._label.value = fc7._LBL_TEMPLATE.format(f'Problem loading {fc7.selected} file ...', 'red') 
+        except Exception as e:
+            fc7._label.value = fc7._LBL_TEMPLATE.format(f'Problem loading {fc7.selected} file ...{e}', 'red') 
             acd7.set_title(1, f"{_LB_SEL_LAB}")
     else:
         if os.path.isdir(labelpath):
             fc7 = FileChooser(labelpath, filter_pattern='*.csv', layout=wid.Layout(width='auto'))
         else:
             fc7 = FileChooser(filter_pattern='*.csv', layout=wid.Layout(width='auto'))
-        acd7.children += (fc7,)
+        acd7.children += (wid.VBox([fc7,out71]),)
         acd7.set_title(1, f"{_LB_SEL_LAB}")
 
     def fc7_change_title(fc7):
         if os.path.isfile(fc7.selected):
-            fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'green')
-            acd7.set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
+            try:
+                with out71:
+                    out71.clear_output()
+                    df_lab = pandas_readcsv(fc7.selected, index_col=0, descr=os.path.basename(fc7.selected))
+                    val.value['df_y'] = df_lab.replace({'aE': 'NE', 'sNE': 'NE'})  # migliorare
+                fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'green')
+                acd7.set_title(1, f"{_LB_CNG_LAB} ({os.path.basename(fc7.selected)})")
+            except Exception as e:
+                with out71:
+                    out71.clear_output()
+                    print_color(((f'Problem processing label files...{e}', 'red'),))
+                    print_color(((f'{e}', 'black'),))
         else:
             fc7._label.value = fc7._LBL_TEMPLATE.format(f'{fc7.selected}', 'red')
             acd7.set_title(1, f"{_LB_SEL_LAB}")
@@ -511,48 +539,40 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     fc7.register_callback(fc7_change_title)
     valbut = wid.Button(description="Validate ...", button_style='primary')
     def on_valbut_clicked(b):
-        if fc6.selected == ():
-            with out7:
-                out7.clear_output()
-                print_color(((f'No attribute file!', 'orange'),))
+        if val.value['df_x'] is None or not isinstance(val.value['df_x'], pd.DataFrame) or val.value['df_x'].empty:
+            with out70:
+                out70.clear_output()
+                print_color(((f'Null or wrong attribute files!', 'red'),))
+        elif val.value['df_y'] is None or not isinstance(val.value['df_y'], pd.DataFrame) or val.value['df_y'].empty:
+            with out70:
+                out70.clear_output()
+                print_color(((f'Null or wrong label file!', 'red'),))
         else:
             try:
-                with out7:
-                    out7.clear_output()
+                with out70:
+                    out70.clear_output()
                     print_color(((f'Validating model ...', 'orange'),))
-                features = [{'fname': f, 'fixna' : False, 'normalize': 'std'} for f in fc6.selected]
-                df_y = pd.read_csv(fc7.selected, index_col=0)
-                df_y = df_y.replace({'aE': 'NE', 'sNE': 'NE'})
-            except Exception as e:
-                with out7:
-                    out7.clear_output()
-                    print_color(((f'Problem processing label files!', 'red'),))
-                    print_color(((f'{e}', 'black'),))
-            try:
-                df_X, df_y = feature_assemble_df(df_y, features=features, saveflag=False, verbose=verbose, show_progress=show_progress)
-            except Exception as e:
-                with out7:
-                    out7.clear_output()
-                    print_color(((f'Problem assembling attributes files!', 'red'),))
-                    print_color(((f'{e}', 'black'),))
-            try:
-                clf = VotingSplitClassifier(n_voters=10, n_jobs=-1, random_state=-1)
-                with out7:
-                    df_scores, scores, predictions = k_fold_cv(df_X, df_y, clf, n_splits=5, seed=0, verbose=verbose, show_progress=show_progress)
-                    out7.clear_output()
+                    df_X, df_y = val.value['df_x'], val.value['df_y']
+                    idx_common = np.intersect1d(df_y.index.values, df_X.index.values)
+                    val.value['df_x'] = df_X.loc[idx_common]
+                    val.value['df_y'] = df_y.loc[idx_common]
+                    clf = VotingSplitClassifier(n_voters=10, n_jobs=-1, random_state=-1)
+                    val.value['df_results']['scores'], val.value['df_results']['all_scores'], val.value['df_results']['predictions'] = k_fold_cv(val.value['df_x'], val.value['df_y'], clf, n_splits=5, seed=0, verbose=verbose, show_progress=show_progress)
+                    out70.clear_output()
                     print_color(((_LB_DONE, 'green'),))
-                    display(df_scores)
+                    display(val.value['df_results']['scores'])
             except Exception as e:
-                with out7:
-                    out7.clear_output()
+                with out70:
+                    out70.clear_output()
                     print_color(((f'Problem in validation!', 'red'),))
+                    print_color(((f'{traceback.format_exc()}', 'black'),))
                     print_color(((f'{e}', 'black'),))
 
     valbut.on_click(on_valbut_clicked)
 
     # MAIN WIDGET GUI    
     txt1 = wid.HTMLMath(
-        value=r"""In this section you filter the CRIPR score lines by:
+        value=r"""In this section you filter the crispr score lines by:
                 <ol>
                   <li>removing genes with a certain percentage of missing cell line scores;</li>
                   <li>select the type of cell lines grouping (by tissue, by disease, etc.) and</li>
@@ -563,7 +583,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     txt2 = wid.HTMLMath(
         value=r"""In this section you select: 
                 <ol>
-                    <li>the CRIPR effect file contanin cell lines scores, and
+                    <li>the crispr effect file contanin cell lines scores, and
                     <li>the Model file mapping cell line names to tissues/diseases,etc. 
                 </ol>
                 NOTE: the selected file is loaded when the file path appears in green text.""",
@@ -586,10 +606,13 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                 NOTE: the labelling process is complete once you see a green-colored "DONE".""",
     )
     txt7 = wid.HTMLMath(
-        value=r"""In this section you can compute make prediction with model trained on labelling files: 
-                  In the first widget you can select the directory (and then the files) used as feature input for the
-                  builfding model.
-                  In the second widget you can select the label file used for training the model.<p>
+        value=r"""In this section you can make prediction with model trained on labelling files: 
+                  <ol>
+                  <li>In the first widget you can select the files used as feature inputs for the
+                  builfding model.</li>
+                  <li>
+                  In the second widget you can select the label file used for training the model</li>
+                  </ol>
                   NOTE: the labelling process is complete once you see a green-colored "DONE"."""
     )
     Vb2 = wid.VBox([txt2, acd2])
@@ -597,12 +620,12 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
     acd1.set_title(0, f"{_LB_NANREM} ({percent}%)")
     acd1.set_title(1, f"{_LB_FILTER} (Lines: {minline_set.value})")
     Vb1 = wid.VBox([txt1, acd1])
-    acd4 = wid.Accordion(children=[mode_buttons, wid.HBox([fc3, saveto_but,out4])])
+    acd4 = wid.Accordion(children=[wid.VBox([wid.HBox([mode_buttons, button, out1]), out2]), wid.VBox([wid.HBox([fc3, saveto_but]), out4])])
     acd4.set_title(0, f"{_LB_LABEL} ({mode_buttons.value})")
     acd4.set_title(1, f"{_LB_SAVE}") if fc3.selected_filename == "" else acd4.set_title(1, f"{_LB_SAVE} ({fc3.selected_filename})")
-    Vb4 = wid.VBox([txt4, wid.HBox([acd4, wid.VBox([wid.HBox([button, out1]), out2])])])
+    Vb4 = wid.VBox([txt4, acd4])
     Vb6 = wid.VBox([txt6, wid.HBox([acd6, wid.VBox([setbut, out6])])])
-    Vb7 = wid.VBox([txt7, wid.HBox([acd7,wid.VBox([valbut, out7])])])
+    Vb7 = wid.VBox([txt7, wid.HBox([acd7,wid.VBox([valbut, out70])])])
     tabs.children = [Vb2, Vb1, Vb4, Vb6, Vb7]
     tabs.set_title(0, f'{_LB_INPUT}')
     tabs.set_title(1, f'{_LB_PREPROC}')

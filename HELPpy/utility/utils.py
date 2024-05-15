@@ -51,7 +51,9 @@ def pandas_writecsv(filename, df: pd.DataFrame, chunksize=10, index=False, sep='
         num_chunks = 1
     with tqdm(total=num_chunks, desc=descr, disable=disabled) as bar:
         for i, chunk in enumerate(split_dataframe(df, chunksize)):
-            mode = 'w' if i == 0 else 'a'
-            chunk.to_csv(filename, index=index, mode=mode, sep=sep)
+            if i == 0:
+                chunk.to_csv(filename, index=index, mode='w', sep=sep)
+            else: 
+                chunk.to_csv(filename, index=index, header=False, mode='a', sep=sep)
             bar.update()
     return df
