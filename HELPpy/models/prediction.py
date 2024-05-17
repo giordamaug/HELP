@@ -74,7 +74,8 @@ class VotingEnsembleLGBM(BaseEstimator):
             np.random.shuffle(index_e)
         splits = np.array_split(all_index_ne, self.n_voters)
 
-        self.estimators_ = Parallel(n_jobs=self.n_jobs)(delayed(self._fit_single_estimator)(i,X, y, index_ne, index_e) for i,index_ne in enumerate(tqdm(splits, desc=f"{self.n_voters}-voter", disable = not self.verbose)))
+        self.estimators_ = Parallel(n_jobs=self.n_jobs)(delayed(self._fit_single_estimator)(i,X, y, index_ne, index_e) 
+                                                        for i,index_ne in enumerate(splits))
         return self
     
     def predict_proba(self, X, y=None):
