@@ -89,7 +89,7 @@ for key,newkey in label_aliases.items():
 # exclude labels
 print(f'- removing label {args.excludelabels}')
 df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
-df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, saveflag=False, verbose=verbose)
+df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, verbose=verbose)
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:

@@ -23,7 +23,7 @@ else:
     from tqdm import tqdm
 from ipywidgets import IntProgress
 
-class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
+class VotingEnsembleLGBM(BaseEstimator):
 
     def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
         self.kwargs = kwargs
