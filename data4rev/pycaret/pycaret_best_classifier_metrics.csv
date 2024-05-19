@@ -1,0 +1,12 @@
+,Model,Accuracy,AUC,Recall,MCC,Sensitivity,Specificity,BA,TT (Sec)
+0,VotingEnsembleLGBM,0.8846,0.9473,0.8846,0.5275,0.8748,0.8854,0.8801,4.024
+7,Linear Discriminant Analysis,0.9422,0.934,0.9422,0.5669,0.5867,0.9703,0.7785,0.364
+10,SVM - Linear Kernel,0.9439,0.0,0.9439,0.5519,0.5126,0.9779,0.7453,0.188
+3,Ada Boost Classifier,0.9402,0.9238,0.9402,0.5097,0.4691,0.9775,0.7233,2.364
+8,Logistic Regression,0.9478,0.9428,0.9478,0.5494,0.448,0.9874,0.7177,0.396
+1,Light Gradient Boosting Machine,0.9476,0.946,0.9476,0.5365,0.4057,0.9905,0.6981,0.858
+2,Extreme Gradient Boosting,0.947,0.9412,0.947,0.5296,0.4012,0.9901,0.6957,8.574
+6,Gradient Boosting Classifier,0.9444,0.9322,0.9444,0.4942,0.353,0.9912,0.6721,14.398
+5,Decision Tree Classifier,0.8991,0.6538,0.8991,0.2941,0.3665,0.9412,0.6538,1.218
+4,Random Forest Classifier,0.9358,0.9161,0.9358,0.3383,0.1312,0.9994,0.5653,2.388
+9,Extra Trees Classifier,0.9353,0.9242,0.9353,0.3307,0.1206,0.9998,0.5602,0.49
