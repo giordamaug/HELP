@@ -22,6 +22,77 @@ if in_notebook():
 else:
     from tqdm import tqdm
 from ipywidgets import IntProgress
+
+class VotingEnsembleLGBM(BaseEstimator):
+
+    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
+        self.kwargs = kwargs
+        # intialize ensemble ov voters
+        self.voting = voting
+        self.random_state = random_state
+        self.verbose = verbose
+        self.n_jobs = n_jobs
+        self.n_voters = n_voters
+        self.estimators_ = [LGBMClassifier(**kwargs, verbose=-1, random_state=random_state) for i in range(n_voters)]
+        pass
+    
+    def __sklearn_clone__(self):
+        return self
+
+    def _fit_single_estimator(self, i, X, y, index_ne, index_e):
+        """Private function used to fit an estimator within a job."""
+        df_X = np.append(X[index_ne], X[index_e], axis=0)
+        df_y = np.append(y[index_ne], y[index_e], axis=0)
+        clf = clone(self.estimators_[i])
+        clf.fit(df_X, df_y)
+        return clf
+    
+    def fit(self, X, y):
+        # Find the majority and minority class
+        assert (isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame)) and (isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)), "Only array or pandas dataframe input!"
+        if isinstance(X, pd.DataFrame):
+            X = X.values
+        if isinstance(y, pd.DataFrame):
+            encoder = LabelEncoder()
+            y = encoder.fit_transform(Y.values.ravel())
+
+        unique, counts = np.unique(y, return_counts=True)
+        minlab = unique[np.argmin(counts)]
+        maxlab = unique[np.argmax(counts)]
+
+        if self.verbose:
+            print(f"Majority {maxlab} {max(counts)}, minority {minlab} {min(counts)}")
+
+        # Separate majority and minority class
+        all_index_ne = np.where(y == maxlab)[0]
+        index_e = np.where(y == minlab)[0]
+
+        # Split majority class among voters
+        if self.random_state >= 0:
+            np.random.seed(self.random_state)
+            np.random.shuffle(all_index_ne)
+            np.random.shuffle(index_e)
+        splits = np.array_split(all_index_ne, self.n_voters)
+
+        self.estimators_ = Parallel(n_jobs=self.n_jobs)(delayed(self._fit_single_estimator)(i,X, y, index_ne, index_e) 
+                                                        for i,index_ne in enumerate(splits))
+        return self
+    
+    def predict_proba(self, X, y=None):
+        # Find the majority and minority class
+        assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+        if isinstance(X, pd.DataFrame):
+            X = X.values
+        probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
+        return np.sum(probabilities, axis=0)/self.n_voters
+    
+    def predict(self, X, y=None):
+        assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+        if isinstance(X, pd.DataFrame):
+            X = X.values
+        probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
+        return np.argmax(np.sum(probabilities, axis=0)/self.n_voters, axis=1)
+    
 class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
 
     def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
