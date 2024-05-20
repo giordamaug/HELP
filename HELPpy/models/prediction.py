@@ -23,18 +23,18 @@ else:
     from tqdm import tqdm
 from ipywidgets import IntProgress
 
-class VotingEnsembleLGBM(BaseEstimator):
+class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
 
-    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
-        self.kwargs = kwargs
+    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, boosting_type:str='gbdt', learning_rate:float=0.1):
         # intialize ensemble ov voters
         self.voting = voting
         self.random_state = random_state
         self.verbose = verbose
         self.n_jobs = n_jobs
         self.n_voters = n_voters
-        self.estimators_ = [LGBMClassifier(**kwargs, verbose=-1, random_state=random_state) for i in range(n_voters)]
-        pass
+        self.learning_rate = learning_rate
+        self.boosting_type = boosting_type
+        self.estimators_ = [LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate) for i in range(n_voters)]
     
     def __sklearn_clone__(self):
         return self
@@ -49,12 +49,11 @@ class VotingEnsembleLGBM(BaseEstimator):
     
     def fit(self, X, y):
         # Find the majority and minority class
-        assert (isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame)) and (isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)), "Only array or pandas dataframe input!"
-        if isinstance(X, pd.DataFrame):
-            X = X.values
-        if isinstance(y, pd.DataFrame):
-            encoder = LabelEncoder()
-            y = encoder.fit_transform(Y.values.ravel())
+        #assert (isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame)) and (isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)), "Only array or pandas dataframe input!"
+        X = X.values
+        encoder = LabelEncoder()
+        y = encoder.fit_transform(y.values.ravel())
+        self.classes_ = np.unique(y)
 
         unique, counts = np.unique(y, return_counts=True)
         minlab = unique[np.argmin(counts)]
@@ -80,18 +79,19 @@ class VotingEnsembleLGBM(BaseEstimator):
     
     def predict_proba(self, X, y=None):
         # Find the majority and minority class
-        assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
-        if isinstance(X, pd.DataFrame):
-            X = X.values
+        #assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+        X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.sum(probabilities, axis=0)/self.n_voters
     
     def predict(self, X, y=None):
-        assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
-        if isinstance(X, pd.DataFrame):
-            X = X.values
+        #assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+        X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.argmax(np.sum(probabilities, axis=0)/self.n_voters, axis=1)
+
+    def score(self, X, y):
+        return balanced_accuracy_score(y, (self.predict_proba(X) > 0.5).flatten())
     
 class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
 
