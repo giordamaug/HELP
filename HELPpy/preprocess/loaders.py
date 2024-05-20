@@ -322,3 +322,65 @@ def load_features(filenames: List[str] = [], fixna=False, normalize=False, colna
 
     # Return the assembled features (X) and labels (Y)
     return x
+
+def load_features(filenames: List[str] = [], fixnans= [], normalizes=[], 
+                  verbose: bool = False, show_progress: bool = False) -> pd.DataFrame:
+    """
+    Load and assemble features for machine learning tasks.
+
+    :param List[str] features: List of feature filepaths
+    :param int seed: Random seed for reproducibility. Default is 1.
+    :param bool verbose: Whether to print verbose messages during processing. Default is False.
+    :param bool show_progress: Whether to print progress bar while loading file. Default is False.
+
+    :returns: Tuple containing the assembled features (X) and labels (Y) DataFrames.
+    :rtype: Tuple[pd.DataFrame, pd.DataFrame]
+        
+    :example:
+
+    .. code-block:: python
+
+        seed = 1
+        verbose = False
+
+        X, Y = load_features(['path/to/feature_file1.csv', 'path/to/feature_file2.csv'], fixnans=[True, False], seed, verbose)
+    """
+
+    # Common indices among labels and features
+    x = pd.DataFrame()
+
+    # Process each feature file
+    for f,fixna,norm in zip(filenames, fixnans, normalizes):
+        feat_df = pandas_readcsv(f, chunksize=1024, index_col=0, disabled=not verbose)
+        feat_df.index = feat_df.index.map(str)
+        fname = os.path.basename(f).rsplit('.', 1)[0]
+
+        # Handle missing values if required
+        if verbose:
+            cntnan = feat_df.isna().sum().sum()
+            print(f"[{fname}] found {cntnan} Nan...")
+        if fixna:
+            if verbose:
+                print(f"[{fname}] Fixing NaNs with mean ...")
+            feat_df = feat_df.fillna(feat_df.mean())
+
+        # Normalize features
+        if norm == 'std':
+            scaler = MinMaxScaler()
+            if verbose:
+                print(f"[{fname}] Normalization with {norm} ...")
+            feat_df = pd.DataFrame(scaler.fit_transform(feat_df), index=feat_df.index, columns=feat_df.columns)
+        elif norm == 'max':
+            scaler = StandardScaler()
+            if verbose:
+                print(f"[{fname}] Normalization with {norm}...")
+            feat_df = pd.DataFrame(scaler.fit_transform(feat_df), index=feat_df.index, columns=feat_df.columns)
+        else:
+            if verbose:
+                print(f"[{fname}] No normalization...")
+
+        # merge features features
+        x = pd.merge(x, feat_df, left_index=True, right_index=True, how='outer')
+
+    # Return the assembled features (X) and labels (Y)
+    return x

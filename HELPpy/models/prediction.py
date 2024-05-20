@@ -24,7 +24,24 @@ else:
 from ipywidgets import IntProgress
 
 class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
+    """
+    Voting Ensemble using LightGBM Classifiers.
 
+    :param n_voters: Number of voters in the ensemble.
+    :type n_voters: int
+    :param voting: Voting strategy ('soft' or 'hard').
+    :type voting: str
+    :param n_jobs: Number of jobs to run in parallel.
+    :type n_jobs: int
+    :param verbose: If True, prints progress messages.
+    :type verbose: bool
+    :param random_state: Seed for random number generator.
+    :type random_state: int
+    :param boosting_type: Boosting type for LightGBM.
+    :type boosting_type: str
+    :param learning_rate: Learning rate for LightGBM.
+    :type learning_rate: float
+    """
     def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, boosting_type:str='gbdt', learning_rate:float=0.1):
         # intialize ensemble ov voters
         self.voting = voting
@@ -37,10 +54,31 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         self.estimators_ = [LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate) for i in range(n_voters)]
     
     def __sklearn_clone__(self):
+        """
+        Clone the current estimator. This is a special method for scikit-learn compatibility.
+
+        :return: A cloned instance of the current estimator.
+        :rtype: VotingEnsembleLGBM
+        """
         return self
 
     def _fit_single_estimator(self, i, X, y, index_ne, index_e):
-        """Private function used to fit an estimator within a job."""
+        """
+        Private function used to fit a single estimator within a job.
+
+        :param i: Index of the estimator.
+        :type i: int
+        :param X: Training data.
+        :type X: np.ndarray
+        :param y: Target values.
+        :type y: np.ndarray
+        :param index_ne: Indices of non-event class samples.
+        :type index_ne: np.ndarray
+        :param index_e: Indices of event class samples.
+        :type index_e: np.ndarray
+        :return: Fitted estimator.
+        :rtype: LGBMClassifier
+        """
         df_X = np.append(X[index_ne], X[index_e], axis=0)
         df_y = np.append(y[index_ne], y[index_e], axis=0)
         clf = clone(self.estimators_[i])
@@ -48,8 +86,16 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         return clf
     
     def fit(self, X, y):
-        # Find the majority and minority class
-        #assert (isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame)) and (isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)), "Only array or pandas dataframe input!"
+        """
+        Fit the ensemble of LightGBM classifiers.
+
+        :param X: Training data.
+        :type X: pd.DataFrame or np.ndarray
+        :param y: Target values.
+        :type y: pd.Series or np.ndarray
+        :return: Fitted instance of the class.
+        :rtype: VotingEnsembleLGBM
+        """
         X = X.values
         encoder = LabelEncoder()
         y = encoder.fit_transform(y.values.ravel())
@@ -78,19 +124,46 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         return self
     
     def predict_proba(self, X, y=None):
-        # Find the majority and minority class
-        #assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+       """
+        Predict class probabilities for X.
+
+        :param X: Input data.
+        :type X: pd.DataFrame or np.ndarray
+        :param y: Not used, present for API consistency by convention.
+        :type y: None
+        :return: Predicted class probabilities.
+        :rtype: np.ndarray
+        """
         X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.sum(probabilities, axis=0)/self.n_voters
     
     def predict(self, X, y=None):
-        #assert isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame), "Only array or pandas dataframe input!"
+        """
+        Predict class labels for X.
+
+        :param X: Input data.
+        :type X: pd.DataFrame or np.ndarray
+        :param y: Not used, present for API consistency by convention.
+        :type y: None
+        :return: Predicted class labels.
+        :rtype: np.ndarray
+        """
         X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.argmax(np.sum(probabilities, axis=0)/self.n_voters, axis=1)
 
     def score(self, X, y):
+        """
+        Return the balanced accuracy score on the given test data and labels.
+
+        :param X: Test data.
+        :type X: pd.DataFrame or np.ndarray
+        :param y: True labels for X.
+        :type y: pd.Series or np.ndarray
+        :return: Balanced accuracy score.
+        :rtype: float
+        """
         return balanced_accuracy_score(y, (self.predict_proba(X) > 0.5).flatten())
     
 class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
