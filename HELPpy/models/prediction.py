@@ -42,7 +42,7 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
     :param learning_rate: Learning rate for LightGBM.
     :type learning_rate: float
     """
-    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, boosting_type:str='gbdt', learning_rate:float=0.1):
+    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, boosting_type:str='gbdt', learning_rate:float=0.1, n_estimators:int=100):
         # intialize ensemble ov voters
         self.voting = voting
         self.random_state = random_state
@@ -51,7 +51,8 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         self.n_voters = n_voters
         self.learning_rate = learning_rate
         self.boosting_type = boosting_type
-        self.estimators_ = [LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate) for i in range(n_voters)]
+        self.base_estimator = LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate, n_estimators=n_estimators)
+        self.estimators_ = []
     
     def __sklearn_clone__(self):
         """
@@ -81,7 +82,7 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         """
         df_X = np.append(X[index_ne], X[index_e], axis=0)
         df_y = np.append(y[index_ne], y[index_e], axis=0)
-        clf = clone(self.estimators_[i])
+        clf = clone(self.base_estimator)
         clf.fit(df_X, df_y)
         return clf
     
