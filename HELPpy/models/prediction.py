@@ -124,7 +124,7 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         return self
     
     def predict_proba(self, X, y=None):
-       """
+        """
         Predict class probabilities for X.
 
         :param X: Input data.
