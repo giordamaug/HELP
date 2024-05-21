@@ -351,7 +351,7 @@ def load_features(filenames: List[str] = [], fixnans= [], normalizes=[],
 
     # Process each feature file
     for f,fixna,norm in zip(filenames, fixnans, normalizes):
-        feat_df = pandas_readcsv(f, chunksize=1024, index_col=0, disabled=not verbose)
+        feat_df = pandas_readcsv(f, chunksize=1024, index_col=0, descr=f'{os.path.basename(f)}', disabled=not show_progress)
         feat_df.index = feat_df.index.map(str)
         fname = os.path.basename(f).rsplit('.', 1)[0]
 
