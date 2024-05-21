@@ -42,7 +42,9 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
     :param learning_rate: Learning rate for LightGBM.
     :type learning_rate: float
     """
-    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, boosting_type:str='gbdt', learning_rate:float=0.1, n_estimators:int=100):
+    def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, 
+                 boosting_type:str='gbdt', learning_rate:float=0.1, n_estimators:int=100,
+                 **kwargs):
         # intialize ensemble ov voters
         self.voting = voting
         self.random_state = random_state
@@ -51,7 +53,8 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         self.n_voters = n_voters
         self.learning_rate = learning_rate
         self.boosting_type = boosting_type
-        self.base_estimator = LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate, n_estimators=n_estimators)
+        self.n_estimators = n_estimators
+        self.base_estimator = LGBMClassifier(verbose=-1, random_state=random_state, boosting_type=boosting_type, learning_rate=learning_rate, n_estimators=n_estimators, **kwargs)
         self.estimators_ = []
     
     def __sklearn_clone__(self):
@@ -97,9 +100,12 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         :return: Fitted instance of the class.
         :rtype: VotingEnsembleLGBM
         """
-        X = X.values
+        if isinstance(X, pd.DataFrame):
+            X = X.values
         encoder = LabelEncoder()
-        y = encoder.fit_transform(y.values.ravel())
+        if isinstance(y, pd.DataFrame):
+            y = y.values.ravel()
+        y = encoder.fit_transform(y)
         self.classes_ = np.unique(y)
 
         unique, counts = np.unique(y, return_counts=True)
@@ -135,7 +141,8 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         :return: Predicted class probabilities.
         :rtype: np.ndarray
         """
-        X = X.values
+        if isinstance(X, pd.DataFrame):
+            X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.sum(probabilities, axis=0)/self.n_voters
     
@@ -150,7 +157,8 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         :return: Predicted class labels.
         :rtype: np.ndarray
         """
-        X = X.values
+        if isinstance(X, pd.DataFrame):
+            X = X.values
         probabilities = np.array([self.estimators_[i].predict_proba(X) for i in range(self.n_voters)])
         return np.argmax(np.sum(probabilities, axis=0)/self.n_voters, axis=1)
 
