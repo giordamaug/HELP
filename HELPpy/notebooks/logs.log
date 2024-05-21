@@ -684,3 +684,2052 @@ https://scikit-learn.org/stable/model_persistence.html#security-maintainability-
 https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
   warnings.warn(
 
+2024-05-21 09:48:16,309:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:48:16,309:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:48:16,309:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:48:16,309:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:48:45,173:INFO:Initializing load_model()
+2024-05-21 09:48:45,173:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 09:48:45,524:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/pycaret/internal/pipeline.py:148: UserWarning: Version mismatch:
+current: {'deps_info': {'pip': '23.3.2', 'setuptools': '69.0.3', 'pycaret': '3.3.2', 'IPython': '8.20.0', 'ipywidgets': '8.1.1', 'tqdm': '4.66.1', 'numpy': '1.26.4', 'pandas': '2.1.3', 'jinja2': '3.1.3', 'scipy': '1.10.1', 'joblib': '1.3.2', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.3.5', 'numba': '0.59.1', 'requests': '2.31.0', 'matplotlib': '3.6.0', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.18.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.1', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.4', 'markupsafe': '2.1.3', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.4.1', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.13', 'machine': 'arm64'}}
+pickle: {'deps_info': {'pip': '23.1.2', 'setuptools': '67.8.0', 'pycaret': '3.3.2', 'IPython': '8.12.0', 'ipywidgets': '8.0.4', 'tqdm': '4.64.1', 'numpy': '1.24.3', 'pandas': '1.5.3', 'jinja2': '3.1.2', 'scipy': '1.9.3', 'joblib': '1.2.0', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.2.1', 'numba': '0.58.1', 'requests': '2.29.0', 'matplotlib': '3.7.5', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.22.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.2', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.0', 'markupsafe': '2.1.1', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.3.0', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.11', 'machine': 'x86_64'}}
+  warnings.warn(
+
+2024-05-21 09:48:51,432:INFO:Initializing load_model()
+2024-05-21 09:48:51,432:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,100:INFO:Initializing load_model()
+2024-05-21 10:34:40,101:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,122:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/pycaret/internal/pipeline.py:148: UserWarning: Version mismatch:
+current: {'deps_info': {'pip': '23.3.2', 'setuptools': '69.0.3', 'pycaret': '3.3.2', 'IPython': '8.20.0', 'ipywidgets': '8.1.1', 'tqdm': '4.66.1', 'numpy': '1.26.4', 'pandas': '2.1.3', 'jinja2': '3.1.3', 'scipy': '1.10.1', 'joblib': '1.3.2', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.3.5', 'numba': '0.59.1', 'requests': '2.31.0', 'matplotlib': '3.6.0', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.18.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.1', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.4', 'markupsafe': '2.1.3', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.4.1', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.13', 'machine': 'arm64'}}
+pickle: {'deps_info': {'pip': '23.1.2', 'setuptools': '67.8.0', 'pycaret': '3.3.2', 'IPython': '8.12.0', 'ipywidgets': '8.0.4', 'tqdm': '4.64.1', 'numpy': '1.24.3', 'pandas': '1.5.3', 'jinja2': '3.1.2', 'scipy': '1.9.3', 'joblib': '1.2.0', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.2.1', 'numba': '0.58.1', 'requests': '2.29.0', 'matplotlib': '3.7.5', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.22.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.2', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.0', 'markupsafe': '2.1.1', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.3.0', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.11', 'machine': 'x86_64'}}
+  warnings.warn(
+
+2024-05-21 10:34:40,122:INFO:Initializing load_model()
+2024-05-21 10:34:40,122:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,139:INFO:Initializing load_model()
+2024-05-21 10:34:40,139:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,154:INFO:Initializing load_model()
+2024-05-21 10:34:40,154:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,168:INFO:Initializing load_model()
+2024-05-21 10:34:40,168:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,181:INFO:Initializing load_model()
+2024-05-21 10:34:40,181:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,195:INFO:Initializing load_model()
+2024-05-21 10:34:40,195:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:34:40,208:INFO:Initializing load_model()
+2024-05-21 10:34:40,208:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:02,935:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 10:35:02,935:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 10:35:02,935:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 10:35:02,935:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 10:35:17,207:INFO:PyCaret ClassificationExperiment
+2024-05-21 10:35:17,208:INFO:Logging name: clf-default-name
+2024-05-21 10:35:17,208:INFO:ML Usecase: MLUsecase.CLASSIFICATION
+2024-05-21 10:35:17,208:INFO:version 3.3.2
+2024-05-21 10:35:17,208:INFO:Initializing setup()
+2024-05-21 10:35:17,208:INFO:self.USI: d3d2
+2024-05-21 10:35:17,208:INFO:self._variable_keys: {'y', 'exp_name_log', 'idx', 'fix_imbalance', 'gpu_param', 'target_param', 'memory', 'y_test', 'fold_shuffle_param', 'y_train', 'log_plots_param', 'logging_param', 'data', 'is_multiclass', 'seed', '_ml_usecase', 'fold_generator', 'exp_id', 'USI', '_available_plots', 'X_test', 'gpu_n_jobs_param', 'X_train', 'n_jobs_param', 'X', 'pipeline', 'html_param', 'fold_groups_param'}
+2024-05-21 10:35:17,208:INFO:Checking environment
+2024-05-21 10:35:17,208:INFO:python_version: 3.10.13
+2024-05-21 10:35:17,208:INFO:python_build: ('main', 'Dec 23 2023 15:35:25')
+2024-05-21 10:35:17,208:INFO:machine: arm64
+2024-05-21 10:35:17,208:INFO:platform: macOS-14.4.1-arm64-arm-64bit
+2024-05-21 10:35:17,208:INFO:Memory: svmem(total=17179869184, available=6644596736, percent=61.3, used=8232288256, free=269434880, active=6379864064, inactive=6348210176, wired=1852424192)
+2024-05-21 10:35:17,208:INFO:Physical Core: 8
+2024-05-21 10:35:17,208:INFO:Logical Core: 8
+2024-05-21 10:35:17,208:INFO:Checking libraries
+2024-05-21 10:35:17,208:INFO:System:
+2024-05-21 10:35:17,209:INFO:    python: 3.10.13 | packaged by conda-forge | (main, Dec 23 2023, 15:35:25) [Clang 16.0.6 ]
+2024-05-21 10:35:17,209:INFO:executable: /Users/maurizio/miniconda3/bin/python
+2024-05-21 10:35:17,209:INFO:   machine: macOS-14.4.1-arm64-arm-64bit
+2024-05-21 10:35:17,209:INFO:PyCaret required dependencies:
+2024-05-21 10:35:17,210:INFO:                 pip: 23.3.2
+2024-05-21 10:35:17,210:INFO:          setuptools: 69.0.3
+2024-05-21 10:35:17,210:INFO:             pycaret: 3.3.2
+2024-05-21 10:35:17,210:INFO:             IPython: 8.20.0
+2024-05-21 10:35:17,210:INFO:          ipywidgets: 8.1.1
+2024-05-21 10:35:17,210:INFO:                tqdm: 4.66.1
+2024-05-21 10:35:17,210:INFO:               numpy: 1.26.4
+2024-05-21 10:35:17,210:INFO:              pandas: 2.1.3
+2024-05-21 10:35:17,210:INFO:              jinja2: 3.1.3
+2024-05-21 10:35:17,210:INFO:               scipy: 1.10.1
+2024-05-21 10:35:17,210:INFO:              joblib: 1.3.2
+2024-05-21 10:35:17,210:INFO:             sklearn: 1.4.2
+2024-05-21 10:35:17,211:INFO:                pyod: 1.1.3
+2024-05-21 10:35:17,211:INFO:            imblearn: 0.12.2
+2024-05-21 10:35:17,211:INFO:   category_encoders: 2.6.3
+2024-05-21 10:35:17,211:INFO:            lightgbm: 3.3.5
+2024-05-21 10:35:17,211:INFO:               numba: 0.59.1
+2024-05-21 10:35:17,211:INFO:            requests: 2.31.0
+2024-05-21 10:35:17,211:INFO:          matplotlib: 3.6.0
+2024-05-21 10:35:17,211:INFO:          scikitplot: 0.3.7
+2024-05-21 10:35:17,211:INFO:         yellowbrick: 1.5
+2024-05-21 10:35:17,211:INFO:              plotly: 5.18.0
+2024-05-21 10:35:17,211:INFO:    plotly-resampler: Not installed
+2024-05-21 10:35:17,211:INFO:             kaleido: 0.2.1
+2024-05-21 10:35:17,211:INFO:           schemdraw: 0.15
+2024-05-21 10:35:17,211:INFO:         statsmodels: 0.14.1
+2024-05-21 10:35:17,211:INFO:              sktime: 0.26.0
+2024-05-21 10:35:17,211:INFO:               tbats: 1.1.3
+2024-05-21 10:35:17,211:INFO:            pmdarima: 2.0.4
+2024-05-21 10:35:17,211:INFO:              psutil: 5.9.4
+2024-05-21 10:35:17,211:INFO:          markupsafe: 2.1.3
+2024-05-21 10:35:17,211:INFO:             pickle5: Not installed
+2024-05-21 10:35:17,211:INFO:         cloudpickle: 2.2.1
+2024-05-21 10:35:17,211:INFO:         deprecation: 2.1.0
+2024-05-21 10:35:17,211:INFO:              xxhash: 3.4.1
+2024-05-21 10:35:17,211:INFO:           wurlitzer: 3.1.0
+2024-05-21 10:35:17,211:INFO:PyCaret optional dependencies:
+2024-05-21 10:35:17,220:INFO:                shap: Not installed
+2024-05-21 10:35:17,220:INFO:           interpret: Not installed
+2024-05-21 10:35:17,220:INFO:                umap: Not installed
+2024-05-21 10:35:17,220:INFO:     ydata_profiling: Not installed
+2024-05-21 10:35:17,220:INFO:  explainerdashboard: Not installed
+2024-05-21 10:35:17,220:INFO:             autoviz: Not installed
+2024-05-21 10:35:17,220:INFO:           fairlearn: Not installed
+2024-05-21 10:35:17,220:INFO:          deepchecks: Not installed
+2024-05-21 10:35:17,220:INFO:             xgboost: 1.7.1
+2024-05-21 10:35:17,220:INFO:            catboost: Not installed
+2024-05-21 10:35:17,220:INFO:              kmodes: Not installed
+2024-05-21 10:35:17,220:INFO:             mlxtend: Not installed
+2024-05-21 10:35:17,220:INFO:       statsforecast: Not installed
+2024-05-21 10:35:17,220:INFO:        tune_sklearn: Not installed
+2024-05-21 10:35:17,220:INFO:                 ray: Not installed
+2024-05-21 10:35:17,220:INFO:            hyperopt: Not installed
+2024-05-21 10:35:17,220:INFO:              optuna: Not installed
+2024-05-21 10:35:17,220:INFO:               skopt: Not installed
+2024-05-21 10:35:17,220:INFO:              mlflow: Not installed
+2024-05-21 10:35:17,220:INFO:              gradio: Not installed
+2024-05-21 10:35:17,220:INFO:             fastapi: Not installed
+2024-05-21 10:35:17,221:INFO:             uvicorn: Not installed
+2024-05-21 10:35:17,221:INFO:              m2cgen: Not installed
+2024-05-21 10:35:17,221:INFO:           evidently: Not installed
+2024-05-21 10:35:17,221:INFO:               fugue: Not installed
+2024-05-21 10:35:17,221:INFO:           streamlit: Not installed
+2024-05-21 10:35:17,221:INFO:             prophet: Not installed
+2024-05-21 10:35:17,221:INFO:None
+2024-05-21 10:35:17,221:INFO:Set up data.
+2024-05-21 10:35:17,882:INFO:Set up folding strategy.
+2024-05-21 10:35:17,883:INFO:Set up train/test split.
+2024-05-21 10:35:18,528:INFO:Set up index.
+2024-05-21 10:35:18,545:INFO:Assigning column types.
+2024-05-21 10:35:19,239:INFO:Engine successfully changes for model 'lr' to 'sklearn'.
+2024-05-21 10:35:19,257:INFO:Engine for model 'knn' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,260:INFO:Engine for model 'rbfsvm' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,274:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,656:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,674:INFO:Engine for model 'knn' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,674:INFO:Engine for model 'rbfsvm' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,685:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,686:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,686:INFO:Engine successfully changes for model 'knn' to 'sklearn'.
+2024-05-21 10:35:19,703:INFO:Engine for model 'rbfsvm' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,715:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,716:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,733:INFO:Engine for model 'rbfsvm' has not been set explicitly, hence returning None.
+2024-05-21 10:35:19,744:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,745:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,745:INFO:Engine successfully changes for model 'rbfsvm' to 'sklearn'.
+2024-05-21 10:35:19,774:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,775:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,803:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:19,804:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:19,806:INFO:Preparing preprocessing pipeline...
+2024-05-21 10:35:19,888:INFO:Set up simple imputation.
+2024-05-21 10:35:19,965:INFO:Set up column name cleaning.
+2024-05-21 10:35:21,165:INFO:Finished creating preprocessing pipeline.
+2024-05-21 10:35:21,180:INFO:Pipeline: Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                ('categorical_imputer',
+                 TransformerWrapper(exclude=None, include=[],
+                                    transformer=SimpleImputer(add_indicator=False,
+                                                              copy=True,
+                                                              fill_value=None,
+                                                              keep_empty_features=False,
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+')))],
+         verbose=False)
+2024-05-21 10:35:21,180:INFO:Creating final display dataframe.
+2024-05-21 10:35:24,486:INFO:Setup _display_container:                     Description             Value
+0                    Session id               444
+1                        Target             label
+2                   Target type            Binary
+3           Original data shape     (12927, 3460)
+4        Transformed data shape     (12927, 3460)
+5   Transformed train set shape      (9048, 3460)
+6    Transformed test set shape      (3879, 3460)
+7              Numeric features              3459
+8                    Preprocess              True
+9               Imputation type            simple
+10           Numeric imputation              mean
+11       Categorical imputation              mode
+12               Fold Generator   StratifiedKFold
+13                  Fold Number                 5
+14                     CPU Jobs                -1
+15                      Use GPU             False
+16               Log Experiment             False
+17              Experiment Name  clf-default-name
+18                          USI              d3d2
+2024-05-21 10:35:24,520:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:24,521:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:24,550:INFO:Soft dependency imported: xgboost: 1.7.1
+2024-05-21 10:35:24,551:WARNING:
+'catboost' is a soft dependency and not included in the pycaret installation. Please run: `pip install catboost` to install.
+Alternately, you can install this by running `pip install pycaret[models]`
+2024-05-21 10:35:24,552:INFO:setup() successfully completed in 7.35s...............
+2024-05-21 10:35:43,604:INFO:Initializing load_model()
+2024-05-21 10:35:43,604:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,635:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/pycaret/internal/pipeline.py:148: UserWarning: Version mismatch:
+current: {'deps_info': {'pip': '23.3.2', 'setuptools': '69.0.3', 'pycaret': '3.3.2', 'IPython': '8.20.0', 'ipywidgets': '8.1.1', 'tqdm': '4.66.1', 'numpy': '1.26.4', 'pandas': '2.1.3', 'jinja2': '3.1.3', 'scipy': '1.10.1', 'joblib': '1.3.2', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.3.5', 'numba': '0.59.1', 'requests': '2.31.0', 'matplotlib': '3.6.0', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.18.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.1', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.4', 'markupsafe': '2.1.3', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.4.1', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.13', 'machine': 'arm64'}}
+pickle: {'deps_info': {'pip': '23.1.2', 'setuptools': '67.8.0', 'pycaret': '3.3.2', 'IPython': '8.12.0', 'ipywidgets': '8.0.4', 'tqdm': '4.64.1', 'numpy': '1.24.3', 'pandas': '1.5.3', 'jinja2': '3.1.2', 'scipy': '1.9.3', 'joblib': '1.2.0', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.2.1', 'numba': '0.58.1', 'requests': '2.29.0', 'matplotlib': '3.7.5', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.22.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.2', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.0', 'markupsafe': '2.1.1', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.3.0', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.11', 'machine': 'x86_64'}}
+  warnings.warn(
+
+2024-05-21 10:35:43,636:INFO:Initializing load_model()
+2024-05-21 10:35:43,636:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,654:INFO:Initializing load_model()
+2024-05-21 10:35:43,654:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,669:INFO:Initializing load_model()
+2024-05-21 10:35:43,669:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,684:INFO:Initializing load_model()
+2024-05-21 10:35:43,684:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,699:INFO:Initializing load_model()
+2024-05-21 10:35:43,699:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,713:INFO:Initializing load_model()
+2024-05-21 10:35:43,713:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,728:INFO:Initializing load_model()
+2024-05-21 10:35:43,728:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:35:43,975:INFO:Initializing compare_models()
+2024-05-21 10:35:43,975:INFO:compare_models(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, include=[Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)], fold=None, round=4, cross_validation=True, sort=BA, n_select=1, budget_time=None, turbo=True, errors=ignore, fit_kwargs=None, groups=None, experiment_custom_tags=None, probability_threshold=None, verbose=True, parallel=None, caller_params={'self': <pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, 'include': [Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)], 'exclude': None, 'fold': None, 'round': 4, 'cross_validation': True, 'sort': 'BA', 'n_select': 1, 'budget_time': None, 'turbo': True, 'errors': 'ignore', 'fit_kwargs': None, 'groups': None, 'experiment_custom_tags': None, 'probability_threshold': None, 'engine': None, 'verbose': True, 'parallel': None, '__class__': <class 'pycaret.classification.oop.ClassificationExperiment'>}, exclude=None)
+2024-05-21 10:35:43,975:INFO:Checking exceptions
+2024-05-21 10:35:44,497:INFO:Preparing display monitor
+2024-05-21 10:35:44,507:INFO:Initializing custom model Light Gradient Boosting Machine
+2024-05-21 10:35:44,507:INFO:Total runtime is 6.115436553955078e-06 minutes
+2024-05-21 10:35:44,508:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:35:44,526:INFO:Initializing create_model()
+2024-05-21 10:35:44,527:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x17256d1e0>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:35:44,527:INFO:Checking exceptions
+2024-05-21 10:35:44,527:INFO:Importing libraries
+2024-05-21 10:35:44,527:INFO:Copying training dataset
+2024-05-21 10:35:45,367:INFO:Defining folds
+2024-05-21 10:35:45,367:INFO:Declaring metric variables
+2024-05-21 10:35:45,368:INFO:Importing untrained model
+2024-05-21 10:35:45,369:INFO:Declaring custom model
+2024-05-21 10:35:45,375:INFO:Light Gradient Boosting Machine Imported successfully
+2024-05-21 10:35:45,378:INFO:Starting cross validation
+2024-05-21 10:35:45,384:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:35:48,597:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:48,611:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:48,698:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:35:48,698:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:35:48,698:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:35:48,714:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:35:48,714:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:35:48,714:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:35:48,984:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:49,082:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:35:49,082:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:35:49,082:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:35:49,458:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:49,537:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:35:49,538:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:35:49,538:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:35:49,686:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:49,757:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:35:49,758:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:35:49,758:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:35:53,254:INFO:Calculating mean and std
+2024-05-21 10:35:53,256:INFO:Creating metrics dataframe
+2024-05-21 10:35:53,259:INFO:Uploading results into container
+2024-05-21 10:35:53,260:INFO:Uploading model into container now
+2024-05-21 10:35:53,260:INFO:_master_model_container: 1
+2024-05-21 10:35:53,260:INFO:_display_container: 2
+2024-05-21 10:35:53,279:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)
+2024-05-21 10:35:53,279:INFO:create_model() successfully completed......................................
+2024-05-21 10:35:53,358:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:35:53,358:INFO:Creating metrics dataframe
+2024-05-21 10:35:53,362:INFO:Initializing custom model Light Gradient Boosting Machine
+2024-05-21 10:35:53,362:INFO:Total runtime is 0.14758863051732382 minutes
+2024-05-21 10:35:53,363:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:35:53,379:INFO:Initializing create_model()
+2024-05-21 10:35:53,379:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x17256d1e0>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:35:53,379:INFO:Checking exceptions
+2024-05-21 10:35:53,379:INFO:Importing libraries
+2024-05-21 10:35:53,380:INFO:Copying training dataset
+2024-05-21 10:35:54,326:INFO:Defining folds
+2024-05-21 10:35:54,326:INFO:Declaring metric variables
+2024-05-21 10:35:54,328:INFO:Importing untrained model
+2024-05-21 10:35:54,328:INFO:Declaring custom model
+2024-05-21 10:35:54,334:INFO:Light Gradient Boosting Machine Imported successfully
+2024-05-21 10:35:54,337:INFO:Starting cross validation
+2024-05-21 10:35:54,344:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:35:55,643:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:56,459:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:56,946:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:57,057:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:35:57,710:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:01,194:INFO:Calculating mean and std
+2024-05-21 10:36:01,195:INFO:Creating metrics dataframe
+2024-05-21 10:36:01,197:INFO:Uploading results into container
+2024-05-21 10:36:01,197:INFO:Uploading model into container now
+2024-05-21 10:36:01,198:INFO:_master_model_container: 2
+2024-05-21 10:36:01,198:INFO:_display_container: 2
+2024-05-21 10:36:01,214:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)
+2024-05-21 10:36:01,214:INFO:create_model() successfully completed......................................
+2024-05-21 10:36:01,275:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:36:01,275:INFO:Creating metrics dataframe
+2024-05-21 10:36:01,278:INFO:Initializing custom model Light Gradient Boosting Machine
+2024-05-21 10:36:01,278:INFO:Total runtime is 0.27953402996063237 minutes
+2024-05-21 10:36:01,280:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:36:01,296:INFO:Initializing create_model()
+2024-05-21 10:36:01,296:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x17256d1e0>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:36:01,296:INFO:Checking exceptions
+2024-05-21 10:36:01,296:INFO:Importing libraries
+2024-05-21 10:36:01,296:INFO:Copying training dataset
+2024-05-21 10:36:02,194:INFO:Defining folds
+2024-05-21 10:36:02,195:INFO:Declaring metric variables
+2024-05-21 10:36:02,197:INFO:Importing untrained model
+2024-05-21 10:36:02,197:INFO:Declaring custom model
+2024-05-21 10:36:02,203:INFO:Light Gradient Boosting Machine Imported successfully
+2024-05-21 10:36:02,206:INFO:Starting cross validation
+2024-05-21 10:36:02,212:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:36:03,316:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:03,708:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:04,441:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:04,669:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:05,659:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:09,014:INFO:Calculating mean and std
+2024-05-21 10:36:09,016:INFO:Creating metrics dataframe
+2024-05-21 10:36:09,020:INFO:Uploading results into container
+2024-05-21 10:36:09,020:INFO:Uploading model into container now
+2024-05-21 10:36:09,020:INFO:_master_model_container: 3
+2024-05-21 10:36:09,020:INFO:_display_container: 2
+2024-05-21 10:36:09,037:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)
+2024-05-21 10:36:09,037:INFO:create_model() successfully completed......................................
+2024-05-21 10:36:09,124:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:36:09,125:INFO:Creating metrics dataframe
+2024-05-21 10:36:09,128:INFO:Initializing custom model Light Gradient Boosting Machine
+2024-05-21 10:36:09,128:INFO:Total runtime is 0.41036356687545783 minutes
+2024-05-21 10:36:09,130:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:36:09,146:INFO:Initializing create_model()
+2024-05-21 10:36:09,146:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x17256d1e0>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:36:09,146:INFO:Checking exceptions
+2024-05-21 10:36:09,146:INFO:Importing libraries
+2024-05-21 10:36:09,146:INFO:Copying training dataset
+2024-05-21 10:36:10,122:INFO:Defining folds
+2024-05-21 10:36:10,122:INFO:Declaring metric variables
+2024-05-21 10:36:10,124:INFO:Importing untrained model
+2024-05-21 10:36:10,124:INFO:Declaring custom model
+2024-05-21 10:36:10,131:INFO:Light Gradient Boosting Machine Imported successfully
+2024-05-21 10:36:10,134:INFO:Starting cross validation
+2024-05-21 10:36:10,140:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:36:11,323:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:11,528:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:12,098:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:12,482:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:25,134:INFO:Initializing load_model()
+2024-05-21 10:36:25,134:INFO:load_model(model_name=../../data4rev/pycaret/saved_lightgbm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,153:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/pycaret/internal/pipeline.py:148: UserWarning: Version mismatch:
+current: {'deps_info': {'pip': '23.3.2', 'setuptools': '69.0.3', 'pycaret': '3.3.2', 'IPython': '8.20.0', 'ipywidgets': '8.1.1', 'tqdm': '4.66.1', 'numpy': '1.26.4', 'pandas': '2.1.3', 'jinja2': '3.1.3', 'scipy': '1.10.1', 'joblib': '1.3.2', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.3.5', 'numba': '0.59.1', 'requests': '2.31.0', 'matplotlib': '3.6.0', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.18.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.1', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.4', 'markupsafe': '2.1.3', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.4.1', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.13', 'machine': 'arm64'}}
+pickle: {'deps_info': {'pip': '23.1.2', 'setuptools': '67.8.0', 'pycaret': '3.3.2', 'IPython': '8.12.0', 'ipywidgets': '8.0.4', 'tqdm': '4.64.1', 'numpy': '1.24.3', 'pandas': '1.5.3', 'jinja2': '3.1.2', 'scipy': '1.9.3', 'joblib': '1.2.0', 'sklearn': '1.4.2', 'pyod': '1.1.3', 'imblearn': '0.12.2', 'category_encoders': '2.6.3', 'lightgbm': '3.2.1', 'numba': '0.58.1', 'requests': '2.29.0', 'matplotlib': '3.7.5', 'scikitplot': '0.3.7', 'yellowbrick': '1.5', 'plotly': '5.22.0', 'plotly-resampler': 'Not installed', 'kaleido': '0.2.1', 'schemdraw': '0.15', 'statsmodels': '0.14.2', 'sktime': '0.26.0', 'tbats': '1.1.3', 'pmdarima': '2.0.4', 'psutil': '5.9.0', 'markupsafe': '2.1.1', 'pickle5': 'Not installed', 'cloudpickle': '2.2.1', 'deprecation': '2.1.0', 'xxhash': '3.3.0', 'wurlitzer': '3.1.0'}, 'python': {'version': '3.10.11', 'machine': 'x86_64'}}
+  warnings.warn(
+
+2024-05-21 10:36:25,154:INFO:Initializing load_model()
+2024-05-21 10:36:25,154:INFO:load_model(model_name=../../data4rev/pycaret/saved_xgboost_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,172:INFO:Initializing load_model()
+2024-05-21 10:36:25,173:INFO:load_model(model_name=../../data4rev/pycaret/saved_ada_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,191:INFO:Initializing load_model()
+2024-05-21 10:36:25,191:INFO:load_model(model_name=../../data4rev/pycaret/saved_rf_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,217:INFO:Initializing load_model()
+2024-05-21 10:36:25,217:INFO:load_model(model_name=../../data4rev/pycaret/saved_lda_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,246:INFO:Initializing load_model()
+2024-05-21 10:36:25,246:INFO:load_model(model_name=../../data4rev/pycaret/saved_lr_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,258:INFO:Initializing load_model()
+2024-05-21 10:36:25,258:INFO:load_model(model_name=../../data4rev/pycaret/saved_et_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,283:INFO:Initializing load_model()
+2024-05-21 10:36:25,283:INFO:load_model(model_name=../../data4rev/pycaret/saved_svm_model, platform=None, authentication=None, verbose=True)
+2024-05-21 10:36:25,519:INFO:Initializing compare_models()
+2024-05-21 10:36:25,519:INFO:compare_models(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, include=[Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              fill_value=None,
+                                                              keep_empty_features=False,
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 AdaBoostClassifier(algorithm='SAMME.R', estimator=None,
+                                    learning_rate=1.0, n_estimators=50,
+                                    random_state=444))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 RandomForestClassifier(bootstrap=True, ccp_alpha=0.0,
+                                        class_weight='balanced',
+                                        criterion='gini', max_depth=10,
+                                        max_features='log2',
+                                        max_leaf_nodes=None, max_samples=None,
+                                        min_impurity_decrease=0.005,
+                                        min_samples_leaf=3, min_samples_split=7,
+                                        min_weight_fraction_leaf=0.0,
+                                        monotonic_cst=None, n_estimators=110,
+                                        n_jobs=-1, oob_score=False,
+                                        random_state=444, verbose=0,
+                                        warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LinearDiscriminantAnalysis(covariance_estimator=None,
+                                            n_components=None, priors=None,
+                                            shrinkage=1, solver='lsqr',
+                                            store_covariance=False,
+                                            tol=0.0001))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LogisticRegression(C=1.607, class_weight='balanced',
+                                    dual=False, fit_intercept=True,
+                                    intercept_scaling=1, l1_ratio=None,
+                                    max_iter=1000, multi_class='auto',
+                                    n_jobs=None, penalty='l2', random_state=444,
+                                    solver='lbfgs', tol=0.0001, verbose=0,
+                                    warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 ExtraTreesClassifier(bootstrap=True, ccp_alpha=0.0,
+                                      class_weight='balanced', criterion='gini',
+                                      max_depth=10, max_features='log2',
+                                      max_leaf_nodes=None, max_samples=None,
+                                      min_impurity_decrease=0.005,
+                                      min_samples_leaf=3, min_samples_split=7,
+                                      min_weight_fraction_leaf=0.0,
+                                      monotonic_cst=None, n_estimators=110,
+                                      n_jobs=-1, oob_score=False,
+                                      random_state=444, verbose=0,
+                                      warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 SGDClassifier(alpha=0.0001, average=False, class_weight=None,
+                               early_stopping=False, epsilon=0.1, eta0=0.2,
+                               fit_intercept=True, l1_ratio=0.7300000001,
+                               learning_rate='constant', loss='hinge',
+                               max_iter=1000, n_iter_no_change=5, n_jobs=-1,
+                               penalty='elasticnet', power_t=0.5,
+                               random_state=444, shuffle=True, tol=0.001,
+                               validation_fraction=0.1, verbose=0,
+                               warm_start=False))],
+         verbose=False)], fold=None, round=4, cross_validation=True, sort=BA, n_select=1, budget_time=None, turbo=True, errors=ignore, fit_kwargs=None, groups=None, experiment_custom_tags=None, probability_threshold=None, verbose=True, parallel=None, caller_params={'self': <pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, 'include': [Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              fill_value=None,
+                                                              keep_empty_features=False,
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 AdaBoostClassifier(algorithm='SAMME.R', estimator=None,
+                                    learning_rate=1.0, n_estimators=50,
+                                    random_state=444))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 RandomForestClassifier(bootstrap=True, ccp_alpha=0.0,
+                                        class_weight='balanced',
+                                        criterion='gini', max_depth=10,
+                                        max_features='log2',
+                                        max_leaf_nodes=None, max_samples=None,
+                                        min_impurity_decrease=0.005,
+                                        min_samples_leaf=3, min_samples_split=7,
+                                        min_weight_fraction_leaf=0.0,
+                                        monotonic_cst=None, n_estimators=110,
+                                        n_jobs=-1, oob_score=False,
+                                        random_state=444, verbose=0,
+                                        warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LinearDiscriminantAnalysis(covariance_estimator=None,
+                                            n_components=None, priors=None,
+                                            shrinkage=1, solver='lsqr',
+                                            store_covariance=False,
+                                            tol=0.0001))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LogisticRegression(C=1.607, class_weight='balanced',
+                                    dual=False, fit_intercept=True,
+                                    intercept_scaling=1, l1_ratio=None,
+                                    max_iter=1000, multi_class='auto',
+                                    n_jobs=None, penalty='l2', random_state=444,
+                                    solver='lbfgs', tol=0.0001, verbose=0,
+                                    warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 ExtraTreesClassifier(bootstrap=True, ccp_alpha=0.0,
+                                      class_weight='balanced', criterion='gini',
+                                      max_depth=10, max_features='log2',
+                                      max_leaf_nodes=None, max_samples=None,
+                                      min_impurity_decrease=0.005,
+                                      min_samples_leaf=3, min_samples_split=7,
+                                      min_weight_fraction_leaf=0.0,
+                                      monotonic_cst=None, n_estimators=110,
+                                      n_jobs=-1, oob_score=False,
+                                      random_state=444, verbose=0,
+                                      warm_start=False))],
+         verbose=False), Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 SGDClassifier(alpha=0.0001, average=False, class_weight=None,
+                               early_stopping=False, epsilon=0.1, eta0=0.2,
+                               fit_intercept=True, l1_ratio=0.7300000001,
+                               learning_rate='constant', loss='hinge',
+                               max_iter=1000, n_iter_no_change=5, n_jobs=-1,
+                               penalty='elasticnet', power_t=0.5,
+                               random_state=444, shuffle=True, tol=0.001,
+                               validation_fraction=0.1, verbose=0,
+                               warm_start=False))],
+         verbose=False)], 'exclude': None, 'fold': None, 'round': 4, 'cross_validation': True, 'sort': 'BA', 'n_select': 1, 'budget_time': None, 'turbo': True, 'errors': 'ignore', 'fit_kwargs': None, 'groups': None, 'experiment_custom_tags': None, 'probability_threshold': None, 'engine': None, 'verbose': True, 'parallel': None, '__class__': <class 'pycaret.classification.oop.ClassificationExperiment'>}, exclude=None)
+2024-05-21 10:36:25,519:INFO:Checking exceptions
+2024-05-21 10:36:25,795:INFO:Preparing display monitor
+2024-05-21 10:36:25,804:INFO:Initializing custom model Light Gradient Boosting Machine
+2024-05-21 10:36:25,804:INFO:Total runtime is 5.467732747395833e-06 minutes
+2024-05-21 10:36:25,805:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:36:25,824:INFO:Initializing create_model()
+2024-05-21 10:36:25,824:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:36:25,824:INFO:Checking exceptions
+2024-05-21 10:36:25,824:INFO:Importing libraries
+2024-05-21 10:36:25,824:INFO:Copying training dataset
+2024-05-21 10:36:26,711:INFO:Defining folds
+2024-05-21 10:36:26,711:INFO:Declaring metric variables
+2024-05-21 10:36:26,712:INFO:Importing untrained model
+2024-05-21 10:36:26,712:INFO:Declaring custom model
+2024-05-21 10:36:26,719:INFO:Light Gradient Boosting Machine Imported successfully
+2024-05-21 10:36:26,722:INFO:Starting cross validation
+2024-05-21 10:36:26,728:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:36:29,198:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:29,279:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:36:29,280:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:36:29,280:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:36:29,453:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:29,550:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:36:29,550:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:36:29,550:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:36:29,820:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:29,909:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:36:29,909:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:36:29,909:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:36:30,265:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:30,352:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:36:30,352:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:36:30,352:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:36:30,530:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/lightgbm/sklearn.py:598: UserWarning: 'silent' argument is deprecated and will be removed in a future release of LightGBM. Pass 'verbose' parameter via keyword arguments instead.
+  _log_warning("'silent' argument is deprecated and will be removed in a future release of LightGBM. "
+
+2024-05-21 10:36:30,611:INFO:[LightGBM] [Warning] bagging_freq is set=0, subsample_freq=0 will be ignored. Current value: bagging_freq=0
+2024-05-21 10:36:30,611:INFO:[LightGBM] [Warning] feature_fraction is set=0.4, colsample_bytree=1.0 will be ignored. Current value: feature_fraction=0.4
+2024-05-21 10:36:30,611:INFO:[LightGBM] [Warning] bagging_fraction is set=0.5, subsample=1.0 will be ignored. Current value: bagging_fraction=0.5
+2024-05-21 10:36:34,070:INFO:Calculating mean and std
+2024-05-21 10:36:34,072:INFO:Creating metrics dataframe
+2024-05-21 10:36:34,076:INFO:Uploading results into container
+2024-05-21 10:36:34,077:INFO:Uploading model into container now
+2024-05-21 10:36:34,078:INFO:_master_model_container: 4
+2024-05-21 10:36:34,078:INFO:_display_container: 2
+2024-05-21 10:36:34,095:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                colsample_bytree=1.0, feature_fraction=0.4,
+                                importance_type='split', learning_rate=0.4,
+                                max_depth=-1, min_child_samples=91,
+                                min_child_weight=0.001, min_split_gain=0.6,
+                                n_estimators=60, n_jobs=-1, num_leaves=30,
+                                objective=None, random_state=444,
+                                reg_alpha=0.0001, reg_lambda=1e-07, silent=True,
+                                subsample=1.0, subsample_for_bin=200000,
+                                subsample_freq=0))],
+         verbose=False)
+2024-05-21 10:36:34,095:INFO:create_model() successfully completed......................................
+2024-05-21 10:36:34,198:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:36:34,198:INFO:Creating metrics dataframe
+2024-05-21 10:36:34,202:INFO:Initializing custom model Extreme Gradient Boosting
+2024-05-21 10:36:34,202:INFO:Total runtime is 0.13997720082600912 minutes
+2024-05-21 10:36:34,204:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:36:34,223:INFO:Initializing create_model()
+2024-05-21 10:36:34,223:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:36:34,223:INFO:Checking exceptions
+2024-05-21 10:36:34,223:INFO:Importing libraries
+2024-05-21 10:36:34,223:INFO:Copying training dataset
+2024-05-21 10:36:35,132:INFO:Defining folds
+2024-05-21 10:36:35,132:INFO:Declaring metric variables
+2024-05-21 10:36:35,134:INFO:Importing untrained model
+2024-05-21 10:36:35,134:INFO:Declaring custom model
+2024-05-21 10:36:35,141:INFO:Extreme Gradient Boosting Imported successfully
+2024-05-21 10:36:35,144:INFO:Starting cross validation
+2024-05-21 10:36:35,150:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:36:36,534:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:36,535:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:36,575:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:36,594:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,011:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:36:37,060:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:37,060:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:37,110:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,130:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,542:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:37,542:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:37,587:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,598:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:36:37,604:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,633:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:37,634:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:37,683:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:37,704:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:38,027:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:36:38,103:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:36:38,293:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:38,293:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:38,336:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:38,359:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:38,717:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:36:45,167:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:45,167:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:45,205:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,221:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,314:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:45,314:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:45,358:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,378:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,819:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:45,819:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:45,856:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,872:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:45,956:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:45,956:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:45,993:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,010:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,027:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,027:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,064:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,080:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,130:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,130:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,163:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,163:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,167:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,183:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,200:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,216:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,263:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,263:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,300:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,317:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,575:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,575:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,610:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,625:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,700:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:36:46,700:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:36:46,735:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,750:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:36:46,832:INFO:Calculating mean and std
+2024-05-21 10:36:46,834:INFO:Creating metrics dataframe
+2024-05-21 10:36:46,837:INFO:Uploading results into container
+2024-05-21 10:36:46,838:INFO:Uploading model into container now
+2024-05-21 10:36:46,838:INFO:_master_model_container: 5
+2024-05-21 10:36:46,838:INFO:_display_container: 2
+2024-05-21 10:36:46,857:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False)
+2024-05-21 10:36:46,857:INFO:create_model() successfully completed......................................
+2024-05-21 10:36:46,940:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:36:46,941:INFO:Creating metrics dataframe
+2024-05-21 10:36:46,944:INFO:Initializing custom model Ada Boost Classifier
+2024-05-21 10:36:46,944:INFO:Total runtime is 0.3523403326670329 minutes
+2024-05-21 10:36:46,946:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:36:46,962:INFO:Initializing create_model()
+2024-05-21 10:36:46,962:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              fill_value=None,
+                                                              keep_empty_features=False,
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 AdaBoostClassifier(algorithm='SAMME.R', estimator=None,
+                                    learning_rate=1.0, n_estimators=50,
+                                    random_state=444))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:36:46,962:INFO:Checking exceptions
+2024-05-21 10:36:46,962:INFO:Importing libraries
+2024-05-21 10:36:46,962:INFO:Copying training dataset
+2024-05-21 10:36:47,810:INFO:Defining folds
+2024-05-21 10:36:47,810:INFO:Declaring metric variables
+2024-05-21 10:36:47,812:INFO:Importing untrained model
+2024-05-21 10:36:47,812:INFO:Declaring custom model
+2024-05-21 10:36:47,818:INFO:Ada Boost Classifier Imported successfully
+2024-05-21 10:36:47,821:INFO:Starting cross validation
+2024-05-21 10:36:47,827:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:36:49,558:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+  warnings.warn(
+
+2024-05-21 10:36:49,982:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+  warnings.warn(
+
+2024-05-21 10:36:50,174:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+  warnings.warn(
+
+2024-05-21 10:36:50,431:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+  warnings.warn(
+
+2024-05-21 10:36:50,470:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+  warnings.warn(
+
+2024-05-21 10:37:05,983:INFO:Calculating mean and std
+2024-05-21 10:37:05,984:INFO:Creating metrics dataframe
+2024-05-21 10:37:05,985:INFO:Uploading results into container
+2024-05-21 10:37:05,986:INFO:Uploading model into container now
+2024-05-21 10:37:05,986:INFO:_master_model_container: 6
+2024-05-21 10:37:05,986:INFO:_display_container: 2
+2024-05-21 10:37:06,002:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              fill_value=None,
+                                                              keep_empty_features=False,
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 AdaBoostClassifier(algorithm='SAMME.R', estimator=None,
+                                    learning_rate=1.0, n_estimators=50,
+                                    random_state=444))],
+         verbose=False)
+2024-05-21 10:37:06,002:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:06,107:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:06,107:INFO:Creating metrics dataframe
+2024-05-21 10:37:06,110:INFO:Initializing custom model Random Forest Classifier
+2024-05-21 10:37:06,110:INFO:Total runtime is 0.6717743317286173 minutes
+2024-05-21 10:37:06,112:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:37:06,127:INFO:Initializing create_model()
+2024-05-21 10:37:06,127:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 RandomForestClassifier(bootstrap=True, ccp_alpha=0.0,
+                                        class_weight='balanced',
+                                        criterion='gini', max_depth=10,
+                                        max_features='log2',
+                                        max_leaf_nodes=None, max_samples=None,
+                                        min_impurity_decrease=0.005,
+                                        min_samples_leaf=3, min_samples_split=7,
+                                        min_weight_fraction_leaf=0.0,
+                                        monotonic_cst=None, n_estimators=110,
+                                        n_jobs=-1, oob_score=False,
+                                        random_state=444, verbose=0,
+                                        warm_start=False))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:06,127:INFO:Checking exceptions
+2024-05-21 10:37:06,127:INFO:Importing libraries
+2024-05-21 10:37:06,127:INFO:Copying training dataset
+2024-05-21 10:37:07,015:INFO:Defining folds
+2024-05-21 10:37:07,015:INFO:Declaring metric variables
+2024-05-21 10:37:07,017:INFO:Importing untrained model
+2024-05-21 10:37:07,017:INFO:Declaring custom model
+2024-05-21 10:37:07,024:INFO:Random Forest Classifier Imported successfully
+2024-05-21 10:37:07,026:INFO:Starting cross validation
+2024-05-21 10:37:07,033:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:37:10,123:INFO:Calculating mean and std
+2024-05-21 10:37:10,125:INFO:Creating metrics dataframe
+2024-05-21 10:37:10,128:INFO:Uploading results into container
+2024-05-21 10:37:10,128:INFO:Uploading model into container now
+2024-05-21 10:37:10,128:INFO:_master_model_container: 7
+2024-05-21 10:37:10,128:INFO:_display_container: 2
+2024-05-21 10:37:10,148:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 RandomForestClassifier(bootstrap=True, ccp_alpha=0.0,
+                                        class_weight='balanced',
+                                        criterion='gini', max_depth=10,
+                                        max_features='log2',
+                                        max_leaf_nodes=None, max_samples=None,
+                                        min_impurity_decrease=0.005,
+                                        min_samples_leaf=3, min_samples_split=7,
+                                        min_weight_fraction_leaf=0.0,
+                                        monotonic_cst=None, n_estimators=110,
+                                        n_jobs=-1, oob_score=False,
+                                        random_state=444, verbose=0,
+                                        warm_start=False))],
+         verbose=False)
+2024-05-21 10:37:10,148:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:10,248:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:10,248:INFO:Creating metrics dataframe
+2024-05-21 10:37:10,252:INFO:Initializing custom model Linear Discriminant Analysis
+2024-05-21 10:37:10,252:INFO:Total runtime is 0.7407990654309591 minutes
+2024-05-21 10:37:10,253:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:37:10,269:INFO:Initializing create_model()
+2024-05-21 10:37:10,270:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LinearDiscriminantAnalysis(covariance_estimator=None,
+                                            n_components=None, priors=None,
+                                            shrinkage=1, solver='lsqr',
+                                            store_covariance=False,
+                                            tol=0.0001))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:10,270:INFO:Checking exceptions
+2024-05-21 10:37:10,270:INFO:Importing libraries
+2024-05-21 10:37:10,270:INFO:Copying training dataset
+2024-05-21 10:37:11,186:INFO:Defining folds
+2024-05-21 10:37:11,186:INFO:Declaring metric variables
+2024-05-21 10:37:11,188:INFO:Importing untrained model
+2024-05-21 10:37:11,188:INFO:Declaring custom model
+2024-05-21 10:37:11,195:INFO:Linear Discriminant Analysis Imported successfully
+2024-05-21 10:37:11,197:INFO:Starting cross validation
+2024-05-21 10:37:11,204:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:37:41,293:INFO:Calculating mean and std
+2024-05-21 10:37:41,295:INFO:Creating metrics dataframe
+2024-05-21 10:37:41,299:INFO:Uploading results into container
+2024-05-21 10:37:41,299:INFO:Uploading model into container now
+2024-05-21 10:37:41,299:INFO:_master_model_container: 8
+2024-05-21 10:37:41,299:INFO:_display_container: 2
+2024-05-21 10:37:41,317:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                                                              missing_values=nan,
+                                                              strategy='most_frequent'))),
+                ('clean_column_names',
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LinearDiscriminantAnalysis(covariance_estimator=None,
+                                            n_components=None, priors=None,
+                                            shrinkage=1, solver='lsqr',
+                                            store_covariance=False,
+                                            tol=0.0001))],
+         verbose=False)
+2024-05-21 10:37:41,317:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:41,410:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:41,410:INFO:Creating metrics dataframe
+2024-05-21 10:37:41,414:INFO:Initializing custom model Logistic Regression
+2024-05-21 10:37:41,414:INFO:Total runtime is 1.260170869032542 minutes
+2024-05-21 10:37:41,416:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:37:41,432:INFO:Initializing create_model()
+2024-05-21 10:37:41,432:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LogisticRegression(C=1.607, class_weight='balanced',
+                                    dual=False, fit_intercept=True,
+                                    intercept_scaling=1, l1_ratio=None,
+                                    max_iter=1000, multi_class='auto',
+                                    n_jobs=None, penalty='l2', random_state=444,
+                                    solver='lbfgs', tol=0.0001, verbose=0,
+                                    warm_start=False))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:41,432:INFO:Checking exceptions
+2024-05-21 10:37:41,432:INFO:Importing libraries
+2024-05-21 10:37:41,432:INFO:Copying training dataset
+2024-05-21 10:37:42,325:INFO:Defining folds
+2024-05-21 10:37:42,325:INFO:Declaring metric variables
+2024-05-21 10:37:42,327:INFO:Importing untrained model
+2024-05-21 10:37:42,327:INFO:Declaring custom model
+2024-05-21 10:37:42,334:INFO:Logistic Regression Imported successfully
+2024-05-21 10:37:42,337:INFO:Starting cross validation
+2024-05-21 10:37:42,344:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:37:48,683:INFO:Calculating mean and std
+2024-05-21 10:37:48,684:INFO:Creating metrics dataframe
+2024-05-21 10:37:48,686:INFO:Uploading results into container
+2024-05-21 10:37:48,686:INFO:Uploading model into container now
+2024-05-21 10:37:48,687:INFO:_master_model_container: 9
+2024-05-21 10:37:48,687:INFO:_display_container: 2
+2024-05-21 10:37:48,704:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 TransformerWrapper(exclude=None, include=None,
+                                    transformer=CleanColumnNames(match='[\\]\\[\\,\\{\\}\\"\\:]+'))),
+                ('trained_model',
+                 LogisticRegression(C=1.607, class_weight='balanced',
+                                    dual=False, fit_intercept=True,
+                                    intercept_scaling=1, l1_ratio=None,
+                                    max_iter=1000, multi_class='auto',
+                                    n_jobs=None, penalty='l2', random_state=444,
+                                    solver='lbfgs', tol=0.0001, verbose=0,
+                                    warm_start=False))],
+         verbose=False)
+2024-05-21 10:37:48,704:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:48,786:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:48,786:INFO:Creating metrics dataframe
+2024-05-21 10:37:48,790:INFO:Initializing custom model Extra Trees Classifier
+2024-05-21 10:37:48,790:INFO:Total runtime is 1.3831033825874328 minutes
+2024-05-21 10:37:48,792:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:37:48,809:INFO:Initializing create_model()
+2024-05-21 10:37:48,809:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 ExtraTreesClassifier(bootstrap=True, ccp_alpha=0.0,
+                                      class_weight='balanced', criterion='gini',
+                                      max_depth=10, max_features='log2',
+                                      max_leaf_nodes=None, max_samples=None,
+                                      min_impurity_decrease=0.005,
+                                      min_samples_leaf=3, min_samples_split=7,
+                                      min_weight_fraction_leaf=0.0,
+                                      monotonic_cst=None, n_estimators=110,
+                                      n_jobs=-1, oob_score=False,
+                                      random_state=444, verbose=0,
+                                      warm_start=False))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:48,809:INFO:Checking exceptions
+2024-05-21 10:37:48,809:INFO:Importing libraries
+2024-05-21 10:37:48,809:INFO:Copying training dataset
+2024-05-21 10:37:49,686:INFO:Defining folds
+2024-05-21 10:37:49,686:INFO:Declaring metric variables
+2024-05-21 10:37:49,688:INFO:Importing untrained model
+2024-05-21 10:37:49,688:INFO:Declaring custom model
+2024-05-21 10:37:49,695:INFO:Extra Trees Classifier Imported successfully
+2024-05-21 10:37:49,697:INFO:Starting cross validation
+2024-05-21 10:37:49,703:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:37:52,454:INFO:Calculating mean and std
+2024-05-21 10:37:52,456:INFO:Creating metrics dataframe
+2024-05-21 10:37:52,458:INFO:Uploading results into container
+2024-05-21 10:37:52,459:INFO:Uploading model into container now
+2024-05-21 10:37:52,459:INFO:_master_model_container: 10
+2024-05-21 10:37:52,459:INFO:_display_container: 2
+2024-05-21 10:37:52,478:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 ExtraTreesClassifier(bootstrap=True, ccp_alpha=0.0,
+                                      class_weight='balanced', criterion='gini',
+                                      max_depth=10, max_features='log2',
+                                      max_leaf_nodes=None, max_samples=None,
+                                      min_impurity_decrease=0.005,
+                                      min_samples_leaf=3, min_samples_split=7,
+                                      min_weight_fraction_leaf=0.0,
+                                      monotonic_cst=None, n_estimators=110,
+                                      n_jobs=-1, oob_score=False,
+                                      random_state=444, verbose=0,
+                                      warm_start=False))],
+         verbose=False)
+2024-05-21 10:37:52,478:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:52,580:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:52,580:INFO:Creating metrics dataframe
+2024-05-21 10:37:52,585:INFO:Initializing custom model SVM - Linear Kernel
+2024-05-21 10:37:52,585:INFO:Total runtime is 1.4463468352953592 minutes
+2024-05-21 10:37:52,586:INFO:SubProcess create_model() called ==================================
+2024-05-21 10:37:52,604:INFO:Initializing create_model()
+2024-05-21 10:37:52,604:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 SGDClassifier(alpha=0.0001, average=False, class_weight=None,
+                               early_stopping=False, epsilon=0.1, eta0=0.2,
+                               fit_intercept=True, l1_ratio=0.7300000001,
+                               learning_rate='constant', loss='hinge',
+                               max_iter=1000, n_iter_no_change=5, n_jobs=-1,
+                               penalty='elasticnet', power_t=0.5,
+                               random_state=444, shuffle=True, tol=0.001,
+                               validation_fraction=0.1, verbose=0,
+                               warm_start=False))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x307898340>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:52,604:INFO:Checking exceptions
+2024-05-21 10:37:52,604:INFO:Importing libraries
+2024-05-21 10:37:52,604:INFO:Copying training dataset
+2024-05-21 10:37:53,535:INFO:Defining folds
+2024-05-21 10:37:53,535:INFO:Declaring metric variables
+2024-05-21 10:37:53,537:INFO:Importing untrained model
+2024-05-21 10:37:53,537:INFO:Declaring custom model
+2024-05-21 10:37:53,544:INFO:SVM - Linear Kernel Imported successfully
+2024-05-21 10:37:53,546:INFO:Starting cross validation
+2024-05-21 10:37:53,553:INFO:Cross validating with StratifiedKFold(n_splits=5, random_state=None, shuffle=False), n_jobs=-1
+2024-05-21 10:37:57,616:INFO:Calculating mean and std
+2024-05-21 10:37:57,617:INFO:Creating metrics dataframe
+2024-05-21 10:37:57,618:INFO:Uploading results into container
+2024-05-21 10:37:57,618:INFO:Uploading model into container now
+2024-05-21 10:37:57,619:INFO:_master_model_container: 11
+2024-05-21 10:37:57,619:INFO:_display_container: 2
+2024-05-21 10:37:57,635:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                 SGDClassifier(alpha=0.0001, average=False, class_weight=None,
+                               early_stopping=False, epsilon=0.1, eta0=0.2,
+                               fit_intercept=True, l1_ratio=0.7300000001,
+                               learning_rate='constant', loss='hinge',
+                               max_iter=1000, n_iter_no_change=5, n_jobs=-1,
+                               penalty='elasticnet', power_t=0.5,
+                               random_state=444, shuffle=True, tol=0.001,
+                               validation_fraction=0.1, verbose=0,
+                               warm_start=False))],
+         verbose=False)
+2024-05-21 10:37:57,635:INFO:create_model() successfully completed......................................
+2024-05-21 10:37:57,717:INFO:SubProcess create_model() end ==================================
+2024-05-21 10:37:57,717:INFO:Creating metrics dataframe
+2024-05-21 10:37:57,722:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/pycaret/internal/pycaret_experiment/supervised_experiment.py:323: FutureWarning: Styler.applymap has been deprecated. Use Styler.map instead.
+  master_display_.apply(
+
+2024-05-21 10:37:57,746:INFO:Initializing create_model()
+2024-05-21 10:37:57,746:INFO:create_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x157dff6d0>, estimator=Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False), fold=StratifiedKFold(n_splits=5, random_state=None, shuffle=False), round=4, cross_validation=False, predict=False, fit_kwargs={}, groups=None, refit=True, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=None, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-05-21 10:37:57,747:INFO:Checking exceptions
+2024-05-21 10:37:57,748:INFO:Importing libraries
+2024-05-21 10:37:57,748:INFO:Copying training dataset
+2024-05-21 10:37:58,621:INFO:Defining folds
+2024-05-21 10:37:58,622:INFO:Declaring metric variables
+2024-05-21 10:37:58,622:INFO:Importing untrained model
+2024-05-21 10:37:58,622:INFO:Declaring custom model
+2024-05-21 10:37:58,628:INFO:Extreme Gradient Boosting Imported successfully
+2024-05-21 10:37:58,634:INFO:Cross validation set to False
+2024-05-21 10:37:58,634:INFO:Fitting Model
+2024-05-21 10:37:59,423:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:299: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(dtype):
+
+2024-05-21 10:37:59,423:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:301: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  elif is_categorical_dtype(dtype) and enable_categorical:
+
+2024-05-21 10:37:59,459:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:332: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if is_categorical_dtype(dtype)
+
+2024-05-21 10:37:59,475:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:323: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  return is_int or is_bool or is_float or is_categorical_dtype(dtype)
+
+2024-05-21 10:37:59,602:WARNING:/Users/maurizio/miniconda3/lib/python3.10/site-packages/xgboost/data.py:427: FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+  if is_sparse(data):
+
+2024-05-21 10:38:01,741:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False)
+2024-05-21 10:38:01,741:INFO:create_model() successfully completed......................................
+2024-05-21 10:38:01,820:INFO:_master_model_container: 11
+2024-05-21 10:38:01,820:INFO:_display_container: 2
+2024-05-21 10:38:01,842:INFO:Pipeline(memory=FastMemory(location=/var/folders/gl/gkr8rrn52y9cvb9jc59pvjyw0000gn/T/joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(exclude=None,
+                                    include=['Gene length', 'Transcripts count',
+                                             'GC content', 'GTEX_kidney',
+                                             'Gene-Disease association',
+                                             'OncoDB_expression', 'HPA_kidney',
+                                             'GO-MF', 'GO-BP', 'GO-CC',
+                                             'BIOGRID', 'KEGG', 'REACTOME',
+                                             'UCSC_TFBS', 'UP_tis...
+                               grow_policy='depthwise', importance_type=None,
+                               interaction_constraints='', learning_rate=0.5,
+                               max_bin=256, max_cat_threshold=64,
+                               max_cat_to_onehot=4, max_delta_step=0,
+                               max_depth=1, max_leaves=0, min_child_weight=2,
+                               missing=nan, monotone_constraints='()',
+                               n_estimators=50, n_jobs=-1, num_parallel_tree=1,
+                               objective='binary:logistic', predictor='auto', ...))],
+         verbose=False)
+2024-05-21 10:38:01,842:INFO:compare_models() successfully completed......................................
