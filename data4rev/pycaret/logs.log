@@ -1,0 +1,18 @@
+2024-05-21 09:24:52,194:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:24:52,194:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:24:52,194:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:24:52,194:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-05-21 09:25:14,520:INFO:Initializing load_model()
+2024-05-21 09:25:14,520:INFO:load_model(model_name=saved_rf_model, platform=None, authentication=None, verbose=True)
+2024-05-21 09:25:14,524:WARNING:/home/maurizio/miniconda3/envs/mytorch/lib/python3.10/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator SimpleImputer from version 1.0.2 when using version 1.4.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+
+2024-05-21 09:25:14,560:WARNING:/home/maurizio/miniconda3/envs/mytorch/lib/python3.10/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.0.2 when using version 1.4.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+
