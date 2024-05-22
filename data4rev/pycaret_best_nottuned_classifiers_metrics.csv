@@ -1,0 +1,13 @@
+,Model,Accuracy,AUC,Recall,MCC,Specificity,BA,TT (Sec)
+0,veLGBM,0.9022,0.0,0.9022,0.5634,0.8717,0.8882,47.49
+9,Logistic Regression,0.9497,0.9477,0.9497,0.6022,0.5761,0.7777,3.566
+11,SVM - Linear Kernel,0.9415,0.9269,0.9415,0.56,0.5717,0.7712,3.062
+8,Linear Discriminant Analysis,0.9224,0.8413,0.9224,0.4796,0.5716,0.7609,19.502
+2,Extreme Gradient Boosting,0.9529,0.9505,0.9529,0.6004,0.5009,0.7448,42.216
+1,Light Gradient Boosting Machine,0.953,0.9534,0.953,0.5993,0.4902,0.7399,17.828
+3,Ada Boost Classifier,0.9415,0.9267,0.9415,0.5265,0.4932,0.7351,18.872
+6,CatBoost Classifier,0.9514,0.9527,0.9514,0.5845,0.4797,0.7342,290.044
+5,Decision Tree Classifier,0.9213,0.7234,0.9213,0.4355,0.4916,0.7234,16.874
+7,Gradient Boosting Classifier,0.949,0.9429,0.949,0.5581,0.4465,0.7176,90.886
+4,Random Forest Classifier,0.9468,0.9422,0.9468,0.5216,0.377,0.6845,12.706
+10,Extra Trees Classifier,0.9467,0.9422,0.9467,0.5169,0.362,0.6775,6.808
