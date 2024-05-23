@@ -1,0 +1,69 @@
+METHOD: LGBM	VOTERS: 10	BALANCE: yes
+PROBL: E vs NE
+INPUT: Brain_BIO.csv Brain_CCcfs.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9572±0.0050                    |
+| Accuracy    | 0.8956±0.0053                    |
+| BA          | 0.8907±0.0094                    |
+| Sensitivity | 0.8849±0.0207                    |
+| Specificity | 0.8964±0.0062                    |
+| MCC         | 0.5503±0.0134                    |
+| CM          | [[10920, 1420], [16586, 143514]] |
++-------------+----------------------------------+
+\begin{tabular}{llllllll}
+\toprule
+ & ROC-AUC & Accuracy & BA & Sensitivity & Specificity & MCC & CM \\
+\midrule
+measure & 0.9572±0.0050 & 0.8956±0.0053 & 0.8907±0.0094 & 0.8849±0.0207 & 0.8964±0.0062 & 0.5503±0.0134 & [[10920, 1420], [16586, 143514]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 10	BALANCE: yes
+PROBL: E vs NE
+INPUT: Brain_EmbN2V_128.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9310±0.0073                    |
+| Accuracy    | 0.8725±0.0059                    |
+| BA          | 0.8530±0.0134                    |
+| Sensitivity | 0.8303±0.0293                    |
+| Specificity | 0.8758±0.0070                    |
+| MCC         | 0.4794±0.0162                    |
+| CM          | [[10246, 2094], [19888, 140212]] |
++-------------+----------------------------------+
+\begin{tabular}{llllllll}
+\toprule
+ & ROC-AUC & Accuracy & BA & Sensitivity & Specificity & MCC & CM \\
+\midrule
+measure & 0.9310±0.0073 & 0.8725±0.0059 & 0.8530±0.0134 & 0.8303±0.0293 & 0.8758±0.0070 & 0.4794±0.0162 & [[10246, 2094], [19888, 140212]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 10	BALANCE: yes
+PROBL: E vs NE
+INPUT: Brain_BIO.csv Brain_CCcfs.csv Brain_EmbN2V_128.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9587±0.0049                    |
+| Accuracy    | 0.8976±0.0056                    |
+| BA          | 0.8939±0.0091                    |
+| Sensitivity | 0.8896±0.0195                    |
+| Specificity | 0.8982±0.0064                    |
+| MCC         | 0.5569±0.0143                    |
+| CM          | [[10978, 1362], [16291, 143809]] |
++-------------+----------------------------------+
+\begin{tabular}{llllllll}
+\toprule
+ & ROC-AUC & Accuracy & BA & Sensitivity & Specificity & MCC & CM \\
+\midrule
+measure & 0.9587±0.0049 & 0.8976±0.0056 & 0.8939±0.0091 & 0.8896±0.0195 & 0.8982±0.0064 & 0.5569±0.0143 & [[10978, 1362], [16291, 143809]] \\
+\bottomrule
+\end{tabular}
+
