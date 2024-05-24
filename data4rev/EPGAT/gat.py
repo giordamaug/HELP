@@ -10,6 +10,7 @@ import torch.optim as optim
 import numpy as np
 from tqdm import tqdm
 from utils import *
+import optuna
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -54,13 +55,7 @@ class Loss():
         loss = loss_p + loss_n
         return loss
 
-def hyper_search(args):
-    seed = np.random.randint(1000) + 10 # skip test seeds
-    data = [
-        tools.get_data(args.__dict__, seed=seed, weights=False),
-        tools.get_data(args.__dict__, seed=seed+1, weights=False),
-        tools.get_data(args.__dict__, seed=seed+2, weights=False),
-    ]
+def hyper_search(data):
 
     def objective(trial):
         linear_layer = trial.suggest_categorical(
