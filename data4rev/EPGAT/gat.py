@@ -55,7 +55,7 @@ class Loss():
         loss = loss_p + loss_n
         return loss
 
-def hyper_search(name, data):
+def hyper_search(name, savepath, data):
 
     def objective(trial):
         linear_layer = trial.suggest_categorical(
@@ -98,12 +98,12 @@ def hyper_search(name, data):
         study_name=f'gat_{name}',
         direction='maximize',
         load_if_exists=True,
-        storage=f'sqlite:///outputs/studies/gat_{name}.db')
+        storage=f'sqlite:///studies/gat_{name}.db')
     study.optimize(objective, n_trials=50)
     best_params = study.best_params
     print('Best Params:', best_params)
     df = study.trials_dataframe()
-    df.to_csv('outputs/gat_human_hypersearch.csv')
+    df.to_csv(os.path.join(savepath, 'gat_human_hypersearch.csv'))
     print(df.head())
     
 def train(params, X, A, edge_weights, train_y, train_idx, val_y, val_idx, save_best_only=True, n_epochs=1000, savepath='',):
