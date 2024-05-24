@@ -54,6 +54,63 @@ class Loss():
         loss = loss_p + loss_n
         return loss
 
+def hyper_search(args):
+    seed = np.random.randint(1000) + 10 # skip test seeds
+    data = [
+        tools.get_data(args.__dict__, seed=seed, weights=False),
+        tools.get_data(args.__dict__, seed=seed+1, weights=False),
+        tools.get_data(args.__dict__, seed=seed+2, weights=False),
+    ]
+
+    def objective(trial):
+        linear_layer = trial.suggest_categorical(
+            f'linear_layer', [None, 64, 128, 256])
+        linear_layer = None
+
+        n_layers = trial.suggest_int('n_layers', 1, 3)
+        h_feats = [trial.suggest_categorical(
+            f'h_feat_{i}', [8, 16, 32, 64]) for i in range(n_layers)]
+        h_feats += [1]
+
+        heads = [trial.suggest_categorical(
+            f'head_{i}', [1, 2, 4, 8]) for i in range(n_layers+1)]
+
+        params = {
+            'lr': trial.suggest_loguniform('lr', 1e-4, 1e-2),
+            'weight_decay': trial.suggest_loguniform('weight_decay', 1e-5, 1e-3),
+            'h_feats': h_feats,
+            'heads': heads,
+            'dropout': trial.suggest_uniform('dropout', 0.1, 0.7),
+            'negative_slope': 0.2}
+
+        try:
+            final_auc = [] 
+            for d in data:
+                (edge_index, edge_weights), X, (train_idx, train_y), \
+                    (val_idx, val_y), (test_idx, test_y), _ = d
+
+                model = train(params, X, edge_index, edge_weights,
+                              train_y, train_idx, val_y, val_idx)
+
+                preds, auc, _, _, _ = test(model, X, edge_index, (test_idx, test_y))
+                final_auc.append(auc)
+
+            return np.mean(final_auc)
+        except:
+            return -1
+
+    study = optuna.create_study(
+        study_name=f'gat_{args.organism}',
+        direction='maximize',
+        load_if_exists=True,
+        storage=f'sqlite:///outputs/studies/gat_{args.organism}.db')
+    study.optimize(objective, n_trials=50)
+    best_params = study.best_params
+    print('Best Params:', best_params)
+    df = study.trials_dataframe()
+    df.to_csv('outputs/gat_human_hypersearch.csv')
+    print(df.head())
+    
 def train(params, X, A, edge_weights, train_y, train_idx, val_y, val_idx, save_best_only=True, n_epochs=1000, savepath='',):
 
     model = GAT(in_feats=X.shape[1], **params)
