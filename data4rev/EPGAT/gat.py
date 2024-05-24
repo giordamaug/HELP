@@ -55,7 +55,7 @@ class Loss():
         loss = loss_p + loss_n
         return loss
 
-def hyper_search(data):
+def hyper_search(name, data):
 
     def objective(trial):
         linear_layer = trial.suggest_categorical(
@@ -95,10 +95,10 @@ def hyper_search(data):
             return -1
 
     study = optuna.create_study(
-        study_name=f'gat_{args.organism}',
+        study_name=f'gat_{name}',
         direction='maximize',
         load_if_exists=True,
-        storage=f'sqlite:///outputs/studies/gat_{args.organism}.db')
+        storage=f'sqlite:///outputs/studies/gat_{name}.db')
     study.optimize(objective, n_trials=50)
     best_params = study.best_params
     print('Best Params:', best_params)
