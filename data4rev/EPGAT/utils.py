@@ -20,6 +20,7 @@ from sklearn import metrics
 from sklearn.preprocessing import LabelEncoder
 import scipy.sparse as sparse
 
+
 def evalAUC(model, X, A, y, mask, logits=None):
     assert(model is not None or logits is not None)
     if model is not None:
@@ -57,6 +58,16 @@ def save_preds(modelname, preds, savepath, prefix, seed):
     df.to_csv(path)
     print('Saved the predictions to:', path)
 
+def save_results(df_path, *measures):
+    if os.path.isfile(df_path):
+        df = pd.read_csv(df_path)
+    else:
+        df = pd.DataFrame([], columns=["auc_mean", "auc_std", "acc_mean", "acc_std", "ba_mean", "ba_std", 
+                                       "mcc_mean", "mcc_std", "sens_mean", "sens_std", "spec_mean", "spec_std"])
+    df.loc[len(df)] = [*measures]
+    df.to_csv(df_path, index=False)
+    print(df.tail())
+
 def dim_reduction_cor(X, y, k=20):
     cors = np.zeros((X.shape[1]))
 
@@ -72,27 +83,24 @@ def dim_reduction_cor(X, y, k=20):
     return features, cors
 
 
-def data(label_path, 
-         ppi_path, 
-         expr_path=None, 
-         ortho_path=None, 
-         subloc_path=None, 
+def data(label_path, ppi_path, expr_path, ortho_path, subloc_path, 
          string_thr=0, 
          seed=42,
          key = 'combined_score',
          source = 'A', target='B',
          labelname = 'label',
          no_ppi=False,
-         weights=False):
+         weights=False,
+         verbose=False):
 
-    print(f'PPI: {os.path.basename(ppi_path)}.')
+    if verbose: print(f'PPI: {os.path.basename(ppi_path)}.')
 
     edges = pd.read_csv(ppi_path)
     if weights:
         if key in edges.columns:
             edges = edges[edges.loc[:, key] > string_thr].reset_index()
             edge_weights = edges[key] # / 1000
-            print('Filtered String network with thresh:', string_thr)
+            if verbose: print('Filtered String network with thresh:', string_thr)
         else:
             edge_weights = pd.DataFrame(np.ones(len(edges)), columns=[key], index=edges.index)
     else:
@@ -108,12 +116,12 @@ def data(label_path,
     labels = pd.read_csv(label_path, index_col=0)
 
     # filter labels not in the PPI network
-    print('Number of labels before filtering:', len(labels))
+    if verbose: print('Number of labels before filtering:', len(labels))
     labels = labels.loc[np.intersect1d(labels.index, ppi_genes)].copy()
-    print('Number of labels after filtering:', len(labels))
+    if verbose: print('Number of labels after filtering:', len(labels))
 
     genes = np.union1d(labels.index, ppi_genes)
-    print('Total number of genes:', len(genes))
+    if verbose: print('Total number of genes:', len(genes))
 
     X = np.zeros((len(genes), 0))
     X = pd.DataFrame(X, index=genes)
@@ -123,21 +131,21 @@ def data(label_path,
         columns = [f'ortholog_{i}' for i in range(orths.shape[1])]
         orths.columns = columns
         X = X.join(orths, how="left")
-        print('Orthologs dataset shape:', orths.shape)
+        if verbose: print('Orthologs dataset shape:', orths.shape)
 
     if expr_path is not None:
         expression = pd.read_csv(expr_path, index_col=0)
         columns = [f'expression_{i}' for i in range(expression.shape[1])]
         expression.columns = columns
         X = X.join(expression, how="left")
-        print('Gene expression dataset shape:', expression.shape)
+        if verbose: print('Gene expression dataset shape:', expression.shape)
 
     if subloc_path is not None:
         subloc = pd.read_csv(subloc_path, index_col=0)
         columns = [f'subloc_{i}' for i in range(subloc.shape[1])]
         subloc.columns = columns
         X = X.join(subloc, how="left")
-        print('Subcellular Localizations dataset shape:', subloc.shape)
+        if verbose: print('Subcellular Localizations dataset shape:', subloc.shape)
 
     X = X.fillna(0)
 
@@ -146,11 +154,12 @@ def data(label_path,
     train_ds, test_ds = train_test_split(
         labels, test_size=0.2, random_state=seed, stratify=labels)
 
-    print(f'Num nodes {len(genes)} ; num edges {len(edges)}')
-    print(f'X.shape: {None if X is None else X.shape}.')
-    print(f'Train labels. Num: {len(train_ds)} ; Num pos: {train_ds[labelname].sum()}')
-    print(f'Test labels. Num: {len(test_ds)} ; Num pos: {test_ds[labelname].sum()}')
-    print(X.tail())
+    if verbose: 
+        print(f'Num nodes {len(genes)} ; num edges {len(edges)}')
+        print(f'X.shape: {None if X is None else X.shape}.')
+        print(f'Train labels. Num: {len(train_ds)} ; Num pos: {train_ds[labelname].sum()}')
+        print(f'Test labels. Num: {len(test_ds)} ; Num pos: {test_ds[labelname].sum()}')
+    #print(X.tail())
 
     # return (edges, edge_weights), X, train_ds, test_ds, genes
     N = len(X)
@@ -175,7 +184,7 @@ def data(label_path,
 
     edge_index = np.vectorize(mapping.__getitem__)(edges)
     if no_ppi:
-        edges = np.ones((N, 2), dtype=np.int)
+        edges = np.ones((N, 2), dtype=int)
         edges[:, 0] = range(N)
         edges[:, 1] = range(N)
 
@@ -212,15 +221,17 @@ def data(label_path,
     edge_index = edge_index.to(torch.long).contiguous()
 
     X = torch.from_numpy(X).to(torch.float32)
-    train_y = torch.tensor(train[labelname].astype(int), dtype=torch.float32)
-    val_y = torch.tensor(val[labelname].astype(int), dtype=torch.float32)
-    test_y = torch.tensor(test_ds[labelname].astype(int), dtype=torch.float32)
+    train_y = torch.tensor(train[labelname], dtype=torch.float32)
+    val_y = torch.tensor(val[labelname], dtype=torch.float32)
+    test_y = torch.tensor(test_ds[labelname], dtype=torch.float32)
 
     # ---------------------------------------------------
-    print(f'\nNumber of edges in graph: {len(edges)}')
-    print(f'Number of features: {X.shape[1]}')
-    print(f'Number of nodes in graph: {len(X)}\n')
-    print('Using Edge Weights' if edge_weights is not None else 'Not using edge weights')
+    if verbose: 
+        print('Not using PPI' if no_ppi else 'Using PPI')
+        print(f'\nNumber of edges in graph: {len(edges)}' + '... only self loops on nodes' if no_ppi else '')
+        print(f'Number of features: {X.shape[1]}')
+        print(f'Number of nodes in graph: {len(X)}\n')
+        print('Using Edge Weights' if edge_weights is not None and not no_ppi else 'Not using edge weights')
 
     return (edge_index, edge_weights), X, (train_idx, train_y), (val_idx, val_y), (test_idx, test_y), genes
 
