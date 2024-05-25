@@ -33,6 +33,9 @@ parser.add_argument('-np', "--noppi", action='store_true', default=False, help='
 parser.add_argument('-w', "--weights", action='store_true', default=False, help='use weights in PPI', required=False)
 parser.add_argument('-v', "--verbose", action='store_true', default=False, help='enable verbosity', required=False)
 parser.add_argument('-hy', "--hypersearch", action='store_true', default=False, help='enable optuna hyper-search', required=False)
+parser.add_argument('-dm', "--modelpath", dest='modelpath', metavar='<modelpath>', type=str, help='models path dir', required=True)
+parser.add_argument('-dr', "--resultdir", dest='resultdir', metavar='<resultdir>', type=str, help='results path dir', required=True)
+parser.add_argument('-ds', "--studydir", dest='studydir', metavar='<studydir>', type=str, help='study path dir', required=True)
 parser.add_argument('-t', "--trainmode", action='store_true', default=False, help='enable training mode', required=False)
 parser.add_argument('-r', "--nruns", dest='nruns', metavar='<nruns>', type=int, help='n. of runs in experiment (default: 10)' , default=10, required=False)
 parser.add_argument('-m', "--measure", dest='measure', metavar='<measure>', type=str, help='measure for optuna (default: auc, choices: auc, ba, mcc, sens, spec)' , default='auc', required=False)
@@ -119,18 +122,18 @@ if hypersearch:
     for i in range(3):
         set_seed(seed+i)
         datasets += [data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=True) for i in range(3)]
-    hyper_search(name, './studies', datasets, metric_pos=metrics[args.measure])
+    hyper_search(name, args.studydir, datasets, metric_pos=metrics[args.measure])
 elif n_runs:
     print(f'Training on {n_runs} runs')
     m = np.array([main(name, label_path, 
         ppi_path=ppi_path, expr_path=expr_path, ortho_path=ortho_path, subloc_path=subloc_path, 
         no_ppi=no_ppi, weights=weights, train_mode=train_mode, n_epochs=n_epochs,
-        savedir='models', predsavedir='results',seed=i, verbose=args.verbose)[1:] for i in range(n_runs)])
+        savedir=args.modeldir, predsavedir=args.resultdir,seed=i, verbose=args.verbose)[1:] for i in range(n_runs)])
     measures = np.ravel(np.column_stack((np.mean(m, axis=0),np.std(m, axis=0))))
-    save_results(os.path.join('results', f'{modelname}_{snapshot_name}_r{n_runs}.csv'), *measures)
+    save_results(os.path.join(args.resultdir, f'{modelname}_{snapshot_name}_r{n_runs}.csv'), *measures)
 else:
     print('Training a single run with seed', seed)
     main(name, label_path, 
         ppi_path=ppi_path, expr_path=expr_path, ortho_path=ortho_path, subloc_path=subloc_path, 
         no_ppi=no_ppi, weights=weights, train_mode=train_mode, n_epochs=n_epochs,
-        savedir='models', predsavedir='results',seed=seed, verbose=args.verbose)
+        savedir=args.modeldir, predsavedir=args.resultdir,seed=seed, verbose=args.verbose)
