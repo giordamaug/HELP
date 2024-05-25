@@ -33,7 +33,7 @@ parser.add_argument('-np', "--noppi", action='store_true', default=False, help='
 parser.add_argument('-w', "--weights", action='store_true', default=False, help='use weights in PPI', required=False)
 parser.add_argument('-v', "--verbose", action='store_true', default=False, help='enable verbosity', required=False)
 parser.add_argument('-hy', "--hypersearch", action='store_true', default=False, help='enable optuna hyper-search', required=False)
-parser.add_argument('-dm', "--modelpath", dest='modelpath', metavar='<modelpath>', type=str, default='models',help='models path dir', required=False)
+parser.add_argument('-dm', "--modeldir", dest='modeldir', metavar='<modeldir>', type=str, default='models',help='models path dir', required=False)
 parser.add_argument('-dr', "--resultdir", dest='resultdir', metavar='<resultdir>', type=str, default='results',help='results path dir', required=False)
 parser.add_argument('-ds', "--studydir", dest='studydir', metavar='<studydir>', type=str, default='studies',help='study path dir', required=False)
 parser.add_argument('-t', "--trainmode", action='store_true', default=False, help='enable training mode', required=False)
