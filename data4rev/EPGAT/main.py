@@ -36,7 +36,6 @@ parser.add_argument('-hy', "--hypersearch", action='store_true', default=False, 
 parser.add_argument('-t', "--trainmode", action='store_true', default=False, help='enable training mode', required=False)
 parser.add_argument('-r', "--nruns", dest='nruns', metavar='<nruns>', type=int, help='n. of runs in epxeriments (default: 10)' , default=10, required=False)
 parser.add_argument('-m', "--measure", dest='measure', metavar='<measure>', type=str, help='measure for optuna (default: auc, choices: auc, ba, mcc, sens, spec)' , default='auc', required=False)
-args.measure
 args = parser.parse_args()
 
 modelname = 'GAT'
