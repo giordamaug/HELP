@@ -112,7 +112,7 @@ weights=args.weights
 train_mode = args.trainmode
 hypersearch = args.hypersearch
 snapshot_name = get_snapshot_name(name, expr_path, ortho_path, subloc_path, no_ppi, weights)
-metrics = {'auc': 1, 'ba': 2, 'mcc': 3, 'sens': 4 : 'spec': 5}
+metrics = {'auc': 1, 'ba': 2, 'mcc': 3, 'sens': 4, 'spec': 5}
 if hypersearch:
     seed = np.random.randint(1000) + 10
     datasets = []
