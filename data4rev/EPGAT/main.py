@@ -113,12 +113,13 @@ hypersearch = args.hypersearch
 snapshot_name = get_snapshot_name(name, expr_path, ortho_path, subloc_path, no_ppi, weights)
 metrics = {'auc': 1, 'ba': 2, 'mcc': 3, 'sens': 4, 'spec': 5}
 if hypersearch:
+    print(f'Optimizing on metric {args.measure}')
     seed = np.random.randint(1000) + 10
     datasets = []
     for i in range(3):
         set_seed(seed+i)
         datasets += [data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=True) for i in range(3)]
-    hyper_search(name, './studies', datasets, metrics[args.measure])
+    hyper_search(name, './studies', datasets, metric_pos=metrics[args.measure])
 elif n_runs:
     print(f'Training on {n_runs} runs')
     m = np.array([main(name, label_path, 
