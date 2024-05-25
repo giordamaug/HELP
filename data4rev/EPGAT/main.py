@@ -85,20 +85,25 @@ ipath = "./data"
 n_runs = 10
 n_epochs = 1000
 seed=0
-name ='pantissue'
-label_path = os.path.join(path, 'PanTissue_group_HELP.csv')
-ppi_path = os.path.join(path, 'Human_PPI.csv')
+name ='brain'
+label_path = os.path.join(path, 'Brain_HELP_2.csv')
+ppi_path = os.path.join(path, 'Brain_PPI.csv')
 expr_path=None #os.path.join(ipath, 'GTEX_expr_kidney.csv'),
 ortho_path=None #os.path.join(ipath, 'Orthologs_kidney.csv'),
 subloc_path=os.path.join(ipath, 'Sublocs_kidney.csv') 
 no_ppi=False 
 weights=False
 train_mode = True
-hyper_search = False
+hypersearch = True
 snapshot_name = get_snapshot_name(name, expr_path, ortho_path, subloc_path, no_ppi, weights)
 
-if hyper_search:
-    None #hyper_search(args)
+if hypersearch:
+    seed = np.random.randint(1000) + 10
+    datasets = []
+    for i in range(3):
+        set_seed(seed+i)
+        datasets += [data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=True) for i in range(3)]
+    hyper_search(name, './studies', datasets)
 elif n_runs:
     print(f'Training on {n_runs} runs')
     m = np.array([main(name, label_path, 
