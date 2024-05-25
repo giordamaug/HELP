@@ -103,7 +103,7 @@ def hyper_search(name, savepath, data):
     best_params = study.best_params
     print('Best Params:', best_params)
     df = study.trials_dataframe()
-    df.to_csv(os.path.join(savepath, 'gat_human_hypersearch.csv'))
+    df.to_csv(os.path.join(savepath, f'gat_{name}_hypersearch.csv'))
     print(df.head())
     
 def train(params, X, A, edge_weights, train_y, train_idx, val_y, val_idx, save_best_only=True, n_epochs=1000, savepath='',):
