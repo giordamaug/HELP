@@ -22,10 +22,11 @@ gat_human = {
     'dropout': 0.4,
     'negative_slope': 0.2}
 
+
 GATparams = {'KIDNEY': {'linear_layer': 256, 
                      #'n_layers': 2, 
                      'h_feats': [16, 8], 
-                     'heads': [2, 4, 8], 
+                     'heads': [2, 4], 
                      'lr': 0.0010633766921485904, 
                      'weight_decay': 3.905559247728033e-05, 
                      'dropout': 0.3655805198848601,
