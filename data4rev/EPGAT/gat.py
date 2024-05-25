@@ -55,7 +55,7 @@ class Loss():
         loss = loss_p + loss_n
         return loss
 
-def hyper_search(name, savepath, data):
+def hyper_search(name, savepath, data, metric_pos=1):
 
     def objective(trial):
         linear_layer = trial.suggest_categorical(
@@ -79,7 +79,7 @@ def hyper_search(name, savepath, data):
             'negative_slope': 0.2}
 
         try:
-            final_auc = [] 
+            final_metric = [] 
             for d in data:
                 (edge_index, edge_weights), X, (train_idx, train_y), \
                     (val_idx, val_y), (test_idx, test_y), _ = d
@@ -87,10 +87,10 @@ def hyper_search(name, savepath, data):
                 model = train(params, X, edge_index, edge_weights,
                               train_y, train_idx, val_y, val_idx)
 
-                preds, auc, _, _, _ = test(model, X, edge_index, (test_idx, test_y))
-                final_auc.append(auc)
+                measure = test(model, X, edge_index, (test_idx, test_y)) # preds, auc, ba, mcc, sens, spec
+                final_metric.append(measure[metric_pos])
 
-            return np.mean(final_auc)
+            return np.mean(final_metric)
         except:
             return -1
 
@@ -175,7 +175,7 @@ def test(model, X, A, test_ds=None):
         sens = metrics.recall_score(test_y, preds)
         specs = specificity_myscore(test_y, preds)
         return probs, auc, score, ba, mcc, sens, specs
-    return probs, None, None, None
+    return probs, None, None, None, None, None, 
 
 class GAT(nn.Module):
     def __init__(self, in_feats=1,
