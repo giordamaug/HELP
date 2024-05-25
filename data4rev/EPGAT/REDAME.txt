@@ -1,0 +1,10 @@
+Optimization with Optuna:
+
+- PPI (no weights) + subloc attributes
+- optimize on balanced_accuracy (-m 2)
+- same subloc attributes for all tissues
+
+$ python main.py -n KIDNEY -l ../../data/Kidney_HELP_pos.csv -p ../../data/Kidney_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba
+$ python main.py -n LUNG -l ../../data/Lung_HELP_pos.csv -p ../../data/Lung_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba
+$ python main.py -n BRAIN -l ../../data/Brain_HELP_pos.csv -p ../../data/Brain_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba
+$ python main.py -n LUNG -l ../../data/PanCancer_HELP_pos.csv -p ../../data/Human_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba
