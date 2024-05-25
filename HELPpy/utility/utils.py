@@ -18,7 +18,7 @@ if in_notebook():
 else:
     from tqdm import tqdm
     
-def pandas_readcsv(filename, chunksize=50, sep=',', index_col=None, comment='#', descr:str=None, disabled=False):
+def pandas_readcsv(filename, descr:str=None, disabled=False, chunksize=100, **kargs):
     # Get number of lines in file.
     with open(filename, 'r') as fp:
         try:
@@ -30,7 +30,7 @@ def pandas_readcsv(filename, chunksize=50, sep=',', index_col=None, comment='#',
     # Read file in chunks, updating progress bar after each chunk.
     listdf = []
     with tqdm(total=lines, desc=descr, disable=disabled) as bar:
-        for i,chunk in enumerate(pd.read_csv(filename,chunksize=chunksize, index_col=index_col, comment=comment, sep=sep)):
+        for i,chunk in enumerate(pd.read_csv(filename, chunksize=chunksize, **kargs)):
             listdf.append(chunk)
             bar.update(chunksize)
     df = pd.concat(listdf,ignore_index=False)
