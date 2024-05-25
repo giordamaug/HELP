@@ -20,6 +20,22 @@ import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import *
 from gat import *
+import argparse
+
+parser = argparse.ArgumentParser(description='PLOS COMPBIO EPGAT')
+parser.add_argument('-n', "--name", dest='name', metavar='<name>', type=str, help='name of experiment', required=True)
+parser.add_argument('-l', "--labelfile", dest='labelfile', metavar='<labelfile>', type=str, help='label filename', required=True)
+parser.add_argument('-e', "--exprfile", dest='exprfile', metavar='<exprfile>', type=str, default=None, help='expression filename', required=False)
+parser.add_argument('-o', "--orthofile", dest='orthofile', metavar='<orthofile>', type=str, default=None, help='ortho filename', required=False)
+parser.add_argument('-s', "--sublocfile", dest='sublocfile', metavar='<sublocfile>', type=str, default=None, help='sublocalization filename', required=False)
+parser.add_argument('-p', "--ppifile", dest='ppifile', metavar='<ppifile>', type=str, default=None, help='ppifile filename', required=False)
+parser.add_argument('-np', "--noppi", action='store_true', default=False, help='disable PPI usage', required=False)
+parser.add_argument('-w', "--weights", action='store_true', default=False, help='use weights in PPI', required=False)
+parser.add_argument('-v', "--verbose", action='store_true', default=False, help='enable verbosity', required=False)
+parser.add_argument('-hy', "--hypersearch", action='store_true', default=False, help='enable optuna hyper-search', required=False)
+parser.add_argument('-t', "--trainmode", action='store_true', default=False, help='enable training mode', required=False)
+parser.add_argument('-r', "--nruns", dest='nruns', metavar='<nruns>', type=int, help='n. of runs in epxeriments (default: 10)' , default=10, required=False)
+args = parser.parse_args()
 
 modelname = 'GAT'
 
@@ -80,21 +96,19 @@ def main(name, label_path, ppi_path=None,
 
     return preds, auc, score, ba, mcc, sens, specs
 
-path = "../../data"
-ipath = "./data"
-n_runs = 10
+n_runs = args.nruns
 n_epochs = 1000
 seed=0
-name ='brain'
-label_path = os.path.join(path, 'Brain_HELP_2.csv')
-ppi_path = os.path.join(path, 'Brain_PPI.csv')
-expr_path=None #os.path.join(ipath, 'GTEX_expr_kidney.csv'),
-ortho_path=None #os.path.join(ipath, 'Orthologs_kidney.csv'),
-subloc_path=os.path.join(ipath, 'Sublocs_kidney.csv') 
-no_ppi=False 
-weights=False
-train_mode = True
-hypersearch = True
+name =args.name
+label_path = args.labelfile
+ppi_path = args.ppifile
+expr_path=args.exprfile
+ortho_path=args.orthofile
+subloc_path=args.sublocfile 
+no_ppi=args.noppi 
+weights=args.weights
+train_mode = args.trainmode
+hypersearch = args.hypersearch
 snapshot_name = get_snapshot_name(name, expr_path, ortho_path, subloc_path, no_ppi, weights)
 
 if hypersearch:
@@ -109,7 +123,7 @@ elif n_runs:
     m = np.array([main(name, label_path, 
         ppi_path=ppi_path, expr_path=expr_path, ortho_path=ortho_path, subloc_path=subloc_path, 
         no_ppi=no_ppi, weights=weights, train_mode=train_mode, n_epochs=n_epochs,
-        savedir='models', predsavedir='results',seed=i)[1:] for i in range(n_runs)])
+        savedir='models', predsavedir='results',seed=i, verbose=args.verbose)[1:] for i in range(n_runs)])
     measures = np.ravel(np.column_stack((np.mean(m, axis=0),np.std(m, axis=0))))
     save_results(os.path.join('results', f'{modelname}_{snapshot_name}_r{n_runs}.csv'), *measures)
 else:
@@ -117,4 +131,4 @@ else:
     main(name, label_path, 
         ppi_path=ppi_path, expr_path=expr_path, ortho_path=ortho_path, subloc_path=subloc_path, 
         no_ppi=no_ppi, weights=weights, train_mode=train_mode, n_epochs=n_epochs,
-        savedir='models', predsavedir='results',seed=seed)
+        savedir='models', predsavedir='results',seed=seed, verbose=args.verbose)

@@ -93,7 +93,7 @@ def data(label_path, ppi_path, expr_path, ortho_path, subloc_path,
          weights=False,
          verbose=False):
 
-    if verbose: print(f'PPI: {os.path.basename(ppi_path)}.')
+    if verbose and ppi_path is not None: print(f'PPI: {os.path.basename(ppi_path)}.')
 
     edges = pd.read_csv(ppi_path)
     if weights:
