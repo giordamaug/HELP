@@ -34,7 +34,7 @@ parser.add_argument('-w', "--weights", action='store_true', default=False, help=
 parser.add_argument('-v', "--verbose", action='store_true', default=False, help='enable verbosity', required=False)
 parser.add_argument('-hy', "--hypersearch", action='store_true', default=False, help='enable optuna hyper-search', required=False)
 parser.add_argument('-dm', "--modelpath", dest='modelpath', metavar='<modelpath>', type=str, default='models',help='models path dir', required=False)
-parser.add_argument('-dr', "--resultdir", dest='resultdir', metavar='<resultdir>', type=str, default='results',help='results path dir', required=TFalseue)
+parser.add_argument('-dr', "--resultdir", dest='resultdir', metavar='<resultdir>', type=str, default='results',help='results path dir', required=False)
 parser.add_argument('-ds', "--studydir", dest='studydir', metavar='<studydir>', type=str, default='studies',help='study path dir', required=False)
 parser.add_argument('-t', "--trainmode", action='store_true', default=False, help='enable training mode', required=False)
 parser.add_argument('-r', "--nruns", dest='nruns', metavar='<nruns>', type=int, help='n. of runs in experiment (default: 10)' , default=10, required=False)
