@@ -6,9 +6,11 @@ OPTUNA OPTIMIZATION:
 - run on Lucia-Precision, conda env=torch-cuda11.7
 
 $ python main.py -n KIDNEY -l ../../data/Kidney_HELP_pos.csv -p ../../data/Kidney_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba -dm newmodels -dr newresults -ds studies
-$ /home/maurizio/miniconda3/envs/torch-cuda11.7/bin/python main.py -n LUNG -l /home/maurizio/PLOS_CompBiology/HELP/data/Lung_HELP_pos.csv -p /home/maurizio/PLOS_CompBiology/HELP/data/Lung_PPI.csv -s /home/maurizio/PLOS_CompBiology/HELP/dat
-a4rev/EPGAT/data/Sublocs_kidney.csv -t -hy -m ba -dm newmodels -dr newresults -ds newstudies
-$ python main.py -n BRAIN -l ../../data/Brain_HELP_pos.csv -p ../../data/Brain_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba -dm newmodels -dr newresults -ds studies
+$ /home/maurizio/miniconda3/envs/torch-cuda11.7/bin/python main.py -n LUNG -l /home/maurizio/PLOS_CompBiology/HELP/data/Lung_HELP_pos.csv -p /home/maurizio/PLOS_CompBiology/HELP/data/Lung_PPI.csv -s /home/maurizio/PLOS_CompBiology/HELP/data4rev/EPGAT/data/Sublocs_kidney.csv -t -hy -dm newmodels -dr newresults -ds newstudies
+$ /home/maurizio/miniconda3/envs/torch-cuda11.7/bin/python main.py -n BRAIN -l /home/maurizio/PLOS_CompBiology/HELP/data/Brain_HELP_pos.csv -p /home/maurizio/PLOS_CompBiology/HELP/data/Brain_PPI.csv -s /home/maurizio/PLOS_CompBiology/HELP/data4rev/EPGAT/data/Sublocs_kidney.csv -t -hy -dm newmodels -dr newresults -ds newstudies
+$ /home/maurizio/miniconda3/envs/torch-cuda11.7/bin/python main.py -n HUMAN -l /home/maurizio/PLOS_CompBiology/HELP/data/PanCancer_HELP_pos.csv -p /home/maurizio/PLOS_CompBiology/HELP/data/Human_PPI.csv -s /home/maurizio/PLOS_CompBiology/HELP/data4rev/EPGAT/data/Sublocs_kidney.csv -t -hy -dm newmodels -dr newresults -ds newstudies
+
+python main.py -n BRAIN -l ../../data/Brain_HELP_pos.csv -p ../../data/Brain_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba -dm newmodels -dr newresults -ds studies
 $ python main.py -n LUNG -l ../../data/PanCancer_HELP_pos.csv -p ../../data/Human_PPI.csv -s ./data/Sublocs_kidney.csv -t -hy -m ba -dm newmodels -dr newresults -ds studies
 
 EXPERIMENTS
