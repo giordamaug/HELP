@@ -13,7 +13,7 @@ from imblearn.over_sampling import SMOTE
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
-# Set working directory
+# Set working directory scassa
 #os.chdir("/to/CLEARER_directory/")
 EsInfo = pd.read_csv("Class_labels/Sc.csv", sep=",", header=0)
 print(EsInfo.head())
