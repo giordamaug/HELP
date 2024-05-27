@@ -65,7 +65,7 @@ def main(name, label_path, ppi_path=None,
 
     # Getting the data ----------------------------------
     (edge_index, edge_weights), X, (train_idx, train_y), \
-        (val_idx, val_y), (test_idx, test_y), genes = data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=verbose)
+        (val_idx, val_y), (test_idx, test_y), genes = data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=verbose, seed=seed)
     if verbose: print('Fetched data')
 
     # Train the model -----------------------------------
@@ -122,7 +122,7 @@ if hypersearch:
     datasets = []
     for i in range(3):
         set_seed(seed+i)
-        datasets += [data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=True) for i in range(3)]
+        datasets += [data(label_path, ppi_path, expr_path, ortho_path, subloc_path, no_ppi=no_ppi, weights=weights, verbose=True, seed=i) for i in range(3)]
     hyper_search(name, args.studydir, datasets, metric_pos=metrics[args.measure])
 elif n_runs:
     print(f'Training on {n_runs} runs')
