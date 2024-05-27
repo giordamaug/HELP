@@ -48,9 +48,9 @@ GATparams = {'KIDNEY':
                  'dropout': 0.13721629534853402},
              'HUMAN': 
                  {'linear_layer': None, 
-                  'n_layers': 2, 
-                  'h_feats': [64, 64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
-                  'heads': [4,4,1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
+                  #'n_layers': 2, 
+                  'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
+                  'heads': [4,1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
                   'lr': 0.0023087204557795176, 
                   'weight_decay': 0.0001263490604135409, 
                   'dropout': 0.3390586753625013}
