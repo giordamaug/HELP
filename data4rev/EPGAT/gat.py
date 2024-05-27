@@ -31,7 +31,7 @@ GATparams = {'KIDNEY':
                  'weight_decay': 3.905559247728033e-05, 
                  'dropout': 0.3655805198848601},
              'LUNG':
-                 {'linear_layer': None, #128, 
+                 {'linear_layer': 128, 
                   'n_layers': 1, 
                   'h_feats': [64, 1], #'h_feat_0': 64, 
                   'heads': [4, 1], #'head_0': 4, 'head_1': 8, 
