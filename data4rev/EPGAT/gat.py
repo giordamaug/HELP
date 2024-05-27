@@ -22,23 +22,8 @@ gat_human = {
     'dropout': 0.4,
     'negative_slope': 0.2}
 
-gat_human2 = {
-    'lr': 0.005,
-    'weight_decay': 5e-4,
-    'h_feats': [32, 1],
-    'heads': [8, 1],
-    'dropout': 0.4,
-    'negative_slope': 0.2}
-
-pippoo = {'linear_layer': None, #256, 
-                 'n_layers': 1, 
-                 'h_feats': [16, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
-                 'heads': [2, 1], #'head_0': 2, 'head_1': 4, 'head_2': 8, 
-                 'lr': 0.0010633766921485904, 
-                 'weight_decay': 3.905559247728033e-05, 
-                 'dropout': 0.3655805198848601}
-
 GATparams = {'KIDNEY': gat_human,
+              # best params from hyper-search (not used)
               #{'linear_layer': None, #256, 
               #   'n_layers': 1, 
               #   'h_feats': [16, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
@@ -46,7 +31,21 @@ GATparams = {'KIDNEY': gat_human,
               #   'lr': 0.0010633766921485904, 
               #   'weight_decay': 3.905559247728033e-05, 
               #   'dropout': 0.3655805198848601}
+              # AUC: 0.886±0.020
+              # Acc.: 0.810v0.052
+              # BA:  0.798±0.034971  
+              # Sens.: 0.812±0.062 
+              # Spec.: 0.783±0.104   
+              # MCC: 0.373±0.046 
+              # deafult gat_human (used)
+              # AUC: 0.902±0.007
+              # Acc.: 0.834±0.028
+              # BA:  0.824±0.012  
+              # Sens.: 0.813±0.045
+              # Spec.: 0.835±0.033  
+              # MCC: 0.414±0.026
              'LUNG': gat_human,
+                 # best params from hyper-search (not used)
                  #{'linear_layer': None, #128, 
                  # 'n_layers': 1, 
                  # 'h_feats': [64, 1], #'h_feat_0': 64, 
@@ -60,14 +59,22 @@ GATparams = {'KIDNEY': gat_human,
                  # Sens. : 0.858±0.044
                  # Spec. : 0.807±0.047
                  # MCC: 0.405±0.040
-             'BRAIN': gat_human2,
-                #{'linear_layer': None, 
-                # 'n_layers': 2, 
-                # 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
-                # 'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
-                # 'lr': 0.0005752973665699493, 
-                # 'weight_decay': 2.4757999496124907e-05, 
-                # 'dropout': 0.13721629534853402}, 
+                 # deafult gat_huma (used)
+                 # AUC: 0.913±0.009  
+                 # Acc: 0.843±0.032  
+                 # BA: 0.832±0.014  
+                 # Sens. : 0.819±0.051   
+                 # Spec. : 0.845±0.037
+                 # MCC: 0.430±0.031   
+             'BRAIN':
+                # best params from hyper-search (used)
+                {'linear_layer': None, 
+                 'n_layers': 2, 
+                 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
+                 'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
+                 'lr': 0.0005752973665699493, 
+                 'weight_decay': 2.4757999496124907e-05, 
+                 'dropout': 0.13721629534853402}, 
                  # AUC: 0.908±0.012
                  # Acc: 0.857±0.022
                  # BA: 0.833±0.008
@@ -75,6 +82,7 @@ GATparams = {'KIDNEY': gat_human,
                  # Spec. : 0.861±0.026
                  # MCC: 0.445±0.030
              'HUMAN': 
+                # best params from hyper-search (used)
                  {'linear_layer': None, 
                   'n_layers': 1, # best BA with one layer
                   'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
