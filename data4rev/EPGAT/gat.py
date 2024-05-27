@@ -116,7 +116,7 @@ def hyper_search(name, savepath, data, metric_pos=1):
         study_name=f'gat_{name}',
         direction='maximize',
         load_if_exists=True,
-        storage=f'sqlite:///studies/gat_{name}.db')
+        storage=f'sqlite:///{savepath}/gat_{name}.db')
     study.optimize(objective, n_trials=50)
     best_params = study.best_params
     print('Best Params:', best_params)
