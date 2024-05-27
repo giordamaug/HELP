@@ -38,14 +38,14 @@ GATparams = {'KIDNEY':
     'heads': [8, 1],
     'dropout': 0.4,
     'negative_slope': 0.2},
-             'LUNG':
-                 {'linear_layer': None, #128, 
-                  'n_layers': 1, 
-                  'h_feats': [64, 1], #'h_feat_0': 64, 
-                  'heads': [4, 1], #'head_0': 4, 'head_1': 8, 
-                  'lr': 0.0018142943583547278, 
-                  'weight_decay': 0.00026208428025768776, 
-                  'dropout': 0.45691838072317914},
+             'LUNG': gat_human,
+                 #{'linear_layer': None, #128, 
+                 # 'n_layers': 1, 
+                 # 'h_feats': [64, 1], #'h_feat_0': 64, 
+                 # 'heads': [4, 1], #'head_0': 4, 'head_1': 8, 
+                 # 'lr': 0.0018142943583547278, 
+                 # 'weight_decay': 0.00026208428025768776, 
+                 # 'dropout': 0.45691838072317914},
                  # AUC: 0.908±0.018
                  # Acc: 0.810±0.041
                  # BA: 0.832±0.013
