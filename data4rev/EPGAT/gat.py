@@ -24,9 +24,9 @@ gat_human = {
 
 GATparams = {'KIDNEY': 
                 {'linear_layer': None, #256, 
-                 'n_layers': 2, 
-                 'h_feats': [16, 8, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
-                 'heads': [2, 4, 1], #'head_0': 2, 'head_1': 4, 'head_2': 8, 
+                 'n_layers': 1, 
+                 'h_feats': [16, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
+                 'heads': [2, 1], #'head_0': 2, 'head_1': 4, 'head_2': 8, 
                  'lr': 0.0010633766921485904, 
                  'weight_decay': 3.905559247728033e-05, 
                  'dropout': 0.3655805198848601},
@@ -59,19 +59,19 @@ GATparams = {'KIDNEY':
                  # Spec. : 0.861±0.026
                  # MCC: 0.445±0.030
              'HUMAN': 
-                 #{'linear_layer': None, 
-                  #'n_layers': 2, best BA with one layer
-                  #'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
-                  #'heads': [4, 1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
-                  #'lr': 0.0023087204557795176, 
-                  #'weight_decay': 0.0001263490604135409, 
-                  #'dropout': 0.3390586753625013}
-                   {'lr': 0.005,
-                   'weight_decay': 5e-4,
-                    'h_feats': [8, 1],
-                    'heads': [8, 1],
-                    'dropout': 0.4,
-                    'negative_slope': 0.2}
+                 {'linear_layer': None, 
+                  'n_layers': 1, # best BA with one layer
+                  'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
+                  'heads': [4, 1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
+                  'lr': 0.0023087204557795176, 
+                  'weight_decay': 0.0001263490604135409, 
+                  'dropout': 0.3390586753625013}
+                 # AUC: 0.880±0.017
+                 # Acc: 0.784±0.043
+                 # BA: 0.798±0.020
+                 # Sens. : 0.815±0.063
+                 # Spec. : 0.781±0.050
+                 # MCC: 0.355±0.030
              }
 
 def specificity_myscore(ground_truth, predictions):
