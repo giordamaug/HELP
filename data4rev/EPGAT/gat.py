@@ -22,6 +22,14 @@ gat_human = {
     'dropout': 0.4,
     'negative_slope': 0.2}
 
+gat_human2 = {
+    'lr': 0.005,
+    'weight_decay': 5e-4,
+    'h_feats': [32, 1],
+    'heads': [8, 1],
+    'dropout': 0.4,
+    'negative_slope': 0.2}
+
 pippoo = {'linear_layer': None, #256, 
                  'n_layers': 1, 
                  'h_feats': [16, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
@@ -30,14 +38,14 @@ pippoo = {'linear_layer': None, #256,
                  'weight_decay': 3.905559247728033e-05, 
                  'dropout': 0.3655805198848601}
 
-GATparams = {'KIDNEY': 
-                {
-    'lr': 0.005,
-    'weight_decay': 5e-4,
-    'h_feats': [8, 1],
-    'heads': [8, 1],
-    'dropout': 0.4,
-    'negative_slope': 0.2},
+GATparams = {'KIDNEY': gat_human,
+              #{'linear_layer': None, #256, 
+              #   'n_layers': 1, 
+              #   'h_feats': [16, 1], #'h_feat_0': 16, 'h_feat_1': 8, 
+              #   'heads': [2, 1], #'head_0': 2, 'head_1': 4, 'head_2': 8, 
+              #   'lr': 0.0010633766921485904, 
+              #   'weight_decay': 3.905559247728033e-05, 
+              #   'dropout': 0.3655805198848601}
              'LUNG': gat_human,
                  #{'linear_layer': None, #128, 
                  # 'n_layers': 1, 
@@ -52,7 +60,7 @@ GATparams = {'KIDNEY':
                  # Sens. : 0.858±0.044
                  # Spec. : 0.807±0.047
                  # MCC: 0.405±0.040
-             'BRAIN': gat_human,
+             'BRAIN': gat_human2,
                 #{'linear_layer': None, 
                 # 'n_layers': 2, 
                 # 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
