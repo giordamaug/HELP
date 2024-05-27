@@ -31,7 +31,7 @@ GATparams = {'KIDNEY':
                  'weight_decay': 3.905559247728033e-05, 
                  'dropout': 0.3655805198848601},
              'LUNG':
-                 {'linear_layer': 128, 
+                 {'linear_layer': None, #128, 
                   'n_layers': 1, 
                   'h_feats': [64, 1], #'h_feat_0': 64, 
                   'heads': [4, 1], #'head_0': 4, 'head_1': 8, 
@@ -45,7 +45,16 @@ GATparams = {'KIDNEY':
                  'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
                  'lr': 0.0005752973665699493, 
                  'weight_decay': 2.4757999496124907e-05, 
-                 'dropout': 0.13721629534853402}}
+                 'dropout': 0.13721629534853402},
+             'HUMAN': 
+                 {'linear_layer': None, 
+                  'n_layers': 2, 
+                  'h_feats': [64, 64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
+                  'heads': [4,4,1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
+                  'lr': 0.0023087204557795176, 
+                  'weight_decay': 0.0001263490604135409, 
+                  'dropout': 0.3390586753625013}
+             }
 
 def specificity_myscore(ground_truth, predictions):
     tp, tn, fn, fp = 0.0,0.0,0.0,0.0
