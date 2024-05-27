@@ -38,6 +38,12 @@ GATparams = {'KIDNEY':
                   'lr': 0.0018142943583547278, 
                   'weight_decay': 0.00026208428025768776, 
                   'dropout': 0.45691838072317914},
+                 # AUC: 0.908±0.018
+                 # Acc: 0.810±0.041
+                 # BA: 0.832±0.013
+                 # Sens. : 0.858±0.044
+                 # Spec. : 0.807±0.047
+                 # MCC: 0.405±0.040
              'BRAIN': 
                 {'linear_layer': None, 
                  'n_layers': 2, 
@@ -45,15 +51,27 @@ GATparams = {'KIDNEY':
                  'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
                  'lr': 0.0005752973665699493, 
                  'weight_decay': 2.4757999496124907e-05, 
-                 'dropout': 0.13721629534853402},
+                 'dropout': 0.13721629534853402}, 
+                 # AUC: 0.908±0.012
+                 # Acc: 0.857±0.022
+                 # BA: 0.833±0.008
+                 # Sens. : 0.806±0.027
+                 # Spec. : 0.861±0.026
+                 # MCC: 0.445±0.030
              'HUMAN': 
-                 {'linear_layer': None, 
-                  #'n_layers': 2, 
-                  'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
-                  'heads': [4,1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
-                  'lr': 0.0023087204557795176, 
-                  'weight_decay': 0.0001263490604135409, 
-                  'dropout': 0.3390586753625013}
+                 #{'linear_layer': None, 
+                  #'n_layers': 2, best BA with one layer
+                  #'h_feats': [64, 1], #'h_feat_0': 64, 'h_feat_1': 64, 
+                  #'heads': [4, 1], #'head_0': 4, 'head_1': 4, 'head_2': 8, 
+                  #'lr': 0.0023087204557795176, 
+                  #'weight_decay': 0.0001263490604135409, 
+                  #'dropout': 0.3390586753625013}
+                   {'lr': 0.005,
+                   'weight_decay': 5e-4,
+                    'h_feats': [8, 1],
+                    'heads': [8, 1],
+                    'dropout': 0.4,
+                    'negative_slope': 0.2}
              }
 
 def specificity_myscore(ground_truth, predictions):
