@@ -22,15 +22,23 @@ gat_human = {
     'dropout': 0.4,
     'negative_slope': 0.2}
 
-
-GATparams = {'KIDNEY': {'linear_layer': 256, 
-                     #'n_layers': 2, 
-                     'h_feats': [16, 8, 1], 
-                     'heads': [2, 4, 8], 
-                     'lr': 0.0010633766921485904, 
-                     'weight_decay': 3.905559247728033e-05, 
-                     'dropout': 0.3655805198848601,
-                     'negative_slope': 0.2}}
+GATparams = {'KIDNEY': 
+                {'linear_layer': 256, 
+                #'n_layers': 2, 
+                'h_feats': [16, 8, 1], 
+                'heads': [2, 4, 8], 
+                'lr': 0.0010633766921485904, 
+                'weight_decay': 3.905559247728033e-05, 
+                'dropout': 0.3655805198848601,
+                'negative_slope': 0.2},
+             'BRAIN': 
+                {'linear_layer': 256, 
+                 'n_layers': 2, 
+                 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
+                 'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
+                 'lr': 0.0005752973665699493, 
+                 'weight_decay': 2.4757999496124907e-05, 
+                 'dropout': 0.13721629534853402}}
 
 def specificity_myscore(ground_truth, predictions):
     tp, tn, fn, fp = 0.0,0.0,0.0,0.0
