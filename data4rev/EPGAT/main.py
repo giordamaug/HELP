@@ -70,8 +70,9 @@ def main(name, label_path, ppi_path=None,
 
     # Train the model -----------------------------------
     if train_mode:
-        if verbose: print('\nTraining the model')
         gat_params = GATparams[name]
+        if verbose: 
+            print(f'\nTraining the model with params {gat_params}')
         model = train(gat_params, X, edge_index, edge_weights,
                         train_y, train_idx, val_y, val_idx, n_epochs=n_epochs, savepath=savepath)
     # ---------------------------------------------------
