@@ -52,14 +52,14 @@ GATparams = {'KIDNEY':
                  # Sens. : 0.858±0.044
                  # Spec. : 0.807±0.047
                  # MCC: 0.405±0.040
-             'BRAIN': 
-                {'linear_layer': None, 
-                 'n_layers': 2, 
-                 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
-                 'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
-                 'lr': 0.0005752973665699493, 
-                 'weight_decay': 2.4757999496124907e-05, 
-                 'dropout': 0.13721629534853402}, 
+             'BRAIN': gat_human,
+                #{'linear_layer': None, 
+                # 'n_layers': 2, 
+                # 'h_feats': [32, 8, 1], #'h_feat_0': 32, 'h_feat_1': 8, 
+                # 'heads': [8, 4, 1], #'head_0': 8, 'head_1': 4, 'head_2': 8, 
+                # 'lr': 0.0005752973665699493, 
+                # 'weight_decay': 2.4757999496124907e-05, 
+                # 'dropout': 0.13721629534853402}, 
                  # AUC: 0.908±0.012
                  # Acc: 0.857±0.022
                  # BA: 0.833±0.008
