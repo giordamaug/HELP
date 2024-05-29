@@ -16,6 +16,7 @@ from sklearn.base import clone, BaseEstimator, ClassifierMixin, RegressorMixin
 from joblib import Parallel, delayed
 from lightgbm import LGBMClassifier 
 import numpy as np
+from imblearn.over_sampling import SMOTE
 from ..utility.utils import in_notebook
 if in_notebook():
     from tqdm.notebook import tqdm
@@ -318,13 +319,17 @@ def ipy_k_fold_cv(X, Y, estimator, progressbar: IntProgress, n_splits=10, seed: 
     # Return the summary statistics of cross-validated predictions, the single measures and the prediction results
     return df_scores, scores, df_results
     
-def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, show_progress: bool = False, display: bool = False,  seed: int = 42):
+def k_fold_cv(X, Y, estimator, 
+              n_splits=10, resample=False,
+              saveflag: bool = False, outfile: str = 'predictions.csv', verbose: bool = False, 
+              show_progress: bool = False, display: bool = False,  seed: int = 42):
     """
     Perform cross-validated predictions using a classifier.
 
     :param DataFrame X: Features DataFrame.
     :param DataFrame Y: Target variable DataFrame.
     :param int n_splits: Number of folds for cross-validation.
+    :param bool resample: Whether to resample dataset with SMOTE.
     :param estimator object: Classifier method (must have fit, predict, predict_proba methods)
     :param bool balanced: Whether to use class weights to balance the classes.
     :param bool saveflag: Whether to save the predictions to a CSV file.
@@ -377,11 +382,17 @@ def k_fold_cv(X, Y, estimator, n_splits=10, saveflag: bool = False, outfile: str
     scores = pd.DataFrame()
 
     if verbose:
-        print(f'Classification with {estimator.__class__.__name__}...')
+        print(f'Classification with {estimator.__class__.__name__}...' + 'with SMOTE resampling' if resample else '')
 
     # Iterate over each fold
-    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), desc=f"{n_splits}-fold", disable=not show_progress)):
-        genes, targets, predictions, probabilities, metrics = evaluate_fold(X[train_idx], y[train_idx], X[test_idx], y[test_idx], 
+    for fold, (train_idx, test_idx) in enumerate(tqdm(kf.split(np.arange(len(X)), y), total=kf.get_n_splits(), 
+                                                   desc=f"{n_splits}-fold", disable=not show_progress)):
+        if resample:
+            smote = SMOTE()
+            X_train, y_train = smote.fit_resample(X[train_idx], y[train_idx])
+        else: 
+            X_train, y_train = X[train_idx], y[train_idx]
+        genes, targets, predictions, probabilities, metrics = evaluate_fold(X_train, y_train, X[test_idx], y[test_idx], 
                                                                             estimator, genes, allgenes[test_idx], targets, 
                                                                             predictions, probabilities, fold, nclasses)
         scores = pd.concat([scores, pd.DataFrame.from_dict(metrics, orient='index').T.set_index('index')], axis=0)

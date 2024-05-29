@@ -59,7 +59,7 @@ GATparams = {'KIDNEY': gat_human,
                  # Sens. : 0.858±0.044
                  # Spec. : 0.807±0.047
                  # MCC: 0.405±0.040
-                 # deafult gat_huma (used)
+                 # deafult gat_human (used)
                  # AUC: 0.913±0.009  
                  # Acc: 0.843±0.032  
                  # BA: 0.832±0.014  
