@@ -135,6 +135,7 @@ import sys
 distrib = np.unique(df_y[label_name].values, return_counts=True)
 ofile = sys.stdout if args.outfile is None else open(args.outfile, "a")
 ofile.write(f'METHOD: LGBM\tVOTERS: {args.voters}\tBALANCE: {"yes" if args.balanced else "no"}\n')
+ofile.write(f'PARAMS: {clf.get_params()}\n')
 ofile.write(f'PROBL: {" vs ".join(list(np.unique(df_y.values)))}\n')
 ofile.write(f'INPUT: {" ".join(str(os.path.basename(x)) for x in args.inputfile)}\n')
 ofile.write(f'LABEL: {os.path.basename(args.labelfile)} DISTRIB: {distrib[0][0]} : {distrib[1][0]}, {distrib[0][1]}: {distrib[1][1]}\n')
