@@ -11,13 +11,11 @@ LOGDIR=$HOME/$ROOTDIR/HELP/data4rev/logs
 TISSUE=Kidney
 PROB=EvsNE
 ALIASES="{'aE':'NE', 'sNE': 'NE'}"
-#ALIASES="{}"
 EXCLABELS=""
 LR= "-lr 0.35"
 VOTERS="-v 11"
 ESTIMATORS="-e 190"
 LABELFILE=${TISSUE}_${METHOD}.csv
-#LABELFILE=PanTissue_group_${METHOD}.csv
 
 #echo "running BIO+CC"
 #echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_CCcfs.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -n std -ba $VOTERS $ESTIMATORS $LR $EXCLABELS -j -1 -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_biocc.csv" | bash
