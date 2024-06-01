@@ -118,3 +118,33 @@ CM & [[11079, 1261], [16447, 143653]] \\
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Brain_CCcfs.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9422±0.0073                    |
+| Accuracy    | 0.8954±0.0089                    |
+| BA          | 0.8660±0.0119                    |
+| Sensitivity | 0.8317±0.0258                    |
+| Specificity | 0.9004±0.0102                    |
+| MCC         | 0.5262±0.0198                    |
+| CM          | [[10263, 2077], [15953, 144147]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9422±0.0073 \\
+Accuracy & 0.8954±0.0089 \\
+BA & 0.8660±0.0119 \\
+Sensitivity & 0.8317±0.0258 \\
+Specificity & 0.9004±0.0102 \\
+MCC & 0.5262±0.0198 \\
+CM & [[10263, 2077], [15953, 144147]] \\
+\bottomrule
+\end{tabular}
+

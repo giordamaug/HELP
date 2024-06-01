@@ -88,3 +88,33 @@ CM & [[10761, 1479], [19332, 140768]] \\
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Lung_CCcfs.csv
+LABEL: Lung_HELP.csv DISTRIB: E : 1224, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9414±0.0064                    |
+| Accuracy    | 0.8888±0.0163                    |
+| BA          | 0.8602±0.0111                    |
+| Sensitivity | 0.8269±0.0287                    |
+| Specificity | 0.8935±0.0188                    |
+| MCC         | 0.5098±0.0251                    |
+| CM          | [[10121, 2119], [17043, 143057]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9414±0.0064 \\
+Accuracy & 0.8888±0.0163 \\
+BA & 0.8602±0.0111 \\
+Sensitivity & 0.8269±0.0287 \\
+Specificity & 0.8935±0.0188 \\
+MCC & 0.5098±0.0251 \\
+CM & [[10121, 2119], [17043, 143057]] \\
+\bottomrule
+\end{tabular}
+
