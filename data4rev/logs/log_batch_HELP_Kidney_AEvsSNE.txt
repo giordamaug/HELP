@@ -1,0 +1,60 @@
+METHOD: LGBM	VOTERS: 3	BALANCE: yes
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 3, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: aE vs sNE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: aE : 3108, sNE: 12886
++-------------+-----------------------------------+
+|             | measure                           |
+|-------------+-----------------------------------|
+| ROC-AUC     | 0.7418±0.0101                     |
+| Accuracy    | 0.7541±0.0064                     |
+| BA          | 0.6803±0.0096                     |
+| Sensitivity | 0.5597±0.0180                     |
+| Specificity | 0.8010±0.0067                     |
+| MCC         | 0.3219±0.0167                     |
+| CM          | [[17395, 13685], [25641, 103219]] |
++-------------+-----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.7418±0.0101 \\
+Accuracy & 0.7541±0.0064 \\
+BA & 0.6803±0.0096 \\
+Sensitivity & 0.5597±0.0180 \\
+Specificity & 0.8010±0.0067 \\
+MCC & 0.3219±0.0167 \\
+CM & [[17395, 13685], [25641, 103219]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 3	BALANCE: yes
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 3, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: aE vs sNE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: aE : 3108, sNE: 12886
++-------------+-----------------------------------+
+|             | measure                           |
+|-------------+-----------------------------------|
+| ROC-AUC     | 0.7418±0.0101                     |
+| Accuracy    | 0.7541±0.0064                     |
+| BA          | 0.6803±0.0096                     |
+| Sensitivity | 0.5597±0.0180                     |
+| Specificity | 0.8010±0.0067                     |
+| MCC         | 0.3219±0.0167                     |
+| CM          | [[17395, 13685], [25641, 103219]] |
++-------------+-----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.7418±0.0101 \\
+Accuracy & 0.7541±0.0064 \\
+BA & 0.6803±0.0096 \\
+Sensitivity & 0.5597±0.0180 \\
+Specificity & 0.8010±0.0067 \\
+MCC & 0.3219±0.0167 \\
+CM & [[17395, 13685], [25641, 103219]] \\
+\bottomrule
+\end{tabular}
+

@@ -1,0 +1,30 @@
+METHOD: LGBM	VOTERS: 2	BALANCE: yes
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 2, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs aE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, aE: 3108
++-------------+-------------------------------+
+|             | measure                       |
+|-------------+-------------------------------|
+| ROC-AUC     | 0.8931±0.0094                 |
+| Accuracy    | 0.8224±0.0118                 |
+| BA          | 0.8098±0.0145                 |
+| Sensitivity | 0.7804±0.0267                 |
+| Specificity | 0.8392±0.0132                 |
+| MCC         | 0.5919±0.0269                 |
+| CM          | [[9693, 2727], [4999, 26081]] |
++-------------+-------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.8931±0.0094 \\
+Accuracy & 0.8224±0.0118 \\
+BA & 0.8098±0.0145 \\
+Sensitivity & 0.7804±0.0267 \\
+Specificity & 0.8392±0.0132 \\
+MCC & 0.5919±0.0269 \\
+CM & [[9693, 2727], [4999, 26081]] \\
+\bottomrule
+\end{tabular}
+
