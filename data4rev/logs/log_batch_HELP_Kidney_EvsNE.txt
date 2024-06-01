@@ -130,3 +130,33 @@ CM & [[10597, 1823], [19369, 140571]] \\
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 15994
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9563±0.0051                    |
+| Accuracy    | 0.8908±0.0040                    |
+| BA          | 0.8885±0.0093                    |
+| Sensitivity | 0.8857±0.0195                    |
+| Specificity | 0.8912±0.0045                    |
+| MCC         | 0.5417±0.0122                    |
+| CM          | [[11000, 1420], [17395, 142545]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9563±0.0051 \\
+Accuracy & 0.8908±0.0040 \\
+BA & 0.8885±0.0093 \\
+Sensitivity & 0.8857±0.0195 \\
+Specificity & 0.8912±0.0045 \\
+MCC & 0.5417±0.0122 \\
+CM & [[11000, 1420], [17395, 142545]] \\
+\bottomrule
+\end{tabular}
+
