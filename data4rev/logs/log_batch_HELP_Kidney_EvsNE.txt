@@ -70,3 +70,33 @@ measure & 0.9502±0.0065 & 0.8783±0.0050 & 0.8828±0.0101 & 0.8880±0.0217 & 0.
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: E : 1242, NE: 15994
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9582±0.0054                    |
+| Accuracy    | 0.8944±0.0039                    |
+| BA          | 0.8930±0.0092                    |
+| Sensitivity | 0.8913±0.0191                    |
+| Specificity | 0.8947±0.0044                    |
+| MCC         | 0.5518±0.0122                    |
+| CM          | [[11070, 1350], [16846, 143094]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9582±0.0054 \\
+Accuracy & 0.8944±0.0039 \\
+BA & 0.8930±0.0092 \\
+Sensitivity & 0.8913±0.0191 \\
+Specificity & 0.8947±0.0044 \\
+MCC & 0.5518±0.0122 \\
+CM & [[11070, 1350], [16846, 143094]] \\
+\bottomrule
+\end{tabular}
+
