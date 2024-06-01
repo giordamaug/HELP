@@ -1,0 +1,90 @@
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Lung_BIO.csv
+LABEL: Lung_HELP.csv DISTRIB: E : 1224, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9168±0.0063                    |
+| Accuracy    | 0.8194±0.0072                    |
+| BA          | 0.8395±0.0099                    |
+| Sensitivity | 0.8629±0.0192                    |
+| Specificity | 0.8161±0.0077                    |
+| MCC         | 0.4133±0.0134                    |
+| CM          | [[10562, 1678], [29443, 130657]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9168±0.0063 \\
+Accuracy & 0.8194±0.0072 \\
+BA & 0.8395±0.0099 \\
+Sensitivity & 0.8629±0.0192 \\
+Specificity & 0.8161±0.0077 \\
+MCC & 0.4133±0.0134 \\
+CM & [[10562, 1678], [29443, 130657]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Lung_EmbN2V_128.csv
+LABEL: Lung_HELP.csv DISTRIB: E : 1224, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9308±0.0076                    |
+| Accuracy    | 0.8701±0.0046                    |
+| BA          | 0.8561±0.0120                    |
+| Sensitivity | 0.8398±0.0241                    |
+| Specificity | 0.8724±0.0049                    |
+| MCC         | 0.4782±0.0155                    |
+| CM          | [[10279, 1961], [20427, 139673]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9308±0.0076 \\
+Accuracy & 0.8701±0.0046 \\
+BA & 0.8561±0.0120 \\
+Sensitivity & 0.8398±0.0241 \\
+Specificity & 0.8724±0.0049 \\
+MCC & 0.4782±0.0155 \\
+CM & [[10279, 1961], [20427, 139673]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Lung_BIO.csv Lung_EmbN2V_128.csv
+LABEL: Lung_HELP.csv DISTRIB: E : 1224, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9510±0.0054                    |
+| Accuracy    | 0.8792±0.0044                    |
+| BA          | 0.8792±0.0101                    |
+| Sensitivity | 0.8792±0.0207                    |
+| Specificity | 0.8793±0.0048                    |
+| MCC         | 0.5132±0.0134                    |
+| CM          | [[10761, 1479], [19332, 140768]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9510±0.0054 \\
+Accuracy & 0.8792±0.0044 \\
+BA & 0.8792±0.0101 \\
+Sensitivity & 0.8792±0.0207 \\
+Specificity & 0.8793±0.0048 \\
+MCC & 0.5132±0.0134 \\
+CM & [[10761, 1479], [19332, 140768]] \\
+\bottomrule
+\end{tabular}
+

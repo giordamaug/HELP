@@ -1,0 +1,120 @@
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Brain_BIO.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9146±0.0069                    |
+| Accuracy    | 0.8200±0.0059                    |
+| BA          | 0.8319±0.0108                    |
+| Sensitivity | 0.8458±0.0231                    |
+| Specificity | 0.8181±0.0068                    |
+| MCC         | 0.4070±0.0127                    |
+| CM          | [[10437, 1903], [29129, 130971]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9146±0.0069 \\
+Accuracy & 0.8200±0.0059 \\
+BA & 0.8319±0.0108 \\
+Sensitivity & 0.8458±0.0231 \\
+Specificity & 0.8181±0.0068 \\
+MCC & 0.4070±0.0127 \\
+CM & [[10437, 1903], [29129, 130971]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Brain_EmbN2V_128.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9327±0.0073                    |
+| Accuracy    | 0.8711±0.0064                    |
+| BA          | 0.8570±0.0115                    |
+| Sensitivity | 0.8406±0.0257                    |
+| Specificity | 0.8735±0.0076                    |
+| MCC         | 0.4818±0.0145                    |
+| CM          | [[10373, 1967], [20257, 139843]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9327±0.0073 \\
+Accuracy & 0.8711±0.0064 \\
+BA & 0.8570±0.0115 \\
+Sensitivity & 0.8406±0.0257 \\
+Specificity & 0.8735±0.0076 \\
+MCC & 0.4818±0.0145 \\
+CM & [[10373, 1967], [20257, 139843]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Brain_BIO.csv Brain_EmbN2V_128.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9509±0.0055                    |
+| Accuracy    | 0.8797±0.0057                    |
+| BA          | 0.8803±0.0096                    |
+| Sensitivity | 0.8811±0.0213                    |
+| Specificity | 0.8796±0.0067                    |
+| MCC         | 0.5164±0.0129                    |
+| CM          | [[10873, 1467], [19283, 140817]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9509±0.0055 \\
+Accuracy & 0.8797±0.0057 \\
+BA & 0.8803±0.0096 \\
+Sensitivity & 0.8811±0.0213 \\
+Specificity & 0.8796±0.0067 \\
+MCC & 0.5164±0.0129 \\
+CM & [[10873, 1467], [19283, 140817]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 11	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.35, 'n_estimators': 190, 'n_jobs': -1, 'n_voters': 11, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+PROBL: E vs NE
+INPUT: Brain_BIO.csv Brain_CCcfs.csv Brain_EmbN2V_128.csv
+LABEL: Brain_HELP.csv DISTRIB: E : 1234, NE: 16010
++-------------+----------------------------------+
+|             | measure                          |
+|-------------+----------------------------------|
+| ROC-AUC     | 0.9603±0.0049                    |
+| Accuracy    | 0.8973±0.0054                    |
+| BA          | 0.8975±0.0094                    |
+| Sensitivity | 0.8978±0.0207                    |
+| Specificity | 0.8973±0.0064                    |
+| MCC         | 0.5598±0.0135                    |
+| CM          | [[11079, 1261], [16447, 143653]] |
++-------------+----------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9603±0.0049 \\
+Accuracy & 0.8973±0.0054 \\
+BA & 0.8975±0.0094 \\
+Sensitivity & 0.8978±0.0207 \\
+Specificity & 0.8973±0.0064 \\
+MCC & 0.5598±0.0135 \\
+CM & [[11079, 1261], [16447, 143653]] \\
+\bottomrule
+\end{tabular}
+
