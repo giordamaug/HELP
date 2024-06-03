@@ -12,8 +12,8 @@ TISSUE=Lung
 PROB=EvsNE
 ALIASES="{'aE':'NE', 'sNE': 'NE'}"
 EXCLABELS=""
-LR="-lr 0.35"
-VOTERS="-v 11"
+LR="-lr 0.03"
+VOTERS="-v 9"
 ESTIMATORS="-e 190"
 LABELFILE=${TISSUE}_${METHOD}.csv
 
