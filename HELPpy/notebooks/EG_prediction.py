@@ -129,7 +129,7 @@ if args.predfile is not None:
 else:
    print(preds)
 df_scores = pd.DataFrame([f'{val:.4f}±{err:.4f}' for val, err in zip(scores.loc[:, scores.columns != "CM"].mean(axis=0).values,
-                          scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()).values[0].tolist()],
+                          scores.loc[:, scores.columns != "CM"].std(axis=0))] + [(scores[['CM']].sum()/args.repeat).values[0].tolist()],
                           columns=['measure'], index=scores.columns)
 import sys
 distrib = np.unique(df_y[label_name].values, return_counts=True)

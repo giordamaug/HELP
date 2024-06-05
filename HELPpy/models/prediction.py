@@ -17,6 +17,7 @@ from joblib import Parallel, delayed
 from lightgbm import LGBMClassifier 
 import numpy as np
 from imblearn.over_sampling import SMOTE
+from imblearn.metrics import specificity_score
 from ..utility.utils import in_notebook
 if in_notebook():
     from tqdm.notebook import tqdm
@@ -617,8 +618,8 @@ def predict_cv_sv(X, Y, n_voters=1, n_splits=5, colname='label', balanced=False,
     # Calculate evaluation scores
     scores = pd.DataFrame([[roc_auc_score(test_y, 1-probs), accuracy_score(test_y, preds),
                             balanced_accuracy_score(test_y, preds),
-                            cm[0, 0] / (cm[0, 0] + cm[0, 1]),
-                            cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                            recall_score(test_y, preds),
+                            specificity_score(test_y, preds),
                             matthews_corrcoef(test_y, preds), cm]],
                           columns=["ROC-AUC", "Accuracy", "BA", "Sensitivity", "Specificity", "MCC", 'CM'], index=[seed])
 
