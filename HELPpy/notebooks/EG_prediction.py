@@ -91,8 +91,9 @@ else:                                         # no kile is are
 df_lab = pd.read_csv(label_file, index_col=0)
 # get label aliases
 label_aliases = literal_eval(args.aliases)
+exlabels = np.unique(df_lab[label_name].values)
 for key,newkey in label_aliases.items():
-    if key in np.unique(df_lab[label_name].values):
+    if key in exlabels:
         print(f'- replacing label {key} with {newkey}')
         df_lab = df_lab.replace(key, newkey)
 # exclude labels
