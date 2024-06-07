@@ -89,6 +89,9 @@ else:                                         # no kile is are
          features += [{'fname': attrfile, 'fixna' : fixna, 'normalize': normalization}]
       
 df_lab = pd.read_csv(label_file, index_col=0)
+# exclude labels
+print(f'- removing label {args.excludelabels}')
+df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 # get label aliases
 label_aliases = literal_eval(args.aliases)
 exlabels = np.unique(df_lab[label_name].values)
@@ -96,9 +99,6 @@ for key,newkey in label_aliases.items():
     if key in exlabels:
         print(f'- replacing label {key} with {newkey}')
         df_lab = df_lab.replace(key, newkey)
-# exclude labels
-print(f'- removing label {args.excludelabels}')
-df_lab = df_lab[df_lab[label_name].isin(args.excludelabels) == False]
 df_X, df_y = feature_assemble_df(df_lab, features=features, seed=1, verbose=verbose)
 
 def classify(nfolds, repeat, jobs, verbose):
