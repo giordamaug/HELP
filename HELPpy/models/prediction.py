@@ -264,8 +264,8 @@ def evaluate_fold(train_x, train_y, test_x, test_y, estimator, genes, test_genes
                "ROC-AUC" : roc_auc, 
                "Accuracy" : accuracy_score(test_y, preds),
                "BA" : balanced_accuracy_score(test_y, preds), 
-               "Sensitivity" : cm[0, 0] / (cm[0, 0] + cm[0, 1]), 
-               "Specificity" : cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+               "Sensitivity" : cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+               "Specificity" : cm[0, 0] / (cm[0, 0] + cm[0, 1]), 
                "MCC" : matthews_corrcoef(test_y, preds), 
                'CM' : cm}
     return genes, targets, predictions, probabilities, metrics
@@ -502,8 +502,8 @@ def predict_cv(X, Y, n_splits=10, method='LGBM', balanced=False, saveflag: bool 
         scores = pd.concat([scores, pd.DataFrame([[roc_auc,
                                                     accuracy_score(test_y, preds),
                                                     balanced_accuracy_score(test_y, preds),
-                                                    cm[0, 0] / (cm[0, 0] + cm[0, 1]),
                                                     cm[1, 1] / (cm[1, 0] + cm[1, 1]),
+                                                    cm[0, 0] / (cm[0, 0] + cm[0, 1]),
                                                     matthews_corrcoef(test_y, preds),
                                                     cm]],
                                                   columns=columns_names, index=[fold])],
