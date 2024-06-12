@@ -66,3 +66,32 @@ CM & [[13638.5, 2355.5], [165.3, 1076.7]] \\
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_BIO.csv Kidney_CCcfs_reduce_min5imp.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9564±0.0055                        |
+| Accuracy    | 0.8760±0.0050                        |
+| BA          | 0.8894±0.0078                        |
+| Sensitivity | 0.8738±0.0056                        |
+| Specificity | 0.9051±0.0160                        |
+| MCC         | 0.5217±0.0115                        |
+| CM          | [[13974.8, 2019.2], [117.9, 1124.1]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9564±0.0055 \\
+Accuracy & 0.8760±0.0050 \\
+BA & 0.8894±0.0078 \\
+Sensitivity & 0.8738±0.0056 \\
+Specificity & 0.9051±0.0160 \\
+MCC & 0.5217±0.0115 \\
+CM & [[13974.8, 2019.2], [117.9, 1124.1]] \\
+\bottomrule
+\end{tabular}
+
