@@ -19,6 +19,9 @@ import numpy as np
 from imblearn.over_sampling import SMOTE
 from imblearn.metrics import specificity_score
 from ..utility.utils import in_notebook
+from sklearn.utils.validation import (
+    check_is_fitted,
+)
 if in_notebook():
     from tqdm.notebook import tqdm
 else:
@@ -176,7 +179,29 @@ class VotingEnsembleLGBM(BaseEstimator, ClassifierMixin):
         :rtype: float
         """
         return balanced_accuracy_score(y, (self.predict_proba(X) > 0.5).flatten())
-    
+
+    @property
+    def feature_importances_(self):
+        """
+        Computer feature importances by averaging on ensemble of voters.
+
+        The higher, the more important the feature.
+        The importance of a feature is computed as the (normalized)
+
+        Returns
+        -------
+        feature_importances_ : ndarray of shape (n_features,)
+            for each variable feature importances is the mean of each voter
+        """
+        check_is_fitted(self)
+
+        all_importances = Parallel(n_jobs=self.n_jobs)(delayed(getattr)(voter, "feature_importances_") for voter in self.estimators_)
+        if not all_importances:
+            return np.zeros(self.n_features_in_, dtype=np.float64)
+
+        all_importances = np.mean(all_importances, axis=0, dtype=np.float64)
+        return all_importances / np.sum(all_importances)
+        
 class VotingSplitClassifier(BaseEstimator, ClassifierMixin):
 
     def __init__(self, n_voters=10, voting='soft', n_jobs=-1, verbose=False, random_state=42, **kwargs):
