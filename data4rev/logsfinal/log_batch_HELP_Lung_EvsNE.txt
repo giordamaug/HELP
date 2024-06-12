@@ -143,3 +143,32 @@ CM & [[14021.9, 1988.1], [116.0, 1108.0]] \\
 \bottomrule
 \end{tabular}
 
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Lung_CCBeder.csv
+LABEL: Lung_HELP.csv DISTRIB: 0 : 16010, 1: 1224
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9355±0.0073                        |
+| Accuracy    | 0.8513±0.0061                        |
+| BA          | 0.8610±0.0102                        |
+| Sensitivity | 0.8496±0.0066                        |
+| Specificity | 0.8724±0.0204                        |
+| MCC         | 0.4624±0.0138                        |
+| CM          | [[13602.8, 2407.2], [156.2, 1067.8]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9355±0.0073 \\
+Accuracy & 0.8513±0.0061 \\
+BA & 0.8610±0.0102 \\
+Sensitivity & 0.8496±0.0066 \\
+Specificity & 0.8724±0.0204 \\
+MCC & 0.4624±0.0138 \\
+CM & [[13602.8, 2407.2], [156.2, 1067.8]] \\
+\bottomrule
+\end{tabular}
+
