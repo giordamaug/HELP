@@ -1,0 +1,232 @@
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9395±0.0083                        |
+| Accuracy    | 0.8615±0.0056                        |
+| BA          | 0.8668±0.0119                        |
+| Sensitivity | 0.8606±0.0058                        |
+| Specificity | 0.8730±0.0234                        |
+| MCC         | 0.4815±0.0160                        |
+| CM          | [[13763.9, 2230.1], [157.7, 1084.3]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9395±0.0083 \\
+Accuracy & 0.8615±0.0056 \\
+BA & 0.8668±0.0119 \\
+Sensitivity & 0.8606±0.0058 \\
+Specificity & 0.8730±0.0234 \\
+MCC & 0.4815±0.0160 \\
+CM & [[13763.9, 2230.1], [157.7, 1084.3]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_CCcfs_reduce_min5imp.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9353±0.0082                        |
+| Accuracy    | 0.8537±0.0054                        |
+| BA          | 0.8598±0.0124                        |
+| Sensitivity | 0.8527±0.0054                        |
+| Specificity | 0.8669±0.0240                        |
+| MCC         | 0.4661±0.0165                        |
+| CM          | [[13638.5, 2355.5], [165.3, 1076.7]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9353±0.0082 \\
+Accuracy & 0.8537±0.0054 \\
+BA & 0.8598±0.0124 \\
+Sensitivity & 0.8527±0.0054 \\
+Specificity & 0.8669±0.0240 \\
+MCC & 0.4661±0.0165 \\
+CM & [[13638.5, 2355.5], [165.3, 1076.7]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_BIO.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9140±0.0075                        |
+| Accuracy    | 0.7951±0.0067                        |
+| BA          | 0.8319±0.0098                        |
+| Sensitivity | 0.7889±0.0074                        |
+| Specificity | 0.8750±0.0198                        |
+| MCC         | 0.3920±0.0121                        |
+| CM          | [[12618.1, 3375.9], [155.3, 1086.7]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9140±0.0075 \\
+Accuracy & 0.7951±0.0067 \\
+BA & 0.8319±0.0098 \\
+Sensitivity & 0.7889±0.0074 \\
+Specificity & 0.8750±0.0198 \\
+MCC & 0.3920±0.0121 \\
+CM & [[12618.1, 3375.9], [155.3, 1086.7]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9286±0.0085                        |
+| Accuracy    | 0.8447±0.0056                        |
+| BA          | 0.8536±0.0128                        |
+| Sensitivity | 0.8432±0.0065                        |
+| Specificity | 0.8639±0.0275                        |
+| MCC         | 0.4508±0.0150                        |
+| CM          | [[13486.2, 2507.8], [169.0, 1073.0]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9286±0.0085 \\
+Accuracy & 0.8447±0.0056 \\
+BA & 0.8536±0.0128 \\
+Sensitivity & 0.8432±0.0065 \\
+Specificity & 0.8639±0.0275 \\
+MCC & 0.4508±0.0150 \\
+CM & [[13486.2, 2507.8], [169.0, 1073.0]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_CCBeder.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9324±0.0080                        |
+| Accuracy    | 0.8460±0.0066                        |
+| BA          | 0.8572±0.0103                        |
+| Sensitivity | 0.8441±0.0073                        |
+| Specificity | 0.8704±0.0209                        |
+| MCC         | 0.4559±0.0142                        |
+| CM          | [[13501.0, 2493.0], [161.0, 1081.0]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9324±0.0080 \\
+Accuracy & 0.8460±0.0066 \\
+BA & 0.8572±0.0103 \\
+Sensitivity & 0.8441±0.0073 \\
+Specificity & 0.8704±0.0209 \\
+MCC & 0.4559±0.0142 \\
+CM & [[13501.0, 2493.0], [161.0, 1081.0]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9578±0.0056                        |
+| Accuracy    | 0.8799±0.0048                        |
+| BA          | 0.8915±0.0092                        |
+| Sensitivity | 0.8779±0.0052                        |
+| Specificity | 0.9051±0.0188                        |
+| MCC         | 0.5289±0.0128                        |
+| CM          | [[14041.4, 1952.6], [117.8, 1124.2]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9578±0.0056 \\
+Accuracy & 0.8799±0.0048 \\
+BA & 0.8915±0.0092 \\
+Sensitivity & 0.8779±0.0052 \\
+Specificity & 0.9051±0.0188 \\
+MCC & 0.5289±0.0128 \\
+CM & [[14041.4, 1952.6], [117.8, 1124.2]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9563±0.0050                        |
+| Accuracy    | 0.8773±0.0047                        |
+| BA          | 0.8874±0.0098                        |
+| Sensitivity | 0.8756±0.0052                        |
+| Specificity | 0.8992±0.0199                        |
+| MCC         | 0.5213±0.0132                        |
+| CM          | [[14003.7, 1990.3], [125.2, 1116.8]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9563±0.0050 \\
+Accuracy & 0.8773±0.0047 \\
+BA & 0.8874±0.0098 \\
+Sensitivity & 0.8756±0.0052 \\
+Specificity & 0.8992±0.0199 \\
+MCC & 0.5213±0.0132 \\
+CM & [[14003.7, 1990.3], [125.2, 1116.8]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: LGBM	VOTERS: 13	BALANCE: no
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 13, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+INPUT: Kidney_BIO.csv Kidney_CCcfs_reduce_min5imp.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv DISTRIB: 0 : 15994, 1: 1242
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9564±0.0055                        |
+| Accuracy    | 0.8760±0.0050                        |
+| BA          | 0.8894±0.0078                        |
+| Sensitivity | 0.8738±0.0056                        |
+| Specificity | 0.9051±0.0160                        |
+| MCC         | 0.5217±0.0115                        |
+| CM          | [[13974.8, 2019.2], [117.9, 1124.1]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9564±0.0055 \\
+Accuracy & 0.8760±0.0050 \\
+BA & 0.8894±0.0078 \\
+Sensitivity & 0.8738±0.0056 \\
+Specificity & 0.9051±0.0160 \\
+MCC & 0.5217±0.0115 \\
+CM & [[13974.8, 2019.2], [117.9, 1124.1]] \\
+\bottomrule
+\end{tabular}
+
