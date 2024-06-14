@@ -1,29 +1,29 @@
-METHOD: LGBM	VOTERS: 10	BALANCE: yes
-PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 100, 'n_jobs': -1, 'n_voters': 10, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
+METHOD: VotingEnsembleLGBM
+PARAMS: {'boosting_type': 'gbdt', 'learning_rate': 0.1, 'n_estimators': 200, 'n_jobs': -1, 'n_voters': 10, 'random_state': 1, 'verbose': False, 'voting': 'soft'}
 INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
-LABEL: Kidney_HELP.csv DISTRIB: E : 1242, sNE: 12886
+LABEL: Kidney_HELP.csv (E:1242,sNE:12886)
 +-------------+--------------------------------------+
 |             | measure                              |
 |-------------+--------------------------------------|
-| ROC-AUC     | 0.9721±0.0039                        |
-| Accuracy    | 0.9124±0.0047                        |
-| BA          | 0.9126±0.0075                        |
-| Sensitivity | 0.9129±0.0163                        |
-| Specificity | 0.9124±0.0056                        |
-| MCC         | 0.6374±0.0125                        |
-| CM          | [[1133.8, 108.2], [1128.9, 11757.1]] |
+| ROC-AUC     | 0.9733±0.0038                        |
+| Accuracy    | 0.9150±0.0047                        |
+| BA          | 0.9153±0.0075                        |
+| Sensitivity | 0.9156±0.0158                        |
+| Specificity | 0.9149±0.0055                        |
+| MCC         | 0.6449±0.0133                        |
+| CM          | [[1137.2, 104.8], [1096.0, 11790.0]] |
 +-------------+--------------------------------------+
 \begin{tabular}{ll}
 \toprule
  & measure \\
 \midrule
-ROC-AUC & 0.9721±0.0039 \\
-Accuracy & 0.9124±0.0047 \\
-BA & 0.9126±0.0075 \\
-Sensitivity & 0.9129±0.0163 \\
-Specificity & 0.9124±0.0056 \\
-MCC & 0.6374±0.0125 \\
-CM & [[1133.8, 108.2], [1128.9, 11757.1]] \\
+ROC-AUC & 0.9733±0.0038 \\
+Accuracy & 0.9150±0.0047 \\
+BA & 0.9153±0.0075 \\
+Sensitivity & 0.9156±0.0158 \\
+Specificity & 0.9149±0.0055 \\
+MCC & 0.6449±0.0133 \\
+CM & [[1137.2, 104.8], [1096.0, 11790.0]] \\
 \bottomrule
 \end{tabular}
 
