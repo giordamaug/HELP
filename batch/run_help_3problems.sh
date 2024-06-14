@@ -21,6 +21,7 @@ ALIASES3="{'aE':1, 'sNE': 0}"
 EXCLABELS1="-X sNE"
 EXCLABELS2="-X aE"
 EXCLABELS3="-X E"
+ESTIMATORS="-e 200"
 LABELFILE=${TISSUE}_${METHOD}.csv
 
 echo "$CMD $PRG -i $DATA/${TISSUE}_BIO.csv $DATA/${TISSUE}_CCcfs.csv $DATA/${TISSUE}_EmbN2V_128.csv -l $TARGET/${LABELFILE} -c 1 5 1 -n std -ba $VOTERS1 $ESTIMATORS $LR $EXCLABELS1 $ALIASES1 -j -1 -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB1}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB1}_bioccn2v.csv" | bash
