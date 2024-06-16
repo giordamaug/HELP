@@ -3,20 +3,20 @@ METHOD=HELP
 ROOTDIR=PLOS_CompBiology
 ENV=envs/mytorch
 CMD=$HOME/miniconda3/$ENV/bin/python
-PRG=$HOME/$ROOTDIR/HELP/HELPpy/notebooks/EG_prediction.py
+PRG=$HOME/$ROOTDIR/HELP/data4rev/notebooks/EG_prediction.py
 DATA=$HOME/$ROOTDIR/HELP/data
 TARGET=$HOME/$ROOTDIR/HELP/data
-SCOREDIR=$HOME/$ROOTDIR/HELP/data4rev/scoresveryfinal
-LOGDIR=$HOME/$ROOTDIR/HELP/data4rev/logsveryfinal
-TISSUE=Human
+SCOREDIR=$HOME/$ROOTDIR/HELP/data4rev/scores
+LOGDIR=$HOME/$ROOTDIR/HELP/data4rev/logs
+TISSUE=Brain
 PROB=EvsNE
-#ALIASES="{'aE':0, 'sNE': 0, 'E': 1}"
-ALIASES="{'NE':0, 'E': 1}"
+ALIASES="{'aE':0, 'sNE': 0, 'E': 1}"
+#ALIASES="{'NE':0, 'E': 1}"
 LR="-lr 0.1" # 0.0945 from optuna
 VOTERS="-v 13"
 ESTIMATORS="-e 200"
-#LABELFILE=${TISSUE}_${METHOD}.csv
-LABELFILE=PanTissue_group_HELP.csv
+LABELFILE=${TISSUE}_${METHOD}.csv
+#LABELFILE=PanTissue_group_HELP.csv
 
 echo "running CC"
 echo "$CMD $PRG -i $DATA/${TISSUE}_CCcfs.csv -l $TARGET/${LABELFILE} -A \"$ALIASES\" -n std $VOTERS $ESTIMATORS $LR -j -1 -B  -o $LOGDIR/log_batch_${METHOD}_${TISSUE}_${PROB}.txt -s $SCOREDIR/score_${METHOD}_${TISSUE}_${PROB}_cc.csv" | bash

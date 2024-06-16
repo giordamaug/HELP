@@ -80,7 +80,7 @@ for attrfile in args.inputfile:
    else:
       features += [attrfile]
       mormalization += [args.normalize]
-      
+
 df_X = load_features(filenames=args.inputfile, fixnans=[args.fixna]*len(features), normalizes=mormalization, constrms=[True]*len(features),
                      verbose=True, show_progress=True)
       
@@ -98,6 +98,8 @@ for key,newkey in label_aliases.items():
 idxs = np.intersect1d(df_lab.index.values, df_X.index.values)
 df_X = df_X.loc[idxs]
 df_y = df_lab.loc[idxs]
+if verbose:
+   print(f"DATASET: {df_X.shape}, LABEL: {df_y}")
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
