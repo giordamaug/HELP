@@ -98,8 +98,7 @@ for key,newkey in label_aliases.items():
 idxs = np.intersect1d(df_lab.index.values, df_X.index.values)
 df_X = df_X.loc[idxs]
 df_y = df_lab.loc[idxs]
-if verbose:
-   print(f"DATASET: {df_X.shape}, LABEL: {df_y}")
+print(f"DATASET: {df_X.shape}, LABEL: {df_y.shape}")
 
 def classify(nfolds, repeat, jobs, verbose):
   if jobs == 1:
