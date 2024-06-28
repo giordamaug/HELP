@@ -275,8 +275,10 @@ def set_seed(seed=1):
 def evaluate_fold(train_x, train_y, test_x, test_y, estimator, genes, test_genes, targets, predictions, probabilities, fold, nclasses=2):
     # Initialize classifier
     clf = clone(estimator)
-    probs = clf.fit(train_x, train_y).predict_proba(test_x)
-    preds = np.argmax(probs, axis=1)
+    clf.fit(train_x, train_y)
+    probs = clf.predict_proba(test_x)
+    preds = clf.predict(test_x)
+    #preds = clf.classes_[np.argmax(probs, axis=1)]
     genes = np.concatenate((genes, test_genes))
     targets = np.concatenate((targets, test_y))
     cm = confusion_matrix(test_y, preds)
