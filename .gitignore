@@ -399,3 +399,10 @@ data4rev/CLEARER/Class_labels/Ce.csv
 data4rev/EPGAT/__pycache__/gat.cpython-38.pyc
 data4rev/EPGAT/__pycache__/utils.cpython-38.pyc
 help/data/Brian_EmbN2V_128.csv
+data/Homo_sapiens.GRCh38.112.gtf
+data4rev/data/Brain_CCcfs.csv
+data4rev/data/Human_CCcfs.csv
+data4rev/data/Kidney_CCcfs.csv
+data4rev/data/Lung_CCcfs.csv
+data4rev/notebooks/prediction copia 2.ipynb
+data4rev/notebooks/prediction copia.ipynb
