@@ -321,12 +321,12 @@ def load_features(filenames: List[str] = [], fixnans: List[bool] = [], normalize
 
         # Normalize features
         if norm == 'std':
-            scaler = MinMaxScaler()
+            scaler = StandardScaler()
             if verbose:
                 print(f"[{fname}] Normalization with {norm} ...")
             feat_df = pd.DataFrame(scaler.fit_transform(feat_df), index=feat_df.index, columns=feat_df.columns)
         elif norm == 'max':
-            scaler = StandardScaler()
+            scaler = MinMaxScaler()
             if verbose:
                 print(f"[{fname}] Normalization with {norm}...")
             feat_df = pd.DataFrame(scaler.fit_transform(feat_df), index=feat_df.index, columns=feat_df.columns)
