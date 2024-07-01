@@ -19,7 +19,8 @@ setup(
        "matplotlib",
        "ipywidgets",
        "scikit-learn",
-       "scipy"
+       "scipy",
+       "pycurl",
    ],
 )
 

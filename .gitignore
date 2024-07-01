@@ -573,3 +573,5 @@ to-trash/help/working/csvlogging/last/checkpoints/epoch=19-step=8980-v2.ckpt
 to-trash/help/working/csvlogging/last/checkpoints/epoch=19-step=8980.ckpt
 to-trash/help/working/csvlogging/last/hparams.yaml
 to-trash/help/working/csvlogging/last/metrics.csv
+build/lib/HELPpy/utility/utils.py
+build/lib/HELPpy/visualization/filecollector.py
