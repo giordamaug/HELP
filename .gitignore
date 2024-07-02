@@ -575,3 +575,21 @@ to-trash/help/working/csvlogging/last/hparams.yaml
 to-trash/help/working/csvlogging/last/metrics.csv
 build/lib/HELPpy/utility/utils.py
 build/lib/HELPpy/visualization/filecollector.py
+pycaret/saved_xgboost_model.pkl
+pycaret/saved_svm_model.pkl
+pycaret/saved_sveXGB_model.pkl
+pycaret/saved_sveXGB(n_jobs=-1, n_voters=10, split_seed=42, verbose=False, voting='soft')_model.pkl
+pycaret/saved_sveRF_model.pkl
+pycaret/saved_sveRF(n_jobs=-1, n_voters=10, split_seed=42, verbose=False, voting='soft')_model.pkl
+pycaret/saved_sveLGBM_model.pkl
+pycaret/saved_sveLGBM(n_jobs=-1, n_voters=16, split_seed=42, verbose=False, voting='soft')_model.pkl
+pycaret/saved_sveLDA_model.pkl
+pycaret/saved_sveLDA(n_jobs=-1, n_voters=14, split_seed=42, verbose=False, voting='soft')_model.pkl
+pycaret/saved_sveADA_model.pkl
+pycaret/saved_sveADA(n_jobs=-1, n_voters=14, split_seed=42, verbose=False, voting='soft')_model.pkl
+pycaret/saved_rf_model.pkl
+pycaret/saved_lr_model.pkl
+pycaret/saved_lightgbm_model.pkl
+pycaret/saved_lda_model.pkl
+pycaret/saved_et_model.pkl
+pycaret/saved_ada_model.pkl
