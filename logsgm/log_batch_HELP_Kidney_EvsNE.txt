@@ -1,0 +1,155 @@
+METHOD: sveLGBM
+PARAMS: {'n_jobs': -1, 'n_voters': 12, 'split_seed': 42, 'verbose': False, 'voting': 'soft'} {'boosting_type': 'gbdt', 'class_weight': None, 'colsample_bytree': 1.0, 'importance_type': 'split', 'learning_rate': 0.09, 'max_depth': -1, 'min_child_samples': 20, 'min_child_weight': 0.001, 'min_split_gain': 0.0, 'n_estimators': 140, 'n_jobs': -1, 'num_leaves': 31, 'objective': None, 'random_state': 1, 'reg_alpha': 0.0, 'reg_lambda': 0.0, 'silent': True, 'subsample': 1.0, 'subsample_for_bin': 200000, 'subsample_freq': 0, 'verbose': -1}
+INPUT: Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv (0:15994,1:1242)
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9394±0.0084                        |
+| Accuracy    | 0.8687±0.0056                        |
+| BA          | 0.8658±0.0125                        |
+| G-mean      | 0.8657±0.0126                        |
+| Specificity | 0.8692±0.0061                        |
+| Sensitivity | 0.8625±0.0255                        |
+| MCC         | 0.4888±0.0166                        |
+| cm          | [[13901.3, 2092.7], [170.8, 1071.2]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9394±0.0084 \\
+Accuracy & 0.8687±0.0056 \\
+BA & 0.8658±0.0125 \\
+G-mean & 0.8657±0.0126 \\
+Specificity & 0.8692±0.0061 \\
+Sensitivity & 0.8625±0.0255 \\
+MCC & 0.4888±0.0166 \\
+cm & [[13901.3, 2092.7], [170.8, 1071.2]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: sveLGBM
+PARAMS: {'n_jobs': -1, 'n_voters': 12, 'split_seed': 42, 'verbose': False, 'voting': 'soft'} {'boosting_type': 'gbdt', 'class_weight': None, 'colsample_bytree': 1.0, 'importance_type': 'split', 'learning_rate': 0.09, 'max_depth': -1, 'min_child_samples': 20, 'min_child_weight': 0.001, 'min_split_gain': 0.0, 'n_estimators': 140, 'n_jobs': -1, 'num_leaves': 31, 'objective': None, 'random_state': 1, 'reg_alpha': 0.0, 'reg_lambda': 0.0, 'silent': True, 'subsample': 1.0, 'subsample_for_bin': 200000, 'subsample_freq': 0, 'verbose': -1}
+INPUT: Kidney_BIO.csv
+LABEL: Kidney_HELP.csv (0:15994,1:1242)
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9142±0.0072                        |
+| Accuracy    | 0.8055±0.0068                        |
+| BA          | 0.8320±0.0093                        |
+| G-mean      | 0.8313±0.0091                        |
+| Specificity | 0.8010±0.0076                        |
+| Sensitivity | 0.8630±0.0189                        |
+| MCC         | 0.3983±0.0119                        |
+| cm          | [[12811.1, 3182.9], [170.2, 1071.8]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9142±0.0072 \\
+Accuracy & 0.8055±0.0068 \\
+BA & 0.8320±0.0093 \\
+G-mean & 0.8313±0.0091 \\
+Specificity & 0.8010±0.0076 \\
+Sensitivity & 0.8630±0.0189 \\
+MCC & 0.3983±0.0119 \\
+cm & [[12811.1, 3182.9], [170.2, 1071.8]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: sveLGBM
+PARAMS: {'n_jobs': -1, 'n_voters': 12, 'split_seed': 42, 'verbose': False, 'voting': 'soft'} {'boosting_type': 'gbdt', 'class_weight': None, 'colsample_bytree': 1.0, 'importance_type': 'split', 'learning_rate': 0.09, 'max_depth': -1, 'min_child_samples': 20, 'min_child_weight': 0.001, 'min_split_gain': 0.0, 'n_estimators': 140, 'n_jobs': -1, 'num_leaves': 31, 'objective': None, 'random_state': 1, 'reg_alpha': 0.0, 'reg_lambda': 0.0, 'silent': True, 'subsample': 1.0, 'subsample_for_bin': 200000, 'subsample_freq': 0, 'verbose': -1}
+INPUT: Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv (0:15994,1:1242)
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9277±0.0090                        |
+| Accuracy    | 0.8541±0.0051                        |
+| BA          | 0.8510±0.0132                        |
+| G-mean      | 0.8508±0.0132                        |
+| Specificity | 0.8547±0.0059                        |
+| Sensitivity | 0.8473±0.0279                        |
+| MCC         | 0.4574±0.0155                        |
+| cm          | [[13669.3, 2324.7], [189.7, 1052.3]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9277±0.0090 \\
+Accuracy & 0.8541±0.0051 \\
+BA & 0.8510±0.0132 \\
+G-mean & 0.8508±0.0132 \\
+Specificity & 0.8547±0.0059 \\
+Sensitivity & 0.8473±0.0279 \\
+MCC & 0.4574±0.0155 \\
+cm & [[13669.3, 2324.7], [189.7, 1052.3]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: sveLGBM
+PARAMS: {'n_jobs': -1, 'n_voters': 12, 'split_seed': 42, 'verbose': False, 'voting': 'soft'} {'boosting_type': 'gbdt', 'class_weight': None, 'colsample_bytree': 1.0, 'importance_type': 'split', 'learning_rate': 0.09, 'max_depth': -1, 'min_child_samples': 20, 'min_child_weight': 0.001, 'min_split_gain': 0.0, 'n_estimators': 140, 'n_jobs': -1, 'num_leaves': 31, 'objective': None, 'random_state': 1, 'reg_alpha': 0.0, 'reg_lambda': 0.0, 'silent': True, 'subsample': 1.0, 'subsample_for_bin': 200000, 'subsample_freq': 0, 'verbose': -1}
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv Kidney_EmbN2V_128.csv
+LABEL: Kidney_HELP.csv (0:15994,1:1242)
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9572±0.0057                        |
+| Accuracy    | 0.8852±0.0041                        |
+| BA          | 0.8900±0.0089                        |
+| G-mean      | 0.8899±0.0088                        |
+| Specificity | 0.8844±0.0045                        |
+| Sensitivity | 0.8956±0.0183                        |
+| MCC         | 0.5347±0.0119                        |
+| cm          | [[14144.6, 1849.4], [129.7, 1112.3]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9572±0.0057 \\
+Accuracy & 0.8852±0.0041 \\
+BA & 0.8900±0.0089 \\
+G-mean & 0.8899±0.0088 \\
+Specificity & 0.8844±0.0045 \\
+Sensitivity & 0.8956±0.0183 \\
+MCC & 0.5347±0.0119 \\
+cm & [[14144.6, 1849.4], [129.7, 1112.3]] \\
+\bottomrule
+\end{tabular}
+
+METHOD: sveLGBM
+PARAMS: {'n_jobs': -1, 'n_voters': 12, 'split_seed': 42, 'verbose': False, 'voting': 'soft'} {'boosting_type': 'gbdt', 'class_weight': None, 'colsample_bytree': 1.0, 'importance_type': 'split', 'learning_rate': 0.09, 'max_depth': -1, 'min_child_samples': 20, 'min_child_weight': 0.001, 'min_split_gain': 0.0, 'n_estimators': 140, 'n_jobs': -1, 'num_leaves': 31, 'objective': None, 'random_state': 1, 'reg_alpha': 0.0, 'reg_lambda': 0.0, 'silent': True, 'subsample': 1.0, 'subsample_for_bin': 200000, 'subsample_freq': 0, 'verbose': -1}
+INPUT: Kidney_BIO.csv Kidney_CCcfs.csv
+LABEL: Kidney_HELP.csv (0:15994,1:1242)
++-------------+--------------------------------------+
+|             | measure                              |
+|-------------+--------------------------------------|
+| ROC-AUC     | 0.9559±0.0052                        |
+| Accuracy    | 0.8832±0.0042                        |
+| BA          | 0.8872±0.0093                        |
+| G-mean      | 0.8871±0.0093                        |
+| Specificity | 0.8825±0.0047                        |
+| Sensitivity | 0.8919±0.0193                        |
+| MCC         | 0.5292±0.0124                        |
+| cm          | [[14115.4, 1878.6], [134.3, 1107.7]] |
++-------------+--------------------------------------+
+\begin{tabular}{ll}
+\toprule
+ & measure \\
+\midrule
+ROC-AUC & 0.9559±0.0052 \\
+Accuracy & 0.8832±0.0042 \\
+BA & 0.8872±0.0093 \\
+G-mean & 0.8871±0.0093 \\
+Specificity & 0.8825±0.0047 \\
+Sensitivity & 0.8919±0.0193 \\
+MCC & 0.5292±0.0124 \\
+cm & [[14115.4, 1878.6], [134.3, 1107.7]] \\
+\bottomrule
+\end{tabular}
+
