@@ -56,7 +56,7 @@ def load_features(filenames: List[str] = [], fixnans: List[bool] = [], normalize
         # Remove contsnat features
         constfeatures = feat_df.columns[feat_df.nunique() <= 1].values
         if verbose:
-            print(f"[{fname}] found {len(constfeatures)} Nan...")
+            print(f"[{fname}] found {len(constfeatures)} constant features...")
         if crm:
             if verbose:
                 print(f"[{fname}] Removing {len(constfeatures)} constant features ...")
@@ -79,8 +79,7 @@ def load_features(filenames: List[str] = [], fixnans: List[bool] = [], normalize
         else:
             if verbose:
                 print(f"[{fname}] No normalization...")
-
-
+                
         # merge features features
         x = pd.merge(x, feat_df, left_index=True, right_index=True, how='outer')
 

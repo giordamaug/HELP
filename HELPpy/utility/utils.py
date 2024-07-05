@@ -12,6 +12,8 @@ Functions:
 import pandas as pd
 import numpy as np
 import csv
+import pycurl
+from io import BytesIO
 
 def in_notebook():
     """
@@ -50,7 +52,46 @@ def pdread_csv_fromurl(url, sep=',', index_col=None):
     Example:
         df = pdread_csv_fromurl('http://example.com/data.csv')
     """
-    import pycurl
+    # Create a Curl object
+    c = pycurl.Curl()
+
+    # Set the URL
+    c.setopt(pycurl.URL, url)
+
+    # Create a BytesIO object to store the downloaded data
+    buffer = BytesIO()
+    c.setopt(pycurl.WRITEDATA, buffer)
+    c.setopt(pycurl.FOLLOWLOCATION, 1)
+
+    # Perform the request
+    c.perform()
+    # Check if the request was successful (HTTP status code 200)
+    http_code = c.getinfo(pycurl.HTTP_CODE)
+    if http_code == 200:
+        buffer.seek(0)
+        # load the downloaded data to a pandas dataframe
+        df = pd.read_table(buffer, sep=sep, index_col=index_col)
+    else:
+        raise Exception(f"Problem opening HTTP request: code {http_code}")
+    # Close the Curl object
+    c.close()
+    return df
+
+def pdread_csv_fromurl_old(url, sep=',', index_col=None):
+    """
+    Reads a CSV file from a URL.
+
+    Args:
+        url (str): The URL of the CSV file.
+        sep (str, optional): Field delimiter for the CSV file. Default is ','.
+        index_col (int, optional): Column to use as the row labels of the DataFrame. Default is None.
+
+    Returns:
+        DataFrame: The DataFrame containing the data read from the CSV file.
+    
+    Example:
+        df = pdread_csv_fromurl('http://example.com/data.csv')
+    """
     from io import BytesIO
 
     crl_obj = pycurl.Curl()
