@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import csv
 import pycurl
+import certifi
 from io import BytesIO
 
 def in_notebook():
@@ -61,6 +62,7 @@ def pdread_csv_fromurl(url, sep=',', index_col=None):
     # Create a BytesIO object to store the downloaded data
     buffer = BytesIO()
     c.setopt(pycurl.WRITEDATA, buffer)
+    c.setopt(pycurl.CAINFO, certifi.where())
     c.setopt(pycurl.FOLLOWLOCATION, 1)
 
     # Perform the request
