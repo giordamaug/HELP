@@ -828,3 +828,9 @@ scoresgm/score_HELP_Lung_EvsNE_biocc.csv
 scoresgm/score_HELP_Lung_EvsNE_bioccn2v.csv
 scoresgm/score_HELP_Lung_EvsNE_cc.csv
 scoresgm/score_HELP_Lung_EvsNE_n2v.csv
+pycaret/saved_sveET_model.pkl
+pycaret/saved_sveLGBM_model_2.pkl
+pycaret/sveLGBM_Kidney_ba_cv.db
+pycaret/sveLGBM_Kidney_ba_cv_100.db
+notebooks/PanTissue.csv
+pycaret/sveLGBM_Kidney_ba_cv.db
