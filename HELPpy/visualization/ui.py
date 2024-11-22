@@ -5,7 +5,8 @@ from HELPpy.models.labelling import labelling
 from HELPpy.utility.selection import select_cell_lines, delrows_with_nan_percentage
 from HELPpy.utility.utils import in_notebook, pandas_readcsv, pandas_writecsv
 from HELPpy.preprocess.loaders import load_features
-from HELPpy.models.prediction import VotingSplitClassifier, k_fold_cv
+from svelearn.models.splitvotingens import sveLGBM
+from svelearn.validation.crossvalidate import skfold_cv
 import pandas as pd
 import numpy as np
 import os, glob
@@ -556,7 +557,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     idx_common = np.intersect1d(df_y.index.values, df_X.index.values)
                     val.value['df_x'] = df_X.loc[idx_common]
                     val.value['df_y'] = df_y.loc[idx_common]
-                    clf = VotingSplitClassifier(n_voters=10, n_jobs=-1, random_state=-1)
+                    clf = sveLGBM(n_voters=10, n_jobs=-1, random_state=-1)
                     val.value['df_results']['scores'], val.value['df_results']['all_scores'], val.value['df_results']['predictions'] = k_fold_cv(val.value['df_x'], val.value['df_y'], clf, n_splits=5, seed=0, verbose=verbose, show_progress=show_progress)
                     out70.clear_output()
                     print_color(((_LB_DONE, 'green'),))
