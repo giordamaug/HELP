@@ -560,7 +560,8 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                     val.value['df_x'] = df_X.loc[idx_common]
                     val.value['df_y'] = df_y.loc[idx_common]
                     clf = sveLGBM(n_voters=10, n_jobs=-1, random_state=-1)
-                    val.value['df_results']['scores'], val.value['df_results']['all_scores'], val.value['df_results']['predictions'] = k_fold_cv(val.value['df_x'], val.value['df_y'], clf, n_splits=5, seed=0, verbose=verbose, show_progress=show_progress)
+                    val.value['df_results']['scores'], val.value['df_results']['all_scores'], val.value['df_results']['predictions'] = 
+                        skfold_cv(val.value['df_x'], val.value['df_y'], clf, n_splits=5, seed=0, verbose=verbose, show_progress=show_progress)
                     out70.clear_output()
                     print_color(((_LB_DONE, 'green'),))
                     display(val.value['df_results']['scores'])
