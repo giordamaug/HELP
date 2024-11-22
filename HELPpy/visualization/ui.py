@@ -487,7 +487,8 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
             try:
                 with out72:
                     out72.clear_output()
-                    val.value['df_x'] = load_features(list(fc6.selected), fixnans=[True]*len(list(fc6.selected)), normalizes=['std']*len(list(fc6.selected)), verbose=verbose, show_progress=show_progress)
+                    val.value['df_x'] = load_features(list(fc6.selected), fixnans=[True]*len(list(fc6.selected)), normalizes=['std']*len(list(fc6.selected)), constrms=[True]*len(list(fc6.selected)), 
+                                                      verbose=verbose, show_progress=show_progress)
                 acd7.set_title(0, f"{_LB_CNGATTR} ({os.path.basename(fc6.selected_path)})")
             except Exception as e:
                 with out72:
