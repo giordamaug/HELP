@@ -35,6 +35,9 @@ def load_features(filenames: List[str] = [], fixnans: List[bool] = [], normalize
     # Common indices among labels and features
     x = pd.DataFrame()
 
+    if fixnans==[]: fixnans=[True]*len(filenames)
+    if normalizes==[]: normalizes=['std']*len(filenames)
+    if constrms==[]: constrms=[True]*len(filenames)
     # Process each feature file
     for f,fixna,norm,crm in zip(filenames, fixnans, normalizes, constrms):
         feat_df = pandas_readcsv(f, chunksize=1024, index_col=0, descr=f'{os.path.basename(f)}', disabled=not show_progress)
