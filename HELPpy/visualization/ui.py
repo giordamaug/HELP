@@ -226,7 +226,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
             fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected}', 'green')
             acd4.set_title(1, f"{_LB_SAVE} ({fc3.selected_filename})")
         else:
-            fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected} not a file', 'red')
+            fc3._label.value = fc3._LBL_TEMPLATE.format(f'{fc3.selected} not a file', 'orange')
             acd4.set_title(1, f"{_LB_SAVE}")
     fc3.register_callback(fc3_change_title)
     saveto_but = wid.Button(description="Save ...", button_style='primary')
@@ -285,7 +285,8 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
                 else:
                     nclasses = 3
                     labelnames = {0: 'E', 1: 'aE', 2: 'sNE'}
-            val.value['df_label'] = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, verbose=verbose, show_progress=show_progress), df, val.value[2], val.value[3]
+            val.value['df_label'] = labelling(df, columns=cell_lines, mode=mode, n_classes=nclasses, labelnames=labelnames, 
+                                              verbose=verbose, show_progress=show_progress)
         with out1:
             out1.clear_output()
             print_color(((_LB_DONE, 'green'),))
@@ -296,7 +297,7 @@ def pipeline(path: str=os.getcwd(), savepath: str=os.getcwd(), labelpath: str=os
         fc1 = FileChooser(os.path.dirname(os.path.abspath(filename)), filter_pattern='*.csv', filename=os.path.basename(filename), select_default=True, layout=wid.Layout(width='auto'))
         acd2.children = (wid.HBox([fc1,out01]),)
         try:
-            val.value['df_crispr_orig'] = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
+            df_orig = val.value['df_crispr_orig'] = pd.read_csv(fc1.selected).rename(columns={'Unnamed: 0': 'gene'}).rename(columns=lambda x: x.split(' ')[0]).set_index('gene').T
             val.value['df_crispr']  = delrows_with_nan_percentage(val.value['df_crispr_orig'], perc=float(nanrem_set.value))
             df_map = val.value['df_model']
             df = val.value['df_crispr']
