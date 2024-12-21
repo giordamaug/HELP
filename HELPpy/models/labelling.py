@@ -87,28 +87,28 @@ def multi_threshold_with_nan_by_column(matrix, num_thresholds, verbose:bool = Fa
             raise Exception("Thresholding method not supported")
         thresholds += [thresh]
         # Define a placeholder value (can be any value not present in the array)
-        #col_digitize = np.empty_like(matrix[:,col_idx], dtype=int)
-        #col_digitize.fill(0)
-        #placeholder_value = -1
+        col_digitize = np.empty_like(matrix[:,col_idx], dtype=int)
+        col_digitize.fill(0)
+        placeholder_value = -1
         # Replace NaN values with the placeholder
-        #col_no_nan = np.where(np.isnan(col), placeholder_value, col)
+        col_no_nan = np.where(np.isnan(col), placeholder_value, col)
         # Perform digitization on the modified array
-        #for i, threshold in enumerate(thresh):
-        #    col_digitize[(col_no_nan[:] > threshold)] = i + 1
+        for i, threshold in enumerate(thresh):
+            col_digitize[(col_no_nan[:] > threshold)] = i + 1
         # Revert the placeholder values back to NaN
-        #col_digitize_with_nan = np.where(col_no_nan == placeholder_value, np.nan, col_digitize)
-        #segmented_matrix[:,col_idx] = col_digitize_with_nan
+        col_digitize_with_nan = np.where(col_no_nan == placeholder_value, np.nan, col_digitize)
+        segmented_matrix[:,col_idx] = col_digitize_with_nan
 
         # Initialize the digitized array with zeros
-        col_digitize = np.zeros_like(col, dtype=np.float64)
+        #col_digitize = np.zeros_like(col, dtype=np.float64)
         # Mask to identify NaN values in `col`
-        nan_mask = np.isnan(col)
+        #nan_mask = np.isnan(col)
         # Perform digitization only on non-NaN values
-        for i, threshold in enumerate(thresh):
-            col_digitize[(col > threshold) & ~nan_mask] = i + 1
+        #for i, threshold in enumerate(thresh):
+        #    col_digitize[(col > threshold) & ~nan_mask] = i + 1
         # Ensure NaN values remain as NaN in the digitized array
-        col_digitize[nan_mask] = np.nan
-        segmented_matrix = col_digitize
+        #col_digitize[nan_mask] = np.nan
+        #segmented_matrix = col_digitize
     return segmented_matrix, thresholds
 
 def rows_with_all_nan(df):    
